@@ -1,0 +1,82 @@
+=== run-generate-meta-fixed: 21/01/2026 12:37:18.09 
+Compiling Java sources in tools (always compile to pick up changes)... 
+javac finished OK 
+-------------------------------------------------- 
+Generating confirmation... 
+Meta file exists: updating in-place: files-fpml\meta\fpml-5-12-confirmation.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+Updated meta file: files-fpml\meta\fpml-5-12-confirmation.xml
+RunEnsureDefaults: updating meta files in files-fpml\meta\fpml-5-12-confirmation.xml using dataDir=files-fpml/data backup=true
+  updating single file: fpml-5-12-confirmation.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+RunEnsureDefaults: finished
+-------------------------------------------------- 
+Generating legal... 
+Meta file exists: updating in-place: files-fpml\meta\fpml-5-12-legal.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+Updated meta file: files-fpml\meta\fpml-5-12-legal.xml
+RunEnsureDefaults: updating meta files in files-fpml\meta\fpml-5-12-legal.xml using dataDir=files-fpml/data backup=true
+  updating single file: fpml-5-12-legal.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+RunEnsureDefaults: finished
+-------------------------------------------------- 
+Generating pretrade... 
+Meta file exists: updating in-place: files-fpml\meta\fpml-5-12-pretrade.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+Updated meta file: files-fpml\meta\fpml-5-12-pretrade.xml
+RunEnsureDefaults: updating meta files in files-fpml\meta\fpml-5-12-pretrade.xml using dataDir=files-fpml/data backup=true
+  updating single file: fpml-5-12-pretrade.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+RunEnsureDefaults: finished
+-------------------------------------------------- 
+Generating reporting... 
+Meta file exists: updating in-place: files-fpml\meta\fpml-5-12-reporting.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+Updated meta file: files-fpml\meta\fpml-5-12-reporting.xml
+RunEnsureDefaults: updating meta files in files-fpml\meta\fpml-5-12-reporting.xml using dataDir=files-fpml/data backup=true
+  updating single file: fpml-5-12-reporting.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+RunEnsureDefaults: finished
+-------------------------------------------------- 
+Generating recordkeeping... 
+Meta file exists: updating in-place: files-fpml\meta\fpml-5-12-recordkeeping.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+Updated meta file: files-fpml\meta\fpml-5-12-recordkeeping.xml
+RunEnsureDefaults: updating meta files in files-fpml\meta\fpml-5-12-recordkeeping.xml using dataDir=files-fpml/data backup=true
+  updating single file: fpml-5-12-recordkeeping.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+RunEnsureDefaults: finished
+-------------------------------------------------- 
+Generating transparency... 
+Meta file exists: updating in-place: files-fpml\meta\fpml-5-12-transparency.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+Updated meta file: files-fpml\meta\fpml-5-12-transparency.xml
+RunEnsureDefaults: updating meta files in files-fpml\meta\fpml-5-12-transparency.xml using dataDir=files-fpml/data backup=true
+  updating single file: fpml-5-12-transparency.xml
+ensureSchemeDefaultsInMeta: fpml-schemes.html path=tools\codelist_enhanced_metadata_2_23\codelist_enhanced_metadata_2_23\coding-scheme_enhanced_metadata\fpml-schemes.html
+ensureSchemeDefaultsInMeta: 237 whitelist entries found
+  237 schemeDefault elements present after update
+RunEnsureDefaults: finished
+All targets processed 

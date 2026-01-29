@@ -1,0 +1,2859 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/css" href="FpML.CodeList.genericode.css"?>
+<gcl:CodeList xmlns:doc="http://www.fpml.org/coding-scheme/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gcl="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ genericode.xsd">
+   <Annotation>
+      <Description>
+         <doc:publicationDate>2025-04-25</doc:publicationDate>
+         <doc:confidentiality>This document contains proprietary data provided under license.  This data may not be shared beyond the terms of the license under which it was provided.</doc:confidentiality>
+      </Description>
+   </Annotation>
+   <Identification>
+      <ShortName>priceQuoteUnitsScheme</ShortName>
+      <Version>3-1</Version>
+      <CanonicalUri>http://www.fpml.org/coding-scheme/price-quote-units</CanonicalUri>
+      <CanonicalVersionUri>http://www.fpml.org/coding-scheme/price-quote-units-3-1</CanonicalVersionUri>
+      <LocationUri>http://www.fpml.org/coding-scheme/price-quote-units-3-1.xml</LocationUri>
+   </Identification>
+   <ColumnSet>
+      <Column Id="Code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="token">
+            <Annotation>
+               <Description>
+                  <doc:field name="Code Name">The unique string/code identifying the value</doc:field>
+               </Description>
+            </Annotation>
+            <Parameter ShortName="maxLength">63</Parameter>
+         </Data>
+      </Column>
+      <Column Id="Source" Use="optional">
+         <ShortName>Source</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Description" Use="optional">
+         <ShortName>Description</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Metadata" Use="optional">
+         <ShortName>Metadata</ShortName>
+         <Data Type="structured">
+            <Annotation>
+               <Description>
+                  <doc:description>All available metadata is supplied.</doc:description>
+               </Description>
+            </Annotation>
+         </Data>
+      </Column>
+      <Key Id="PrimaryKey">
+         <ShortName>key</ShortName>
+         <ColumnRef Ref="Code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value>
+            <SimpleValue>Allowances</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Environmental allowance certificates. (C02 emissions)</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Allowances</doc:name>
+               <doc:description>Environmental allowance certificates. (C02 emissions)</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Unknown</doc:baseType>
+               <doc:domain>Environmental</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+               <doc:siEquivalent>1×10^3 kg</doc:siEquivalent>
+               <doc:otherEquivalents1>1 metric t</doc:otherEquivalents1>
+               <doc:otherEquivalents2>1 Mg</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Amount</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A numerical amount (typically a currency amount), expressed as a decimal value.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Amount</doc:name>
+               <doc:description>A numerical amount (typically a currency amount), expressed as a decimal value.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BasisPoints</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A value expressed in terms of one hundredths of a percent, i.e. 5 means 5 basis points (bp) or 0.05%.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BasisPoints</doc:name>
+               <doc:description>A value expressed in terms of one hundredths of a percent, i.e. 5 means 5 basis points (bp) or 0.05%.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BasisPointValue</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The value (expressed in currency units) per basis point change in the underlying rate. Typically used for expressing sensitivity to interest rate chages ("IR delta" risk, "rho" risk).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BasisPointValue</doc:name>
+               <doc:description>The value (expressed in currency units) per basis point change in the underlying rate. Typically used for expressing sensitivity to interest rate chages ("IR delta" risk, "rho" risk).</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BasisPointValuePerBasisPoint</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The Basis Point Value (BPV) (expressed in currency units per basis point) per basis point change in the underlying rate. Typically used for expressing second order sensitivity to interest rate changes (IR "gamma" risk, "convexity").</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BasisPointValuePerBasisPoint</doc:name>
+               <doc:description>The Basis Point Value (BPV) (expressed in currency units per basis point) per basis point change in the underlying rate. Typically used for expressing second order sensitivity to interest rate changes (IR "gamma" risk, "convexity").</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BBL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Barrel.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BBL</doc:name>
+               <doc:description>Barrel.</doc:description>
+               <doc:uneceCommonCode>BLL</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>42 US gal</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>0.158987294928 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>158.987294928  L</doc:otherEquivalents1>
+               <doc:otherEquivalents2>35 GB gal</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed to have the same (volume) value for all commodities: 1 BBL = 42 USGAL = 158.987 L = 35 imperial GAL. For oil, volume measured at 14.696 lb/in^2 (101.325 kPa) pressure and temperature 60 °F (15.6 °C).</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BCF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Billion cubic feet.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BCF</doc:name>
+               <doc:description>Billion cubic feet.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^9 ft^3</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>9.2903040×10^7 m^3</doc:siEquivalent>
+               <doc:additionalInformation>Short-scale billion (10^9).</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BDFT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Board feet</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BDFT</doc:name>
+               <doc:description>Board feet</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Timber</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>(1/12) ft^3</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>2.36×10^-3 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>2.36 L</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BSH</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Bushel] Bushel split into GBBSH (8 imperial gal)and USBSH (8 US dry gal).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BSH</doc:name>
+               <doc:description>DEPRECATED [Bushel] Bushel split into GBBSH (8 imperial gal)and USBSH (8 US dry gal).</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [British Thermal Unit ] Replaced by GBBTU, USBTU and ISOBTU.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>BTU</doc:name>
+               <doc:description>DEPRECATED [British Thermal Unit ] Replaced by GBBTU, USBTU and ISOBTU.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:siEquivalent>1.055×10^3 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CBM</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Cubic Meters.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>CBM</doc:name>
+               <doc:description>Cubic Meters.</doc:description>
+               <doc:uneceCommonCode>MTQ</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>1×10^3 L</doc:otherEquivalents1>
+               <doc:otherEquivalents2>264.17205 US gal</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CDD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Cooling Degree Day.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>CDD</doc:name>
+               <doc:description>Cooling Degree Day.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Weather</doc:cdmCurrentCategory>
+               <doc:baseType>Temperature</doc:baseType>
+               <doc:domain>Weather</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>No direct equivalent</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>4.8×10^4 K·s**</doc:siEquivalent>
+               <doc:additionalInformation>Assumed the US the reference temperature = 65ºF = aprox. 18.333 ºC (USEIA). Temperature (T) defined as daily mean temperature. Definition: number of days in which temperature is higher than 65ºF multiplied by the number of degrees higher than 65ºF.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CER</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Certified Emissions Reduction. (C02 emissions)</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>CER</doc:name>
+               <doc:description>Certified Emissions Reduction. (C02 emissions)</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Unknown</doc:baseType>
+               <doc:domain>Environmental</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+               <doc:siEquivalent>1×10^3 kg</doc:siEquivalent>
+               <doc:otherEquivalents1>1 metric t</doc:otherEquivalents1>
+               <doc:otherEquivalents2>1 Mg</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CPD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Critical Precipitation Day.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>CPD</doc:name>
+               <doc:description>Critical Precipitation Day.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Weather</doc:cdmCurrentCategory>
+               <doc:baseType>Precipitation</doc:baseType>
+               <doc:domain>Weather</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CRT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Climate Reserve Tons. (C02 emissions)</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>CRT</doc:name>
+               <doc:description>Climate Reserve Tons. (C02 emissions)</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Environmental</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>1×10^3 kg</doc:siEquivalent>
+               <doc:otherEquivalents1>1 metric t</doc:otherEquivalents1>
+               <doc:otherEquivalents2>1 Mg</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CWT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Short hundredweight (100 lb)] Replaced by USCWT.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>CWT</doc:name>
+               <doc:description>DEPRECATED [Short hundredweight (100 lb)] Replaced by USCWT.</doc:description>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>dag</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>10 grams. Used in precious metals contracts (e.g MCX).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>dag</doc:name>
+               <doc:description>10 grams. Used in precious metals contracts (e.g MCX).</doc:description>
+               <doc:uneceCommonCode>DJ</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Precious metals</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>0.01 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Day</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Day (commonly used in Time Charter trades).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Day</doc:name>
+               <doc:description>Day (commonly used in Time Charter trades).</doc:description>
+               <doc:uneceCommonCode>DAY</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Time</doc:baseType>
+               <doc:domain>Freight</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>24 h</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>1440 min</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>8.64×10^4 s</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Discount</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A discount factor expressed as a decimal, e.g. 0.95.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Discount</doc:name>
+               <doc:description>A discount factor expressed as a decimal, e.g. 0.95.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>dmtu</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Dry Metric Ton (Tonne) Units - Consists of a metric ton of mass excluding moisture.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>dmtu</doc:name>
+               <doc:description>Dry Metric Ton (Tonne) Units - Consists of a metric ton of mass excluding moisture.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>1×10^3 kg</doc:siEquivalent>
+               <doc:otherEquivalents1>1 metric t</doc:otherEquivalents1>
+               <doc:otherEquivalents2>1 Mg</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>DTH</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Dekatherm] Replaced by GBMMBTU, USMMBTU and ISOMMBTU.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>DTH</doc:name>
+               <doc:description>DEPRECATED [Dekatherm] Replaced by GBMMBTU, USMMBTU and ISOMMBTU.</doc:description>
+               <doc:synonyms>Million British Thermal Units (MMBTU)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>10 therms</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>1×10^6 BTU</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>1.055×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>1 dth</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ENVCRD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Environmental Credit.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ENVCRD</doc:name>
+               <doc:description>Environmental Credit.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Unknown</doc:baseType>
+               <doc:domain>Environmental</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ENVOFST</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Environmental Offset.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ENVOFST</doc:name>
+               <doc:description>Environmental Offset.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Unknown</doc:baseType>
+               <doc:domain>Environmental</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ExchangeRate</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A dimensionless conversion rate, e.g. 1.2. Typically used for FX.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ExchangeRate</doc:name>
+               <doc:description>A dimensionless conversion rate, e.g. 1.2. Typically used for FX.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>FEU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>40 ft. Equivalent Unit container.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>FEU</doc:name>
+               <doc:description>40 ft. Equivalent Unit container.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Freight</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>2 TEU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>67.6 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>2.389×10^3 ft^3</doc:otherEquivalents1>
+               <doc:additionalInformation>Container size assumed 40 ft x 8 ft x 8 ft 6 in (12.2 m x 2.44 m x 2.59 m) unless specified otherwise.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>G</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Gram.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>G</doc:name>
+               <doc:description>Gram.</doc:description>
+               <doc:uneceCommonCode>GRM</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1×10^-3 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GAL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Gallon] Replaced by GBGAL and USGAL.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GAL</doc:name>
+               <doc:description>DEPRECATED [Gallon] Replaced by GBGAL and USGAL.</doc:description>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBBSH</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>GB Bushel - When associated with a specific commodity implies standard unit of weight.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBBSH</doc:name>
+               <doc:description>GB Bushel - When associated with a specific commodity implies standard unit of weight.</doc:description>
+               <doc:uneceCommonCode>BUI</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent2>8 imperial gal</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>0.03636 872 m^3</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>GB British Thermal Unit.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBBTU</doc:name>
+               <doc:description>GB British Thermal Unit.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:siEquivalent>1.05505585257348×10^3 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBCWT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>GB Hundredweight.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBCWT</doc:name>
+               <doc:description>GB Hundredweight.</doc:description>
+               <doc:uneceCommonCode>CWI</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>112 lbs</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>8 stone</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>50.80235 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBGAL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>GB Gallon. Partially replaces deprecated GAL.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBGAL</doc:name>
+               <doc:description>GB Gallon. Partially replaces deprecated GAL.</doc:description>
+               <doc:uneceCommonCode>GLI</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>4 quarts</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>8 (imperial) pints</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>4.546092×10^-3 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>160 (imperial) fluid ounces</doc:otherEquivalents1>
+               <doc:otherEquivalents2>4.546092 L</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Thousand GB British Thermal Units.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBMBTU</doc:name>
+               <doc:description>Thousand GB British Thermal Units.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^3 GBBTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.05505585257348×10^6 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBMMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Million GB British Thermal Units or GB Dekatherm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBMMBTU</doc:name>
+               <doc:description>Million GB British Thermal Units or GB Dekatherm.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:synonyms>GB dth</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^6 GBBTU</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>10 GB thm</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>1.05505585257348×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>1 GB dth</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>GB Ton. Replaces deprecated t.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBT</doc:name>
+               <doc:description>GB Ton. Replaces deprecated t.</doc:description>
+               <doc:uneceCommonCode>LTN</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>2240 lbs</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.0160469×10^3 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBTHM</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>GB Therm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GBTHM</doc:name>
+               <doc:description>GB Therm.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^5 GBBTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.05505585257348×10^8 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GJ</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Gigajoule.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GJ</doc:name>
+               <doc:description>Gigajoule.</doc:description>
+               <doc:uneceCommonCode>GV</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1×10^9 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GW</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Gigawatt.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GW</doc:name>
+               <doc:description>Gigawatt.</doc:description>
+               <doc:uneceCommonCode>A90</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Power</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1×10^9 W</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GWh</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Gigawatt-hour.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>GWh</doc:name>
+               <doc:description>Gigawatt-hour.</doc:description>
+               <doc:uneceCommonCode>GWH</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^6 kWh</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>3.6×10^12 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HDD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Heating Degree Day.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>HDD</doc:name>
+               <doc:description>Heating Degree Day.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Weather</doc:cdmCurrentCategory>
+               <doc:baseType>Temperature</doc:baseType>
+               <doc:domain>Weather</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>No direct equivalent</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>4.8×10^4 K·s**</doc:siEquivalent>
+               <doc:additionalInformation>Assumed the US the reference temperature = 65ºF = aprox. 18.333 ºC (USEIA). Temperature (T) defined as daily mean temperature. Definition: number of days in which temperature is lower than 65ºF multiplied by the number of degrees lower than 65ºF.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>hL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Hectolitre.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>hL</doc:name>
+               <doc:description>Hectolitre.</doc:description>
+               <doc:uneceCommonCode>HLT</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>0.1 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>100 L</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HOGB</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>100-troy ounces Gold Bar.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>HOGB</doc:name>
+               <doc:description>100-troy ounces Gold Bar.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Precious Metals</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent2>100 troy-oz</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>3.11 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>IndexUnits</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A price, expressed in index units.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>IndexUnits</doc:name>
+               <doc:description>A price, expressed in index units.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Financial</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Ingot</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Ingot] Ingot split into Standard Gold Bar (400 troy-oz) and Hundred Ounces Gold Bar (100 troy-oz).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Ingot</doc:name>
+               <doc:description>DEPRECATED [Ingot] Ingot split into Standard Gold Bar (400 troy-oz) and Hundred Ounces Gold Bar (100 troy-oz).</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Precious Metals</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>400 troy-oz</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>12.44 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>IRFuturesPrice</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A IMM futures style price, e.g. 9750 is equivalent to 2.5%.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>IRFuturesPrice</doc:name>
+               <doc:description>A IMM futures style price, e.g. 9750 is equivalent to 2.5%.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ISOBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISO British Thermal Unit.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ISOBTU</doc:name>
+               <doc:description>ISO British Thermal Unit.</doc:description>
+               <doc:uneceCommonCode>BTU</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>ISO_31</doc:unitSystem>
+               <doc:siEquivalent>1.05506×10^3 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ISOMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Thousand ISO British Thermal Units.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ISOMBTU</doc:name>
+               <doc:description>Thousand ISO British Thermal Units.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>ISO_31</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^3 ISOBTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.05506×10^6 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ISOMMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Million ISO British Thermal Units or ISO Dekatherm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ISOMMBTU</doc:name>
+               <doc:description>Million ISO British Thermal Units or ISO Dekatherm.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:synonyms>ISO dth</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>ISO_31</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^6 ISOBTU</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>10 ISO GB thm</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>1.05506×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>1 ISO dth</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ISOTHM</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISO Therm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ISOTHM</doc:name>
+               <doc:description>ISO Therm.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>ISO_31</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^5 ISOBTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.05506×10^8 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>J</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Joule.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>J</doc:name>
+               <doc:description>Joule.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KG</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilogram.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KG</doc:name>
+               <doc:description>Kilogram.</doc:description>
+               <doc:uneceCommonCode>KGM</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1 kg</doc:siEquivalent>
+               <doc:otherEquivalents1>1×10^3 g</doc:otherEquivalents1>
+               <doc:otherEquivalents2>2.204623 (avoirdupois) lb</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>kL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilolitre.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>kL</doc:name>
+               <doc:description>Kilolitre.</doc:description>
+               <doc:uneceCommonCode>K6</doc:uneceCommonCode>
+               <doc:synonyms>Cubic metre (m^3)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>1 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>1×10^3 L</doc:otherEquivalents1>
+               <doc:otherEquivalents2>264.17205 US gal</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KW</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilowatt.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KW</doc:name>
+               <doc:description>Kilowatt.</doc:description>
+               <doc:uneceCommonCode>KWT</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Power</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1×10^3 W</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWd</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilowatt-day.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWd</doc:name>
+               <doc:description>Kilowatt-day.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>8.64×10^7 J</doc:siEquivalent>
+               <doc:otherEquivalents1>86.4 MJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>24 kWh</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWDC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Kilowatt Day Capacity] KWDC replaced by KWd.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWDC</doc:name>
+               <doc:description>DEPRECATED [Kilowatt Day Capacity] KWDC replaced by KWd.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>8.64×10^7 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWh</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilowatt-hour.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWh</doc:name>
+               <doc:description>Kilowatt-hour.</doc:description>
+               <doc:uneceCommonCode>KWH</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.6×10^6 J</doc:siEquivalent>
+               <doc:otherEquivalents1>3.6 MJ</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWHC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Kilowatt Hour Capacity] KWHC consolidated with KWh.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWHC</doc:name>
+               <doc:description>DEPRECATED [Kilowatt Hour Capacity] KWHC consolidated with KWh.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.6×10^6 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWm</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilowatt-month.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWm</doc:name>
+               <doc:description>Kilowatt-month.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>2.592×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>2.592 GJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>720 kWh</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed 30-day-month, 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWMC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Kilowatt Month Capacity] KWMC replaced by KWm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWMC</doc:name>
+               <doc:description>DEPRECATED [Kilowatt Month Capacity] KWMC replaced by KWm.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>2.592×10^9 J</doc:siEquivalent>
+               <doc:additionalInformation>Assumed 30-day month, 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWmin</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilowatt-minute.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWmin</doc:name>
+               <doc:description>Kilowatt-minute.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>6×10^4 J</doc:siEquivalent>
+               <doc:otherEquivalents1>60 kJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>0.06 kWh</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWMINC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Kilowatt Minute Capacity] KWMINC replaced by KWmin.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWMINC</doc:name>
+               <doc:description>DEPRECATED [Kilowatt Minute Capacity] KWMINC replaced by KWmin.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>6×10^4 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWy</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kilowatt-year.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWy</doc:name>
+               <doc:description>Kilowatt-year.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.1536×10^10 J</doc:siEquivalent>
+               <doc:otherEquivalents1>31.536 GJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>8760 kWh</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed 365-day-year, 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWYC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Kilowatt Year Capacity] KWYC replaced by KWy.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>KWYC</doc:name>
+               <doc:description>DEPRECATED [Kilowatt Year Capacity] KWYC replaced by KWy.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.1536×10^10 J</doc:siEquivalent>
+               <doc:additionalInformation>Assumed 365-day year, 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>L</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Litre.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>L</doc:name>
+               <doc:description>Litre.</doc:description>
+               <doc:uneceCommonCode>LTR</doc:uneceCommonCode>
+               <doc:synonyms>Cubic decimetre (dm^3)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>1×10^-3 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>1×10^3 mL</doc:otherEquivalents1>
+               <doc:otherEquivalents2>0.26417205 US gal</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>LB</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Pound.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>LB</doc:name>
+               <doc:description>Pound.</doc:description>
+               <doc:uneceCommonCode>LBR</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>16 (avoirdupois) oz</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>0.45359237 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>LogNormalVolatility</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A log normal volatility, expressed in %/month, where the percentage is represented as a decimal. For example, 0.15 means a log-normal volatility of 15% per month.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>LogNormalVolatility</doc:name>
+               <doc:description>A log normal volatility, expressed in %/month, where the percentage is represented as a decimal. For example, 0.15 means a log-normal volatility of 15% per month.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Financial</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MB</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Thousand Barrels (BBL).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MB</doc:name>
+               <doc:description>Thousand Barrels (BBL).</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>4.2×10^4 US gal</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>1×10^3 BBL</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>158.987294928 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>3.5×10^4 GB gal</doc:otherEquivalents1>
+               <doc:otherEquivalents2>158987.294928 L</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed to have the same (volume) value for all commodities: 1 BBL = 42 USGAL = 158.987 L = 35 imperial GAL. For oil, volume measured at 14.696 lb/in^2 (101.325 kPa) pressure and temperature 60 °F (15.6 °C).</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MBF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Thousand board feet. Used in contracts on forestry underlyers.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MBF</doc:name>
+               <doc:description>Thousand board feet. Used in contracts on forestry underlyers.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Timber</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^3 BF</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>2.35974 m^3</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Thousand British Thermal Units] MBTU replaced by GBMBTU, USMBTU and ISOMBTU.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MBTU</doc:name>
+               <doc:description>DEPRECATED [Thousand British Thermal Units] MBTU replaced by GBMBTU, USMBTU and ISOMBTU.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:synonyms>Therm (th)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^3 BTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.05506×10^6 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MJ</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megajoule.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MJ</doc:name>
+               <doc:description>Megajoule.</doc:description>
+               <doc:uneceCommonCode>3B</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1×10^6 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MMBBL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Million Barrels.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MMBBL</doc:name>
+               <doc:description>Million Barrels.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>4.2×10^7 US gal</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>1×10^6 BBL</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>1.58987294928×10^5 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>3.5×10^7 GB gal</doc:otherEquivalents1>
+               <doc:otherEquivalents2>158987294.928 L</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed to have the same (volume) value for all commodities: 1 BBL = 42 USGAL = 158.987 L = 35 imperial GAL. For oil, volume measured at 14.696 lb/in^2 (101.325 kPa) pressure and temperature 60 °F (15.6 °C).</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MMBF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Million board feet. Used in contracts on forestry underlyers.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MMBF</doc:name>
+               <doc:description>Million board feet. Used in contracts on forestry underlyers.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Timber</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^6 BF</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>2.35973723×10^3 m^3</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Million British Thermal Units] MMBTU replaced by GBMMBTU, USMMBTU and ISOMMBTU.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MMBTU</doc:name>
+               <doc:description>DEPRECATED [Million British Thermal Units] MMBTU replaced by GBMMBTU, USMMBTU and ISOMMBTU.</doc:description>
+               <doc:synonyms>Dekatherm (dth)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^6 BTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.055×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>1 dth</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>msf</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Thousand (1,000) square feet.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>msf</doc:name>
+               <doc:description>Thousand (1,000) square feet.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Area</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:siEquivalent>92.903 m^2</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Metric Tonne.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MT</doc:name>
+               <doc:description>Metric Tonne.</doc:description>
+               <doc:uneceCommonCode>TNE</doc:uneceCommonCode>
+               <doc:synonyms>Megagram (Mg)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>1×10^3 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MW</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megawatt.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MW</doc:name>
+               <doc:description>Megawatt.</doc:description>
+               <doc:uneceCommonCode>MAW</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Power</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI</doc:unitSystem>
+               <doc:siEquivalent>1×10^6 W</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWd</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megawatt-day.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWd</doc:name>
+               <doc:description>Megawatt-day.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>8.64×10^10 J</doc:siEquivalent>
+               <doc:otherEquivalents1>86.4 GJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>24 MWh</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWDC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Megawatt Day Capacity] MWDC replaced by MWd.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWDC</doc:name>
+               <doc:description>DEPRECATED [Megawatt Day Capacity] MWDC replaced by MWd.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>8.64×10^10 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWh</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megawatt-hour.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWh</doc:name>
+               <doc:description>Megawatt-hour.</doc:description>
+               <doc:uneceCommonCode>MWH</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.6×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>3.6 GJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>1×10^3 kWh</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWHC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Megawatt Hour Capacity] MWHC consolidated with MWh.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWHC</doc:name>
+               <doc:description>DEPRECATED [Megawatt Hour Capacity] MWHC consolidated with MWh.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.6×10^9 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWm</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megawatt-month.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWm</doc:name>
+               <doc:description>Megawatt-month.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>2.592×10^12 J</doc:siEquivalent>
+               <doc:otherEquivalents1>2.592 TJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>720 MWh</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed 30-day-month, 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWMC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Megawatt Month Capacity] MWMC replaced by MWm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWMC</doc:name>
+               <doc:description>DEPRECATED [Megawatt Month Capacity] MWMC replaced by MWm.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>2.592×10^12 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWmin</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megawatt-minute.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWmin</doc:name>
+               <doc:description>Megawatt-minute.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>6×10^7 J</doc:siEquivalent>
+               <doc:otherEquivalents1>60 MJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>0.06 MWh</doc:otherEquivalents2>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWMINC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Megawatt Minute Capacity] MWMINC replaced by MWmin.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWMINC</doc:name>
+               <doc:description>DEPRECATED [Megawatt Minute Capacity] MWMINC replaced by MWmin.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>6×10^7 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWy</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Megawatt-year.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWy</doc:name>
+               <doc:description>Megawatt-year.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.1536×10^13 J</doc:siEquivalent>
+               <doc:otherEquivalents1>31.536 TJ</doc:otherEquivalents1>
+               <doc:otherEquivalents2>8760 MWh</doc:otherEquivalents2>
+               <doc:additionalInformation>Assumed 365-day-year, 24h day.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MWYC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Megawatt Year Capacity] MWYC replaced by MWy.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>MWYC</doc:name>
+               <doc:description>DEPRECATED [Megawatt Year Capacity] MWYC replaced by MWy.</doc:description>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Electricity</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>SI-accepted</doc:unitSystem>
+               <doc:siEquivalent>3.1536×10^13 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ozt</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Troy Ounce.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ozt</doc:name>
+               <doc:description>Troy Ounce.</doc:description>
+               <doc:uneceCommonCode>APZ</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Precious metals</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Troy</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>20 pennyweights</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>3.11034768×10^-3 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ParValueDecimal</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A price, expressed in percentage of face value as a decimal, e.g. 101.5.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ParValueDecimal</doc:name>
+               <doc:description>A price, expressed in percentage of face value as a decimal, e.g. 101.5.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ParValueFraction</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A price, expressed in percentage of face value with fractions, e.g. 101 3/8. Normally used for quoting bonds.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ParValueFraction</doc:name>
+               <doc:description>A price, expressed in percentage of face value with fractions, e.g. 101 3/8. Normally used for quoting bonds.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Percentage</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A value expressed in percentage units i.e. 5 means 5%.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Percentage</doc:name>
+               <doc:description>A value expressed in percentage units i.e. 5 means 5%.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Price</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A price, expressed in currency units.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Price</doc:name>
+               <doc:description>A price, expressed in currency units.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Rate</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A yield (typically an interest rate) expressed as a decimal. I.e. 0.05 means 5%.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Rate</doc:name>
+               <doc:description>A yield (typically an interest rate) expressed as a decimal. I.e. 0.05 means 5%.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SGB</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Standard Gold Bar.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>SGB</doc:name>
+               <doc:description>Standard Gold Bar.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Precious Metals</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Other</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent2>400 troy-oz</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>12.44 kg</doc:siEquivalent>
+               <doc:otherEquivalents1>438.9 avoirdupois-oz</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Shares</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The number of units of stock. Typically used for expressing sensitivity to equity prices (equity "delta" risk).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Shares</doc:name>
+               <doc:description>The number of units of stock. Typically used for expressing sensitivity to equity prices (equity "delta" risk).</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Financial</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Spread</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A difference in rates or prices expressed as a decimal. I.e. 0.05 means 5%.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Spread</doc:name>
+               <doc:description>A difference in rates or prices expressed as a decimal. I.e. 0.05 means 5%.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>st</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Short Ton] Replaced by UST.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>st</doc:name>
+               <doc:description>DEPRECATED [Short Ton] Replaced by UST.</doc:description>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>t</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [(Long) To] Replaced by GBT.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>t</doc:name>
+               <doc:description>DEPRECATED [(Long) To] Replaced by GBT.</doc:description>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TEU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>20 ft. Equivalent Unit container.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>TEU</doc:name>
+               <doc:description>20 ft. Equivalent Unit container.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Freight</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1172 ft^3</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>33.2 m^3</doc:siEquivalent>
+               <doc:additionalInformation>Container size assumed 20 ft x 8 ft x 8 ft 6 in (6.1 m x 2.44 m x 2.59 m) unless specified otherwise.</doc:additionalInformation>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Therm</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>DEPRECATED [Therm] Therm replaced by GBTHM, USTHM and ISOTHM.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Therm</doc:name>
+               <doc:description>DEPRECATED [Therm] Therm replaced by GBTHM, USTHM and ISOTHM.</doc:description>
+               <doc:synonyms>Thousand British Thermal Units (MBTU)</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>Deprecated</doc:status>
+               <doc:unitSystem>Imperial + US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^5 BTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.05506×10^8 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>UpfrontPoints</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>A difference in rates (typically FX rates) expressed as a decimal value.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>UpfrontPoints</doc:name>
+               <doc:description>A difference in rates (typically FX rates) expressed as a decimal value.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>NOT PRESENT</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USBSH</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>US Bushel - When associated with a specific commodity implies standard unit of weight.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USBSH</doc:name>
+               <doc:description>US Bushel - When associated with a specific commodity implies standard unit of weight.</doc:description>
+               <doc:uneceCommonCode>BUA</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>8 US dry gal</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>64 US pints</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>0.03523907016688 m^3</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>US British Thermal Unit.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USBTU</doc:name>
+               <doc:description>US British Thermal Unit.</doc:description>
+               <doc:uneceCommonCode>N67</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:siEquivalent>1.054804×10^3 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USCWT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>US Hundredweight. Replaces deprecated CWT.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USCWT</doc:name>
+               <doc:description>US Hundredweight. Replaces deprecated CWT.</doc:description>
+               <doc:uneceCommonCode>CWA</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Agricultural</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>100 lbs</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>45.3592 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USGAL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>US Gallon. Partially replaces deprecated GAL.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USGAL</doc:name>
+               <doc:description>US Gallon. Partially replaces deprecated GAL.</doc:description>
+               <doc:uneceCommonCode>GLL</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Volume</doc:baseType>
+               <doc:domain>Liquids</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>231 in^3</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>3.785411784×10^-3 m^3</doc:siEquivalent>
+               <doc:otherEquivalents1>3.785411784 L</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Thousand US British Thermal Units.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USMBTU</doc:name>
+               <doc:description>Thousand US British Thermal Units.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^3 USBTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.054804×10^6 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USMMBTU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Million US British Thermal Units or US Dekatherm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USMMBTU</doc:name>
+               <doc:description>Million US British Thermal Units or US Dekatherm.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:synonyms>US dth</doc:synonyms>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^6 USBTU</doc:nonSISameSystemEquivalent1>
+               <doc:nonSISameSystemEquivalent2>10 US thm</doc:nonSISameSystemEquivalent2>
+               <doc:siEquivalent>1.054804×10^9 J</doc:siEquivalent>
+               <doc:otherEquivalents1>1 US dth</doc:otherEquivalents1>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>UST</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>US Ton. Replaces deprecated st.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>UST</doc:name>
+               <doc:description>US Ton. Replaces deprecated st.</doc:description>
+               <doc:uneceCommonCode>STN</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Mass</doc:baseType>
+               <doc:domain>Generic</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>2×10^3 lbs</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>907.18474 kg</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USTHM</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>US Therm.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>USTHM</doc:name>
+               <doc:description>US Therm.</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Capacity</doc:cdmCurrentCategory>
+               <doc:baseType>Energy</doc:baseType>
+               <doc:domain>Gases</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>US Customary</doc:unitSystem>
+               <doc:nonSISameSystemEquivalent1>1×10^5 USBTU</doc:nonSISameSystemEquivalent1>
+               <doc:siEquivalent>1.054804×10^8 J</doc:siEquivalent>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ValuePerDay</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The value (expressed in currency units) for a one day change in a valuation date. Typically used for expressing sensitivity to the passage of time ("theta" risk, "carry", etc.).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ValuePerDay</doc:name>
+               <doc:description>The value (expressed in currency units) for a one day change in a valuation date. Typically used for expressing sensitivity to the passage of time ("theta" risk, "carry", etc.).</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Financial</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ValuePerPercent</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The value (expressed in currency units) per percent change in the underlying rate. Typically used for expressing sensitivity to volatility changes ("vega" risk).</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>ValuePerPercent</doc:name>
+               <doc:description>The value (expressed in currency units) per percent change in the underlying rate. Typically used for expressing sensitivity to volatility changes ("vega" risk).</doc:description>
+               <doc:uneceCommonCode>-</doc:uneceCommonCode>
+               <doc:cdmCurrentCategory>Financial</doc:cdmCurrentCategory>
+               <doc:baseType>Financial</doc:baseType>
+               <doc:domain>Financial</doc:domain>
+               <doc:source>FpML</doc:source>
+               <doc:status>In use</doc:status>
+               <doc:unitSystem>Financial</doc:unitSystem>
+            </ComplexValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gcl:CodeList>

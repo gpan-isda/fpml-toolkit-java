@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/css" href="FpML.CodeList.genericode.css"?>
+<gcl:CodeList xmlns:doc="http://www.fpml.org/coding-scheme/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gcl="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ genericode.xsd">
+   <Annotation>
+      <Description>
+         <doc:definition>FpML Administrators and administrator metadata</doc:definition>
+         <doc:publicationDate>2024-11-15</doc:publicationDate>
+         <doc:confidentiality>This document contains proprietary data provided under license.  This data may not be shared beyond the terms of the license under which it was provided.</doc:confidentiality>
+         <doc:disclaimer>Aggregate Information Disclaimer: This content aggregates individual data submissions received by ISDA from third party participants. ISDA does not warrant that such aggregated data is comprehensive, and makes no warranty or guarantees to the accuracy of the underlying data provided by third parties.</doc:disclaimer>
+      </Description>
+   </Annotation>
+   <Identification>
+      <ShortName>rateAdministratorScheme</ShortName>
+      <Version>1-3</Version>
+      <CanonicalUri>http://www.fpml.org/coding-scheme/rate-administrator</CanonicalUri>
+      <CanonicalVersionUri>http://www.fpml.org/coding-scheme/rate-administrator-1-3</CanonicalVersionUri>
+      <LocationUri>http://www.fpml.org/coding-scheme/rate-administrator-1-3.xml</LocationUri>
+   </Identification>
+   <ColumnSet>
+      <Column Id="Code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="token">
+            <Annotation>
+               <Description>
+                  <doc:field name="Code Name">The unique string/code identifying the administrator.</doc:field>
+               </Description>
+            </Annotation>
+            <Parameter ShortName="maxLength">63</Parameter>
+         </Data>
+      </Column>
+      <Column Id="Source" Use="optional">
+         <ShortName>Source</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Description" Use="optional">
+         <ShortName>Description</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Metadata" Use="optional">
+         <ShortName>Metadata</ShortName>
+         <Data Type="structured">
+            <Annotation>
+               <Description>
+                  <doc:description>All available metadata is supplied.</doc:description>
+               </Description>
+            </Annotation>
+         </Data>
+      </Column>
+      <Key Id="PrimaryKey">
+         <ShortName>key</ShortName>
+         <ColumnRef Ref="Code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value>
+            <SimpleValue>American Financial Exchange, LLC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://ameribor.net/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ASX Benchmarks Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www2.asx.com.au/connectivity-and-data/information-services/benchmarks/benchmark-data/bbsw</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>B3 S.A. - Brasil, Bolsa, Balcao</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>www.b3.com.br</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank Indonesia</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bi.go.id/en/Default.aspx</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank Negara Malaysia</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bnm.gov.my/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank of Canada</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bankofcanada.ca/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank of England</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bankofengland.co.uk/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank of France</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.banque-france.fr/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank of Japan</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.boj.or.jp/en/index.htm/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank of Mexico</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.banxico.org.mx/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bank of Thailand</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bot.or.th/English/Pages/default.aspx</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Bloomberg Index Services Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bloomberg.com/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Borsa Istanbul</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.borsaistanbul.com/en/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CanDeal Benchmark Administration Services Inc.</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue/>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of Colombia</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>http://www.banrep.gov.co/en/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of Hungary</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.mnb.hu/web/en</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of Iceland</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.cb.is/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of Malaysia</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bnm.gov.my/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of the Philippines (Bangko Sentral ng Pilipinas)</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bsp.gov.ph/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of the Russian Federation</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.cbr.ru/eng/contacts/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Central Bank of the United Arab Emirates</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.centralbank.ae/en/about-us</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Chilean Benchmark Facility SpA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://cbf.cl/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>China Foreign Exchange Trade System &amp; National Interbank Funding Center authorized by the People"s Bank of China</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>http://www.chinamoney.com.cn/english/prdmmkfdp/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Czech Financial Benchmark Facility s.r.o.</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://cfbf.cz/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Czech National Bank</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.cnb.cz/en/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Danish Financial Benchmark Facility</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://dfbf.dk/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>European Central Bank</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.ecb.europa.eu/home/html/index.en.html</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>European Money Markets Institute</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.emmi-benchmarks.eu/emmi/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Federal Reserve</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.federalreserve.gov/aboutthefed/contact-us-topics.htm</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Federal Reserve Bank of New York</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.newyorkfed.org/contacts</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Financial Benchmarks India Pvt Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.fbil.org.in/#/contactus/contact</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GPW Benchmark S.A.</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://gpwbenchmark.pl/en-kontakt</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ICAP Australia Pty Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://esia.asn.au/members/icap-australia-pty-ltd</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ICE Benchmark Administration Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.theice.com/iba</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Japanese Bankers Association TIBOR Administration</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.zenginkyo.or.jp/en/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Korea Financial Investment Association</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>http://eng.kofia.or.kr/index.do</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Mizuho Bank</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.mizuhogroup.com/bank</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Monetary Authority of Singapore</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.mas.gov.sg/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>National Bank of Poland</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.nbp.pl/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>National Bank of Romania</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.bnr.ro/Home.aspx</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>National Finance Association</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>http://www.nfa.ru/?page=english</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>New Zealand Financial Benchmark Facility Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.nzfbf.co.nz/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>New Zealand Financial Markets Association</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.nzfma.org/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Norges Bank</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.norges-bank.no/en/contact/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Norske Finansielle Referanser AS</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.referanserenter.no/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>QUICK Benchmarks Inc.</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.torf.co.jp/en</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>QUICK Corp.</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://corporate.quick.co.jp/2021/03/news/press/7659/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Refinitiv Asia Pacific Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.refinitiv.com/en/sustainable-finance/esg-investing/asiapac-governance</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Refinitiv Benchmark Services (UK) Limited</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.refinitiv.com/en/financial-data/financial-benchmarks</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Reserve Bank of Australia</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.rba.gov.au/contact/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Reserve Bank of New Zealand</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.rbnz.govt.nz/contact-us</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>S&amp;P Dow Jones Indices LLP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.spglobal.com</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Securities Industry and Financial Markets Association</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.sifma.org/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SIX Swiss Exchange AG</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.six-group.com/en/products-services/the-swiss-stock-exchange.html</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Sveriges Riksbank</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.riksbank.se/en-gb</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Swedish Financial Benchmark Facility</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://swfbf.se</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Taiwan Depository and Clearing Corporation</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.tdcc.com.tw/portal/en/front/index</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The Bankers Association of the Philippines</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://bap.org.ph/about/contact-us/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The Bankers Association of the Republic of China</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.ba.org.tw/EnglishVer/Contactus</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The Bank of Israel</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.boi.org.il/en/ConsumerInformation/Pages/PublicEnquiries.aspx</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The Banks Association of Turkey</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.tbb.org.tr/en/home</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The Federal Home Loan Bank of San Francisco</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.fhlbsf.com/about/contact</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The People's Bank of China</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>http://www.pbc.gov.cn/en/3688006/index.html</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>The SouThe South African Reserve Bankth African Reserve Bank</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.resbank.co.za/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Tradition Asia Pacific (Pte) Ltd</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.traditionasia.com/contactUS</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>Treasury Markets Association</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.tma.org.hk/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>WMBA Ltd</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>2021 ISDA Interest Rate Derivatives Definitions Floating Rate Matrix, column Administrator</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:administratorWebsite>https://www.wmbaltd.com/</doc:administratorWebsite>
+            </ComplexValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gcl:CodeList>

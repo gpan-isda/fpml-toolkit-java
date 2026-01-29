@@ -103,6 +103,7 @@ public final class ReferenceRules extends FpMLRuleSet
 	 * @since	TFP 1.2
 	 * @deprecated
 	 */
+    @Deprecated
 	public static final Rule	RULE05
 		= new Rule (Preconditions.R4_1__LATER, "ref-5")
 		{
