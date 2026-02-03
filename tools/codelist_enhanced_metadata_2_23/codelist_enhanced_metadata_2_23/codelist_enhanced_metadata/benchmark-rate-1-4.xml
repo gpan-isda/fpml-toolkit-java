@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/css" href="FpML.CodeList.genericode.css"?>
+<gcl:CodeList xmlns:doc="http://www.fpml.org/coding-scheme/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gcl="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ genericode.xsd">
+   <Annotation>
+      <Description>
+         <doc:definition>FpML Benchmark rates</doc:definition>
+         <doc:publicationDate>2025-09-26</doc:publicationDate>
+         <doc:confidentiality>This document contains proprietary data provided under license.  This data may not be shared beyond the terms of the license under which it was provided.</doc:confidentiality>
+      </Description>
+   </Annotation>
+   <Identification>
+      <ShortName>benchmarkRateScheme</ShortName>
+      <Version>1-4</Version>
+      <CanonicalUri>http://www.fpml.org/coding-scheme/benchmark-rate</CanonicalUri>
+      <CanonicalVersionUri>http://www.fpml.org/coding-scheme/benchmark-rate-1-4</CanonicalVersionUri>
+      <LocationUri>http://www.fpml.org/coding-scheme/benchmark-rate-1-4.xml</LocationUri>
+   </Identification>
+   <ColumnSet>
+      <Column Id="Code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="token">
+            <Annotation>
+               <Description>
+                  <doc:field name="Code Name">The unique string/code identifying the benchmark rate.</doc:field>
+               </Description>
+            </Annotation>
+            <Parameter ShortName="maxLength">63</Parameter>
+         </Data>
+      </Column>
+      <Column Id="Source" Use="optional">
+         <ShortName>Source</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Description" Use="optional">
+         <ShortName>Description</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Metadata" Use="optional">
+         <ShortName>Metadata</ShortName>
+         <Data Type="structured">
+            <Annotation>
+               <Description>
+                  <doc:description>All available metadata is supplied.</doc:description>
+               </Description>
+            </Annotation>
+         </Data>
+      </Column>
+      <Key Id="PrimaryKey">
+         <ShortName>key</ShortName>
+         <ColumnRef Ref="Code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value>
+            <SimpleValue>AMERIBOR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"AMERIBOR" means the closing rate for overnight unsecured loans in U.S. Dollars transacted on the American Financial Exchange, LLC known as 'AMERIBOR' (the American Interbank Offered Rate) administered by American Financial Exchange, LLC (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>AONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"AONIA" means the interbank overnight cash rate administered by the Reserve Bank of Australia (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CORRA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"CORRA" means the Canadian Overnight Repo Rate Average administered by the Bank of Canada (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CZEONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"CZEONIA" means the Czech Overnight Index Average administered by the Czech National Bank (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>DESTR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"DESTR" means the Denmark Short Term Rate administered by Danmarks Nationalbank (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>DKK OIS</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"DKK OIS" means the daily fixing for Danish Kroner tomorrow next deposits administered by the Danish Central Bank FX (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>EFFR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>"EFFR" or "Fed Funds" per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"Fed Funds" or "EFFR" means the U.S. Dollar effective federal funds rate administered by the Federal Reserve Bank of New York (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>EONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"EONIA" means the Euro Overnight Index Average administered by the European Money Markets Institute (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>EuroSTR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"EuroSTR" means the euro short-term rate (STR) administered by the European Central Bank (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"HONIA" means the Hong Kong Dollar Overnight Index Average rate administered by the Treasury Markets Association (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HUFONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"HUFONIA" means the Hungarian Forint Overnight Index Average administered by Magyar Nemzeti Bank, Central Bank of Hungary (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KOFR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"KOFR" means the Korea Overnight Financing Repo Rate administered by the Korea Securities Depository (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MIBOR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"MIBOR" means the overnight Mumbai Interbank Outright Rate adinistered by Financial Benchmarks India Pvt Limited (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MYOR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"MYOR" means the rate based on wholesale unsecured overnight Malaysian Ringgit interbank transactions known as the 'Malaysia Overnight Rate' administered by Bank Negara Malaysia (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>NOWA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"NOWA" means the Norwegian Overnight Weighted Average administered by Norges Bank (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>NZIONA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"NZIONA" means the official cash rate administered by the Reserve Bank of New Zealand (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>POLONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"POLONIA" means the Polish Overnight Index Average administered by the National Bank of Poland (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>POLSTR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"POLSTR" means the Polish Short Term Rate administered by GPW Benchmark S.A. (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>RUONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"RUONIA" means the Russian Ruble Overnight Index Average rate administered by the Central Bank of the Russian Federation (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SARON</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SARON" means the Swiss Average Rate Overnight administered by SIX Swiss Exchange AG (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SFXROD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SFXROD" means the SAFEX Overnight Deposit Rate administered by SAFEX JIBAR (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SHIR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SHIR" means the Shekel Overnight Interest Rate administered by the Bank of Israel (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SOFR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SOFR" means the Secured Overnight Financing Rate administered by the Federal Reserve Bank of New York (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SONIA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SONIA" means the Sterling Overnight Index Average rate administered by the Bank of England (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SORA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SORA" means the Singapore Overnight Rate Average administered by the Monetary Authority of Singapore (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SORR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SORR" means the Secured Overnight Rupee Rate administered by the Financial Benchmarks India Pvt Limited (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Annotation>
+            <Description>
+               <doc:description>
+                  <doc:paragraph>Deprecated usage: "SWESTR" replaces "STIBOR". "STIBOR" code has been deprecated in the 2021 Definitions V4. The code is kept in FpML for backward compatibility purposes.</doc:paragraph>
+               </doc:description>
+            </Description>
+         </Annotation>
+         <Value>
+            <SimpleValue>STIBOR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definition up to V3, Section 10.3 Overnight Rate Benchmarks. What is defined as "SEK OIS" in the 2006 ISDA Collateral Cash Price Matrix up to  November 10, 2021 publication.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"STIBOR" means the Stockholm Interbank Offered Rate Tomorrow Next administered by the Riksbank (Central Bank of Sweden) (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SWESTR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"SWESTR" means the Swedish krona Short Term Rate administered by Sveriges Riksbank (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TELBOR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"TELBOR" means the Tel Aviv Inter-Bank Offered Rate administered by the Bank of Israel (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>THOR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"THOR" means the Thai Overnight Repurchase Rate administered by the Bank of Thailand (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TLREF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"TLREF" means the Turkish Lira Overnight Reference Rate administered by Borsa Istanbul (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TONA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks. What is defined as "TONAR" in the 2006 ISDA Collateral Cash Price Matrix.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"TONA" means the Tokyo Overnight Average Rate administered by the Bank of Japan (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>WIRON</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Per 2021 ISDA Definitions, Section 10.3 Overnight Rate Benchmarks.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:definition>"WIRON" means the Warsaw Interest Rate Overnight administered by GPW Benchmark S.A. (or any successor administrator).</doc:definition>
+            </ComplexValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gcl:CodeList>

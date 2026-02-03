@@ -783,6 +783,8 @@ public final class XmlUtility
 	 * @since	TFP 1.6
 	 */
 	static {
+		// Force Specification class initialization to complete before continuing.
+		try { Class.forName("com.handcoded.meta.Specification"); } catch (Throwable t) { /* ignore */ }
 		// Ensure the specifications are loaded first
 		Specification.specifications ();
 		
@@ -806,11 +808,29 @@ public final class XmlUtility
 								
 				Specification specification = Specification.forName (specificationName.getValue ());
 				if (specification == null) {
-					logger.warning ("Invalid specification name '" + specificationName.getValue ()
-							+"' in configuration file.");
-					continue;
-				}
-				
+                    // Try forcing Specification class initialization (in case it hasn't been initialised yet)
+                    try { Class.forName("com.handcoded.meta.Specification"); } catch (Throwable t) { /* ignore */ }
+                    specification = Specification.forName (specificationName.getValue ());
+                }
+                if (specification == null) {
+                    // Attempt a case-insensitive match against registered specification names as a best-effort fallback.
+                    try {
+                        for (Specification s : Specification.specifications()) {
+                            if (s.getName() != null && s.getName().equalsIgnoreCase(specificationName.getValue())) {
+                                specification = s;
+                                break;
+                            }
+                        }
+                    } catch (Throwable t) { /* ignore */ }
+                }
+                if (specification == null) {
+                    // If still not found, log at CONFIG level with extra context rather than repeatedly warning.
+                    logger.log(java.util.logging.Level.CONFIG,
+                            "Invalid specification name '{0}' in configuration file. Registered specs: {1}",
+                            new Object[] { specificationName.getValue(), java.util.Arrays.toString(Specification.specifications()) });
+                    continue;
+                }
+
 				Release	release = null;
 				
 				if (namespaceUri != null) {
@@ -851,3 +871,5 @@ public final class XmlUtility
 		logger.info ("Completed");
 	}
 }
+
+

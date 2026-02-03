@@ -445,6 +445,10 @@ public final class Specification
 		logger.log (Level.INFO, "Bootstrapping Specifications");
 		
 		try {
+            // Diagnostic: log current working directory and classpath to aid debugging resource loading
+            try { logger.log(Level.INFO, "Working directory: " + System.getProperty("user.dir")); } catch (Throwable t) { /* ignore */ }
+
+            // Diagnostic: attempt to open the releases file and log its resolved systemId when available
 			Document document = XmlUtility.nonValidatingParseWithXInclude (
 					Application.openInputSource ("files-core/releases.xml"));
 			
@@ -473,5 +477,13 @@ public final class Specification
 		}
 		
 		logger.log (Level.INFO, "Completed");
+
+		// Diagnostic: list all specification names registered
+		try {
+			for (String nm : extent.keySet()) {
+				logger.log(Level.INFO, "Registered specification: " + nm);
+			}
+		} catch (Throwable t) { /* ignore diagnostics */ }
 	}
 }
+

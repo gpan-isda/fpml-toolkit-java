@@ -1,0 +1,1 @@
+exit 0 ; type build\run_output.txt; if (Test-Path build\run_exit.txt) type build\run_exit.txt

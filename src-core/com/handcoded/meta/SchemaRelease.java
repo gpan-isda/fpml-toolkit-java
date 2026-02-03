@@ -282,14 +282,29 @@ public class SchemaRelease extends Release implements Schema
 			if (release.hasRootElement (rootElement)) {
 				if (mainSchema != null) {
 					logger.severe ("Multiple schemas define root element '" + rootElement + "'");
-					return (null);
+					throw new RuntimeException ("Multiple schemas define root element '" + rootElement + "'");
 				}
 				mainSchema = release;
 			}
 		}
 		if (mainSchema == null) {
-			logger.severe ("No schema recognised '" + rootElement + "' as a root element.");
-			return (null);
+			StringBuilder sb = new StringBuilder();
+			sb.append("No schema recognised '").append(rootElement).append("' as a root element.\n");
+			sb.append("Searched imports and found the following candidate root elements and releases:\n");
+			for (SchemaRelease r : releases) {
+				sb.append("  Release: ").append(r.toString()).append(" ns=").append(r.getNamespaceUri())
+					.append(" roots=");
+				String[] roots = r.getRootElements();
+				if (roots != null) {
+					for (int i = 0; i < roots.length; ++i) {
+						sb.append(roots[i]);
+						if (i < roots.length-1) sb.append(",");
+					}
+				}
+				sb.append(" schemaLocation=").append(r.getSchemaLocation()).append("\n");
+			}
+			logger.severe (sb.toString());
+			throw new RuntimeException(sb.toString());
 		}
 
 		DOMImplementation	impl = builder.getDOMImplementation ();

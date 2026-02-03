@@ -1,0 +1,1879 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/css" href="FpML.CodeList.genericode.css"?>
+<gcl:CodeList xmlns:doc="http://www.fpml.org/coding-scheme/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gcl="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xsi:schemaLocation="http://docs.oasis-open.org/codelist/ns/genericode/1.0/ genericode.xsd">
+   <Annotation>
+      <Description>
+         <doc:definition>FpML currencies and currency metadata</doc:definition>
+         <doc:publicationDate>2021-12-17</doc:publicationDate>
+         <doc:confidentiality>This document contains proprietary data provided under license.  This data may not be shared beyond the terms of the license under which it was provided.</doc:confidentiality>
+      </Description>
+   </Annotation>
+   <Identification>
+      <ShortName>currencyScheme</ShortName>
+      <Version>1-0-1</Version>
+      <CanonicalUri>http://www.fpml.org/coding-scheme/currency-defaults</CanonicalUri>
+      <CanonicalVersionUri>http://www.fpml.org/coding-scheme/currency-defaults-1-0-1</CanonicalVersionUri>
+      <LocationUri>http://www.fpml.org/coding-scheme/currency-defaults-1-0-1.xml</LocationUri>
+   </Identification>
+   <ColumnSet>
+      <Column Id="Code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="token">
+            <Annotation>
+               <Description>
+                  <doc:field name="Code Name">The unique ISO 3-character currency code identifying the currency, e.g. USD</doc:field>
+               </Description>
+            </Annotation>
+            <Parameter ShortName="maxLength">63</Parameter>
+         </Data>
+      </Column>
+      <Column Id="Source" Use="optional">
+         <ShortName>Source</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Description" Use="optional">
+         <ShortName>Description</ShortName>
+         <Data Type="string"/>
+      </Column>
+      <Column Id="Metadata" Use="optional">
+         <ShortName>Metadata</ShortName>
+         <Data Type="structured">
+            <Annotation>
+               <Description>
+                  <doc:description>All available metadata is supplied.</doc:description>
+               </Description>
+            </Annotation>
+         </Data>
+      </Column>
+      <Key Id="PrimaryKey">
+         <ShortName>key</ShortName>
+         <ColumnRef Ref="Code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value>
+            <SimpleValue>AED</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the United Arab Emirates.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>United Arab Emirates Dirham</doc:name>
+               <doc:synonym>Emirati Dirham</doc:synonym>
+               <doc:synonym>AED</doc:synonym>
+               <doc:definition>The lawful currency of the United Arab Emirates.</doc:definition>
+               <doc:businessCenter>Abu Dhabi - code not found</doc:businessCenter>
+               <doc:additionalProvisions>Section 2.1.9 (Abu Dhabi Days) applies.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>AOA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Angola.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Angolan Kwanza</doc:name>
+               <doc:synonym>Kwanza</doc:synonym>
+               <doc:synonym>AOA</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Angola.</doc:definition>
+               <doc:businessCenter>AOLU</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ARS</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Argentine Republic.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Argentine Peso</doc:name>
+               <doc:synonym>ARS</doc:synonym>
+               <doc:definition>The lawful currency of the Argentine Republic.</doc:definition>
+               <doc:businessCenter>ARBA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>AUD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Commonwealth of Australia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Australian Dollar</doc:name>
+               <doc:synonym>A$</doc:synonym>
+               <doc:synonym>AUD</doc:synonym>
+               <doc:definition>The lawful currency of Commonwealth of Australia.</doc:definition>
+               <doc:businessCenter>AUSY</doc:businessCenter>
+               <doc:additionalProvisions>If a Transaction is identified in the Confirmation as an AUD forward rate transaction, AUD Cap Transaction, AUD Floor Transaction or AUD rate collar transaction, "FRA Yield Discounting" shall apply, unless otherwise specified in the Confirmation.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>AZN</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Azerbaijan.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Azerbaijani New Manat</doc:name>
+               <doc:synonym>Azerbaijani Manat</doc:synonym>
+               <doc:synonym>Manat</doc:synonym>
+               <doc:synonym>AZN</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Azerbaijan.</doc:definition>
+               <doc:businessCenter>AZBA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BDT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the People"s Republic of Bangladesh.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Bangladeshi Taka</doc:name>
+               <doc:synonym>BDT</doc:synonym>
+               <doc:definition>The lawful currency of the People"s Republic of Bangladesh.</doc:definition>
+               <doc:businessCenter>BDDH</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BGL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Bulgaria.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Bulgarian Lev</doc:name>
+               <doc:synonym>BGL</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Bulgaria.</doc:definition>
+               <doc:businessCenter>BGSO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BHD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Bahrain.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Bahraini Dinar</doc:name>
+               <doc:synonym>BHD</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Bahrain.</doc:definition>
+               <doc:businessCenter>BHMA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BRL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Federative Republic of Brazil.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Brazilian Real</doc:name>
+               <doc:synonym>Brazilian Reais</doc:synonym>
+               <doc:synonym>BRL</doc:synonym>
+               <doc:definition>The lawful currency of the Federative Republic of Brazil.</doc:definition>
+               <doc:businessCenter>BRBR</doc:businessCenter>
+               <doc:businessCenter>BRRJ</doc:businessCenter>
+               <doc:businessCenter>Sao Paulo - code not found</doc:businessCenter>
+               <doc:additionalProvisions>Whenever "Brazil" is specified as a place for the purposes of the Business Day definition, a day will be a Business Day if it is a Business Day in any of Sao Paulo, Rio de Janeiro or Brasilia and is not a financial market holiday in accordance with the holiday calendar of the B3 - Brasil Bolsa Balcao S.A. exchange in respect of the BM&amp;F BOVESPA Segment.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>BWP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Botswana.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Botswana Pula</doc:name>
+               <doc:synonym>Pula</doc:synonym>
+               <doc:synonym>BWP</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Botswana.</doc:definition>
+               <doc:businessCenter>BWGA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CAD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Canada.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Canadian Dollar</doc:name>
+               <doc:synonym>C$</doc:synonym>
+               <doc:synonym>CAD</doc:synonym>
+               <doc:definition>The lawful currency of Canada.</doc:definition>
+               <doc:businessCenter>CATO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CHF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Switzerland.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Swiss Franc</doc:name>
+               <doc:synonym>Sfr</doc:synonym>
+               <doc:synonym>CHF</doc:synonym>
+               <doc:synonym>SWF</doc:synonym>
+               <doc:definition>The lawful currency of Switzerland.</doc:definition>
+               <doc:businessCenter>CHZU</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CLP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Chile.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Chilean Peso</doc:name>
+               <doc:synonym>CLP</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Chile.</doc:definition>
+               <doc:businessCenter>CLSA</doc:businessCenter>
+               <doc:additionalProvisions>Rounding: To the nearest whole (with one half Chilean Peso being rounded up).</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CNH</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Offshore Chinese Yuan traded in Hong Kong</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Offshore Chinese Yuan traded in Hong Kong</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CNT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Offshore Chinese Yuan traded in Taiwan</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Offshore Chinese Yuan traded in Taiwan</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CNY</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the People"s Republic of China.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Chinese Renminbi</doc:name>
+               <doc:synonym>Chinese Yuan</doc:synonym>
+               <doc:synonym>CNY</doc:synonym>
+               <doc:synonym>RMB</doc:synonym>
+               <doc:definition>The lawful currency of the People"s Republic of China.</doc:definition>
+               <doc:businessCenter>CNBE</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>COP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Colombia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Colombian Peso</doc:name>
+               <doc:synonym>COP</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Colombia.</doc:definition>
+               <doc:businessCenter>COBO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CRC</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Costa Rica.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Costa Rican Colón</doc:name>
+               <doc:synonym>CRC</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Costa Rica.</doc:definition>
+               <doc:businessCenter>CRSJ</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>CZK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Czech Republic.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Czech Koruna</doc:name>
+               <doc:synonym>CZK</doc:synonym>
+               <doc:definition>The lawful currency of the Czech Republic.</doc:definition>
+               <doc:businessCenter>CZPR</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>DKK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Denmark.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Danish Krone</doc:name>
+               <doc:synonym>DKr</doc:synonym>
+               <doc:synonym>DKK</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Denmark.</doc:definition>
+               <doc:businessCenter>DKCO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>DZD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the People"s Democratic Republic of Algeria.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Algerian Dinar</doc:name>
+               <doc:synonym>DZD</doc:synonym>
+               <doc:definition>The lawful currency of the People"s Democratic Republic of Algeria.</doc:definition>
+               <doc:businessCenter>DZAL</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>EGP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Arab Republic of Egypt.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Egyptian Pound</doc:name>
+               <doc:synonym>EGP</doc:synonym>
+               <doc:definition>The lawful currency of the Arab Republic of Egypt.</doc:definition>
+               <doc:businessCenter>EGCA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>EUR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the member states of the European Union that adopt the single currency in accordance with the EC Treaty.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Euro</doc:name>
+               <doc:synonym>EUR</doc:synonym>
+               <doc:synonym>euro</doc:synonym>
+               <doc:definition>The lawful currency of the member states of the European Union that adopt the single currency in accordance with the EC Treaty.</doc:definition>
+               <doc:businessCenter>TARGET Settlement Day - code not found</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GBP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the United Kingdom.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Sterling</doc:name>
+               <doc:synonym>Pound Sterling</doc:synonym>
+               <doc:synonym>£</doc:synonym>
+               <doc:synonym>GBP</doc:synonym>
+               <doc:synonym>STG</doc:synonym>
+               <doc:definition>The lawful currency of the United Kingdom.</doc:definition>
+               <doc:businessCenter>GBLO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GGP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Guernsey Pound</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Guernsey Pound</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GHS</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Ghana.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Ghanaian Cedi</doc:name>
+               <doc:synonym>Cedi</doc:synonym>
+               <doc:synonym>GHS</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Ghana.</doc:definition>
+               <doc:businessCenter>GHAC</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GMD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of the Gambia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Gambian Dalasi</doc:name>
+               <doc:synonym>GMD</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of the Gambia.</doc:definition>
+               <doc:businessCenter>GMBA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GNF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Guinea.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Guinean Franc</doc:name>
+               <doc:synonym>GNF</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Guinea.</doc:definition>
+               <doc:businessCenter>GNCO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>GTQ</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Guatemala.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Guatemalan Quetzal</doc:name>
+               <doc:synonym>GTQ</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Guatemala.</doc:definition>
+               <doc:businessCenter>GUGC</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HKD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Hong Kong Special Administrative Region of the People"s Republic of China.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Hong Kong Dollar</doc:name>
+               <doc:synonym>HK$</doc:synonym>
+               <doc:synonym>HKD</doc:synonym>
+               <doc:definition>The lawful currency of the Hong Kong Special Administrative Region of the People"s Republic of China.</doc:definition>
+               <doc:businessCenter>HKHK</doc:businessCenter>
+               <doc:additionalProvisions>Updated: Hong Kong Business Days and Additional Fallback Provisions apply.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HRK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Croatia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Croatian Kuna</doc:name>
+               <doc:synonym>HRK</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Croatia.</doc:definition>
+               <doc:businessCenter>HRZA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>HUF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Hungary.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Hungarian Forint</doc:name>
+               <doc:synonym>Forint</doc:synonym>
+               <doc:synonym>HUF</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Hungary.</doc:definition>
+               <doc:businessCenter>HUBU</doc:businessCenter>
+               <doc:additionalProvisions>Rounding: To the nearest whole (with one half Hungarian Forint being rounded up).</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>IDR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Indonesia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Indonesian Rupiah</doc:name>
+               <doc:synonym>IDR</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Indonesia.</doc:definition>
+               <doc:businessCenter>IDJA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ILS</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the State of Israel.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Israeli Shekel</doc:name>
+               <doc:synonym>Israeli New Shekel</doc:synonym>
+               <doc:synonym>ILS</doc:synonym>
+               <doc:definition>The lawful currency of the State of Israel.</doc:definition>
+               <doc:businessCenter>ILTA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>IMP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Qatari Rial</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Qatari Rial</doc:name>
+               <doc:synonym>Isle of Man Pound.</doc:synonym>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>INR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of India.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Indian Rupee</doc:name>
+               <doc:synonym>INR</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of India.</doc:definition>
+               <doc:businessCenter>INMU</doc:businessCenter>
+               <doc:additionalProvisions>For the purposes of the Floating Rate Option "INR-MIBOR-OIS Compound" and a related Payment Date, a Business Day will not include Saturday, even if commercial banks and foreign exchange markets are open for general business (including settling payments and dealings in foreign exchange and foreign currency deposits) on such Saturday.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>IQD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Iraq.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Iraqi Dinar</doc:name>
+               <doc:synonym>IQD</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Iraq.</doc:definition>
+               <doc:businessCenter>IQBA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>IRR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Islamic Republic of Iran.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Iranian Rial</doc:name>
+               <doc:synonym>IRR</doc:synonym>
+               <doc:definition>The lawful currency of the Islamic Republic of Iran.</doc:definition>
+               <doc:businessCenter>IRTE</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ISK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Iceland.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Icelandic Króna</doc:name>
+               <doc:synonym>ISK</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Iceland.</doc:definition>
+               <doc:businessCenter>ISRE</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>JEP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Jersey Pound.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Jersey Pound.</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>JMD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Jamaica.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Jamaican Dollar</doc:name>
+               <doc:synonym>JMD</doc:synonym>
+               <doc:definition>The lawful currency of Jamaica.</doc:definition>
+               <doc:businessCenter>JMKI</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>JOD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Hashemite Kingdom of Jordan.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Jordanian Dinar</doc:name>
+               <doc:synonym>JOD</doc:synonym>
+               <doc:definition>The lawful currency of the Hashemite Kingdom of Jordan.</doc:definition>
+               <doc:businessCenter>JOAM</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>JPY</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Japan.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Japanese Yen</doc:name>
+               <doc:synonym>Yen</doc:synonym>
+               <doc:synonym>¥</doc:synonym>
+               <doc:synonym>JPY</doc:synonym>
+               <doc:definition>The lawful currency of Japan.</doc:definition>
+               <doc:businessCenter>JPTO</doc:businessCenter>
+               <doc:additionalProvisions>Tokyo and London will be the financial centers if the currency is the Japanese Yen and either (i) the payment obligation is calculated by reference to any "LIBOR" Floating Rate Option or (ii) the payment obligations of the other party to the Swap Transaction are payable in the Japanese Yen and are calculated by reference to any "LIBOR" Floating Rate Option. Rounding: To the next lower whole.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KES</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Kenya.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Kenyan Shilling</doc:name>
+               <doc:synonym>KES</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Kenya.</doc:definition>
+               <doc:businessCenter>KENA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KHR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Cambodia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Cambodian Riel</doc:name>
+               <doc:synonym>KHR</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Cambodia.</doc:definition>
+               <doc:businessCenter>KHPP</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KID</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Kiribati Dollar</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Kiribati Dollar</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KRW</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Korea.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Korean Won</doc:name>
+               <doc:synonym>South Korean Won</doc:synonym>
+               <doc:synonym>₩</doc:synonym>
+               <doc:synonym>KRW</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Korea.</doc:definition>
+               <doc:businessCenter>KRSE</doc:businessCenter>
+               <doc:additionalProvisions>Rounding: To the next lower whole</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KWD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the State of Kuwait.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Kuwaiti Dinar</doc:name>
+               <doc:synonym>KWD</doc:synonym>
+               <doc:definition>The lawful currency of the State of Kuwait.</doc:definition>
+               <doc:businessCenter>KWKC</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>KZT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Kazakhstan.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Kazakhstani Tenge</doc:name>
+               <doc:synonym>₸</doc:synonym>
+               <doc:synonym>Tenge</doc:synonym>
+               <doc:synonym>KZT</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Kazakhstan.</doc:definition>
+               <doc:businessCenter>KZAL</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>LAK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Lao People"s Democratic Republic.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Lao Kip</doc:name>
+               <doc:synonym>LAK</doc:synonym>
+               <doc:definition>The lawful currency of the Lao People"s Democratic Republic.</doc:definition>
+               <doc:businessCenter>LAVI</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>LBP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Lebanon.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Lebanese Pound</doc:name>
+               <doc:synonym>LBP</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Lebanon.</doc:definition>
+               <doc:businessCenter>LBBE</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>LKR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Democratic Socialist Republic of Sri Lanka.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Sri Lankan Rupee</doc:name>
+               <doc:synonym>LKR</doc:synonym>
+               <doc:definition>The lawful currency of the Democratic Socialist Republic of Sri Lanka.</doc:definition>
+               <doc:businessCenter>LKCO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MAD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Morocco.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Moroccan Dirham</doc:name>
+               <doc:synonym>MAD</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Morocco.</doc:definition>
+               <doc:businessCenter>MARA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MCG</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Monegasque franc. Historical currency code.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Monegasque franc. Historical currency code.</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MNT</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Mongolia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Mongolian Tugrik</doc:name>
+               <doc:synonym>Tӧgӧg</doc:synonym>
+               <doc:synonym>₮</doc:synonym>
+               <doc:synonym>MNT</doc:synonym>
+               <doc:definition>The lawful currency of Mongolia.</doc:definition>
+               <doc:businessCenter>MNUB</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MUR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Mauritius.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Mauritius Rupee</doc:name>
+               <doc:synonym>MUR</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Mauritius.</doc:definition>
+               <doc:businessCenter>MUPL</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MXN</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the United Mexican States.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Mexican Peso</doc:name>
+               <doc:synonym>MXN</doc:synonym>
+               <doc:definition>The lawful currency of the United Mexican States.</doc:definition>
+               <doc:businessCenter>MXMC</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MYR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Federation of Malaysia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Malaysian Ringgit</doc:name>
+               <doc:synonym>MYR</doc:synonym>
+               <doc:definition>The lawful currency of the Federation of Malaysia.</doc:definition>
+               <doc:businessCenter>MYKL</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>MZN</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Mozambique.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Mozambican Metical</doc:name>
+               <doc:synonym>MZN</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Mozambique.</doc:definition>
+               <doc:businessCenter>MZMA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>NGN</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Nigeria.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Nigerian Naira</doc:name>
+               <doc:synonym>NGN</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Nigeria.</doc:definition>
+               <doc:businessCenter>NGLA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>NOK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Norway.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Norwegian Krone</doc:name>
+               <doc:synonym>NKr</doc:synonym>
+               <doc:synonym>NOK</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Norway.</doc:definition>
+               <doc:businessCenter>NOOS</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>NPR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Federal Democratic Republic of Nepal.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Nepalese Rupee</doc:name>
+               <doc:synonym>NPR</doc:synonym>
+               <doc:definition>The lawful currency of the Federal Democratic Republic of Nepal.</doc:definition>
+               <doc:businessCenter>NPKA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>NZD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of New Zealand.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>New Zealand Dollar</doc:name>
+               <doc:synonym>NZ$</doc:synonym>
+               <doc:synonym>NZD</doc:synonym>
+               <doc:definition>The lawful currency of New Zealand.</doc:definition>
+               <doc:businessCenter>NZWE</doc:businessCenter>
+               <doc:businessCenter>NZAU</doc:businessCenter>
+               <doc:additionalProvisions>If a Transaction is identified in the Confirmation as a NZD forward rate transaction, NZD Cap Transaction, NZD Floor Transaction or NZD rate collar transaction, "FRA Yield Discounting" shall apply, unless otherwise specified in the Confirmation.</doc:additionalProvisions>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>OMR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Sultanate of Oman.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Omani Rial</doc:name>
+               <doc:synonym>Rial Omani</doc:synonym>
+               <doc:synonym>OMR</doc:synonym>
+               <doc:definition>The lawful currency of the Sultanate of Oman.</doc:definition>
+               <doc:businessCenter>OMMU</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>PEN</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Peru.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Peruvian Sol</doc:name>
+               <doc:synonym>Peruvian Nuevo Sol</doc:synonym>
+               <doc:synonym>Nuevo Sol</doc:synonym>
+               <doc:synonym>PEN</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Peru.</doc:definition>
+               <doc:businessCenter>PELI</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>PHP</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of the Philippines.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Philippine Peso</doc:name>
+               <doc:synonym>PHP</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of the Philippines.</doc:definition>
+               <doc:businessCenter>PHMA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>PKR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Islamic Republic of Pakistan.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Pakistani Rupee</doc:name>
+               <doc:synonym>PKR</doc:synonym>
+               <doc:definition>The lawful currency of the Islamic Republic of Pakistan.</doc:definition>
+               <doc:businessCenter>PKKA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>PLN</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Poland.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Polish Zloty</doc:name>
+               <doc:synonym>PLN</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Poland.</doc:definition>
+               <doc:businessCenter>PLWA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>QAR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the State of Qatar.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Qatari Rial</doc:name>
+               <doc:synonym>Qatari Riyal</doc:synonym>
+               <doc:synonym>QAR</doc:synonym>
+               <doc:definition>The lawful currency of the State of Qatar.</doc:definition>
+               <doc:businessCenter>QADO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>RON</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of Romania.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Romanian Leu</doc:name>
+               <doc:synonym>RON</doc:synonym>
+               <doc:definition>The lawful currency of Romania.</doc:definition>
+               <doc:businessCenter>ROBU</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>RSD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Serbia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Serbian Dinar</doc:name>
+               <doc:synonym>RSD</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Serbia.</doc:definition>
+               <doc:businessCenter>RSBE</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>RUB</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Russian Federation.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Russian Ruble</doc:name>
+               <doc:synonym>Russian Rouble</doc:synonym>
+               <doc:synonym>RUB</doc:synonym>
+               <doc:definition>The lawful currency of the Russian Federation.</doc:definition>
+               <doc:businessCenter>RUMO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SAR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Saudi Arabia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Saudi Arabian Riyal</doc:name>
+               <doc:synonym>Saudi Riyal</doc:synonym>
+               <doc:synonym>Saudi Arabian Rial</doc:synonym>
+               <doc:synonym>SAR</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Saudi Arabia.</doc:definition>
+               <doc:businessCenter>SARI</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SEK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Sweden.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Swedish Krona</doc:name>
+               <doc:synonym>SKr</doc:synonym>
+               <doc:synonym>SEK</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Sweden.</doc:definition>
+               <doc:businessCenter>SEST</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SGD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Singapore.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Singapore Dollar</doc:name>
+               <doc:synonym>S$</doc:synonym>
+               <doc:synonym>SGD</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Singapore.</doc:definition>
+               <doc:businessCenter>SGSI</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SKK</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Slovakian koruna</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Slovakian koruna</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SLL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Sierra Leone.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Sierra Leonean Leone</doc:name>
+               <doc:synonym>SLL</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Sierra Leone.</doc:definition>
+               <doc:businessCenter>SLFR</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>SML</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Sammarinese lira. Hhistorical currency code.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Sammarinese lira. Hhistorical currency code.</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>THB</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Kingdom of Thailand.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Thai Baht</doc:name>
+               <doc:synonym>THB</doc:synonym>
+               <doc:definition>The lawful currency of the Kingdom of Thailand.</doc:definition>
+               <doc:businessCenter>THBA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TND</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Tunisia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Tunisian Dinar</doc:name>
+               <doc:synonym>TND</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Tunisia.</doc:definition>
+               <doc:businessCenter>TNTU</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TRY</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Turkey.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Turkish Lira</doc:name>
+               <doc:synonym>TRY</doc:synonym>
+               <doc:synonym>New Turkish Lira</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Turkey.</doc:definition>
+               <doc:businessCenter>TRIS</doc:businessCenter>
+               <doc:businessCenter>TRAN</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TWD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of China.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Taiwanese Dollar</doc:name>
+               <doc:synonym>New Taiwanese Dollar</doc:synonym>
+               <doc:synonym>NT$</doc:synonym>
+               <doc:synonym>TWD</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of China.</doc:definition>
+               <doc:businessCenter>TWTA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>TZS</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the United Republic of Tanzania.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Tanzanian Shilling</doc:name>
+               <doc:synonym>TZS</doc:synonym>
+               <doc:definition>The lawful currency of the United Republic of Tanzania.</doc:definition>
+               <doc:businessCenter>TZDA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>UAH</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Ukraine.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Ukrainian Hryvnia</doc:name>
+               <doc:synonym>Hryvnia</doc:synonym>
+               <doc:synonym>UAH</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Ukraine.</doc:definition>
+               <doc:businessCenter>UAKI</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>UGX</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Uganda.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Ugandan Shilling</doc:name>
+               <doc:synonym>UGX</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Uganda.</doc:definition>
+               <doc:businessCenter>UGKA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>USD</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the United States of America.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>U.S. Dollar</doc:name>
+               <doc:synonym>Dollar</doc:synonym>
+               <doc:synonym>U.S.$</doc:synonym>
+               <doc:synonym>$</doc:synonym>
+               <doc:synonym>USD</doc:synonym>
+               <doc:definition>The lawful currency of the United States of America.</doc:definition>
+               <doc:businessCenter>USNY</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>UYU</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Oriental Republic of Uruguay.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Uruguayan Peso</doc:name>
+               <doc:synonym>UYU</doc:synonym>
+               <doc:definition>The lawful currency of the Oriental Republic of Uruguay.</doc:definition>
+               <doc:businessCenter>UYMO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>VAL</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>Vatican lira. Historical currency code</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Vatican lira. Historical currency code</doc:name>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>VES</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Bolivarian Republic of Venezuela.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Venezuelan Bolivar</doc:name>
+               <doc:synonym>Venezuelan Bolivar Soberano</doc:synonym>
+               <doc:synonym>Bolivar Soberano</doc:synonym>
+               <doc:synonym>VES</doc:synonym>
+               <doc:definition>The lawful currency of the Bolivarian Republic of Venezuela.</doc:definition>
+               <doc:businessCenter>VECA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>VND</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Socialist Republic of Vietnam.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Vietnamese Dong</doc:name>
+               <doc:synonym>VND</doc:synonym>
+               <doc:definition>The lawful currency of the Socialist Republic of Vietnam.</doc:definition>
+               <doc:businessCenter>VNHA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>XAF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of six independent states in Central Africa, which include the Republic of Cameroon, the Central African Republic, the Republic of Chad, the Republic of the Congo, the Republic of Equatorial Guinea and the Gabonese Republic.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Central African CFA Franc</doc:name>
+               <doc:synonym>CFA Franc BEAC</doc:synonym>
+               <doc:synonym>XAF</doc:synonym>
+               <doc:definition>The lawful currency of six independent states in Central Africa, which include the Republic of Cameroon, the Central African Republic, the Republic of Chad, the Republic of the Congo, the Republic of Equatorial Guinea and the Gabonese Republic.</doc:definition>
+               <doc:businessCenter>Yaounde - code not found</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>XOF</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of eight independent states in West Africa, which include the Republic of Benin, Burkina Faso, the Republic of Guinea-Bissau, the Republic of the Côte d"Ivoire, the Republic of Mali, the Republic of Niger, the Republic of Senegal and the Togolese Republic.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>West African CFA Franc</doc:name>
+               <doc:synonym>CFA Franc BCEAO</doc:synonym>
+               <doc:synonym>XOF</doc:synonym>
+               <doc:definition>The lawful currency of eight independent states in West Africa, which include the Republic of Benin, Burkina Faso, the Republic of Guinea-Bissau, the Republic of the Côte d"Ivoire, the Republic of Mali, the Republic of Niger, the Republic of Senegal and the Togolese Republic.</doc:definition>
+               <doc:businessCenter>SNDA</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ZAR</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of South Africa.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>South African Rand</doc:name>
+               <doc:synonym>Rand</doc:synonym>
+               <doc:synonym>R</doc:synonym>
+               <doc:synonym>ZAR</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of South Africa.</doc:definition>
+               <doc:businessCenter>ZAJO</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value>
+            <SimpleValue>ZMW</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>ISDA</SimpleValue>
+         </Value>
+         <Value>
+            <SimpleValue>The lawful currency of the Republic of Zambia.</SimpleValue>
+         </Value>
+         <Value>
+            <ComplexValue>
+               <doc:name>Zambian Kwacha</doc:name>
+               <doc:synonym>New Zambian Kwacha</doc:synonym>
+               <doc:synonym>ZMW</doc:synonym>
+               <doc:definition>The lawful currency of the Republic of Zambia.</doc:definition>
+               <doc:businessCenter>ZMLU</doc:businessCenter>
+            </ComplexValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gcl:CodeList>

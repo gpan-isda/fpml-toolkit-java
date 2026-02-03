@@ -493,7 +493,7 @@ public final class Releases
 	
 	/**
 	 * A <CODE>SchemaRelease</CODE> instance containing the details for
-	 * FpML 5-9 confirmation view recommendation.
+	 * FpML 5-10 confirmation view recommendation.
 	 * @since	TFP 1.8
 	 */
 	public static SchemaRelease	R5_10_CONFIRMATION
@@ -586,8 +586,104 @@ public final class Releases
 	 */
 	public static SchemaRelease	R5_11_LEGAL
 		= (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-11", "http://www.fpml.org/FpML-5/legal");
-	
-	/**
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-12 confirmation view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_12_CONFIRMATION
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-12", "http://www.fpml.org/FpML-5/confirmation");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-12 reporting view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_12_REPORTING
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-12", "http://www.fpml.org/FpML-5/reporting");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-12 record keeping view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_12_RECORDKEEPING
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-12", "http://www.fpml.org/FpML-5/recordkeeping");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-12 transparency view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_12_TRANSPARENCY
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-12", "http://www.fpml.org/FpML-5/transparency");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-12 pre-trade view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_12_PRETRADE
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-12", "http://www.fpml.org/FpML-5/pretrade");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-12 legal view working draft.
+     * @since	TFP 1.11
+     */
+    public static SchemaRelease	R5_12_LEGAL
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-12", "http://www.fpml.org/FpML-5/legal");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-13 confirmation view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_13_CONFIRMATION
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/confirmation");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-13 reporting view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_13_REPORTING
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/reporting");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-13 record keeping view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_13_RECORDKEEPING
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/recordkeeping");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-13 transparency view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_13_TRANSPARENCY
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/transparency");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-13 pre-trade view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_13_PRETRADE
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/pretrade");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-13 legal view working draft.
+     * @since	TFP 1.11
+     */
+    public static SchemaRelease	R5_13_LEGAL
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/legal");
+
+    /**
 	 * A <CODE>Conversion</CODE> instance configured for FpML 1-0 to 2-0
 	 * transformation. The specific changes needed (other than basic DOCTYPE
 	 * changes) are:
@@ -707,22 +803,22 @@ public final class Releases
 	 * <UL>
 	 * <LI>The FpML XML schema namespace URI is updated.</LI>
 	 * </UL>
-	 * @since	TFP 1.6
+	 * @since TFP 1.3
 	 */
 	public static final Conversion R4_6__R4_7
-		= new Conversions.R4_6__R4_7 ();
-	
+		= new Conversions.R4_6__R4_7();
+
 	/**
 	 * A <CODE>Conversion</CODE> instance configured for FpML 4-7 to 4-8
 	 * transformation. The specific changes needed are:
 	 * <UL>
 	 * <LI>The FpML XML schema namespace URI is updated.</LI>
 	 * </UL>
-	 * @since	TFP 1.6
+	 * @since TFP 1.3
 	 */
 	public static final Conversion R4_7__R4_8
-		= new Conversions.R4_7__R4_8 ();
-	
+		= new Conversions.R4_7__R4_8();
+
 	/**
 	 * A <CODE>Conversion</CODE> instance configured for FpML 4-8 to 4-9
 	 * transformation. The specific changes needed are:
@@ -742,8 +838,8 @@ public final class Releases
 	 * </UL>
 	 * @since	TFP 1.7
 	 */
-	public static final Conversion R4_9__R5_0_CONFIRMATION
-		= new Conversions.R4_9__R5_0_CONFIRMATION ();
+	public static final Conversion R4_9__R4_10
+		= new Conversions.R4_9__R4_10 ();
 	
 	/**
 	 * A <CODE>Conversion</CODE> instance configured for FpML 4-9 to 5-0
@@ -753,8 +849,8 @@ public final class Releases
 	 * </UL>
 	 * @since	TFP 1.7
 	 */
-	public static final Conversion R4_9__R5_0_REPORTING
-		= new Conversions.R4_9__R5_0_REPORTING ();
+	public static final Conversion R4_10__R5_0_CONFIRMATION
+		= new Conversions.R4_10__R5_0_CONFIRMATION ();
 	
 	/**
 	 * A <CODE>Conversion</CODE> instance configured for FpML 5-0 to 5-1
@@ -799,7 +895,63 @@ public final class Releases
 	 */
 	public static final Conversion R5_3__R5_4_CONFIRMATION
 		= new Conversions.R5_3__R5_4_CONFIRMATION ();
-		
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-4 to 5-5
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_4__R5_5_CONFIRMATION
+		= new Conversions.R5_4__R5_5_CONFIRMATION ();
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-5 to 5-6
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_5__R5_6_CONFIRMATION
+		= new Conversions.R5_5__R5_6_CONFIRMATION ();
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-6 to 5-7
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_6__R5_7_CONFIRMATION
+		= new Conversions.R5_6__R5_7_CONFIRMATION ();
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-7 to 5-8
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_7__R5_8_CONFIRMATION
+		= new Conversions.R5_7__R5_8_CONFIRMATION ();
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-8 to 5-9
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_8__R5_9_CONFIRMATION
+		= new Conversions.R5_8__R5_9_CONFIRMATION ();
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-9 to 5-10
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_9__R5_10_CONFIRMATION
+		= new Conversions.R5_9__R5_10_CONFIRMATION ();
+
+	/**
+	 * A <CODE>Conversion</CODE> instance configured for FpML 5-10 to 5-11
+	 * confirmation view transformation.
+	 */
+	public static final Conversion R5_10__R5_11_CONFIRMATION
+		= new Conversions.R5_10__R5_11_CONFIRMATION ();
+
+    /**
+     * A <CODE>Conversion</CODE> instance configured for FpML 5-10 to 5-11
+     * confirmation view transformation.
+     */
+    public static final Conversion R5_11__R5_12_CONFIRMATION
+            = new Conversions.R5_11__R5_12_CONFIRMATION ();
+
 	/**
 	 * Examines the provided <CODE>Document</CODE> to determine the associated
 	 * FpML <CODE>Release</CODE> instance.
@@ -917,7 +1069,7 @@ public final class Releases
 					return (target);
 			}
 		}
-		
+
 		// Otherwise no possible release
 		return (null);
 	}
@@ -976,3 +1128,4 @@ public final class Releases
 		return ((index != -1) ? uri.substring (index + 1) : null);
 	}
 }
+

@@ -1,0 +1,23 @@
+javac : C:\Users\gpandey\OneDrive - ISDA\Documents\Projects\FpML\fpml-toolkit-java\src-fpml\com\handcoded\fpml\Conversions.java:1705: error: class R4_4__R4_5 is already defined in class Conversions
+At line:1 char:1
++ javac -cp "lib\xml-apis.jar;lib\xercesImpl.jar" -d build\classes @bui ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\gpande...ass Conversions:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+	public static class R4_4__R4_5 extends DirectConversion {
+	              ^
+C:\Users\gpandey\OneDrive - ISDA\Documents\Projects\FpML\fpml-toolkit-java\src-fpml\com\handcoded\fpml\validation\LoanRules.java:1952: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                                getDisplayName(), String.format("Child event identifier of %s not found corresponding event within the notification", null));
+                                                                                                                                                      ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+C:\Users\gpandey\OneDrive - ISDA\Documents\Projects\FpML\fpml-toolkit-java\src-fpml\com\handcoded\fpml\validation\ReferenceRules.java:106: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+	public static final Rule	RULE05
+	                        	^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects\FpML\fpml-toolkit-java\src-coreext\com\handcoded\view\View.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 error
+2 warnings

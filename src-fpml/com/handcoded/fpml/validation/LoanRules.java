@@ -1949,7 +1949,7 @@ public final class LoanRules extends FpMLRuleSet
                     if (!found) {
                         errorHandler.error("305", null,
                                 "If there are childEventIdentifier elements included, then there must be a corresponding event for each identifier within the notification.",
-                                getDisplayName(), String.format("Child event identifier of %s not found corresponding event within the notification", null));
+                                getDisplayName(), String.format("Child event identifier of %s not found corresponding event within the notification"));
                         result = false;
                     }
                 }
