@@ -13,6 +13,7 @@
 
 package com.handcoded.framework;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
@@ -142,9 +143,12 @@ public abstract class Application extends Process
 			}
 			
 			// Or a local file
-			stream = new FileInputStream (name);
+			File   localFile = new File (name);
+			stream = new FileInputStream (localFile);
 			source = new InputSource (stream);
-			source.setSystemId (name);
+			// Use an absolute file: URI so that XInclude hrefs inside
+			// the document can be resolved correctly regardless of CWD.
+			source.setSystemId (localFile.toURI ().toString ());
 			
 			return (source);
 		}

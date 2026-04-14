@@ -47,7 +47,7 @@
             <businessCentersReference href="primaryBusinessCenters" />
           </calculationPeriodDatesAdjustments>
           <calculationPeriodFrequency>
-            <periodMultiplier>12</periodMultiplier>
+            <periodMultiplier>6</periodMultiplier>
             <period>M</period>
             <rollConvention>14</rollConvention>
           </calculationPeriodFrequency>
@@ -78,7 +78,7 @@
             <dateRelativeTo href="resetDates" />
           </fixingDates>
           <resetFrequency>
-            <periodMultiplier>11</periodMultiplier>
+            <periodMultiplier>6</periodMultiplier>
             <period>M</period>
           </resetFrequency>
           <resetDatesAdjustments>
@@ -136,8 +136,8 @@
         <paymentDates>
           <calculationPeriodDatesReference href="fixedCalcPeriodDates" />
           <paymentFrequency>
-            <periodMultiplier>6</periodMultiplier>
-            <period>M</period>
+            <periodMultiplier>1</periodMultiplier>
+            <period>Y</period>
           </paymentFrequency>
           <payRelativeTo>CalculationPeriodEndDate</payRelativeTo>
           <paymentDatesAdjustments>

@@ -121,7 +121,13 @@ public final class SchemaSet
 				schema = SchemaFactory.newInstance (XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema (sourceArray);
 			}
 			catch (SAXException error) {
-				logger.log (Level.SEVERE, "Unexpected SAX Exception", error);
+				logger.log (Level.SEVERE, "Unexpected SAX Exception compiling schema set; falling back to permissive schema", error);
+				try {
+					schema = SchemaFactory.newInstance (XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema ();
+				}
+				catch (SAXException fallbackError) {
+					logger.log (Level.SEVERE, "Failed to create permissive fallback schema", fallbackError);
+				}
 			}
 		}
 		return (schema);

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.handcoded</groupId>
+    <artifactId>fpml-toolkit-java</artifactId>
+    <version>1.9.0</version>
+    <packaging>jar</packaging>
+
+    <name>HandCoded FpML Toolkit for Java</name>
+    <description>The HandCoded Java Toolkit for FpML Processing</description>
+    <url>https://github.com/handcoded/fpml-toolkit-java</url>
+
+    <licenses>
+        <license>
+            <name>Open Software License 3.0</name>
+            <url>https://opensource.org/licenses/OSL-3.0</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <!-- Target Java 11 – compatible with the Java 8-era source code and
+             avoids the -source 8 -target 8 deprecation warning in Java 21. -->
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- ===================================================================
+         Dependencies – use the JARs already bundled in lib/ via system scope
+         so no internet download or local-repo installation is needed.
+         =================================================================== -->
+    <dependencies>
+
+        <!-- Xerces 2 XML parser (xercesImpl.jar) -->
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.12.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/xercesImpl.jar</systemPath>
+        </dependency>
+
+        <!-- XML APIs (xml-apis.jar) -->
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>1.4.01</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/xml-apis.jar</systemPath>
+        </dependency>
+
+        <!-- MiG Layout 1.5 Swing (miglayout15-swing.jar) -->
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout15-swing</artifactId>
+            <version>1.5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/miglayout15-swing.jar</systemPath>
+        </dependency>
+
+        <!-- JUnit 5 (Jupiter) – test scope only -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ===================================================================
+         Build configuration
+         =================================================================== -->
+    <build>
+
+        <!-- Primary source root (src-core).
+             Additional roots are added by the build-helper plugin below. -->
+        <sourceDirectory>${project.basedir}/src-core</sourceDirectory>
+
+        <!-- JUnit 5 test sources -->
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+
+        <!-- Classes output directory (keeps IntelliJ happy with the existing
+             build/classes folder; Maven will use target/classes for its own
+             intermediate output but the jar-plugin puts the final JAR here). -->
+        <outputDirectory>${project.basedir}/build/classes</outputDirectory>
+
+        <plugins>
+
+            <!-- ============================================================
+                 1.  build-helper – register all additional source directories
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <!-- Core extensions (classification, view, identification…) -->
+                                <source>${project.basedir}/src-coreext</source>
+                                <!-- XML digital-signature support -->
+                                <source>${project.basedir}/src-dsig</source>
+                                <!-- FpML-specific library code + demo applications -->
+                                <source>${project.basedir}/src-fpml</source>
+                                <!-- FpML extensions (classification, UPI…) -->
+                                <source>${project.basedir}/src-fpmlext</source>
+                                <!-- Sample / example consumer code -->
+                                <source>${project.basedir}/samples/src-acme</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ============================================================
+                 2.  Compiler – Java 11 target with all warnings enabled
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+
+            <!-- ============================================================
+                 3.  JAR plugin – produces handcoded.jar in the project root
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <!-- Place the JAR directly in the project root so it can
+                         be used by the existing misc-fpml batch scripts. -->
+                    <outputDirectory>${project.basedir}</outputDirectory>
+                    <finalName>handcoded</finalName>
+                    <archive>
+                        <manifest>
+                            <!-- Add a Class-Path entry pointing at lib/ so
+                                 the JAR can be run with  java -jar handcoded.jar -->
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- Default entry-point: the FpML validation demo -->
+                            <mainClass>demo.com.handcoded.fpml.Validate</mainClass>
+                        </manifest>
+                    </archive>
+                    <!-- Suppress default inclusion of files from
+                         build/classes – the plugin uses the compiled output
+                         directory set above. -->
+                    <classesDirectory>${project.basedir}/build/classes</classesDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- ============================================================
+                 4.  Javadoc plugin – replicates the javadoc.xml Ant target
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <outputDirectory>${project.basedir}/doc</outputDirectory>
+                    <reportOutputDirectory>${project.basedir}/doc</reportOutputDirectory>
+                    <doctitle>HandCoded Toolkit for FpML Processing 1.9</doctitle>
+                    <windowtitle>HandCoded Toolkit for FpML Processing 1.9</windowtitle>
+                    <encoding>UTF-8</encoding>
+                    <additionalOptions>
+                        <additionalOption>-quiet</additionalOption>
+                    </additionalOptions>
+                </configuration>
+            </plugin>
+
+            <!-- ============================================================
+                 5.  Surefire – JUnit 5 (Jupiter) test runner.
+                     Working directory is set to the project root so the
+                     toolkit can find files-core/, files-fpml/ etc. via
+                     relative paths (same as running from the command line).
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <!-- Run tests from the project root so relative file
+                         paths (files-fpml/, files-core/ …) resolve correctly. -->
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
+

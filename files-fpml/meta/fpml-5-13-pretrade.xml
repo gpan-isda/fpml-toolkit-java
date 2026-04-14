@@ -112,7 +112,7 @@
     <rootElement>verificationStatusNotification</rootElement>
     <rootElement>warrant</rootElement>
     <import>files-fpml/meta/dsig-1-0.xml</import>
-    <fpml:schemes>files-fpml/data/schemes5-13.xml</fpml:schemes>
+    <fpml:schemes>files-fpml/data/schemes5-13.xml</fpml:schemes>`n    <fpml:schemes>files-fpml/data/additionalDefinitions.xml</fpml:schemes>
     <fpml:schemeDefault>
         <fpml:attribute>accountTypeScheme</fpml:attribute>
         <fpml:schemeUri>http://www.fpml.org/coding-scheme/account-type</fpml:schemeUri>

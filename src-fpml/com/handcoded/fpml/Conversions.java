@@ -1,7 +1,8 @@
-﻿package com.handcoded.fpml;
+package com.handcoded.fpml;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -186,9 +187,16 @@ public final class Conversions {
         String resolved = resolveTargetRootName(targetRelease, oldRoot);
         Document target = createTargetDocument(targetRelease, resolved);
         Element newRoot = (target == null) ? null : target.getDocumentElement();
-        String oldType = (oldRoot == null) ? null : oldRoot.getAttributeNS(Schema.INSTANCE_URL, "type");
-        String newType = (newRoot == null) ? null : newRoot.getAttributeNS(Schema.INSTANCE_URL, "type");
-        if (oldType != null && oldType.length() > 0 && (newType == null || newType.length() == 0) && newRoot != null)
+        String oldType    = (oldRoot == null) ? null : oldRoot.getAttributeNS(Schema.INSTANCE_URL, "type");
+        String newType    = (newRoot == null) ? null : newRoot.getAttributeNS(Schema.INSTANCE_URL, "type");
+        String newRootName = (newRoot == null) ? null : newRoot.getLocalName();
+        // Only propagate xsi:type when the new root is still the legacy 4.x "FpML" wrapper element.
+        // When the root name changed (e.g. FpML → dataDocument at the 4.x→5.x boundary) the type
+        // is already expressed by the element name itself; copying xsi:type would be incorrect.
+        if (oldType != null && oldType.length() > 0
+                && (newType == null || newType.length() == 0)
+                && newRoot != null
+                && "FpML".equals(newRootName))
             newRoot.setAttributeNS(Schema.INSTANCE_URL, "xsi:type", oldType);
         return target;
     }
@@ -621,6 +629,47 @@ public final class Conversions {
         String getQuantoCurrencyBasis(Element context);
     }
 
+    // ==========================================================================================
+    // DroppingHelper — extends FxConversionHelper to carry a per-call dropped-field log.
+    // Implementations passed to R5_0_CONF__R4_10 receive a recordDropped() callback for
+    // each 5.x-only attribute that cannot be preserved in the 4.x target.
+    // ==========================================================================================
+
+    /**
+     * Extension of {@link FxConversionHelper} that receives notifications about
+     * fields dropped during a downgrade conversion (e.g. {@link R5_0_CONF__R4_10}).
+     *
+     * <p>Use {@link SimpleDroppedFieldCollector} for a plain list-backed implementation.</p>
+     */
+    public interface DroppingHelper extends FxConversionHelper {
+        /**
+         * Called once per dropped field/attribute.
+         *
+         * @param fieldDescription  A human-readable description of what was dropped,
+         *                          e.g. {@code "@fpmlVersion=5-0"}.
+         */
+        void recordDropped(String fieldDescription);
+    }
+
+    /**
+     * Minimal {@link DroppingHelper} implementation that collects dropped field
+     * descriptions into a {@link List}.  Delegates FX helper methods to a
+     * wrapped {@link DefaultHelper} (sentinel {@code "???"} values).
+     */
+    public static class SimpleDroppedFieldCollector implements DroppingHelper {
+        private final List<String> dropped = new ArrayList<>();
+        private final DefaultHelper fx     = new DefaultHelper();
+
+        @Override public void recordDropped(String d) { dropped.add(d); }
+        /** @return An unmodifiable snapshot of all recorded dropped fields. */
+        public List<String> getDroppedFields() { return java.util.Collections.unmodifiableList(dropped); }
+
+        @Override public String getReferenceCurrency(Element c)  { return fx.getReferenceCurrency(c); }
+        @Override public String getQuantoCurrency1(Element c)    { return fx.getQuantoCurrency1(c); }
+        @Override public String getQuantoCurrency2(Element c)    { return fx.getQuantoCurrency2(c); }
+        @Override public String getQuantoCurrencyBasis(Element c){ return fx.getQuantoCurrencyBasis(c); }
+    }
+
     /* -------------------------------------------------------------------------------------------------
      * R4_0 -> R4_1 (structural changes; delegates to shared transcribeEquityFx helper)
      * ------------------------------------------------------------------------------------------------- */
@@ -953,8 +1002,6 @@ public final class Conversions {
     // PassThroughConversion
     // A single reusable class for any namespace-only (structural no-op) conversion.
     // Both forward upgrades and reverse downgrades use this same implementation.
-    // The constructor automatically registers the instance in both source and target releases
-    // via the DirectConversion super-constructor.
     // ==========================================================================================
 
     /**
@@ -1056,11 +1103,62 @@ public final class Conversions {
     }
 
     // ==========================================================================================
-    // Auto-registered pass-through conversions â€“ reverse downgrades + missing multi-view chains
+    // R5_0_CONF__R4_10  — structural downgrade: 5.0 Confirmation → 4.10
+    //
+    // Drops 5.x-only root attributes (fpmlVersion) and re-stamps all elements with the
+    // 4.10 namespace.  Dropped attribute names are reported via DroppingHelper if the
+    // supplied Helper implements that interface.
+    // ==========================================================================================
+
+    /**
+     * Structural downgrade from FpML 5.0 Confirmation to FpML 4.10.
+     *
+     * <p>The 5.0 confirmation schema introduced the {@code fpmlVersion} attribute
+     * on the root element.  This conversion drops that attribute and re-stamps all
+     * elements with the 4.10 namespace.  Any additional 5.x-only root attributes
+     * encountered are also dropped and reported via {@link DroppingHelper}.</p>
+     */
+    public static class R5_0_CONF__R4_10 extends DirectConversion {
+        public R5_0_CONF__R4_10() { super(Releases.R5_0_CONFIRMATION, Releases.R4_10); }
+
+        @Override
+        public Document convert(Document source, Helper helper) throws ConversionException {
+            Element oldRoot = source.getDocumentElement();
+            Document target = createTargetDocument(getTargetRelease(), source);
+            Element newRoot = target.getDocumentElement();
+            String sourceNs = oldRoot.getNamespaceURI();
+            String targetNs  = newRoot.getNamespaceURI();
+
+            // Copy root attributes, dropping 5.x-only ones
+            NamedNodeMap attrs = oldRoot.getAttributes();
+            for (int i = 0; i < attrs.getLength(); i++) {
+                Attr a = (Attr) attrs.item(i);
+                String localName = a.getLocalName() != null ? a.getLocalName() : a.getName();
+                if ("fpmlVersion".equals(localName)) {
+                    // Record and drop — fpmlVersion has no 4.x counterpart
+                    if (helper instanceof DroppingHelper)
+                        ((DroppingHelper) helper).recordDropped("@fpmlVersion=" + a.getValue());
+                    continue;
+                }
+                String ans   = a.getNamespaceURI();
+                String aname = (a.getPrefix() != null && a.getLocalName() != null)
+                        ? a.getPrefix() + ":" + a.getLocalName() : a.getName();
+                if (ans != null) newRoot.setAttributeNS(ans, aname, a.getValue());
+                else             newRoot.setAttribute(aname, a.getValue());
+            }
+
+            // Deep-copy all child nodes with namespace replacement
+            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
+                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
+
+            return target;
+        }
+    }
+
+    // ==========================================================================================
+    // Auto-registered pass-through conversions — reverse downgrades + missing multi-view chains
     //
     // These are registered automatically when this class loads (static field initialisation).
-    // They use PassThroughConversion directly rather than named subclasses because they are
-    // new in this revision and no existing code holds direct class references to them.
     // ==========================================================================================
 
     // --- 4.x reverse (downgrade) ---
@@ -1073,8 +1171,8 @@ public final class Conversions {
     static final PassThroughConversion R4_9_r_R4_8  = new PassThroughConversion(Releases.R4_9,  Releases.R4_8);
     static final PassThroughConversion R4_10_r_R4_9 = new PassThroughConversion(Releases.R4_10, Releases.R4_9);
 
-    // --- 5.0 â†” 4.10 reverse bridge ---
-    static final PassThroughConversion R5_0_CONF_r_R4_10 = new PassThroughConversion(Releases.R5_0_CONFIRMATION, Releases.R4_10);
+    // --- 5.0 ↔ 4.10 structural boundary (forward pass-through; reverse handled by R5_0_CONF__R4_10) ---
+    static final R5_0_CONF__R4_10 R5_0_CONF_r_R4_10 = new R5_0_CONF__R4_10();
 
     // --- 5.x CONFIRMATION reverse chain ---
     static final PassThroughConversion R5_1_CONF_r_R5_0  = new PassThroughConversion(Releases.R5_1_CONFIRMATION,  Releases.R5_0_CONFIRMATION);
@@ -1091,7 +1189,7 @@ public final class Conversions {
     static final PassThroughConversion R5_12_CONF_r_R5_11= new PassThroughConversion(Releases.R5_12_CONFIRMATION, Releases.R5_11_CONFIRMATION);
     static final PassThroughConversion R5_13_CONF_r_R5_12= new PassThroughConversion(Releases.R5_13_CONFIRMATION, Releases.R5_12_CONFIRMATION);
 
-    // --- 5.x REPORTING forward chain (1â†’2 registered by named class above; gaps below) ---
+    // --- 5.x REPORTING forward chain (1→2 registered by named class above; gaps below) ---
     static final PassThroughConversion R5_1_REP_f_R5_2  = new PassThroughConversion(Releases.R5_1_REPORTING, Releases.R5_2_REPORTING);
     static final PassThroughConversion R5_2_REP_f_R5_3  = new PassThroughConversion(Releases.R5_2_REPORTING, Releases.R5_3_REPORTING);
     static final PassThroughConversion R5_3_REP_f_R5_4  = new PassThroughConversion(Releases.R5_3_REPORTING, Releases.R5_4_REPORTING);

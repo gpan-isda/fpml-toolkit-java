@@ -57,9 +57,6 @@ public final class TestConvertUnit
             targetVersion = "5-1"; // target to convert to
         }
 
-        // Ensure R5 incremental conversions are registered (defensive)
-        ensureR5ConversionRegistration();
-
         System.out.println ("Example: " + example);
         System.out.println ("Target version: " + targetVersion);
 
@@ -381,25 +378,6 @@ public final class TestConvertUnit
             }
         }
         return null;
-    }
-
-    private static void ensureR5ConversionRegistration() {
-        try {
-            // instantiate the known R5 confirmation conversions to ensure they are registered
-            new Conversions.R5_4__R5_5_CONFIRMATION();
-            new Conversions.R5_5__R5_6_CONFIRMATION();
-            new Conversions.R5_6__R5_7_CONFIRMATION();
-            new Conversions.R5_7__R5_8_CONFIRMATION();
-            new Conversions.R5_8__R5_9_CONFIRMATION();
-            new Conversions.R5_9__R5_10_CONFIRMATION();
-            new Conversions.R5_10__R5_11_CONFIRMATION();
-            new Conversions.R5_11__R5_12_CONFIRMATION();
-            new Conversions.R5_12__R5_13_CONFIRMATION();
-        }
-        catch (Throwable t) {
-            // ignore; this is defensive — if they are already registered this may duplicate or do nothing
-            System.err.println("Warning: could not instantiate some R5 conversion classes: " + t.getMessage());
-        }
     }
 
     public static void printXml(Document doc) {

@@ -67,7 +67,9 @@ public final class RuleSet extends Validator
 	public static RuleSet forName (final String name)
 	{
 		synchronized (extent) {
-			return (extent.computeIfAbsent (name, key -> new RuleSet (name)));
+			RuleSet result = extent.get (name);
+			if (result == null) result = new RuleSet (name); // constructor registers in extent
+			return (result);
 		}
 	}
 	
@@ -177,7 +179,7 @@ public final class RuleSet extends Validator
 		for (Rule rule : rules.values ()) {
 			Precondition 	condition = rule.getPrecondition ();
 			
-			if (cache.computeIfAbsent (condition, pre -> pre.evaluate (nodeIndex, cache)).booleanValue ())
+			if (Precondition.evalCached (condition, nodeIndex, cache))
 				result &= rule.validate (nodeIndex, errorHandler);
 		}
 			

@@ -117,6 +117,24 @@ public final class ConversionDeltaProfile {
     public String getToView()       { return toView; }
 
     /**
+     * Returns the name of the {@link com.handcoded.validation.RuleSet} to apply
+     * to the <em>source</em> document before conversion (from the {@code <rules>}
+     * section of the profile).
+     *
+     * @return The inbound rule-set name, or {@code null} if not declared.
+     */
+    public String getInboundRuleSetName()  { return inboundRuleSetName; }
+
+    /**
+     * Returns the name of the {@link com.handcoded.validation.RuleSet} to apply
+     * to the <em>converted</em> document after enrichment (from the {@code <rules>}
+     * section of the profile).
+     *
+     * @return The outbound rule-set name, or {@code null} if not declared.
+     */
+    public String getOutboundRuleSetName() { return outboundRuleSetName; }
+
+    /**
      * Returns the helper default value for the given key.
      *
      * @param  key  One of {@code referenceCurrency}, {@code quantoCurrency1},
@@ -183,19 +201,24 @@ public final class ConversionDeltaProfile {
     private final String               toVersion;
     private final String               fromView;
     private final String               toView;
+    private final String               inboundRuleSetName;
+    private final String               outboundRuleSetName;
     private final Map<String, String>  helperValues;
     private final List<EnrichAction>   enrichActions;
 
     private ConversionDeltaProfile(String fromVersion, String toVersion,
                                    String fromView, String toView,
+                                   String inboundRuleSetName, String outboundRuleSetName,
                                    Map<String, String> helperValues,
                                    List<EnrichAction> enrichActions) {
-        this.fromVersion   = fromVersion;
-        this.toVersion     = toVersion;
-        this.fromView      = fromView;
-        this.toView        = toView;
-        this.helperValues  = Collections.unmodifiableMap(helperValues);
-        this.enrichActions = Collections.unmodifiableList(enrichActions);
+        this.fromVersion        = fromVersion;
+        this.toVersion          = toVersion;
+        this.fromView           = fromView;
+        this.toView             = toView;
+        this.inboundRuleSetName  = inboundRuleSetName;
+        this.outboundRuleSetName = outboundRuleSetName;
+        this.helperValues       = Collections.unmodifiableMap(helperValues);
+        this.enrichActions      = Collections.unmodifiableList(enrichActions);
     }
 
     private static ConversionDeltaProfile parse(Document doc) {
@@ -207,6 +230,8 @@ public final class ConversionDeltaProfile {
 
         Map<String, String> helperValues  = new LinkedHashMap<String, String>();
         List<EnrichAction>  enrichActions = new ArrayList<EnrichAction>();
+        String inboundRuleSetName  = null;
+        String outboundRuleSetName = null;
 
         // Parse <helper-values>
         NodeList hvList = root.getElementsByTagNameNS(NS, "helper-values");
@@ -244,8 +269,20 @@ public final class ConversionDeltaProfile {
             }
         }
 
+        // Parse <rules>
+        NodeList rulesList = root.getElementsByTagNameNS(NS, "rules");
+        if (rulesList.getLength() > 0) {
+            Element rulesElem = (Element) rulesList.item(0);
+            NodeList inboundList = rulesElem.getElementsByTagNameNS(NS, "inbound");
+            if (inboundList.getLength() > 0)
+                inboundRuleSetName = nullIfEmpty(((Element) inboundList.item(0)).getAttribute("name"));
+            NodeList outboundList = rulesElem.getElementsByTagNameNS(NS, "outbound");
+            if (outboundList.getLength() > 0)
+                outboundRuleSetName = nullIfEmpty(((Element) outboundList.item(0)).getAttribute("name"));
+        }
+
         return new ConversionDeltaProfile(fromVersion, toVersion, fromView, toView,
-                helperValues, enrichActions);
+                inboundRuleSetName, outboundRuleSetName, helperValues, enrichActions);
     }
 
     private static DocumentBuilder newBuilder() throws ParserConfigurationException {

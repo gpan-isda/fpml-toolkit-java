@@ -10,7 +10,15 @@ import com.handcoded.meta.Conversion;
 import com.handcoded.meta.ConversionException;
 import com.handcoded.meta.Release;
 import com.handcoded.meta.Specification;
+import com.handcoded.validation.RuleSet;
+import com.handcoded.validation.ValidationErrorHandler;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Orchestrates the conversion of an FpML document from its detected source
@@ -21,36 +29,38 @@ import org.w3c.dom.Document;
  * // Build a reusable pipeline (no profile — pure namespace upgrade)
  * FpMLConversionPipeline pipeline = new FpMLConversionPipeline.Builder("5-13").build();
  *
- * // With a delta profile for helper values / post-conversion enrichment
+ * // With a delta profile for helper values / enrichment / declared rule sets
  * ConversionDeltaProfile profile = ConversionDeltaProfile.load(new File("my-profile.xml"));
  * FpMLConversionPipeline pipeline = new FpMLConversionPipeline.Builder("5-13")
  *         .withProfile(profile)
+ *         .failOnInboundErrors(true)
+ *         .failOnOutboundErrors(true)
+ *         .build();
+ *
+ * // Builder-supplied RuleSets override profile-declared names
+ * FpMLConversionPipeline pipeline = new FpMLConversionPipeline.Builder("5-13")
+ *         .withProfile(profile)
+ *         .withInboundRules(RuleSet.forName("AllRules"))
+ *         .withOutboundRules(RuleSet.forName("AllRules"))
  *         .build();
  *
  * // Convert a parsed document
  * PipelineResult result = pipeline.convert(document);
  * if (result.isSuccess()) {
  *     Document converted = result.getDocument();
- * } else {
- *     System.err.println(result.getErrors());
+ *     if (result.hasValidationErrors()) { ... }
+ *     if (!result.getDroppedFields().isEmpty()) { ... }
  * }
  * }</pre>
  *
- * <h3>Design notes</h3>
- * <ul>
- *   <li>The pipeline detects the source release from the document's namespace
- *       and {@code fpmlVersion} / {@code version} attribute.</li>
- *   <li>The target release is resolved by matching the requested target version
- *       and the source document's view (confirmation, reporting, …) using
- *       {@link Releases#compatibleRelease(Document, String)}.</li>
- *   <li>The conversion path is discovered via the framework's
- *       {@link Conversion#conversionFor(Release, Release)} depth-first search,
- *       which traverses the registered {@link com.handcoded.meta.DirectConversion}
- *       graph (including all the pass-through conversions registered by
- *       {@link Conversions}).</li>
- *   <li>After the structural conversion, any enrichment actions from the delta
- *       profile are applied by {@link PostConversionEnricher}.</li>
- * </ul>
+ * <h3>Validation resolution order</h3>
+ * <ol>
+ *   <li>Builder-supplied {@link RuleSet} (via {@link Builder#withInboundRules} /
+ *       {@link Builder#withOutboundRules}) — highest precedence.</li>
+ *   <li>Profile-declared rule set names (from {@code <rules>} in the delta profile XML),
+ *       resolved via {@link RuleSet#forName(String)}.</li>
+ *   <li>No validation — if neither is configured validation is silently skipped.</li>
+ * </ol>
  *
  * <p>Instances are thread-safe once constructed (the {@code Builder} is not).</p>
  *
@@ -58,6 +68,7 @@ import org.w3c.dom.Document;
  * @see    Builder
  * @see    PipelineResult
  * @see    ConversionDeltaProfile
+ * @see    ValidationRuleLoader
  * @since  TFP 1.x
  */
 public final class FpMLConversionPipeline {
@@ -71,9 +82,13 @@ public final class FpMLConversionPipeline {
      */
     public static final class Builder {
 
-        private final String             targetVersion;
+        private final String              targetVersion;
         private       ConversionDeltaProfile profile;
-        private       boolean            failFastOnNullRelease = true;
+        private       boolean             failFastOnNullRelease  = true;
+        private       boolean             failOnInboundErrors    = false;
+        private       boolean             failOnOutboundErrors   = false;
+        private       RuleSet             inboundRules;
+        private       RuleSet             outboundRules;
 
         /**
          * Starts building a pipeline that targets the given FpML version.
@@ -87,11 +102,10 @@ public final class FpMLConversionPipeline {
         }
 
         /**
-         * Attaches a delta profile.  The profile supplies helper values for
-         * structural conversions and enrichment actions for post-processing.
-         *
-         * @param profile  The profile, or {@code null} to use defaults.
-         * @return This builder (fluent).
+         * Attaches a delta profile.  The profile supplies helper values for structural
+         * conversions, enrichment actions for post-processing, and optionally declares
+         * inbound/outbound rule set names (overridden by {@link #withInboundRules} /
+         * {@link #withOutboundRules} if also supplied).
          */
         public Builder withProfile(ConversionDeltaProfile profile) {
             this.profile = profile;
@@ -99,13 +113,60 @@ public final class FpMLConversionPipeline {
         }
 
         /**
-         * Controls whether {@link #convert(Document)} returns a failure result
-         * immediately when the source release cannot be detected.  Default
-         * {@code true}.
+         * Supplies the {@link RuleSet} to validate the <em>source</em> document before
+         * conversion.  Takes precedence over any rule set name declared in the profile.
+         */
+        public Builder withInboundRules(RuleSet rules) {
+            this.inboundRules = rules;
+            return this;
+        }
+
+        /**
+         * Supplies the {@link RuleSet} to validate the <em>converted</em> document after
+         * enrichment.  Takes precedence over any rule set name declared in the profile.
+         */
+        public Builder withOutboundRules(RuleSet rules) {
+            this.outboundRules = rules;
+            return this;
+        }
+
+        /**
+         * Convenience: load additional rule files from {@code rulesDir} via
+         * {@link ValidationRuleLoader#loadFrom(Path)} and merge them into the global
+         * {@link RuleSet} registry so that profile-declared names resolve correctly.
          *
-         * @param value  {@code true} to fail fast; {@code false} to attempt
-         *               conversion anyway.
-         * @return This builder (fluent).
+         * @param rulesDir  Path to a directory containing {@code business-rules.xml}-compatible
+         *                  rule definition files.
+         */
+        public Builder withValidationRulesPath(Path rulesDir) {
+            ValidationRuleLoader.loadFrom(rulesDir);
+            return this;
+        }
+
+        /**
+         * When {@code true}, a non-empty inbound error list causes
+         * {@link FpMLConversionPipeline#convert(Document)} to return a failure result
+         * immediately, without proceeding to conversion.  Default {@code false}.
+         */
+        public Builder failOnInboundErrors(boolean value) {
+            this.failOnInboundErrors = value;
+            return this;
+        }
+
+        /**
+         * When {@code true}, a non-empty outbound error list causes
+         * {@link FpMLConversionPipeline#convert(Document)} to return a failure result.
+         * Default {@code false}.
+         */
+        public Builder failOnOutboundErrors(boolean value) {
+            this.failOnOutboundErrors = value;
+            return this;
+        }
+
+        /**
+         * Controls whether {@link FpMLConversionPipeline#convert(Document)} returns a
+         * failure result immediately when the source release cannot be detected.
+         * Default {@code true}.
          */
         public Builder failFastOnUnknownSource(boolean value) {
             this.failFastOnNullRelease = value;
@@ -114,7 +175,9 @@ public final class FpMLConversionPipeline {
 
         /** @return A configured {@link FpMLConversionPipeline}. */
         public FpMLConversionPipeline build() {
-            return new FpMLConversionPipeline(targetVersion, profile, failFastOnNullRelease);
+            return new FpMLConversionPipeline(targetVersion, profile,
+                    failFastOnNullRelease, failOnInboundErrors, failOnOutboundErrors,
+                    inboundRules, outboundRules);
         }
     }
 
@@ -125,17 +188,17 @@ public final class FpMLConversionPipeline {
     /**
      * Converts the given document to the pipeline's target version.
      *
-     * <p>The method:</p>
+     * <p>Execution order:</p>
      * <ol>
-     *   <li>Detects the source {@link Release} from the document.</li>
-     *   <li>Resolves the target {@link Release} compatible with the source's view.</li>
-     *   <li>Looks up (or traverses) the conversion path in the framework registry.</li>
-     *   <li>Applies the conversion with a {@link ConfigurableHelper} backed by the
-     *       delta profile (if any).</li>
-     *   <li>Runs {@link PostConversionEnricher} to apply any configured enrichment.</li>
+     *   <li>Detect source {@link Release}.</li>
+     *   <li>Resolve target {@link Release} compatible with the source's view.</li>
+     *   <li>Optionally validate the source document (inbound rule set).</li>
+     *   <li>Find and apply the conversion path, collecting dropped fields.</li>
+     *   <li>Run {@link PostConversionEnricher}.</li>
+     *   <li>Optionally validate the converted document (outbound rule set).</li>
      * </ol>
      *
-     * @param  document  The source FpML document to convert.  Must not be {@code null}.
+     * @param  document  The source FpML document.  Must not be {@code null}.
      * @return A {@link PipelineResult} — never {@code null}.
      */
     public PipelineResult convert(Document document) {
@@ -155,41 +218,85 @@ public final class FpMLConversionPipeline {
                     "No compatible target release found for version '" + targetVersion
                     + "' given source release " + (source != null ? source.getVersion() : "?"));
 
+        // 3. Inbound validation (advisory or blocking)
+        List<String> inboundErrors = Collections.emptyList();
+        RuleSet inbound = resolveInboundRules();
+        if (inbound != null) {
+            CollectingErrorHandler handler = new CollectingErrorHandler();
+            inbound.validate(document, handler);
+            inboundErrors = handler.getMessages();
+            if (failOnInboundErrors && !inboundErrors.isEmpty())
+                return PipelineResult.full(false, source, target, null,
+                        Collections.singletonList("Inbound validation failed"),
+                        inboundErrors,
+                        Collections.<String>emptyList(),
+                        Collections.<String>emptyList());
+        }
+
         // Short-circuit: already at the target
         if (source != null && source.equals(target))
-            return PipelineResult.success(source, target, document);
+            return PipelineResult.full(true, source, target, document,
+                    Collections.<String>emptyList(),
+                    inboundErrors,
+                    Collections.<String>emptyList(),
+                    Collections.<String>emptyList());
 
-        // 3. Find conversion path
+        // 4. Find conversion path
         Conversion conversion = (source != null)
                 ? Conversion.conversionFor(source, target)
                 : null;
-
         if (conversion == null)
-            return PipelineResult.failure(source, target,
-                    "No conversion path found from "
-                    + (source != null ? source.getVersion() : "?")
-                    + " to " + target.getVersion());
+            return PipelineResult.full(false, source, target, null,
+                    Collections.singletonList("No conversion path found from "
+                            + (source != null ? source.getVersion() : "?")
+                            + " to " + target.getVersion()),
+                    inboundErrors,
+                    Collections.<String>emptyList(),
+                    Collections.<String>emptyList());
 
-        // 4. Apply conversion
-        ConfigurableHelper helper = new ConfigurableHelper(profile);
+        // 4b. Apply conversion — use DroppingHelper to collect dropped fields
+        Conversions.SimpleDroppedFieldCollector collector =
+                new Conversions.SimpleDroppedFieldCollector();
+        ConfigurableHelper helper = new ConfigurableHelper(profile, collector);
         Document converted;
         try {
             converted = conversion.convert(document, helper);
         } catch (ConversionException e) {
-            return PipelineResult.failure(source, target,
-                    "Conversion failed: " + e.getMessage());
+            return PipelineResult.full(false, source, target, null,
+                    Collections.singletonList("Conversion failed: " + e.getMessage()),
+                    inboundErrors, Collections.<String>emptyList(),
+                    Collections.<String>emptyList());
         } catch (RuntimeException e) {
-            // DirectConversion wraps ConversionException in RuntimeException in some paths
             Throwable cause = e.getCause();
             String msg = (cause instanceof ConversionException)
                     ? cause.getMessage() : e.getMessage();
-            return PipelineResult.failure(source, target, "Conversion error: " + msg);
+            return PipelineResult.full(false, source, target, null,
+                    Collections.singletonList("Conversion error: " + msg),
+                    inboundErrors, Collections.<String>emptyList(),
+                    Collections.<String>emptyList());
         }
 
         // 5. Post-conversion enrichment
         PostConversionEnricher.enrich(converted, profile);
 
-        return PipelineResult.success(source, target, converted);
+        // 6. Outbound validation
+        List<String> outboundErrors = Collections.emptyList();
+        RuleSet outbound = resolveOutboundRules();
+        if (outbound != null) {
+            CollectingErrorHandler handler = new CollectingErrorHandler();
+            outbound.validate(converted, handler);
+            outboundErrors = handler.getMessages();
+            if (failOnOutboundErrors && !outboundErrors.isEmpty())
+                return PipelineResult.full(false, source, target, converted,
+                        Collections.singletonList("Outbound validation failed"),
+                        inboundErrors, outboundErrors,
+                        collector.getDroppedFields());
+        }
+
+        return PipelineResult.full(true, source, target, converted,
+                Collections.<String>emptyList(),
+                inboundErrors, outboundErrors,
+                collector.getDroppedFields());
     }
 
     // =========================================================================
@@ -199,11 +306,53 @@ public final class FpMLConversionPipeline {
     /** @return The target version string supplied at construction time. */
     public String getTargetVersion() { return targetVersion; }
 
-    /**
-     * @return The delta profile attached to this pipeline, or {@code null} if
-     *         none was provided.
-     */
+    /** @return The delta profile, or {@code null} if none. */
     public ConversionDeltaProfile getProfile() { return profile; }
+
+    // =========================================================================
+    // Private helpers
+    // =========================================================================
+
+    /**
+     * Resolves the inbound {@link RuleSet} to use: builder-supplied takes priority,
+     * then profile-declared name, then {@code null} (skip validation).
+     */
+    private RuleSet resolveInboundRules() {
+        if (inboundRules != null) return inboundRules;
+        if (profile != null && profile.getInboundRuleSetName() != null)
+            return RuleSet.forName(profile.getInboundRuleSetName());
+        return null;
+    }
+
+    /** Resolves the outbound {@link RuleSet}: same priority order as inbound. */
+    private RuleSet resolveOutboundRules() {
+        if (outboundRules != null) return outboundRules;
+        if (profile != null && profile.getOutboundRuleSetName() != null)
+            return RuleSet.forName(profile.getOutboundRuleSetName());
+        return null;
+    }
+
+    /**
+     * A {@link ValidationErrorHandler} that accumulates error messages into a list
+     * for later retrieval.  One instance is created per validation call so there is
+     * no shared mutable state between pipeline invocations.
+     */
+    private static final class CollectingErrorHandler implements ValidationErrorHandler {
+        private final List<String> messages = new ArrayList<>();
+
+        @Override
+        public void error(String code, Node context, String description,
+                          String ruleName, String additionalData) {
+            StringBuilder sb = new StringBuilder();
+            if (ruleName    != null) sb.append("[").append(ruleName).append("] ");
+            if (description != null) sb.append(description);
+            if (code        != null) sb.append(" (code=").append(code).append(")");
+            if (additionalData != null) sb.append(" [").append(additionalData).append("]");
+            messages.add(sb.toString());
+        }
+
+        List<String> getMessages() { return Collections.unmodifiableList(messages); }
+    }
 
     // =========================================================================
     // Private constructor
@@ -211,14 +360,25 @@ public final class FpMLConversionPipeline {
 
     private FpMLConversionPipeline(String targetVersion,
                                    ConversionDeltaProfile profile,
-                                   boolean failFastOnNullRelease) {
-        this.targetVersion          = targetVersion;
-        this.profile                = profile;
-        this.failFastOnNullRelease  = failFastOnNullRelease;
+                                   boolean failFastOnNullRelease,
+                                   boolean failOnInboundErrors,
+                                   boolean failOnOutboundErrors,
+                                   RuleSet inboundRules,
+                                   RuleSet outboundRules) {
+        this.targetVersion         = targetVersion;
+        this.profile               = profile;
+        this.failFastOnNullRelease = failFastOnNullRelease;
+        this.failOnInboundErrors   = failOnInboundErrors;
+        this.failOnOutboundErrors  = failOnOutboundErrors;
+        this.inboundRules          = inboundRules;
+        this.outboundRules         = outboundRules;
     }
 
     private final String                 targetVersion;
     private final ConversionDeltaProfile profile;
     private final boolean                failFastOnNullRelease;
+    private final boolean                failOnInboundErrors;
+    private final boolean                failOnOutboundErrors;
+    private final RuleSet                inboundRules;
+    private final RuleSet                outboundRules;
 }
-

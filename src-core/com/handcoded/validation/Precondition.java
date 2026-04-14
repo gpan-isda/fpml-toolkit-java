@@ -73,7 +73,7 @@ public abstract class Precondition
 			    @Override
 				public boolean evaluate (final NodeIndex nodeIndex, Map<Precondition, Boolean> cache)
 				{
-					return (true);
+					return (false);
 				}
 				
 				/**
@@ -195,6 +195,30 @@ public abstract class Precondition
 	public abstract boolean evaluate (final NodeIndex nodeIndex, Map<Precondition, Boolean> cache);
 
 	/**
+	 * Evaluates a <CODE>Precondition</CODE> using the supplied cache, storing
+	 * the result if not already present.  Unlike {@link Map#computeIfAbsent},
+	 * this helper does <em>not</em> throw {@link java.util.ConcurrentModificationException}
+	 * when the mapping function recursively modifies the same map, which was a
+	 * change introduced in Java 9.
+	 *
+	 * @param	pre			The <CODE>Precondition</CODE> to evaluate.
+	 * @param	nodeIndex	The <CODE>NodeIndex</CODE> of the document being validated.
+	 * @param	cache		The precondition result cache.
+	 * @return	The (possibly cached) boolean result.
+	 * @since	TFP 1.10
+	 */
+	protected static boolean evalCached (final Precondition pre,
+			final NodeIndex nodeIndex, final Map<Precondition, Boolean> cache)
+	{
+		Boolean val = cache.get (pre);
+		if (val == null) {
+			val = pre.evaluate (nodeIndex, cache);
+			cache.put (pre, val);
+		}
+		return val.booleanValue ();
+	}
+
+	/**
 	 * The <CODE>BinaryPrecondition</CODE> class records the left and right
 	 * hand side arguments for some binary logical operator.
 	 * 
@@ -283,8 +307,7 @@ public abstract class Precondition
 		 */
 		public boolean evaluate (final NodeIndex nodeIndex, Map<Precondition, Boolean> cache)
 		{
-			return (!cache.computeIfAbsent (pre,
-					pre -> pre.evaluate (nodeIndex, cache)).booleanValue ());
+			return (!evalCached (pre, nodeIndex, cache));
 		}
 
 		/**
@@ -327,12 +350,8 @@ public abstract class Precondition
 		 */
 		public boolean evaluate (final NodeIndex nodeIndex, Map<Precondition, Boolean> cache)
 		{
-			if (!cache.computeIfAbsent (lhs,
-					lhs -> lhs.evaluate (nodeIndex, cache)).booleanValue ()) return (false);
-				
-			if (!cache.computeIfAbsent (rhs,
-					rhs -> rhs.evaluate (nodeIndex, cache)).booleanValue ()) return (false);
-			
+			if (!evalCached (lhs, nodeIndex, cache)) return (false);
+			if (!evalCached (rhs, nodeIndex, cache)) return (false);
 			return (true);
 		}
 
@@ -376,11 +395,8 @@ public abstract class Precondition
 		 */
 		public boolean evaluate (NodeIndex nodeIndex, Map<Precondition, Boolean> cache)
 		{
-			if (cache.computeIfAbsent (lhs,
-					lhs -> lhs.evaluate (nodeIndex, cache)).booleanValue ()) return (true);
-			if (cache.computeIfAbsent (rhs,
-					rhs -> rhs.evaluate (nodeIndex, cache)).booleanValue ()) return (true);
-			
+			if (evalCached (lhs, nodeIndex, cache)) return (true);
+			if (evalCached (rhs, nodeIndex, cache)) return (true);
 			return (false);
 		}
 		

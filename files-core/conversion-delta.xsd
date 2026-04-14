@@ -35,6 +35,7 @@
       <xs:sequence>
         <xs:element name="helper-values" type="HelperValuesType" minOccurs="0"/>
         <xs:element name="enrich"        type="EnrichType"       minOccurs="0"/>
+        <xs:element name="rules"         type="RulesType"        minOccurs="0"/>
       </xs:sequence>
       <!-- Source release version, e.g. "4-1" -->
       <xs:attribute name="from" type="xs:string" use="required"/>
@@ -46,6 +47,28 @@
       <xs:attribute name="to-view"   type="xs:string"/>
     </xs:complexType>
   </xs:element>
+
+  <!-- ============================================================
+       Rules section
+       Declares the named RuleSet instances (resolved via
+       RuleSet.forName()) to use for inbound and outbound validation
+       inside FpMLConversionPipeline.  Both children are optional;
+       if absent the pipeline uses whatever rule sets were supplied
+       programmatically via the Builder, or skips validation.
+       ============================================================ -->
+  <xs:complexType name="RulesType">
+    <xs:sequence>
+      <!-- Name of the RuleSet applied to the source document before conversion. -->
+      <xs:element name="inbound"  type="RuleRefType" minOccurs="0"/>
+      <!-- Name of the RuleSet applied to the converted document after enrichment. -->
+      <xs:element name="outbound" type="RuleRefType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RuleRefType">
+    <!-- RuleSet name as registered with RuleSet.forName(), e.g. "AllRules". -->
+    <xs:attribute name="name" type="xs:string" use="required"/>
+  </xs:complexType>
 
   <!-- ============================================================
        Helper-values section

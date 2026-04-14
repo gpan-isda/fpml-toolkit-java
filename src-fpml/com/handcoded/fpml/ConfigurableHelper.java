@@ -12,9 +12,9 @@ import org.w3c.dom.Element;
  * A configurable {@link com.handcoded.meta.Helper} implementation for structural
  * FpML conversions that require caller-supplied currency values.
  *
- * <p>Implements {@link Conversions.FxConversionHelper} — the single shared interface
- * used by both the {@code R4_0→R4_1} and {@code R4_1→R4_2} structural conversion
- * steps, so one instance can be passed to either.</p>
+ * <p>Implements both {@link Conversions.FxConversionHelper} and
+ * {@link Conversions.DroppingHelper} so a single instance can be passed to any
+ * structural conversion step in the pipeline.</p>
  *
  * <p>Values are resolved in priority order:</p>
  * <ol>
@@ -22,26 +22,28 @@ import org.w3c.dom.Element;
  *   <li>The {@link DefaultHelper} fallback values (literal {@code "???"}).</li>
  * </ol>
  *
- * <p>Applications that need real currency values should provide a
- * {@link ConversionDeltaProfile} loaded from a delta-profile XML file, or
- * subclass and override individual methods.</p>
+ * <p>Dropped-field notifications are forwarded to an optional
+ * {@link Conversions.DroppingHelper} delegate (typically a
+ * {@link Conversions.SimpleDroppedFieldCollector}) supplied at construction time.</p>
  *
  * @author Andrew Jacobs / ISDA FpML Team
  * @see    ConversionDeltaProfile
  * @see    DefaultHelper
+ * @see    Conversions.DroppingHelper
  * @since  TFP 1.x
  */
-public class ConfigurableHelper implements Conversions.FxConversionHelper {
+public class ConfigurableHelper implements Conversions.DroppingHelper {
 
     // -------------------------------------------------------------------------
     // Construction
     // -------------------------------------------------------------------------
 
     /**
-     * Constructs a helper with no profile, equivalent to {@link DefaultHelper}.
+     * Constructs a helper with no profile and no dropping delegate,
+     * equivalent to {@link DefaultHelper}.
      */
     public ConfigurableHelper() {
-        this(null);
+        this(null, null);
     }
 
     /**
@@ -51,52 +53,64 @@ public class ConfigurableHelper implements Conversions.FxConversionHelper {
      *                 {@link DefaultHelper} fallbacks only.
      */
     public ConfigurableHelper(ConversionDeltaProfile profile) {
+        this(profile, null);
+    }
+
+    /**
+     * Constructs a helper that reads values from the supplied delta profile and
+     * forwards dropped-field notifications to the given delegate.
+     *
+     * @param profile   A {@link ConversionDeltaProfile}, or {@code null} for fallbacks.
+     * @param delegate  A {@link Conversions.DroppingHelper} that will receive
+     *                  {@link #recordDropped} calls, or {@code null} to discard them.
+     */
+    public ConfigurableHelper(ConversionDeltaProfile profile,
+                              Conversions.DroppingHelper delegate) {
         this.profile  = profile;
         this.fallback = new DefaultHelper();
+        this.delegate = delegate;
+    }
+
+    // -------------------------------------------------------------------------
+    // Conversions.DroppingHelper
+    // -------------------------------------------------------------------------
+
+    /**
+     * {@inheritDoc}
+     * <p>Forwarded to the delegate if one was supplied at construction time;
+     * otherwise discarded silently.</p>
+     */
+    @Override
+    public void recordDropped(String fieldDescription) {
+        if (delegate != null) delegate.recordDropped(fieldDescription);
     }
 
     // -------------------------------------------------------------------------
     // Conversions.FxConversionHelper
     // -------------------------------------------------------------------------
 
-    /**
-     * {@inheritDoc}
-     * <p>Returns the value of the {@code referenceCurrency} key from the
-     * profile, or the {@link DefaultHelper} fallback if absent.</p>
-     */
+    /** {@inheritDoc} */
     @Override
     public String getReferenceCurrency(final Element context) {
         String v = profileValue("referenceCurrency");
         return v != null ? v : fallback.getReferenceCurrency(context);
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>Returns the value of the {@code quantoCurrency1} key from the
-     * profile, or the {@link DefaultHelper} fallback if absent.</p>
-     */
+    /** {@inheritDoc} */
     @Override
     public String getQuantoCurrency1(final Element context) {
         String v = profileValue("quantoCurrency1");
         return v != null ? v : fallback.getQuantoCurrency1(context);
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>Returns the value of the {@code quantoCurrency2} key from the
-     * profile, or the {@link DefaultHelper} fallback if absent.</p>
-     */
+    /** {@inheritDoc} */
     @Override
     public String getQuantoCurrency2(final Element context) {
         String v = profileValue("quantoCurrency2");
         return v != null ? v : fallback.getQuantoCurrency2(context);
     }
 
-    /**
-     * {@inheritDoc}
-     * <p>Returns the value of the {@code quantoCurrencyBasis} key from the
-     * profile, or the {@link DefaultHelper} fallback if absent.</p>
-     */
+    /** {@inheritDoc} */
     @Override
     public String getQuantoCurrencyBasis(final Element context) {
         String v = profileValue("quantoCurrencyBasis");
@@ -111,7 +125,7 @@ public class ConfigurableHelper implements Conversions.FxConversionHelper {
         return (profile != null) ? profile.getHelperValue(key) : null;
     }
 
-    private final ConversionDeltaProfile profile;
-    private final DefaultHelper          fallback;
+    private final ConversionDeltaProfile  profile;
+    private final DefaultHelper           fallback;
+    private final Conversions.DroppingHelper delegate;
 }
-

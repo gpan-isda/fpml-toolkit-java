@@ -1056,8 +1056,10 @@ public final class Releases
 			else
 				type = info.getTypeName ();
 
-			// Look for messages that are in the reporting view
-			if (type.equals ("CancelTradeCashflows")
+			// Look for messages that are in the reporting view.
+			// Guard against null type — a 4.x document without xsi:type defaults to confirmation.
+			if (type != null
+					&& (type.equals ("CancelTradeCashflows")
 					|| type.equals ("CreditEventNotification")
 					|| type.equals ("PositionAcknowledged")
 					|| type.equals ("PositionAsserted")
@@ -1068,7 +1070,7 @@ public final class Releases
 					|| type.equals ("RequestValuationReport")
 					|| type.equals ("TradeCashflowsAsserted")
 					|| type.equals ("TradeCashflowsMatchResult")
-					|| type.equals ("ValuationReport"))
+					|| type.equals ("ValuationReport")))
 				view = "reporting";
 			else
 				view = "confirmation";
