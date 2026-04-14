@@ -10,7 +10,7 @@ pushd "%~dp0.."
 set "EXAMPLE=%~1"
 set "TARGET=%~2"
 if "%EXAMPLE%"=="" set "EXAMPLE=files-fpml/examples/fpml4-7/interest-rate-derivatives/ird-ex01-vanilla-swap.xml"
-if "%TARGET%"=="" set "TARGET=5-11"
+if "%TARGET%"=="" set "TARGET=4-8"
 
 echo Running TestConvertUnit with example: %EXAMPLE% target: %TARGET%
 java -cp "build\classes;lib\xml-apis.jar;lib\xercesimpl.jar" demo.com.handcoded.fpml.TestConvertUnit "%EXAMPLE%" %TARGET%
