@@ -641,4 +641,50 @@ public interface Preconditions
 	 */
 	public static final	Precondition	PRETRADE
 		= R5_5__LATER_PRETRADE;
+
+	// -------------------------------------------------------------------------
+	// Name registry — allows data-driven code to look up precondition
+	// constants by their Java field name (e.g. "R1_0__LATER", "NOT_R4_0").
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Returns the {@link Precondition} constant whose Java field name matches
+	 * {@code name}, or {@code null} if no such constant exists.
+	 *
+	 * <p>Field names are case-sensitive.  Example:
+	 * {@code Preconditions.forName("R1_0__LATER")} returns
+	 * {@link #R1_0__LATER}.</p>
+	 *
+	 * @param  name  The Java field name of the desired precondition.
+	 * @return The matching {@link Precondition}, or {@code null}.
+	 * @since  TFP 1.x
+	 */
+	static Precondition forName (String name) {
+		return NameRegistry.REGISTRY.get (name);
+	}
+
+	/**
+	 * Lazy-initialised registry of all public static {@link Precondition}
+	 * fields declared in this interface, keyed by field name.
+	 */
+	final class NameRegistry {
+		static final java.util.Map<String, com.handcoded.validation.Precondition> REGISTRY
+				= buildRegistry ();
+
+		private static java.util.Map<String, com.handcoded.validation.Precondition> buildRegistry () {
+			java.util.Map<String, com.handcoded.validation.Precondition> map
+					= new java.util.LinkedHashMap<String, com.handcoded.validation.Precondition> ();
+			for (java.lang.reflect.Field f : Preconditions.class.getFields ()) {
+				if (java.lang.reflect.Modifier.isStatic (f.getModifiers ())
+						&& com.handcoded.validation.Precondition.class.isAssignableFrom (f.getType ())) {
+					try {
+						map.put (f.getName (), (com.handcoded.validation.Precondition) f.get (null));
+					} catch (IllegalAccessException ignored) { }
+				}
+			}
+			return java.util.Collections.unmodifiableMap (map);
+		}
+
+		private NameRegistry () { }
+	}
 }

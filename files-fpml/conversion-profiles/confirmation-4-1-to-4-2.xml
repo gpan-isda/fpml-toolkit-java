@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Conversion delta profile: FpML 4-1 confirmation → 4-2 confirmation
+  This conversion requires FX-related helper values for documents that contain
+  equityOption or equityForward products with a fxFeature / quanto structure.
+
+  Fill in the helper-values below with meaningful defaults appropriate
+  for your portfolio, or extend ConfigurableHelper to look up values
+  per-document.
+-->
+<conversion-delta from="4-1" to="4-2"
+                  xmlns="http://www.handcoded.com/fpml/conversion-delta">
+
+  <!--
+    Default helper values for the 4-1 → 4-2 structural conversion.
+    These are used when the document-level data cannot supply the values
+    automatically.
+
+    Change USD/EUR/JPY below to match your portfolio's dominant currencies.
+  -->
+  <helper-values>
+    <default key="referenceCurrency">USD</default>
+    <default key="quantoCurrency1">EUR</default>
+    <default key="quantoCurrency2">JPY</default>
+    <default key="quantoCurrencyBasis">Currency2PerCurrency1</default>
+  </helper-values>
+
+  <!-- No post-conversion enrichment needed for 4-1 → 4-2. -->
+
+</conversion-delta>
+

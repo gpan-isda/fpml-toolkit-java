@@ -1,4 +1,4 @@
-package com.handcoded.fpml;
+﻿package com.handcoded.fpml;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -284,7 +284,7 @@ public final class Conversions {
                 transcribe(node, target, newRoot, new ArrayList<Element>());
 
             // Then append saved party elements (collected during transform pass)
-            // (No saved parties in this simplified approach—collection is inside 'transcribe' if needed)
+            // (No saved parties in this simplified approachâ€”collection is inside 'transcribe' if needed)
             return target;
         }
 
@@ -294,7 +294,7 @@ public final class Conversions {
                 case Node.ELEMENT_NODE: {
                     Element element = (Element) context;
 
-                    // First pass — save party elements if needed (kept for compatibility; not used further here)
+                    // First pass â€” save party elements if needed (kept for compatibility; not used further here)
                     if ((parties != null) && "party".equals(element.getNodeName())) {
                         parties.add(element);
                         return;
@@ -603,342 +603,79 @@ public final class Conversions {
         }
     }
 
+    // ==========================================================================================
+    // FxConversionHelper â€” common interface shared by R4_0__R4_1 and R4_1__R4_2.
+    // Both structural conversion steps require the same four FX helper values;
+    // extracting them here removes the need for duplicate instanceof checks.
+    // ==========================================================================================
+
+    /**
+     * Shared FX-feature helper interface used by both {@link R4_0__R4_1} and
+     * {@link R4_1__R4_2}.  Consumers implement this once and pass the same
+     * instance to either conversion step.
+     */
+    public interface FxConversionHelper extends com.handcoded.meta.Helper {
+        String getReferenceCurrency(Element context);
+        String getQuantoCurrency1(Element context);
+        String getQuantoCurrency2(Element context);
+        String getQuantoCurrencyBasis(Element context);
+    }
+
     /* -------------------------------------------------------------------------------------------------
-     * R4_0 -> R4_1 (SPECIAL CASES preserved; target namespace enforced)
+     * R4_0 -> R4_1 (structural changes; delegates to shared transcribeEquityFx helper)
      * ------------------------------------------------------------------------------------------------- */
     public static class R4_0__R4_1 extends DirectConversion {
         public R4_0__R4_1() { super(Releases.R4_0, Releases.R4_1); }
 
-        public static interface Helper extends com.handcoded.meta.Helper {
-            String getReferenceCurrency(final Element context);
-            String getQuantoCurrency1(final Element context);
-            String getQuantoCurrency2(final Element context);
-            String getQuantoCurrencyBasis(final Element context);
-        }
+        /** @deprecated Implement {@link FxConversionHelper} instead â€” same four methods. */
+        public interface Helper extends FxConversionHelper { }
 
         @Override
         public Document convert(Document source, com.handcoded.meta.Helper helper) throws ConversionException {
             Document target = createTargetDocument(getTargetRelease(), source);
             Element oldRoot = source.getDocumentElement();
             Element newRoot = target.getDocumentElement();
-
-            // Transfer the message type
             newRoot.setAttributeNS(Schema.INSTANCE_URL, "xsi:type", oldRoot.getAttributeNS(Schema.INSTANCE_URL, "type"));
-
             String ns = newRoot.getNamespaceURI();
             for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                transcribe(node, target, newRoot, helper, ns);
-
+                transcribeEquityFx(node, target, newRoot, helper, ns);
             return target;
-        }
-
-        private void transcribe(Node context, Document document, Node parent,
-                                com.handcoded.meta.Helper helper, String targetNamespace) throws ConversionException {
-            switch (context.getNodeType()) {
-                case Node.ELEMENT_NODE: {
-                    Element element = (Element) context;
-                    Element clone;
-
-                    // Ignore failureToDeliverApplicable
-                    if ("failureToDeliverApplicable".equals(element.getLocalName())) break;
-
-                    // Renames
-                    if ("equityOptionFeatures".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "equityFeatures");
-                    else if ("automaticExerciseApplicable".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "automaticExercise");
-                    else if ("equityBermudanExercise".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "equityBermudaExercise");
-                    else if ("bermudanExerciseDates".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "bermudaExerciseDates");
-                    else if ("fxSource".equals(element.getLocalName()) || "fxDetermination".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "fxSpotRateSource");
-                    else if ("futuresPriceValuationApplicable".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "futuresPriceValuation");
-                    else if ("equityValuationDate".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "valuationDate");
-                    else if ("equityValuationDates".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "valuationDates");
-                    else if ("fxTerms".equals(element.getLocalName())) clone = document.createElementNS(targetNamespace, "fxFeature");
-                    else clone = document.createElementNS(targetNamespace, (element.getLocalName() != null) ? element.getLocalName() : element.getTagName());
-
-                    parent.appendChild(clone);
-
-                    // clearanceSystem rename
-                    if ("clearanceSystem".equals(element.getLocalName())) {
-                        clone.setAttribute("clearanceSystemScheme", element.getAttribute("clearanceSystemIdScheme"));
-                        DOM.setInnerText(clone, DOM.getInnerText(element));
-                        break;
-                    }
-                    // routingId rename
-                    if ("routingId".equals(element.getLocalName())) {
-                        clone.setAttribute("routingIdCodeScheme", element.getAttribute("routingIdScheme"));
-                        DOM.setInnerText(clone, DOM.getInnerText(element));
-                        break;
-                    }
-
-                    // Copy all attributes
-                    NamedNodeMap attrs = element.getAttributes();
-                    for (int index = 0; index < attrs.getLength(); ++index) {
-                        Attr attr = (Attr) attrs.item(index);
-                        clone.setAttribute(attr.getName(), attr.getValue());
-                    }
-
-                    // Restructure equityOption
-                    if ("equityOption".equals(element.getLocalName())) {
-                        Element targetEl;
-                        Element premium = document.createElementNS(targetNamespace, "equityPremium");
-                        Element payer = document.createElementNS(targetNamespace, "payerPartyReference");
-                        Element receiver = document.createElementNS(targetNamespace, "receiverPartyReference");
-                        if ((targetEl = XPath.path(element, "buyerPartyReference")) != null) {
-                            copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                            payer.setAttribute("href", targetEl.getAttribute("href"));
-                        }
-                        if ((targetEl = XPath.path(element, "sellerPartyReference")) != null) {
-                            copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                            receiver.setAttribute("href", targetEl.getAttribute("href"));
-                        }
-                        if ((targetEl = XPath.path(element, "optionType")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "equityEffectiveDate")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "underlyer")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "notional")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "equityExercise")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "fxFeature")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "methodOfAdjustment")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "extraordinaryEvents")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        else {
-                            Element child = document.createElementNS(targetNamespace, "extraordinaryEvents");
-                            Element failure = document.createElementNS(targetNamespace, "failureToDeliver");
-                            if ((targetEl = XPath.path(element, "equityExercise", "failureToDeliverApplicable")) != null)
-                                DOM.setInnerText(failure, DOM.getInnerText(targetEl));
-                            else DOM.setInnerText(failure, "false");
-                            child.appendChild(failure);
-                            clone.appendChild(child);
-                        }
-                        if ((targetEl = XPath.path(element, "equityOptionFeatures")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "strike")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "spot")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "numberOfOptions")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "optionEntitlement")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        premium.appendChild(payer);
-                        premium.appendChild(receiver);
-                        clone.appendChild(premium);
-                        break;
-                    }
-
-                    // Restructure swaption
-                    if ("swaption".equals(element.getLocalName())) {
-                        NodeList list;
-                        Element targetEl;
-                        Element agent = document.createElementNS(targetNamespace, "calculationAgent");
-                        if ((targetEl = XPath.path(element, "buyerPartyReference")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "sellerPartyReference")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        list = element.getElementsByTagName("premium");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "americanExercise")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "bermudaExercise")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "europeanExercise")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "exerciseProcedure")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        clone.appendChild(agent);
-                        list = element.getElementsByTagName("calculationAgentPartyReference");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, agent, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "cashSettlement")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "swaptionStraddle")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "swaptionAdjustedDates")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "swap")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        break;
-                    }
-
-                    // Restructure fxFeature
-                    if ("fxFeature".equals(element.getLocalName())) {
-                        Element child;
-                        Element targetEl;
-                        Element rccy = document.createElementNS(targetNamespace, "referenceCurrency");
-                        if (helper instanceof R4_0__R4_1.Helper) {
-                            DOM.setInnerText(rccy, ((R4_0__R4_1.Helper) helper).getReferenceCurrency(element));
-                            clone.appendChild(rccy);
-                        } else throw new ConversionException("Cannot determine the fxFeature reference currency");
-
-                        if (DOM.getInnerText(XPath.path(element, "fxFeatureType")).trim().toUpperCase().equals("COMPOSITE")) {
-                            child = document.createElementNS(targetNamespace, "composite");
-                            if ((targetEl = XPath.path(element, "fxSource")) != null) copyReplaceNamespace(targetEl, document, child, element.getNamespaceURI());
-                        } else {
-                            child = document.createElementNS(targetNamespace, "quanto");
-                            Element pair = document.createElementNS(targetNamespace, "quotedCurrencyPair");
-                            Element ccy1 = document.createElementNS(targetNamespace, "currency1");
-                            Element ccy2 = document.createElementNS(targetNamespace, "currency2");
-                            Element basis = document.createElementNS(targetNamespace, "quoteBasis");
-                            Element rate = document.createElementNS(targetNamespace, "fxRate");
-                            Element value = document.createElementNS(targetNamespace, "rate");
-                            if (helper instanceof R4_0__R4_1.Helper) {
-                                DOM.setInnerText(ccy1, ((R4_0__R4_1.Helper) helper).getQuantoCurrency1(element));
-                                DOM.setInnerText(ccy2, ((R4_0__R4_1.Helper) helper).getQuantoCurrency2(element));
-                                DOM.setInnerText(basis, ((R4_0__R4_1.Helper) helper).getQuantoCurrencyBasis(element));
-                                pair.appendChild(ccy1);
-                                pair.appendChild(ccy2);
-                                pair.appendChild(basis);
-                            } else throw new ConversionException("Cannot determine fxFeature quanto currencies");
-                            if ((targetEl = XPath.path(element, "fxRate")) != null) DOM.setInnerText(value, DOM.getInnerText(targetEl));
-                            else DOM.setInnerText(value, "0.0000");
-                            rate.appendChild(pair);
-                            rate.appendChild(value);
-                            child.appendChild(rate);
-                            if ((targetEl = XPath.path(element, "fxSource")) != null) copyReplaceNamespace(targetEl, document, child, element.getNamespaceURI());
-                        }
-                        clone.appendChild(child);
-                        break;
-                    }
-
-                    // Restructure fxTerms
-                    if ("fxTerms".equals(element.getLocalName())) {
-                        Element kind;
-                        Element child;
-                        if ((kind = XPath.path(element, "quanto")) != null) {
-                            copyReplaceNamespace(XPath.path(kind, "referenceCurrency"), document, clone, element.getNamespaceURI());
-                            child = document.createElementNS(targetNamespace, "quanto");
-                            NodeList list = kind.getElementsByTagName("fxRate");
-                            for (int index = 0; index < list.getLength(); ++index)
-                                copyReplaceNamespace(list.item(index), document, child, element.getNamespaceURI());
-                            clone.appendChild(child);
-                        }
-                        if ((kind = XPath.path(element, "compositeFx")) != null) {
-                            Element targetEl;
-                            copyReplaceNamespace(XPath.path(kind, "referenceCurrency"), document, clone, element.getNamespaceURI());
-                            child = document.createElementNS(targetNamespace, "composite");
-                            if ((targetEl = XPath.path(kind, "determinationMethod")) != null) copyReplaceNamespace(targetEl, document, child, element.getNamespaceURI());
-                            if ((targetEl = XPath.path(kind, "relativeDate")) != null) copyReplaceNamespace(targetEl, document, child, element.getNamespaceURI());
-                            if ((targetEl = XPath.path(kind, "fxDetermination")) != null) copyReplaceNamespace(targetEl, document, child, element.getNamespaceURI());
-                            clone.appendChild(child);
-                        }
-                        break;
-                    }
-
-                    // Equity swap buyer/seller references
-                    if ("equitySwap".equals(element.getLocalName())) {
-                        NodeList list;
-                        Element targetEl;
-                        if ((targetEl = XPath.path(element, "productType")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        list = element.getElementsByTagName("productId");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, clone, element.getNamespaceURI());
-                        Element firstLeg = (Element) element.getElementsByTagName("equityLeg").item(0);
-                        Element buyer = document.createElementNS(targetNamespace, "buyerPartyReference");
-                        Element seller = document.createElementNS(targetNamespace, "sellerPartyReference");
-                        buyer.setAttribute("href", XPath.path(firstLeg, "payerPartyReference").getAttribute("href"));
-                        seller.setAttribute("href", XPath.path(firstLeg, "receiverPartyReference").getAttribute("href"));
-                        clone.appendChild(buyer);
-                        clone.appendChild(seller);
-                        list = element.getElementsByTagName("equityLeg");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, clone, element.getNamespaceURI());
-                        list = element.getElementsByTagName("interestLeg");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "principalExchangeFeatures")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        list = element.getElementsByTagName("additionalPayment");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, clone, element.getNamespaceURI());
-                        list = element.getElementsByTagName("earlyTermination");
-                        for (int index = 0; index < list.getLength(); ++index)
-                            copyReplaceNamespace(list.item(index), document, clone, element.getNamespaceURI());
-                        break;
-                    }
-
-                    // Restructure initialPrice / valuationPriceFinal
-                    if ("initialPrice".equals(element.getLocalName()) || "valuationPriceFinal".equals(element.getLocalName())) {
-                        Element targetEl;
-                        if ((targetEl = XPath.path(element, "commission")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "determinationMethod")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "amountRelativeTo")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "grossPrice")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "netPrice")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "accruedInterestPrice")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "fxConversion")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        Element valuation = document.createElementNS(targetNamespace, "equityValuation");
-                        if ((targetEl = XPath.path(element, "equityValuationDate")) != null) copyReplaceNamespace(targetEl, document, valuation, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "valuationTimeType")) != null) copyReplaceNamespace(targetEl, document, valuation, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "valuationTime")) != null) copyReplaceNamespace(targetEl, document, valuation, element.getNamespaceURI());
-                        clone.appendChild(valuation);
-                        break;
-                    }
-
-                    // Restructure valuationPriceInterim
-                    if ("valuationPriceInterim".equals(element.getLocalName())) {
-                        Element targetEl;
-                        if ((targetEl = XPath.path(element, "commission")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "determinationMethod")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "amountRelativeTo")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "grossPrice")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "netPrice")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "accruedInterestPrice")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "fxConversion")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        Element valuation = document.createElementNS(targetNamespace, "equityValuation");
-                        if ((targetEl = XPath.path(element, "equityValuationDates")) != null) copyReplaceNamespace(targetEl, document, valuation, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "valuationTimeType")) != null) copyReplaceNamespace(targetEl, document, valuation, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "valuationTime")) != null) copyReplaceNamespace(targetEl, document, valuation, element.getNamespaceURI());
-                        clone.appendChild(valuation);
-                        break;
-                    }
-
-                    // New optionality in constituentWeight
-                    if ("constituentWeight".equals(element.getLocalName())) {
-                        Element targetEl = XPath.path(element, "basketPercentage");
-                        if (targetEl != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        else copyReplaceNamespace(XPath.path(element, "openUnits"), document, clone, element.getNamespaceURI());
-                        break;
-                    }
-
-                    // Transfer failureToDeliver into extraordinaryEvents
-                    if ("extraordinaryEvents".equals(element.getLocalName())) {
-                        Element targetEl;
-                        if ((targetEl = XPath.path(element, "mergerEvents")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        Element failure = document.createElementNS(targetNamespace, "failureToDeliver");
-                        if ((targetEl = XPath.path(element, "..", "equityExercise", "failureToDeliverApplicable")) != null)
-                            DOM.setInnerText(failure, DOM.getInnerText(targetEl));
-                        else DOM.setInnerText(failure, "false");
-                        clone.appendChild(failure);
-                        if ((targetEl = XPath.path(element, "nationalisationOrInsolvency")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        if ((targetEl = XPath.path(element, "delisting")) != null) copyReplaceNamespace(targetEl, document, clone, element.getNamespaceURI());
-                        break;
-                    }
-
-                    // Recurse
-                    for (Node node = element.getFirstChild(); node != null; node = node.getNextSibling())
-                        transcribe(node, document, clone, helper, targetNamespace);
-
-                    break;
-                }
-                default:
-                    copyReplaceNamespace(context, document, parent, parent.getNamespaceURI());
-            }
         }
     }
 
     /* -------------------------------------------------------------------------------------------------
-     * R4_1 -> R4_2 (SPECIAL CASES preserved; target namespace enforced)
+     * R4_1 -> R4_2 (same structural rules as R4_0â†’R4_1; delegates to shared transcribeEquityFx)
      * ------------------------------------------------------------------------------------------------- */
     public static class R4_1__R4_2 extends DirectConversion {
         public R4_1__R4_2() { super(Releases.R4_1, Releases.R4_2); }
 
-        public static interface Helper extends com.handcoded.meta.Helper {
-            String getReferenceCurrency(final Element context);
-            String getQuantoCurrency1(final Element context);
-            String getQuantoCurrency2(final Element context);
-            String getQuantoCurrencyBasis(final Element context);
-        }
+        /** @deprecated Implement {@link FxConversionHelper} instead â€” same four methods. */
+        public interface Helper extends FxConversionHelper { }
 
         @Override
         public Document convert(Document source, com.handcoded.meta.Helper helper) throws ConversionException {
             Document target = createTargetDocument(getTargetRelease(), source);
             Element oldRoot = source.getDocumentElement();
             Element newRoot = target.getDocumentElement();
-
-            // Transfer the message type
             newRoot.setAttributeNS(Schema.INSTANCE_URL, "xsi:type", oldRoot.getAttributeNS(Schema.INSTANCE_URL, "type"));
-
             String ns = newRoot.getNamespaceURI();
             for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                transcribe(node, target, newRoot, helper, ns);
-
+                transcribeEquityFx(node, target, newRoot, helper, ns);
             return target;
         }
+    }
 
-        private void transcribe(Node context, Document document, Node parent,
-                                com.handcoded.meta.Helper helper, String targetNamespace) throws ConversionException {
+    /* -------------------------------------------------------------------------------------------------
+     * Shared transcription logic for R4_0â†’R4_1 and R4_1â†’R4_2.
+     *
+     * Both hops apply identical structural transformations (equityOption restructuring,
+     * swaption restructuring, fxFeature/fxTerms restructuring, equitySwap buyer/seller
+     * references, valuation-price restructuring).  Rather than maintaining two ~300-line
+     * copies, both convert() methods delegate here.
+     * ------------------------------------------------------------------------------------------------- */
+    private static void transcribeEquityFx(Node context, Document document, Node parent,
+                                           com.handcoded.meta.Helper helper, String targetNamespace)
+            throws ConversionException {
             switch (context.getNodeType()) {
                 case Node.ELEMENT_NODE: {
                     Element element = (Element) context;
@@ -1053,10 +790,11 @@ public final class Conversions {
                         Element child;
                         Element targetEl;
                         Element rccy = document.createElementNS(targetNamespace, "referenceCurrency");
-                        if (helper instanceof R4_1__R4_2.Helper) {
-                            DOM.setInnerText(rccy, ((R4_1__R4_2.Helper) helper).getReferenceCurrency(element));
+                        if (helper instanceof FxConversionHelper) {
+                            DOM.setInnerText(rccy, ((FxConversionHelper) helper).getReferenceCurrency(element));
                             clone.appendChild(rccy);
                         } else throw new ConversionException("Cannot determine the fxFeature reference currency");
+
                         if (DOM.getInnerText(XPath.path(element, "fxFeatureType")).trim().toUpperCase().equals("COMPOSITE")) {
                             child = document.createElementNS(targetNamespace, "composite");
                             if ((targetEl = XPath.path(element, "fxSource")) != null) copyReplaceNamespace(targetEl, document, child, element.getNamespaceURI());
@@ -1068,10 +806,10 @@ public final class Conversions {
                             Element basis = document.createElementNS(targetNamespace, "quoteBasis");
                             Element rate = document.createElementNS(targetNamespace, "fxRate");
                             Element value = document.createElementNS(targetNamespace, "rate");
-                            if (helper instanceof R4_1__R4_2.Helper) {
-                                DOM.setInnerText(ccy1, ((R4_1__R4_2.Helper) helper).getQuantoCurrency1(element));
-                                DOM.setInnerText(ccy2, ((R4_1__R4_2.Helper) helper).getQuantoCurrency2(element));
-                                DOM.setInnerText(basis, ((R4_1__R4_2.Helper) helper).getQuantoCurrencyBasis(element));
+                            if (helper instanceof FxConversionHelper) {
+                                DOM.setInnerText(ccy1, ((FxConversionHelper) helper).getQuantoCurrency1(element));
+                                DOM.setInnerText(ccy2, ((FxConversionHelper) helper).getQuantoCurrency2(element));
+                                DOM.setInnerText(basis, ((FxConversionHelper) helper).getQuantoCurrencyBasis(element));
                                 pair.appendChild(ccy1);
                                 pair.appendChild(ccy2);
                                 pair.appendChild(basis);
@@ -1202,404 +940,259 @@ public final class Conversions {
 
                     // Recurse
                     for (Node node = element.getFirstChild(); node != null; node = node.getNextSibling())
-                        transcribe(node, document, clone, helper, targetNamespace);
+                        transcribeEquityFx(node, document, clone, helper, targetNamespace);
 
                     break;
                 }
                 default:
                     copyReplaceNamespace(context, document, parent, parent.getNamespaceURI());
             }
+        }   // end transcribeEquityFx
+
+    // ==========================================================================================
+    // PassThroughConversion
+    // A single reusable class for any namespace-only (structural no-op) conversion.
+    // Both forward upgrades and reverse downgrades use this same implementation.
+    // The constructor automatically registers the instance in both source and target releases
+    // via the DirectConversion super-constructor.
+    // ==========================================================================================
+
+    /**
+     * A namespace-only pass-through conversion.  All source child nodes are deep-copied
+     * into a freshly created target document; elements that belong to the source FpML
+     * namespace are re-stamped with the target namespace.  The {@code xsi:type} attribute
+     * on the root element is preserved so that view-typed documents survive intact.
+     *
+     * @since TFP 1.x
+     */
+    public static class PassThroughConversion extends DirectConversion {
+        public PassThroughConversion(com.handcoded.meta.Release source, com.handcoded.meta.Release target) {
+            super(source, target);
+        }
+        @Override
+        public Document convert(Document source, Helper helper) throws ConversionException {
+            Element oldRoot = source.getDocumentElement();
+            Document target = createTargetDocument(getTargetRelease(), source);
+            Element newRoot = target.getDocumentElement();
+            String sourceNs = oldRoot.getNamespaceURI();
+            String targetNs  = newRoot.getNamespaceURI();
+            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
+                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
+            return target;
         }
     }
 
-    /* -------------------------------------------------------------------------------------------------
-     * R4_2 -> R4_3 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_2__R4_3 extends DirectConversion {
+    // ----- 4.x forward pass-through stubs (kept as named classes for API compatibility) -----
+    public static class R4_2__R4_3 extends PassThroughConversion {
         public R4_2__R4_3() { super(Releases.R4_2, Releases.R4_3); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_3 -> R4_4 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_3__R4_4 extends DirectConversion {
+    public static class R4_3__R4_4 extends PassThroughConversion {
         public R4_3__R4_4() { super(Releases.R4_3, Releases.R4_4); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_4 -> R4_5 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_4__R4_5 extends DirectConversion {
+    public static class R4_4__R4_5 extends PassThroughConversion {
         public R4_4__R4_5() { super(Releases.R4_4, Releases.R4_5); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_5 -> R4_6 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_5__R4_6 extends DirectConversion {
+    public static class R4_5__R4_6 extends PassThroughConversion {
         public R4_5__R4_6() { super(Releases.R4_5, Releases.R4_6); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_6 -> R4_7 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_6__R4_7 extends DirectConversion {
+    public static class R4_6__R4_7 extends PassThroughConversion {
         public R4_6__R4_7() { super(Releases.R4_6, Releases.R4_7); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_7 -> R4_8 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_7__R4_8 extends DirectConversion {
+    public static class R4_7__R4_8 extends PassThroughConversion {
         public R4_7__R4_8() { super(Releases.R4_7, Releases.R4_8); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_8 -> R4_9 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_8__R4_9 extends DirectConversion {
+    public static class R4_8__R4_9 extends PassThroughConversion {
         public R4_8__R4_9() { super(Releases.R4_8, Releases.R4_9); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    /* -------------------------------------------------------------------------------------------------
-     * R4_9 -> R4_10 (DIRECT COPY; target namespace enforced)
-     * ------------------------------------------------------------------------------------------------- */
-    public static class R4_9__R4_10 extends DirectConversion {
+    public static class R4_9__R4_10 extends PassThroughConversion {
         public R4_9__R4_10() { super(Releases.R4_9, Releases.R4_10); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
 
-    /* -------------------------------------------------------------------------------------------------
-     * R5.x Confirmations/Reportings — pass-through with target namespace enforced
-     * ------------------------------------------------------------------------------------------------- */
-
-    public static class R5_8__R5_9_CONFIRMATION extends DirectConversion {
-        public R5_8__R5_9_CONFIRMATION() { super(Releases.R5_8_CONFIRMATION, Releases.R5_9_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
-    }
-
-    public static class R4_10__R5_0_CONFIRMATION extends DirectConversion {
+    // ----- 5.x confirmation/reporting stubs (API compatibility) -----
+    public static class R4_10__R5_0_CONFIRMATION extends PassThroughConversion {
         public R4_10__R5_0_CONFIRMATION() { super(Releases.R4_10, Releases.R5_0_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), source);
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_0__R5_1_CONFIRMATION extends DirectConversion {
+    public static class R5_0__R5_1_CONFIRMATION extends PassThroughConversion {
         public R5_0__R5_1_CONFIRMATION() { super(Releases.R5_0_CONFIRMATION, Releases.R5_1_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), source);
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_0__R5_1_REPORTING extends DirectConversion {
+    public static class R5_0__R5_1_REPORTING extends PassThroughConversion {
         public R5_0__R5_1_REPORTING() { super(Releases.R5_0_REPORTING, Releases.R5_1_REPORTING); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), source);
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_1__R5_2_CONFIRMATION extends DirectConversion {
+    public static class R5_1__R5_2_CONFIRMATION extends PassThroughConversion {
         public R5_1__R5_2_CONFIRMATION() { super(Releases.R5_1_CONFIRMATION, Releases.R5_2_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_2__R5_3_CONFIRMATION extends DirectConversion {
+    public static class R5_2__R5_3_CONFIRMATION extends PassThroughConversion {
         public R5_2__R5_3_CONFIRMATION() { super(Releases.R5_2_CONFIRMATION, Releases.R5_3_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_3__R5_4_CONFIRMATION extends DirectConversion {
+    public static class R5_3__R5_4_CONFIRMATION extends PassThroughConversion {
         public R5_3__R5_4_CONFIRMATION() { super(Releases.R5_3_CONFIRMATION, Releases.R5_4_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_4__R5_5_CONFIRMATION extends DirectConversion {
+    public static class R5_4__R5_5_CONFIRMATION extends PassThroughConversion {
         public R5_4__R5_5_CONFIRMATION() { super(Releases.R5_4_CONFIRMATION, Releases.R5_5_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_5__R5_6_CONFIRMATION extends DirectConversion {
+    public static class R5_5__R5_6_CONFIRMATION extends PassThroughConversion {
         public R5_5__R5_6_CONFIRMATION() { super(Releases.R5_5_CONFIRMATION, Releases.R5_6_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            String resolvedRoot = resolveTargetRootName(getTargetRelease(), oldRoot);
-            Document target = createTargetDocument(getTargetRelease(), resolvedRoot);
-            Element newRoot = target.getDocumentElement();
-            String oldType = (oldRoot == null) ? null : oldRoot.getAttributeNS(Schema.INSTANCE_URL, "type");
-            String newType = (newRoot == null) ? null : newRoot.getAttributeNS(Schema.INSTANCE_URL, "type");
-            if (oldType != null && oldType.length() > 0 && (newType == null || newType.length() == 0))
-                newRoot.setAttributeNS(Schema.INSTANCE_URL, "xsi:type", oldType);
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_6__R5_7_CONFIRMATION extends DirectConversion {
+    public static class R5_6__R5_7_CONFIRMATION extends PassThroughConversion {
         public R5_6__R5_7_CONFIRMATION() { super(Releases.R5_6_CONFIRMATION, Releases.R5_7_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_7__R5_8_CONFIRMATION extends DirectConversion {
+    public static class R5_7__R5_8_CONFIRMATION extends PassThroughConversion {
         public R5_7__R5_8_CONFIRMATION() { super(Releases.R5_7_CONFIRMATION, Releases.R5_8_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(), oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_9__R5_10_CONFIRMATION extends DirectConversion {
+    public static class R5_8__R5_9_CONFIRMATION extends PassThroughConversion {
+        public R5_8__R5_9_CONFIRMATION() { super(Releases.R5_8_CONFIRMATION, Releases.R5_9_CONFIRMATION); }
+    }
+    public static class R5_9__R5_10_CONFIRMATION extends PassThroughConversion {
         public R5_9__R5_10_CONFIRMATION() { super(Releases.R5_9_CONFIRMATION, Releases.R5_10_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_10__R5_11_CONFIRMATION extends DirectConversion {
+    public static class R5_10__R5_11_CONFIRMATION extends PassThroughConversion {
         public R5_10__R5_11_CONFIRMATION() { super(Releases.R5_10_CONFIRMATION, Releases.R5_11_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
     }
-
-    public static class R5_11__R5_12_CONFIRMATION extends DirectConversion {
+    public static class R5_11__R5_12_CONFIRMATION extends PassThroughConversion {
         public R5_11__R5_12_CONFIRMATION() { super(Releases.R5_11_CONFIRMATION, Releases.R5_12_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
+    }
+    public static class R5_12__R5_13_CONFIRMATION extends PassThroughConversion {
+        public R5_12__R5_13_CONFIRMATION() { super(Releases.R5_12_CONFIRMATION, Releases.R5_13_CONFIRMATION); }
     }
 
-    public static class R5_12__R5_13_CONFIRMATION extends DirectConversion {
-        public R5_12__R5_13_CONFIRMATION() { super(Releases.R5_12_CONFIRMATION, Releases.R5_13_CONFIRMATION); }
-        @Override
-        public Document convert(Document source, Helper helper) throws ConversionException {
-            Element oldRoot = source.getDocumentElement();
-            Document target = createTargetDocument(getTargetRelease(),
-                    oldRoot == null ? null : oldRoot.getLocalName());
-            Element newRoot = target.getDocumentElement();
-            String sourceNs = oldRoot.getNamespaceURI();
-            String targetNs = newRoot.getNamespaceURI();
-            for (Node node = oldRoot.getFirstChild(); node != null; node = node.getNextSibling())
-                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
-            return target;
-        }
-    }
+    // ==========================================================================================
+    // Auto-registered pass-through conversions â€“ reverse downgrades + missing multi-view chains
+    //
+    // These are registered automatically when this class loads (static field initialisation).
+    // They use PassThroughConversion directly rather than named subclasses because they are
+    // new in this revision and no existing code holds direct class references to them.
+    // ==========================================================================================
+
+    // --- 4.x reverse (downgrade) ---
+    static final PassThroughConversion R4_3_r_R4_2  = new PassThroughConversion(Releases.R4_3,  Releases.R4_2);
+    static final PassThroughConversion R4_4_r_R4_3  = new PassThroughConversion(Releases.R4_4,  Releases.R4_3);
+    static final PassThroughConversion R4_5_r_R4_4  = new PassThroughConversion(Releases.R4_5,  Releases.R4_4);
+    static final PassThroughConversion R4_6_r_R4_5  = new PassThroughConversion(Releases.R4_6,  Releases.R4_5);
+    static final PassThroughConversion R4_7_r_R4_6  = new PassThroughConversion(Releases.R4_7,  Releases.R4_6);
+    static final PassThroughConversion R4_8_r_R4_7  = new PassThroughConversion(Releases.R4_8,  Releases.R4_7);
+    static final PassThroughConversion R4_9_r_R4_8  = new PassThroughConversion(Releases.R4_9,  Releases.R4_8);
+    static final PassThroughConversion R4_10_r_R4_9 = new PassThroughConversion(Releases.R4_10, Releases.R4_9);
+
+    // --- 5.0 â†” 4.10 reverse bridge ---
+    static final PassThroughConversion R5_0_CONF_r_R4_10 = new PassThroughConversion(Releases.R5_0_CONFIRMATION, Releases.R4_10);
+
+    // --- 5.x CONFIRMATION reverse chain ---
+    static final PassThroughConversion R5_1_CONF_r_R5_0  = new PassThroughConversion(Releases.R5_1_CONFIRMATION,  Releases.R5_0_CONFIRMATION);
+    static final PassThroughConversion R5_2_CONF_r_R5_1  = new PassThroughConversion(Releases.R5_2_CONFIRMATION,  Releases.R5_1_CONFIRMATION);
+    static final PassThroughConversion R5_3_CONF_r_R5_2  = new PassThroughConversion(Releases.R5_3_CONFIRMATION,  Releases.R5_2_CONFIRMATION);
+    static final PassThroughConversion R5_4_CONF_r_R5_3  = new PassThroughConversion(Releases.R5_4_CONFIRMATION,  Releases.R5_3_CONFIRMATION);
+    static final PassThroughConversion R5_5_CONF_r_R5_4  = new PassThroughConversion(Releases.R5_5_CONFIRMATION,  Releases.R5_4_CONFIRMATION);
+    static final PassThroughConversion R5_6_CONF_r_R5_5  = new PassThroughConversion(Releases.R5_6_CONFIRMATION,  Releases.R5_5_CONFIRMATION);
+    static final PassThroughConversion R5_7_CONF_r_R5_6  = new PassThroughConversion(Releases.R5_7_CONFIRMATION,  Releases.R5_6_CONFIRMATION);
+    static final PassThroughConversion R5_8_CONF_r_R5_7  = new PassThroughConversion(Releases.R5_8_CONFIRMATION,  Releases.R5_7_CONFIRMATION);
+    static final PassThroughConversion R5_9_CONF_r_R5_8  = new PassThroughConversion(Releases.R5_9_CONFIRMATION,  Releases.R5_8_CONFIRMATION);
+    static final PassThroughConversion R5_10_CONF_r_R5_9 = new PassThroughConversion(Releases.R5_10_CONFIRMATION, Releases.R5_9_CONFIRMATION);
+    static final PassThroughConversion R5_11_CONF_r_R5_10= new PassThroughConversion(Releases.R5_11_CONFIRMATION, Releases.R5_10_CONFIRMATION);
+    static final PassThroughConversion R5_12_CONF_r_R5_11= new PassThroughConversion(Releases.R5_12_CONFIRMATION, Releases.R5_11_CONFIRMATION);
+    static final PassThroughConversion R5_13_CONF_r_R5_12= new PassThroughConversion(Releases.R5_13_CONFIRMATION, Releases.R5_12_CONFIRMATION);
+
+    // --- 5.x REPORTING forward chain (1â†’2 registered by named class above; gaps below) ---
+    static final PassThroughConversion R5_1_REP_f_R5_2  = new PassThroughConversion(Releases.R5_1_REPORTING, Releases.R5_2_REPORTING);
+    static final PassThroughConversion R5_2_REP_f_R5_3  = new PassThroughConversion(Releases.R5_2_REPORTING, Releases.R5_3_REPORTING);
+    static final PassThroughConversion R5_3_REP_f_R5_4  = new PassThroughConversion(Releases.R5_3_REPORTING, Releases.R5_4_REPORTING);
+    static final PassThroughConversion R5_4_REP_f_R5_5  = new PassThroughConversion(Releases.R5_4_REPORTING, Releases.R5_5_REPORTING);
+    static final PassThroughConversion R5_5_REP_f_R5_6  = new PassThroughConversion(Releases.R5_5_REPORTING, Releases.R5_6_REPORTING);
+    static final PassThroughConversion R5_6_REP_f_R5_7  = new PassThroughConversion(Releases.R5_6_REPORTING, Releases.R5_7_REPORTING);
+    static final PassThroughConversion R5_7_REP_f_R5_8  = new PassThroughConversion(Releases.R5_7_REPORTING, Releases.R5_8_REPORTING);
+    static final PassThroughConversion R5_8_REP_f_R5_9  = new PassThroughConversion(Releases.R5_8_REPORTING, Releases.R5_9_REPORTING);
+    static final PassThroughConversion R5_9_REP_f_R5_10 = new PassThroughConversion(Releases.R5_9_REPORTING, Releases.R5_10_REPORTING);
+    static final PassThroughConversion R5_10_REP_f_R5_11= new PassThroughConversion(Releases.R5_10_REPORTING, Releases.R5_11_REPORTING);
+    static final PassThroughConversion R5_11_REP_f_R5_12= new PassThroughConversion(Releases.R5_11_REPORTING, Releases.R5_12_REPORTING);
+    static final PassThroughConversion R5_12_REP_f_R5_13= new PassThroughConversion(Releases.R5_12_REPORTING, Releases.R5_13_REPORTING);
+
+    // --- 5.x REPORTING reverse chain ---
+    static final PassThroughConversion R5_1_REP_r_R5_0  = new PassThroughConversion(Releases.R5_1_REPORTING, Releases.R5_0_REPORTING);
+    static final PassThroughConversion R5_2_REP_r_R5_1  = new PassThroughConversion(Releases.R5_2_REPORTING, Releases.R5_1_REPORTING);
+    static final PassThroughConversion R5_3_REP_r_R5_2  = new PassThroughConversion(Releases.R5_3_REPORTING, Releases.R5_2_REPORTING);
+    static final PassThroughConversion R5_4_REP_r_R5_3  = new PassThroughConversion(Releases.R5_4_REPORTING, Releases.R5_3_REPORTING);
+    static final PassThroughConversion R5_5_REP_r_R5_4  = new PassThroughConversion(Releases.R5_5_REPORTING, Releases.R5_4_REPORTING);
+    static final PassThroughConversion R5_6_REP_r_R5_5  = new PassThroughConversion(Releases.R5_6_REPORTING, Releases.R5_5_REPORTING);
+    static final PassThroughConversion R5_7_REP_r_R5_6  = new PassThroughConversion(Releases.R5_7_REPORTING, Releases.R5_6_REPORTING);
+    static final PassThroughConversion R5_8_REP_r_R5_7  = new PassThroughConversion(Releases.R5_8_REPORTING, Releases.R5_7_REPORTING);
+    static final PassThroughConversion R5_9_REP_r_R5_8  = new PassThroughConversion(Releases.R5_9_REPORTING, Releases.R5_8_REPORTING);
+    static final PassThroughConversion R5_10_REP_r_R5_9 = new PassThroughConversion(Releases.R5_10_REPORTING, Releases.R5_9_REPORTING);
+    static final PassThroughConversion R5_11_REP_r_R5_10= new PassThroughConversion(Releases.R5_11_REPORTING, Releases.R5_10_REPORTING);
+    static final PassThroughConversion R5_12_REP_r_R5_11= new PassThroughConversion(Releases.R5_12_REPORTING, Releases.R5_11_REPORTING);
+    static final PassThroughConversion R5_13_REP_r_R5_12= new PassThroughConversion(Releases.R5_13_REPORTING, Releases.R5_12_REPORTING);
+
+    // --- 5.3+ RECORDKEEPING forward + reverse ---
+    static final PassThroughConversion R5_3_RK_f_R5_4   = new PassThroughConversion(Releases.R5_3_RECORDKEEPING, Releases.R5_4_RECORDKEEPING);
+    static final PassThroughConversion R5_4_RK_f_R5_5   = new PassThroughConversion(Releases.R5_4_RECORDKEEPING, Releases.R5_5_RECORDKEEPING);
+    static final PassThroughConversion R5_5_RK_f_R5_6   = new PassThroughConversion(Releases.R5_5_RECORDKEEPING, Releases.R5_6_RECORDKEEPING);
+    static final PassThroughConversion R5_6_RK_f_R5_7   = new PassThroughConversion(Releases.R5_6_RECORDKEEPING, Releases.R5_7_RECORDKEEPING);
+    static final PassThroughConversion R5_7_RK_f_R5_8   = new PassThroughConversion(Releases.R5_7_RECORDKEEPING, Releases.R5_8_RECORDKEEPING);
+    static final PassThroughConversion R5_8_RK_f_R5_9   = new PassThroughConversion(Releases.R5_8_RECORDKEEPING, Releases.R5_9_RECORDKEEPING);
+    static final PassThroughConversion R5_9_RK_f_R5_10  = new PassThroughConversion(Releases.R5_9_RECORDKEEPING, Releases.R5_10_RECORDKEEPING);
+    static final PassThroughConversion R5_10_RK_f_R5_11 = new PassThroughConversion(Releases.R5_10_RECORDKEEPING, Releases.R5_11_RECORDKEEPING);
+    static final PassThroughConversion R5_11_RK_f_R5_12 = new PassThroughConversion(Releases.R5_11_RECORDKEEPING, Releases.R5_12_RECORDKEEPING);
+    static final PassThroughConversion R5_12_RK_f_R5_13 = new PassThroughConversion(Releases.R5_12_RECORDKEEPING, Releases.R5_13_RECORDKEEPING);
+    static final PassThroughConversion R5_4_RK_r_R5_3   = new PassThroughConversion(Releases.R5_4_RECORDKEEPING, Releases.R5_3_RECORDKEEPING);
+    static final PassThroughConversion R5_5_RK_r_R5_4   = new PassThroughConversion(Releases.R5_5_RECORDKEEPING, Releases.R5_4_RECORDKEEPING);
+    static final PassThroughConversion R5_6_RK_r_R5_5   = new PassThroughConversion(Releases.R5_6_RECORDKEEPING, Releases.R5_5_RECORDKEEPING);
+    static final PassThroughConversion R5_7_RK_r_R5_6   = new PassThroughConversion(Releases.R5_7_RECORDKEEPING, Releases.R5_6_RECORDKEEPING);
+    static final PassThroughConversion R5_8_RK_r_R5_7   = new PassThroughConversion(Releases.R5_8_RECORDKEEPING, Releases.R5_7_RECORDKEEPING);
+    static final PassThroughConversion R5_9_RK_r_R5_8   = new PassThroughConversion(Releases.R5_9_RECORDKEEPING, Releases.R5_8_RECORDKEEPING);
+    static final PassThroughConversion R5_10_RK_r_R5_9  = new PassThroughConversion(Releases.R5_10_RECORDKEEPING, Releases.R5_9_RECORDKEEPING);
+    static final PassThroughConversion R5_11_RK_r_R5_10 = new PassThroughConversion(Releases.R5_11_RECORDKEEPING, Releases.R5_10_RECORDKEEPING);
+    static final PassThroughConversion R5_12_RK_r_R5_11 = new PassThroughConversion(Releases.R5_12_RECORDKEEPING, Releases.R5_11_RECORDKEEPING);
+    static final PassThroughConversion R5_13_RK_r_R5_12 = new PassThroughConversion(Releases.R5_13_RECORDKEEPING, Releases.R5_12_RECORDKEEPING);
+
+    // --- 5.3+ TRANSPARENCY forward + reverse ---
+    static final PassThroughConversion R5_3_TR_f_R5_4   = new PassThroughConversion(Releases.R5_3_TRANSPARENCY, Releases.R5_4_TRANSPARENCY);
+    static final PassThroughConversion R5_4_TR_f_R5_5   = new PassThroughConversion(Releases.R5_4_TRANSPARENCY, Releases.R5_5_TRANSPARENCY);
+    static final PassThroughConversion R5_5_TR_f_R5_6   = new PassThroughConversion(Releases.R5_5_TRANSPARENCY, Releases.R5_6_TRANSPARENCY);
+    static final PassThroughConversion R5_6_TR_f_R5_7   = new PassThroughConversion(Releases.R5_6_TRANSPARENCY, Releases.R5_7_TRANSPARENCY);
+    static final PassThroughConversion R5_7_TR_f_R5_8   = new PassThroughConversion(Releases.R5_7_TRANSPARENCY, Releases.R5_8_TRANSPARENCY);
+    static final PassThroughConversion R5_8_TR_f_R5_9   = new PassThroughConversion(Releases.R5_8_TRANSPARENCY, Releases.R5_9_TRANSPARENCY);
+    static final PassThroughConversion R5_9_TR_f_R5_10  = new PassThroughConversion(Releases.R5_9_TRANSPARENCY, Releases.R5_10_TRANSPARENCY);
+    static final PassThroughConversion R5_10_TR_f_R5_11 = new PassThroughConversion(Releases.R5_10_TRANSPARENCY, Releases.R5_11_TRANSPARENCY);
+    static final PassThroughConversion R5_11_TR_f_R5_12 = new PassThroughConversion(Releases.R5_11_TRANSPARENCY, Releases.R5_12_TRANSPARENCY);
+    static final PassThroughConversion R5_12_TR_f_R5_13 = new PassThroughConversion(Releases.R5_12_TRANSPARENCY, Releases.R5_13_TRANSPARENCY);
+    static final PassThroughConversion R5_4_TR_r_R5_3   = new PassThroughConversion(Releases.R5_4_TRANSPARENCY, Releases.R5_3_TRANSPARENCY);
+    static final PassThroughConversion R5_5_TR_r_R5_4   = new PassThroughConversion(Releases.R5_5_TRANSPARENCY, Releases.R5_4_TRANSPARENCY);
+    static final PassThroughConversion R5_6_TR_r_R5_5   = new PassThroughConversion(Releases.R5_6_TRANSPARENCY, Releases.R5_5_TRANSPARENCY);
+    static final PassThroughConversion R5_7_TR_r_R5_6   = new PassThroughConversion(Releases.R5_7_TRANSPARENCY, Releases.R5_6_TRANSPARENCY);
+    static final PassThroughConversion R5_8_TR_r_R5_7   = new PassThroughConversion(Releases.R5_8_TRANSPARENCY, Releases.R5_7_TRANSPARENCY);
+    static final PassThroughConversion R5_9_TR_r_R5_8   = new PassThroughConversion(Releases.R5_9_TRANSPARENCY, Releases.R5_8_TRANSPARENCY);
+    static final PassThroughConversion R5_10_TR_r_R5_9  = new PassThroughConversion(Releases.R5_10_TRANSPARENCY, Releases.R5_9_TRANSPARENCY);
+    static final PassThroughConversion R5_11_TR_r_R5_10 = new PassThroughConversion(Releases.R5_11_TRANSPARENCY, Releases.R5_10_TRANSPARENCY);
+    static final PassThroughConversion R5_12_TR_r_R5_11 = new PassThroughConversion(Releases.R5_12_TRANSPARENCY, Releases.R5_11_TRANSPARENCY);
+    static final PassThroughConversion R5_13_TR_r_R5_12 = new PassThroughConversion(Releases.R5_13_TRANSPARENCY, Releases.R5_12_TRANSPARENCY);
+
+    // --- 5.5+ PRETRADE forward + reverse ---
+    static final PassThroughConversion R5_5_PT_f_R5_6   = new PassThroughConversion(Releases.R5_5_PRETRADE, Releases.R5_6_PRETRADE);
+    static final PassThroughConversion R5_6_PT_f_R5_7   = new PassThroughConversion(Releases.R5_6_PRETRADE, Releases.R5_7_PRETRADE);
+    static final PassThroughConversion R5_7_PT_f_R5_8   = new PassThroughConversion(Releases.R5_7_PRETRADE, Releases.R5_8_PRETRADE);
+    static final PassThroughConversion R5_8_PT_f_R5_9   = new PassThroughConversion(Releases.R5_8_PRETRADE, Releases.R5_9_PRETRADE);
+    static final PassThroughConversion R5_9_PT_f_R5_10  = new PassThroughConversion(Releases.R5_9_PRETRADE, Releases.R5_10_PRETRADE);
+    static final PassThroughConversion R5_10_PT_f_R5_11 = new PassThroughConversion(Releases.R5_10_PRETRADE, Releases.R5_11_PRETRADE);
+    static final PassThroughConversion R5_11_PT_f_R5_12 = new PassThroughConversion(Releases.R5_11_PRETRADE, Releases.R5_12_PRETRADE);
+    static final PassThroughConversion R5_12_PT_f_R5_13 = new PassThroughConversion(Releases.R5_12_PRETRADE, Releases.R5_13_PRETRADE);
+    static final PassThroughConversion R5_6_PT_r_R5_5   = new PassThroughConversion(Releases.R5_6_PRETRADE, Releases.R5_5_PRETRADE);
+    static final PassThroughConversion R5_7_PT_r_R5_6   = new PassThroughConversion(Releases.R5_7_PRETRADE, Releases.R5_6_PRETRADE);
+    static final PassThroughConversion R5_8_PT_r_R5_7   = new PassThroughConversion(Releases.R5_8_PRETRADE, Releases.R5_7_PRETRADE);
+    static final PassThroughConversion R5_9_PT_r_R5_8   = new PassThroughConversion(Releases.R5_9_PRETRADE, Releases.R5_8_PRETRADE);
+    static final PassThroughConversion R5_10_PT_r_R5_9  = new PassThroughConversion(Releases.R5_10_PRETRADE, Releases.R5_9_PRETRADE);
+    static final PassThroughConversion R5_11_PT_r_R5_10 = new PassThroughConversion(Releases.R5_11_PRETRADE, Releases.R5_10_PRETRADE);
+    static final PassThroughConversion R5_12_PT_r_R5_11 = new PassThroughConversion(Releases.R5_12_PRETRADE, Releases.R5_11_PRETRADE);
+    static final PassThroughConversion R5_13_PT_r_R5_12 = new PassThroughConversion(Releases.R5_13_PRETRADE, Releases.R5_12_PRETRADE);
+
+    // --- 5.7+ LEGAL forward + reverse ---
+    static final PassThroughConversion R5_7_LG_f_R5_8   = new PassThroughConversion(Releases.R5_7_LEGAL, Releases.R5_8_LEGAL);
+    static final PassThroughConversion R5_8_LG_f_R5_9   = new PassThroughConversion(Releases.R5_8_LEGAL, Releases.R5_9_LEGAL);
+    static final PassThroughConversion R5_9_LG_f_R5_10  = new PassThroughConversion(Releases.R5_9_LEGAL, Releases.R5_10_LEGAL);
+    static final PassThroughConversion R5_10_LG_f_R5_11 = new PassThroughConversion(Releases.R5_10_LEGAL, Releases.R5_11_LEGAL);
+    static final PassThroughConversion R5_11_LG_f_R5_12 = new PassThroughConversion(Releases.R5_11_LEGAL, Releases.R5_12_LEGAL);
+    static final PassThroughConversion R5_12_LG_f_R5_13 = new PassThroughConversion(Releases.R5_12_LEGAL, Releases.R5_13_LEGAL);
+    static final PassThroughConversion R5_8_LG_r_R5_7   = new PassThroughConversion(Releases.R5_8_LEGAL, Releases.R5_7_LEGAL);
+    static final PassThroughConversion R5_9_LG_r_R5_8   = new PassThroughConversion(Releases.R5_9_LEGAL, Releases.R5_8_LEGAL);
+    static final PassThroughConversion R5_10_LG_r_R5_9  = new PassThroughConversion(Releases.R5_10_LEGAL, Releases.R5_9_LEGAL);
+    static final PassThroughConversion R5_11_LG_r_R5_10 = new PassThroughConversion(Releases.R5_11_LEGAL, Releases.R5_10_LEGAL);
+    static final PassThroughConversion R5_12_LG_r_R5_11 = new PassThroughConversion(Releases.R5_12_LEGAL, Releases.R5_11_LEGAL);
+    static final PassThroughConversion R5_13_LG_r_R5_12 = new PassThroughConversion(Releases.R5_13_LEGAL, Releases.R5_12_LEGAL);
 }

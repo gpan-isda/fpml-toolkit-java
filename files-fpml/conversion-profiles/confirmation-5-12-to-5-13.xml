@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Conversion delta profile: FpML 5-12 confirmation → 5-13 confirmation
+  This is a pure namespace upgrade with no structural changes.
+  The enrich block updates the fpmlVersion attribute on the root element.
+-->
+<conversion-delta from="5-12" to="5-13"
+                  from-view="confirmation"
+                  to-view="confirmation"
+                  xmlns="http://www.handcoded.com/fpml/conversion-delta">
+
+  <!--
+    Post-conversion enrichment:
+    Update the fpmlVersion attribute on every root element that carries it.
+    The XPath selects any element at any depth with an @fpmlVersion attribute.
+  -->
+  <enrich>
+    <set-attribute xpath="//*[@fpmlVersion]"
+                   attribute="fpmlVersion"
+                   value="5-13"/>
+  </enrich>
+
+</conversion-delta>
+

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  conversion-delta.xsd
+  Schema for FpML conversion delta profile files.
+
+  A conversion delta profile describes optional overrides that are applied
+  during or after a conversion between two FpML releases/views.
+
+  Example usage:
+    <conversion-delta from="4-1" to="4-2"
+                      xmlns="http://www.handcoded.com/fpml/conversion-delta">
+      <helper-values>
+        <default key="referenceCurrency">USD</default>
+        <default key="quantoCurrency1">EUR</default>
+        <default key="quantoCurrency2">JPY</default>
+        <default key="quantoCurrencyBasis">Currency2PerCurrency1</default>
+      </helper-values>
+      <enrich>
+        <set-attribute xpath="//*[local-name()='dataDocument']/@fpmlVersion"
+                       value="4-2"/>
+        <remove-attribute xpath="//*[@schemaVersion]" attribute="schemaVersion"/>
+      </enrich>
+    </conversion-delta>
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.handcoded.com/fpml/conversion-delta"
+           xmlns="http://www.handcoded.com/fpml/conversion-delta"
+           elementFormDefault="qualified">
+
+  <!-- ============================================================
+       Root element
+       ============================================================ -->
+  <xs:element name="conversion-delta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="helper-values" type="HelperValuesType" minOccurs="0"/>
+        <xs:element name="enrich"        type="EnrichType"       minOccurs="0"/>
+      </xs:sequence>
+      <!-- Source release version, e.g. "4-1" -->
+      <xs:attribute name="from" type="xs:string" use="required"/>
+      <!-- Target release version, e.g. "4-2" -->
+      <xs:attribute name="to"   type="xs:string" use="required"/>
+      <!-- Optional source view (confirmation, reporting, etc.).  If absent, any view matches. -->
+      <xs:attribute name="from-view" type="xs:string"/>
+      <!-- Optional target view. If absent the source view is preserved. -->
+      <xs:attribute name="to-view"   type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ============================================================
+       Helper-values section
+       Provides default string values that the ConfigurableHelper
+       returns when a structural conversion (R4_0→R4_1, R4_1→R4_2)
+       requires caller-supplied data such as reference currencies.
+       ============================================================ -->
+  <xs:complexType name="HelperValuesType">
+    <xs:sequence>
+      <xs:element name="default" type="HelperDefaultType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HelperDefaultType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <!--
+          key is one of: referenceCurrency, quantoCurrency1, quantoCurrency2,
+                          quantoCurrencyBasis
+        -->
+        <xs:attribute name="key" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- ============================================================
+       Enrich section
+       Specifies post-conversion modifications applied to the
+       converted document via PostConversionEnricher.
+       ============================================================ -->
+  <xs:complexType name="EnrichType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <!--
+        set-attribute: add or update an XML attribute on every element
+        matched by the XPath expression.
+          xpath     – XPath 1.0 expression evaluated against the document root
+          attribute – local attribute name to set (optional; if absent, @xpath
+                      must address an attribute node directly)
+          value     – string value to assign
+      -->
+      <xs:element name="set-attribute">
+        <xs:complexType>
+          <xs:attribute name="xpath"     type="xs:string" use="required"/>
+          <xs:attribute name="attribute" type="xs:string"/>
+          <xs:attribute name="value"     type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <!--
+        remove-attribute: remove an attribute from every matched element.
+      -->
+      <xs:element name="remove-attribute">
+        <xs:complexType>
+          <xs:attribute name="xpath"     type="xs:string" use="required"/>
+          <xs:attribute name="attribute" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <!--
+        set-text: replace the text content of every matched element.
+      -->
+      <xs:element name="set-text">
+        <xs:complexType>
+          <xs:attribute name="xpath"  type="xs:string" use="required"/>
+          <xs:attribute name="value"  type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+</xs:schema>
+

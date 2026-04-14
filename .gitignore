@@ -1,2 +1,23 @@
+ # ---- Build output ----
 /bin/
-/doc
+/doc/
+/build/classes/
+/build/*.txt
+/build/run_exit.txt
+
+# ---- IDE / OS ----
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+*.class
+*.DS_Store
+Thumbs.db
+
+# ---- Generated / temporary files ----
+*.generated.xml
+*.generated.bytool.xml
+*.bak
+test_output.txt
+javac_metagen.err

@@ -946,11 +946,25 @@ public final class Releases
 		= new Conversions.R5_10__R5_11_CONFIRMATION ();
 
     /**
-     * A <CODE>Conversion</CODE> instance configured for FpML 5-10 to 5-11
+     * A <CODE>Conversion</CODE> instance configured for FpML 5-11 to 5-12
      * confirmation view transformation.
      */
     public static final Conversion R5_11__R5_12_CONFIRMATION
             = new Conversions.R5_11__R5_12_CONFIRMATION ();
+
+    /**
+     * A <CODE>Conversion</CODE> instance configured for FpML 5-12 to 5-13
+     * confirmation view transformation.
+     */
+    public static final Conversion R5_12__R5_13_CONFIRMATION
+            = new Conversions.R5_12__R5_13_CONFIRMATION ();
+
+    /**
+     * A <CODE>Conversion</CODE> instance configured for FpML 5-0 to 5-1
+     * reporting view transformation.
+     */
+    public static final Conversion R5_0__R5_1_REPORTING
+            = new Conversions.R5_0__R5_1_REPORTING ();
 
 	/**
 	 * Examines the provided <CODE>Document</CODE> to determine the associated
