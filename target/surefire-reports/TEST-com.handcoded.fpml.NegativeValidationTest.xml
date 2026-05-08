@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.handcoded.fpml.NegativeValidationTest" time="1.82" tests="265" errors="0" skipped="13" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\target\test-classes;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\build\classes;C:\Users\gpandey\.m2\repository\xerces\xercesImpl\2.12.0\xercesImpl-2.12.0.jar;C:\Users\gpandey\.m2\repository\xml-apis\xml-apis\1.4.01\xml-apis-1.4.01.jar;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\lib\miglayout15-swing.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\gpandey\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Europe/London"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\gpandey\AppData\Local\Temp\surefire12915867565775558831\surefirebooter-20260508115901918_3.jar C:\Users\gpandey\AppData\Local\Temp\surefire12915867565775558831 2026-05-08T11-59-01_527-jvmRun1 surefire-20260508115901918_1tmp surefire_0-20260508115901918_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\target\test-classes;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\build\classes;C:\Users\gpandey\.m2\repository\xerces\xercesImpl\2.12.0\xercesImpl-2.12.0.jar;C:\Users\gpandey\.m2\repository\xml-apis\xml-apis\1.4.01\xml-apis-1.4.01.jar;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\lib\miglayout15-swing.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\gpandey\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\gpandey"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java"/>
+    <property name="style.color" value="always"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\gpandey\AppData\Local\Temp\surefire12915867565775558831\surefirebooter-20260508115901918_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.1+8-LTS"/>
+    <property name="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XMLGrammarCachingConfiguration"/>
+    <property name="user.name" value="gpandey"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-25.0.1+8"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2025.2.5\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="localRepository" value="C:\Users\gpandey\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\gpandey\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2025.2.5"/>
+    <property name="java.version" value="25.0.1"/>
+    <property name="user.dir" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="jansi.passthrough" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\WindowsPowerShell\Scripts;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Program Files\PuTTY\;C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Users\gpandey\AppData\Local\Programs\Python\Launcher\;C:\Users\gpandey\AppData\Local\Microsoft\WindowsApps;C:\Users\gpandey\AppData\Local\GitHubDesktop\bin;C:\Users\gpandey\OneDrive - ISDA\Documents\Initiation\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\gpandey\AppData\Local\Programs\Git\cmd;C:\Users\gpandey\AppData\Local\Microsoft\WinGet\Packages\Anthropic.ClaudeCode_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\Users\gpandey\AppData\Local\Programs\Ollama;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="25.0.1+8-LTS"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="C:\Users\gpandey\.m2\repository"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="expectedRuleFires(String, String)[1]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.011">
+    <system-out><![CDATA[[ToolkitTestBase] user.dir = C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java
+[ToolkitTestBase] Specifications loaded: 3
+[ToolkitTestBase] Catalog loaded: files-fpml/catalog-fpml-5-13.xml
+[ToolkitTestBase] Default schema set pre-compiled.
+]]></system-out>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[2]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[3]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[4]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[5]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[6]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[7]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[8]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[9]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[10]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[11]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[12]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[13]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[14]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[15]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[16]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[17]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[18]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[19]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[20]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[21]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[22]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[23]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[24]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[25]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[26]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[27]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[28]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[29]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[30]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[31]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[32]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[33]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[34]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[35]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[36]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[37]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[38]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[39]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[40]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[41]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[42]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[43]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[44]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[45]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[46]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[47]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[48]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[49]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[50]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[51]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[52]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[53]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[54]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[55]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[56]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.01"/>
+  <testcase name="expectedRuleFires(String, String)[57]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[58]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[59]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[60]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[61]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[62]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[63]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[64]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[65]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[66]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[67]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[68]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[69]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[70]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[71]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[72]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[73]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'cd-32' replaced/renumbered (fired: [scheme-31]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-cd-32-01.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[74]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[75]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[76]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[77]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[78]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[79]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[80]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[81]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[82]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[83]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[84]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[85]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[86]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[87]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[88]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[89]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[90]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[91]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[92]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[93]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[94]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[95]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[96]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[97]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[98]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[99]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[100]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[101]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[102]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[103]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[104]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[105]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[106]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[107]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[108]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[109]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[110]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[111]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[112]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[113]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[114]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[115]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[116]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[117]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[118]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[119]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[120]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[121]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[122]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[123]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[124]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[125]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[126]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[127]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[128]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[129]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[130]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[131]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[132]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-12' replaced/renumbered (fired: [scheme-10, ird-2, ird-5]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-12-01.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[133]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-12' replaced/renumbered (fired: [ird-58, scheme-10]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-12-02.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[134]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-12' replaced/renumbered (fired: [ird-10, ird-11, scheme-10]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-12-03.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[135]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — no violations fired for 'ird-12'; rule may no longer exist in AllRules. File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-12-04.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:107)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[136]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-12' replaced/renumbered (fired: [ird-50, ird-50, ird-50, ird-50, scheme-10, scheme-10, scheme-10]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-12-05.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[137]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — no violations fired for 'ird-12'; rule may no longer exist in AllRules. File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-12-06.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:107)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[138]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[139]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[140]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[141]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[142]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[143]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[144]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[145]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[146]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-2' replaced/renumbered (fired: [ird-53, ird-53, ird-53, ird-53]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-2-02.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[147]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[148]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[149]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[150]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[151]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[152]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[153]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[154]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-25' replaced/renumbered (fired: [ird-61, scheme-10]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-25-01.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[155]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[156]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[157]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[158]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[159]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[160]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[161]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[162]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[163]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[164]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[165]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[166]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[167]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[168]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[169]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[170]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[171]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[172]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[173]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[174]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[175]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[176]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[177]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[178]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[179]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[180]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[181]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[182]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[183]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[184]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[185]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[186]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[187]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[188]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule 'ird-5' replaced/renumbered (fired: [ird-58, scheme-10]). File: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-5-02.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:112)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[189]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[190]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[191]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[192]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[193]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[194]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[195]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[196]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[197]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[198]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[199]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.003"/>
+  <testcase name="expectedRuleFires(String, String)[200]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[201]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[202]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[203]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[204]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[205]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[206]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[207]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[208]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule engine exception (NullPointerException): Cannot invoke "com.handcoded.finance.Date.lastDayOfMonth()" because "start" is null in: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-ird-57-01.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:100)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[209]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[210]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[211]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[212]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[213]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[214]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[215]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[216]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[217]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[218]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[219]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[220]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[221]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[222]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[223]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[224]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[225]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[226]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[227]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[228]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[229]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[230]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[231]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[232]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.01"/>
+  <testcase name="expectedRuleFires(String, String)[233]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[234]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[235]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[236]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[237]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[238]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[239]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.008"/>
+  <testcase name="expectedRuleFires(String, String)[240]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[241]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.009"/>
+  <testcase name="expectedRuleFires(String, String)[242]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[243]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.007"/>
+  <testcase name="expectedRuleFires(String, String)[244]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[245]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[246]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[247]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[248]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[249]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[250]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[251]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[252]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[253]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule engine exception (NullPointerException): Cannot invoke "com.handcoded.finance.Date.toString()" because "date" is null in: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-shared-20-01.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:100)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[254]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.0">
+    <skipped type="org.opentest4j.TestAbortedException"><![CDATA[org.opentest4j.TestAbortedException: Skipping — rule engine exception (NullPointerException): Cannot invoke "com.handcoded.finance.Date.toString()" because "date" is null in: files-fpml\test-cases\fpml5-0\confirmation\invalid-testcases\invalid-shared-21-01.xml
+	at org.junit.jupiter.api.Assumptions.abort(Assumptions.java:295)
+	at com.handcoded.fpml.NegativeValidationTest.expectedRuleFires(NegativeValidationTest.java:100)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:803)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:293)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+]]></skipped>
+  </testcase>
+  <testcase name="expectedRuleFires(String, String)[255]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[256]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[257]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[258]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[259]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+  <testcase name="expectedRuleFires(String, String)[260]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[261]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[262]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.004"/>
+  <testcase name="expectedRuleFires(String, String)[263]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[264]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.005"/>
+  <testcase name="expectedRuleFires(String, String)[265]" classname="com.handcoded.fpml.NegativeValidationTest" time="0.006"/>
+</testsuite>

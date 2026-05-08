@@ -1,0 +1,33 @@
+Apr 15, 2026 2:53:44 PM org.jline.utils.Log logr
+WARNING: Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+[main] WARNING org.jline - Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+[INFO] Processing build on daemon 43cd8c46
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.handcoded:fpml-toolkit-java:jar:1.9.0
+[WARNING] 'dependencies.dependency.systemPath' for xerces:xercesImpl:jar should not point at files within the project directory, ${project.basedir}/lib/xercesImpl.jar will be unresolvable by dependent projects @ line 43, column 25
+[WARNING] 'dependencies.dependency.systemPath' for xml-apis:xml-apis:jar should not point at files within the project directory, ${project.basedir}/lib/xml-apis.jar will be unresolvable by dependent projects @ line 52, column 25
+[WARNING] 'dependencies.dependency.systemPath' for com.miglayout:miglayout15-swing:jar should not point at files within the project directory, ${project.basedir}/lib/miglayout15-swing.jar will be unresolvable by dependent projects @ line 61, column 25
+[WARNING] 
+[INFO] BuildTimeEventSpy is registered.
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] Using the SmartBuilder implementation with a thread count of 13
+[INFO] 
+[INFO] ------------------< com.handcoded:fpml-toolkit-java >-------------------
+[INFO] Building HandCoded FpML Toolkit for Java 1.9.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- install:3.1.2:install-file (default-cli) @ fpml-toolkit-java ---
+[INFO] Installing C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\handcoded.jar to C:\Users\gpandey\.m2\repository\com\handcoded\fpml-toolkit\5-13\fpml-toolkit-5-13.jar
+[INFO] Installing C:\Users\gpandey\AppData\Local\Temp\mvninstall2844899925550470293.pom to C:\Users\gpandey\.m2\repository\com\handcoded\fpml-toolkit\5-13\fpml-toolkit-5-13.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.228 s (Wall Clock)
+[INFO] Finished at: 2026-04-15T14:53:45+01:00
+[INFO] ------------------------------------------------------------------------

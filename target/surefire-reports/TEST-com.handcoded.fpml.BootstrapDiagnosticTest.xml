@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.handcoded.fpml.BootstrapDiagnosticTest" time="2.648" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\target\test-classes;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\build\classes;C:\Users\gpandey\.m2\repository\xerces\xercesImpl\2.12.0\xercesImpl-2.12.0.jar;C:\Users\gpandey\.m2\repository\xml-apis\xml-apis\1.4.01\xml-apis-1.4.01.jar;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\lib\miglayout15-swing.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\gpandey\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Europe/London"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\gpandey\AppData\Local\Temp\surefire12915867565775558831\surefirebooter-20260508115901918_3.jar C:\Users\gpandey\AppData\Local\Temp\surefire12915867565775558831 2026-05-08T11-59-01_527-jvmRun1 surefire-20260508115901918_1tmp surefire_0-20260508115901918_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\target\test-classes;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\build\classes;C:\Users\gpandey\.m2\repository\xerces\xercesImpl\2.12.0\xercesImpl-2.12.0.jar;C:\Users\gpandey\.m2\repository\xml-apis\xml-apis\1.4.01\xml-apis-1.4.01.jar;C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\lib\miglayout15-swing.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\gpandey\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\gpandey\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\gpandey"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java"/>
+    <property name="style.color" value="always"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\gpandey\AppData\Local\Temp\surefire12915867565775558831\surefirebooter-20260508115901918_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.1+8-LTS"/>
+    <property name="org.apache.xerces.xni.parser.XMLParserConfiguration" value="org.apache.xerces.parsers.XMLGrammarCachingConfiguration"/>
+    <property name="user.name" value="gpandey"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-25.0.1+8"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2025.2.5\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="localRepository" value="C:\Users\gpandey\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\gpandey\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2025.2.5"/>
+    <property name="java.version" value="25.0.1"/>
+    <property name="user.dir" value="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="jansi.passthrough" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\WindowsPowerShell\Scripts;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Program Files\PuTTY\;C:\Users\gpandey\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\Users\gpandey\AppData\Local\Programs\Python\Launcher\;C:\Users\gpandey\AppData\Local\Microsoft\WindowsApps;C:\Users\gpandey\AppData\Local\GitHubDesktop\bin;C:\Users\gpandey\OneDrive - ISDA\Documents\Initiation\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\gpandey\AppData\Local\Programs\Git\cmd;C:\Users\gpandey\AppData\Local\Microsoft\WinGet\Packages\Anthropic.ClaudeCode_Microsoft.Winget.Source_8wekyb3d8bbwe;;C:\Users\gpandey\AppData\Local\Programs\Ollama;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="25.0.1+8-LTS"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="C:\Users\gpandey\.m2\repository"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="diagnoseBootstrap" classname="com.handcoded.fpml.BootstrapDiagnosticTest" time="2.6">
+    <system-out><![CDATA[=== DIAGNOSTIC ===
+user.dir: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java
+files-core/releases.xml exists: true
+files-core/releases.xml absolute: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\files-core\releases.xml
+files-fpml/meta/fpml-5-0.xml exists: false
+DocumentBuilderFactory: org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+XInclude supported: false (after set: configuring...)
+InputSource: org.xml.sax.InputSource@1dde4cb2
+InputSource systemId: file:/C:/Users/gpandey/OneDrive%20-%20ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/build/classes/files-core/releases.xml
+Parsed document: [#document: null]
+Root element: specifications
+Children count: 13
+Registered specifications: 3
+  - Acme
+  - FpML
+  - DSig
+=== END DIAGNOSTIC ===
+]]></system-out>
+    <system-err><![CDATA[May 08, 2026 11:59:04 AM com.handcoded.meta.Specification <clinit>
+INFO: Bootstrapping Specifications
+May 08, 2026 11:59:04 AM com.handcoded.meta.Specification <clinit>
+INFO: Working directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java
+May 08, 2026 11:59:06 AM com.handcoded.meta.Specification <clinit>
+INFO: Completed
+May 08, 2026 11:59:06 AM com.handcoded.meta.Specification <clinit>
+INFO: Registered specification: Acme
+May 08, 2026 11:59:06 AM com.handcoded.meta.Specification <clinit>
+INFO: Registered specification: FpML
+May 08, 2026 11:59:06 AM com.handcoded.meta.Specification <clinit>
+INFO: Registered specification: DSig
+May 08, 2026 11:59:06 AM com.handcoded.xml.XmlUtility <clinit>
+INFO: Bootstrapping Default Schema Set
+May 08, 2026 11:59:06 AM com.handcoded.xml.XmlUtility <clinit>
+INFO: Completed
+]]></system-err>
+  </testcase>
+</testsuite>

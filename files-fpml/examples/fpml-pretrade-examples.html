@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <title>FpML 5.14 Working Draft - Examples (Pretrade View)</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link rel="stylesheet" type="text/css" href="fpml.css"/>
+   </head>
+   <body>
+      <h1 xmlns:xsd="http://www.w3.org/2001/XMLSchema">FpML®  Financial product Markup Language Working Draft 30 January 2026 (Pretrade View)</h1>
+      <h2 xmlns:xsd="http://www.w3.org/2001/XMLSchema" class="abstractHeader">Version: 5.14</h2>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">This version: <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1</i>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Latest version: <a href="http://www.fpml.org/spec/fpml-5-14-1-wd-1" target="_blank" title="Link opens in new window.">
+            <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1</i>
+         </a>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Previous version: <a href="https://www.fpml.org/spec/fpml-5-13-7-rec-1/" target="_blank" title="Link opens in new window.">
+            <i>https://www.fpml.org/spec/fpml-5-13-7-rec-1/</i>
+         </a>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Errata for this version: <a href="http://www.fpml.org/spec/fpml-5-14-1-wd-1/html/pretrade/fpml-5-14-errata.html" target="_blank" title="Link opens in new window.">
+            <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1/html/pretrade/fpml-5-14-errata.html</i>
+         </a>
+      </h4>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		Build Number: 1; Document built: Mon 04/20/2026 17:25:54.54</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">Copyright (c) 1999 - 2026 by International Swaps and Derivatives Association, Inc.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">Financial Products Markup Language is subject to the FpML®  Public License.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">FpML®  is a registered trademark of the International Swaps and Derivatives Association, Inc.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema"> A copy of this license is available at <a href="http://www.fpml.org/the_standard/fpml-public-license/" target="_blank" title="Link opens in new window.">http://www.fpml.org/the_standard/fpml-public-license/</a>
+      </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <br/>
+         <br/>
+      </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">The FpML specifications provided are without warranty of any kind, either expressed or implied, including, without limitation, warranties that FpML, or the FpML specifications are free of defects, merchantable, fit for a particular purpose or non-infringing.  The entire risk as to the quality and performance of the specifications is with you.  Should any of the FpML specifications prove defective in any respect, you assume the cost of any necessary servicing or repair.  Under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall ISDA, any of its members, or any distributor of documents or software containing any of the FpML specifications, or any supplier of any of such parties, be liable to you or any other person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages.  </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <br/>
+         <br/>
+      </p>
+      <h2 class="tocHeader">Table Of Contents</h2>
+      <p class="toc">&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1 <a href="#s1"/>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.1 <a href="#s1.1">Introduction</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2 <a href="#s1.2">Interest Rate Derivative Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1 <a href="#s1.2.1">Interest Rate Swaps</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.1 <a href="#s1.2.1.1">Example 1 - Fixed/Floating Single Currency Interest Rate Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.2 <a href="#s1.2.1.2">Example 2 - Fixed/Floating Cross Currency Interest Rate Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.3 <a href="#s1.2.1.3">Example 3 - Fixed/Floating Overnight Interest Rate Swap (OIS)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.4 <a href="#s1.2.1.4">Example 4 - Fixed/Floating Single Currency Interest Rate Swap with Compounding</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.5 <a href="#s1.2.1.5">Example 5 - Fixed/Floating OIS USD 15M vs Fed Funds Effective Interest Rate Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.6 <a href="#s1.2.1.6">Example 6 - Fixed/Floating Interest Rate Swap with Modified Termination Date</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.7 <a href="#s1.2.1.7">Example 7 - Fixed/Floating Interest Rate Swap with Modified Termination Date</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.8 <a href="#s1.2.1.8">Example 8 - Fixed/Floating Interest Rate Swap with Modified Effective Date</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1.9 <a href="#s1.2.1.9">Example 9 - Fixed/Floating Interest Rate Swap with Different Fixed Calculation Pay Dates Adjustment</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3 <a href="#s1.3">Credit Derivative Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1 <a href="#s1.3.1">Credit Default Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1.1 <a href="#s1.3.1.1">Example 1 - Single Name Credit Default Swap, Long Form</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1.2 <a href="#s1.3.1.2">Example 2 - Single Name Credit Default Swap, Short Form</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1.3 <a href="#s1.3.1.3">Example 3 - Single Name Credit Default Swap, USD AIG, Short Form</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1.4 <a href="#s1.3.1.4">Example 4 - Single Name Credit Default Swap, EURO ADECCO, Short Form</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1.5 <a href="#s1.3.1.5">Example 5 - Single Name Credit Default Swap, Non Standard IBM, Short Form</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2 <a href="#s1.3.2">Credit Default Swap Index</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2.1 <a href="#s1.3.2.1">Example 6 - CDX HVOL Example</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2.2 <a href="#s1.3.2.2">Example 6 - CDX, Short Form</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2.3 <a href="#s1.3.2.3">Example 7 - CDX HY Example</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2.4 <a href="#s1.3.2.4">Example 8 - CDX IG Example</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2.5 <a href="#s1.3.2.5">Example 9 - iTraxx Eeurope Example</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4 <a href="#s1.4">Message Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1 <a href="#s1.4.1">Example 1 - Request Credit Limit Check</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2 <a href="#s1.4.2">Example 2 - Request Credit Limit Check (package transactions)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3 <a href="#s1.4.3">Example 3 - Limit Check Approved (Full Aproval)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.4 <a href="#s1.4.4">Example 4 - Limit Check Approved (Partial Aproval)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.5 <a href="#s1.4.5">Example 5 - Limit Check Approved (Partial Aproval, as Options)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.6 <a href="#s1.4.6">Example 6 - Limit Check Refused</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.7 <a href="#s1.4.7">Example 7 - Credit Limit Report (Fuel gauge)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.8 <a href="#s1.4.8">Example 8 - Set Credit Limit</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.9 <a href="#s1.4.9">Example 9 - Credit Limit Response</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.10 <a href="#s1.4.10">Example 10 - Suspend Credit (Kill Switch)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.11 <a href="#s1.4.11">Example 11 - Credit Limit Response (Limit Suspended)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.12 <a href="#s1.4.12">Example 12 - Restore Credit (Unkill)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.13 <a href="#s1.4.13">Example 13 - Credit Limit Exception</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.14 <a href="#s1.4.14">Example 14 - Ortder Status Notification</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.15 <a href="#s1.4.15">Example 15 - Service Notification</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.16 <a href="#s1.4.16">Example 16 - Margin Quote Request</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.17 <a href="#s1.4.17">Example 20 - Set Credit Limit with credit utilization for FX</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.18 <a href="#s1.4.18">Example 21 - Set Credit Limit with credit utilization for IRD</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.19 <a href="#s1.4.19">Example 50 - Request Credit Limit Check (package transactions)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.20 <a href="#s1.4.20">Example 51 - Request Credit Limit Check (package transactions), from Middleware to FCM</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.21 <a href="#s1.4.21">Example 53 - Limit Check Approved (package transactions)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5 <a href="#s1.5">Product Definition Message Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.1 <a href="#s1.5.1">Scenario 1 ProductDefinitionsReport</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.2 <a href="#s1.5.2">Scenario 1 ProductDefinitionsReport 2</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.3 <a href="#s1.5.3">Scenario 2 - RequestProductDefinitions-floating-rate-index</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.4 <a href="#s1.5.4">Scenario 3 - ProductDefinitionsReport-floating-rate-index</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6 <a href="#s1.6">Regulatory Reporting Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.1 <a href="#s1.6.1">ESMA MiFID II RTS 6 - Information relating to every initial decision to deal and incoming orders from clients</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.2 <a href="#s1.6.2">ESMA MiFID II RTS 6 - Information relating to outgoing and executed orders</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.3 <a href="#s1.6.3">ESMA MiFID II RTS 24 - Details of orders</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+      </p>
+      <div xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <div>
+            <h2>
+               <a id="s1">1 </a>
+            </h2>
+         </div>
+         <div>
+            <h3>
+               <a id="s1.1">1.1 Introduction</a>
+            </h3>
+            <p>This section contains examples of FpML product and messages for Pretrade.</p>
+            <p>The sample xml document are available for download from the fpml.org website.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.2">1.2 Interest Rate Derivative Examples</a>
+               </h3>
+            </div>
+            <p>This section contains examples of FpML Interest Rate Derivative product examples for Pretrade. Each example illustrates how different product features are modeled in FpML.</p>
+            <div>
+               <h4>
+                  <a id="s1.2.1">1.2.1 Interest Rate Swaps</a>
+               </h4>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.1">1.2.1.1 Example 1 - Fixed/Floating Single Currency Interest Rate Swap</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-01-irs-fixed-float-single-ccy.xml">pretrade-ex-01-irs-fixed-float-single-ccy.xml</a>
+                  </p>
+                  <p>IRS USD  5Y vs 3M LIBOR</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.2">1.2.1.2 Example 2 - Fixed/Floating Cross Currency Interest Rate Swap</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-02-irs-fixed-float-cross-ccy.xml">pretrade-ex-02-irs-fixed-float-cross-ccy.xml</a>
+                  </p>
+                  <p>IRS GBP  5Y vs 3M LIBOR USD</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.3">1.2.1.3 Example 3 - Fixed/Floating Overnight Interest Rate Swap (OIS)</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-03-irs-ois.xml">pretrade-ex-03-irs-ois.xml</a>
+                  </p>
+                  <p>OIS USD  1M vs Fed Funds Effective</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.4">1.2.1.4 Example 4 - Fixed/Floating Single Currency Interest Rate Swap with Compounding</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-04-irs-compounding.xml">pretrade-ex-04-irs-compounding.xml</a>
+                  </p>
+                  <p>IRS USD  5Y vs 3M LIBOR</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.5">1.2.1.5 Example 5 - Fixed/Floating OIS USD 15M vs Fed Funds Effective Interest Rate Swap</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-05-irs-15m-ois.xml">pretrade-ex-05-irs-15m-ois.xml</a>
+                  </p>
+                  <p>OIS USD 15M vs Fed Funds Effective</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.6">1.2.1.6 Example 6 - Fixed/Floating Interest Rate Swap with Modified Termination Date</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-06-irs-modified-termination-date.xml">pretrade-ex-06-irs-modified-termination-date.xml</a>
+                  </p>
+                  <p>IRS USD  5Y+  OFF BMK vs 3M LIBOR</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.7">1.2.1.7 Example 7 - Fixed/Floating Interest Rate Swap with Modified Termination Date</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-07-irs-modified-termination-date-10d.xml">pretrade-ex-07-irs-modified-termination-date-10d.xml</a>
+                  </p>
+                  <p>IRS USD  3Y+  OFF BMK vs 3M LIBOR</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.8">1.2.1.8 Example 8 - Fixed/Floating Interest Rate Swap with Modified Effective Date</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-08-irs-modified-effective-date-10d.xml">pretrade-ex-08-irs-modified-effective-date-10d.xml</a>
+                  </p>
+                  <p>IRS USD  3Y+  OFF BMK vs 3M LIBOR</p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.2.1.9">1.2.1.9 Example 9 - Fixed/Floating Interest Rate Swap with Different Fixed Calculation Pay Dates Adjustment</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/interest-rate-derivatives/pretrade-ex-09-irs-different-fixed-calculation-pay-dates-adjustment.xml">pretrade-ex-09-irs-different-fixed-calculation-pay-dates-adjustment.xml</a>
+                  </p>
+                  <p>IRS USD 10Y  OFF BMK vs 3M LIBOR</p>
+               </div>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.3">1.3 Credit Derivative Examples</a>
+               </h3>
+            </div>
+            <p>This section contains examples of FpML Credit Derivative product examples for Pretrade. Each example illustrates how different product features are modeled in FpML.</p>
+            <div>
+               <h4>
+                  <a id="s1.3.1">1.3.1 Credit Default Swap</a>
+               </h4>
+               <div>
+                  <h5>
+                     <a id="s1.3.1.1">1.3.1.1 Example 1 - Single Name Credit Default Swap, Long Form</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-01-cdsn-long-form.xml">pretrade-ex-01-cdsn-long-form.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.1.2">1.3.1.2 Example 2 - Single Name Credit Default Swap, Short Form</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-02-cdsn-short-form.xml">pretrade-ex-02-cdsn-short-form.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.1.3">1.3.1.3 Example 3 - Single Name Credit Default Swap, USD AIG, Short Form</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-03-cdsn-usd-aig-short-form.xml">pretrade-ex-03-cdsn-usd-aig-short-form.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.1.4">1.3.1.4 Example 4 - Single Name Credit Default Swap, EURO ADECCO, Short Form</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-04-cdsn-euro-adecco-short-form.xml">pretrade-ex-04-cdsn-euro-adecco-short-form.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.1.5">1.3.1.5 Example 5 - Single Name Credit Default Swap, Non Standard IBM, Short Form</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-05-cdsn-non-standard-ibm-short-form.xml">pretrade-ex-05-cdsn-non-standard-ibm-short-form.xml</a>
+                  </p>
+               </div>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.2">1.3.2 Credit Default Swap Index</a>
+               </h4>
+               <div>
+                  <h5>
+                     <a id="s1.3.2.1">1.3.2.1 Example 6 - CDX HVOL Example</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-06-cdx-hvol.xml">pretrade-ex-06-cdx-hvol.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.2.2">1.3.2.2 Example 6 - CDX, Short Form</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-06-cdx-short-form.xml">pretrade-ex-06-cdx-short-form.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.2.3">1.3.2.3 Example 7 - CDX HY Example</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-07-cdx-hy.xml">pretrade-ex-07-cdx-hy.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.2.4">1.3.2.4 Example 8 - CDX IG Example</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-08-cdx-ig.xml">pretrade-ex-08-cdx-ig.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.3.2.5">1.3.2.5 Example 9 - iTraxx Eeurope Example</a>
+                  </h5>
+                  <p>File: <a class="web" target="#" href="xml/products/credit-derivatives/pretrade-ex-09-itraxx-europe.xml">pretrade-ex-09-itraxx-europe.xml</a>
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.4">1.4 Message Examples</a>
+               </h3>
+            </div>
+            <p>This section contains examples of FpML messages for Pretrade. Each example illustrates a different part of the process.</p>
+            <div>
+               <h4>
+                  <a id="s1.4.1">1.4.1 Example 1 - Request Credit Limit Check</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-01-request-limit-check.xml">limit-ex-01-request-limit-check.xml</a>
+               </p>
+               <p>A message requesting a credit limit check.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.2">1.4.2 Example 2 - Request Credit Limit Check (package transactions)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-02-request-limit-check-package.xml">limit-ex-02-request-limit-check-package.xml</a>
+               </p>
+               <p>A message requesting a credit limit check on a package transactions</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.3">1.4.3 Example 3 - Limit Check Approved (Full Aproval)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-03-limit-check-approved-full.xml">limit-ex-03-limit-check-approved-full.xml</a>
+               </p>
+               <p>A response message indicating the credit limit has been approved.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.4">1.4.4 Example 4 - Limit Check Approved (Partial Aproval)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-04-limit-check-approved-partial.xml">limit-ex-04-limit-check-approved-partial.xml</a>
+               </p>
+               <p>A response message indicating the credit limit has been partially approved.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.5">1.4.5 Example 5 - Limit Check Approved (Partial Aproval, as Options)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-05-limit-check-approved-partial-as-options.xml">limit-ex-05-limit-check-approved-partial-as-options.xml</a>
+               </p>
+               <p>A response message indicating the credit limit has been partially approved (shown as options).</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.6">1.4.6 Example 6 - Limit Check Refused</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-06-limit-check-refused.xml">limit-ex-06-limit-check-refused.xml</a>
+               </p>
+               <p>A response message indicating the credit limit has been refused.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.7">1.4.7 Example 7 - Credit Limit Report (Fuel gauge)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-07-credit-limit-report-(fuel-gauge).xml">limit-ex-07-credit-limit-report-(fuel-gauge).xml</a>
+               </p>
+               <p>A fuel gauge message.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.8">1.4.8 Example 8 - Set Credit Limit</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-08-set-credit-limit.xml">limit-ex-08-set-credit-limit.xml</a>
+               </p>
+               <p>A request message to set the credit limit.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.9">1.4.9 Example 9 - Credit Limit Response</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-09-credit-limit-response-(credit-limit-set).xml">limit-ex-09-credit-limit-response-(credit-limit-set).xml</a>
+               </p>
+               <p>A response message to the set credit limit request.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.10">1.4.10 Example 10 - Suspend Credit (Kill Switch)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-10-suspendCredit-(kill-switch).xml">limit-ex-10-suspendCredit-(kill-switch).xml</a>
+               </p>
+               <p>A kill switch message to suspend the credit of a party. The example was enhanced with creditLimit information in version 5.7</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.11">1.4.11 Example 11 - Credit Limit Response (Limit Suspended)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-11-credit-limit-response-(limit-suspended).xml">limit-ex-11-credit-limit-response-(limit-suspended).xml</a>
+               </p>
+               <p>A response message indicating the limit was suspended.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.12">1.4.12 Example 12 - Restore Credit (Unkill)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-12-restore-credit-(unkill).xml">limit-ex-12-restore-credit-(unkill).xml</a>
+               </p>
+               <p>An unkill message that carries an instruction to enable an account OR provide additional limit parameters.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.13">1.4.13 Example 13 - Credit Limit Exception</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-13-credit-limit-exception.xml">limit-ex-13-credit-limit-exception.xml</a>
+               </p>
+               <p>An exception message.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.14">1.4.14 Example 14 - Ortder Status Notification</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-14-order-status.xml">limit-ex-14-order-status.xml</a>
+               </p>
+               <p>A notification message showing the status of the order.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.15">1.4.15 Example 15 - Service Notification</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-15-service-notification.xml">limit-ex-15-service-notification.xml</a>
+               </p>
+               <p>A notification message indicating the status of the service.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.16">1.4.16 Example 16 - Margin Quote Request</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/clearing-eligibility/msg-ex-14-margin-quote-request-ndf.xml">msg-ex-14-margin-quote-request-ndf.xml</a>
+               </p>
+               <p>A request margin quote message for Non Deliverable Forward.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.17">1.4.17 Example 20 - Set Credit Limit with credit utilization for FX</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-20-set-credit-limit-utilization-FX.xml">limit-ex-20-set-credit-limit-utilization-FX.xml</a>
+               </p>
+               <p>A request message to set the credit limit (including a credit utilization structure for FX asset class)</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.18">1.4.18 Example 21 - Set Credit Limit with credit utilization for IRD</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-21-set-credit-limit-utilization-IRD.xml">limit-ex-21-set-credit-limit-utilization-IRD.xml</a>
+               </p>
+               <p>A request message to set the credit limit (including a credit utilization structure for Interest Rate asset class)</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.19">1.4.19 Example 50 - Request Credit Limit Check (package transactions)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-50-pkge-request-limit-check.xml">limit-ex-50-pkge-request-limit-check.xml</a>
+               </p>
+               <p>A message requesting a credit limit check on a package transactions</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.20">1.4.20 Example 51 - Request Credit Limit Check (package transactions), from Middleware to FCM</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-51-pkge-request-limit-check-fcm1-0001.xml">limit-ex-51-pkge-request-limit-check-fcm1-0001.xml</a>
+               </p>
+               <p>A message requesting a credit limit check on a package transactions</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.21">1.4.21 Example 53 - Limit Check Approved (package transactions)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/limit-check/limit-ex-53-package-limit-check-approved-full.xml">limit-ex-53-package-limit-check-approved-full.xml</a>
+               </p>
+               <p>A response message indicating the credit limit has been approved.</p>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.5">1.5 Product Definition Message Examples</a>
+               </h3>
+            </div>
+            <p>This section contains examples of FpML messages for product definition.</p>
+            <p>The sample xml documents are available for download from the fpml.org website.</p>
+            <div>
+               <h4>
+                  <a id="s1.5.1">1.5.1 Scenario 1 ProductDefinitionsReport</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/product-definitions/scenario1_productDefinitionsReport.xml">scenario1_productDefinitionsReport.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.2">1.5.2 Scenario 1 ProductDefinitionsReport 2</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/product-definitions/scenario1_productDefinitionsReport-02.xml">scenario1_productDefinitionsReport-02.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.3">1.5.3 Scenario 2 - RequestProductDefinitions-floating-rate-index</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/product-definitions/scenario2_requestProductDefinitions-floating-rate-index.xml">scenario2_requestProductDefinitions-floating-rate-index.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.4">1.5.4 Scenario 3 - ProductDefinitionsReport-floating-rate-index</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/product-definitions/scenario2_productDefinitionsReport-floating-rate-index.xml">scenario2_productDefinitionsReport-floating-rate-index</a>
+               </p>
+               <p>A message sent by a SEF or dealer to define the terms upon which an EUR swaption would be transacted.</p>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.6">1.6 Regulatory Reporting Examples</a>
+               </h3>
+            </div>
+            <p>This section contains examples of regulatory reporting messages.</p>
+            <div>
+               <h4>
+                  <a id="s1.6.1">1.6.1 ESMA MiFID II RTS 6 - Information relating to every initial decision to deal and incoming orders from clients</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/reg-reporting/record-ex175-mifid-new-order-decision.xml">record-ex175-mifid-new-order-decision.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.2">1.6.2 ESMA MiFID II RTS 6 - Information relating to outgoing and executed orders</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/reg-reporting/record-ex176-mifid-executions.xml">record-ex176-mifid-executions.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.3">1.6.3 ESMA MiFID II RTS 24 - Details of orders</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/reg-reporting/record-ex177-mifid-order-details.xml">record-ex177-mifid-order-details.xml</a>
+               </p>
+            </div>
+         </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <p>
+         <a href="http://validator.w3.org/">
+            <img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1!" height="31" width="88"/>
+         </a>
+         <a href="http://jigsaw.w3.org/css-validator/">
+            <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!"/>
+         </a>
+      </p>
+   </body>
+</html>

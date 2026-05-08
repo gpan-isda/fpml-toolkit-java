@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <copy file="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\target/handcoded.jar" tofile="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java/handcoded.jar" overwrite="true" />
+  </target>
+</project>

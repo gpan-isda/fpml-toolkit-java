@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.handcoded.fpml.NegativeValidationTest
+-------------------------------------------------------------------------------
+Tests run: 265, Failures: 0, Errors: 0, Skipped: 13, Time elapsed: 1.820 s -- in com.handcoded.fpml.NegativeValidationTest

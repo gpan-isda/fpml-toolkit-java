@@ -1,0 +1,32 @@
+Apr 17, 2026 9:58:42 PM com.handcoded.xml.resolver.Catalog <init>
+INFO: Loading catalog 'files-fpml/catalog-fpml-5-13.xml'
+Apr 17, 2026 9:58:42 PM com.handcoded.meta.Specification <clinit>
+INFO: Bootstrapping Specifications
+Apr 17, 2026 9:58:42 PM com.handcoded.meta.Specification <clinit>
+INFO: Working directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java
+Apr 17, 2026 9:58:43 PM com.handcoded.meta.Specification <clinit>
+INFO: Completed
+Apr 17, 2026 9:58:43 PM com.handcoded.meta.Specification <clinit>
+INFO: Registered specification: Acme
+Apr 17, 2026 9:58:43 PM com.handcoded.meta.Specification <clinit>
+INFO: Registered specification: FpML
+Apr 17, 2026 9:58:43 PM com.handcoded.meta.Specification <clinit>
+INFO: Registered specification: DSig
+Apr 17, 2026 9:58:43 PM com.handcoded.xml.XmlUtility <clinit>
+INFO: Bootstrapping Default Schema Set
+Apr 17, 2026 9:58:43 PM com.handcoded.xml.XmlUtility <clinit>
+INFO: Completed
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO: XML catalog loaded: files-fpml/catalog-fpml-5-13.xml
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO: FpML Conversion Server started on port 7070
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO: Endpoints:
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO:   GET  http://localhost:7070/health
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO:   GET  http://localhost:7070/versions
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO:   GET  http://localhost:7070/profiles?from=5-12&to=5-13
+Apr 17, 2026 9:58:43 PM demo.com.handcoded.fpml.FpmlConversionServer main
+INFO:   POST http://localhost:7070/convert?target=5-13

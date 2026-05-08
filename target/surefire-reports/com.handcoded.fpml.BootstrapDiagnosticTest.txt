@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.handcoded.fpml.BootstrapDiagnosticTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.648 s -- in com.handcoded.fpml.BootstrapDiagnosticTest

@@ -1,0 +1,14 @@
+com\handcoded\fpml\InteractiveConversionFlowTest.class
+com\handcoded\fpml\NegativeValidationTest$IgnoringSchemaErrorHandler.class
+com\handcoded\fpml\ValidationSmokeTest$CollectingSchemaErrorHandler.class
+com\handcoded\fpml\ValidationSmokeTest.class
+com\handcoded\fpml\NegativeValidationTest.class
+com\handcoded\fpml\ConversionFlowTest.class
+com\handcoded\fpml\ConversionSmokeTest$CollectingErrorHandler.class
+com\handcoded\fpml\ConversionSmokeTest.class
+com\handcoded\fpml\InteractiveConversionFlowTest$1.class
+com\handcoded\fpml\NegativeValidationTest$CollectingRuleErrorHandler.class
+com\handcoded\fpml\ConversionSmokeTest$SilentSchemaErrorHandler.class
+com\handcoded\fpml\ValidationSmokeTest$CollectingErrorHandler.class
+com\handcoded\fpml\BootstrapDiagnosticTest.class
+com\handcoded\fpml\ToolkitTestBase.class

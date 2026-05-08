@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<candidate-delta xmlns="http://www.handcoded.com/fpml/candidate-delta" from="5-8" from-namespace="http://www.fpml.org/FpML-5/legal" from-schema-dir="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\files-fpml\schemas\fpml5-8\legal" generated-at="2026-04-22T15:40:40.658461300Z" to="5-9" to-namespace="http://www.fpml.org/FpML-5/legal" to-schema-dir="C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\files-fpml\schemas\fpml5-9\legal" view="legal">
+  <!--
+  Status values: PENDING (awaiting review), APPROVED, SKIPPED.
+  Review with DeltaProfileReviewer to generate a conversion-delta.xml profile.
+  DROPPED_* entries are informational only — they need no default.
+  RENAMED_* entries require human confirmation of the old→new name mapping.
+-->
+  <candidate change-type="NEW_ELEMENT" constraint-type="schema-required" id="1" node-name="unadjustedDate" reviewer-note="" reviewer-scope="" reviewer-value="" source-xsd="fpml-shared-5-9.xsd" status="PENDING" suggested-xpath="//*[local-name()='adjustableDate']/*[local-name()='unadjustedDate']" target-constraint="1" type-name="AdjustableDate"/>
+  <candidate change-type="NEW_ELEMENT" constraint-type="schema-required" id="2" node-name="dateAdjustments" reviewer-note="" reviewer-scope="" reviewer-value="" source-xsd="fpml-shared-5-9.xsd" status="PENDING" suggested-xpath="//*[local-name()='adjustableDate']/*[local-name()='dateAdjustments']" target-constraint="1" type-name="AdjustableDate"/>
+  <candidate change-type="NEW_ELEMENT" constraint-type="schema-optional" id="3" node-name="adjustedDate" reviewer-note="" reviewer-scope="" reviewer-value="" source-xsd="fpml-shared-5-9.xsd" status="PENDING" suggested-xpath="//*[local-name()='adjustableDate']/*[local-name()='adjustedDate']" target-constraint="0" type-name="AdjustableDate"/>
+</candidate-delta>

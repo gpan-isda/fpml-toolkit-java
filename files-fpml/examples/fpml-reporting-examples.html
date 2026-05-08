@@ -1,0 +1,1895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <title>FpML 5.14 Working Draft - Examples (Reporting View)</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link rel="stylesheet" type="text/css" href="fpml.css"/>
+   </head>
+   <body>
+      <h1 xmlns:xsd="http://www.w3.org/2001/XMLSchema">FpML®  Financial product Markup Language Working Draft 30 January 2026 (Reporting View)</h1>
+      <h2 xmlns:xsd="http://www.w3.org/2001/XMLSchema" class="abstractHeader">Version: 5.14</h2>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">This version: <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1</i>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Latest version: <a href="http://www.fpml.org/spec/fpml-5-14-1-wd-1" target="_blank" title="Link opens in new window.">
+            <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1</i>
+         </a>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Previous version: <a href="https://www.fpml.org/spec/fpml-5-13-7-rec-1/" target="_blank" title="Link opens in new window.">
+            <i>https://www.fpml.org/spec/fpml-5-13-7-rec-1/</i>
+         </a>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Errata for this version: <a href="http://www.fpml.org/spec/fpml-5-14-1-wd-1/html/reporting/fpml-5-14-errata.html" target="_blank" title="Link opens in new window.">
+            <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1/html/reporting/fpml-5-14-errata.html</i>
+         </a>
+      </h4>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		Build Number: 1; Document built: Mon 04/20/2026 15:47:28.85</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">Copyright (c) 1999 - 2026 by International Swaps and Derivatives Association, Inc.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">Financial Products Markup Language is subject to the FpML®  Public License.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">FpML®  is a registered trademark of the International Swaps and Derivatives Association, Inc.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema"> A copy of this license is available at <a href="http://www.fpml.org/the_standard/fpml-public-license/" target="_blank" title="Link opens in new window.">http://www.fpml.org/the_standard/fpml-public-license/</a>
+      </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <br/>
+         <br/>
+      </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">The FpML specifications provided are without warranty of any kind, either expressed or implied, including, without limitation, warranties that FpML, or the FpML specifications are free of defects, merchantable, fit for a particular purpose or non-infringing.  The entire risk as to the quality and performance of the specifications is with you.  Should any of the FpML specifications prove defective in any respect, you assume the cost of any necessary servicing or repair.  Under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall ISDA, any of its members, or any distributor of documents or software containing any of the FpML specifications, or any supplier of any of such parties, be liable to you or any other person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages.  </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <br/>
+         <br/>
+      </p>
+      <h2 class="tocHeader">Table Of Contents</h2>
+      <p class="toc">&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1 <a href="#s1">Business Process Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.1 <a href="#s1.1">Introduction</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2 <a href="#s1.2">Credit Event Notice</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2.1 <a href="#s1.2.1">Example 21 - Credit Event Notice</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3 <a href="#s1.3">Cashflow Matching</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.1 <a href="#s1.3.1">Example 28 - Simple Cashflow Assertion</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.2 <a href="#s1.3.2">Example 29 - Asset Swap Cashflow Assertion</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.3 <a href="#s1.3.3">Example 30 - Interest Rate Cashflow Assertion</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.4 <a href="#s1.3.4">Example 31 - Interest Rate Match Result - A</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.5 <a href="#s1.3.5">Example 32 - Interest Rate Match Result - B</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.6 <a href="#s1.3.6">Example 33 - Interest Rate Match Result - C</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.7 <a href="#s1.3.7">Example 34 - Credit Default Cashflow Termination</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.8 <a href="#s1.3.8">Example 35 - Credit Default Coupon Payment</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.9 <a href="#s1.3.9">Example 36 - Credit Default Cash Flow Assertion</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.10 <a href="#s1.3.10">Example 37 - Credit Default Cashflow Match Result - A</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.11 <a href="#s1.3.11">Example 38 - Credit Default Cashflow Match Result - B</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.12 <a href="#s1.3.12">Example 39 - Credit Default Cashflow Match Result - C</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.13 <a href="#s1.3.13">Example 40 - Interest Rate Reset</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.14 <a href="#s1.3.14">Example 41 - Interest Rate Equity Reset</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.15 <a href="#s1.3.15">Example 42 - Interest Rate Equity Dividend Reset</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.16 <a href="#s1.3.16">Example 43 - Equity Swap Cashflow Partial Termination</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.17 <a href="#s1.3.17">Example 44 - Equity Swap Cashflow Partial Termination Match Results - A</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.18 <a href="#s1.3.18">Example 45 - Equity Swap Cashflow Partial Termination Match Results - B</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.19 <a href="#s1.3.19">Example 46 - Equity Swap Cashflow Partial Termination Match Results - C</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.20 <a href="#s1.3.20">Example 47 - Compounding Swap Cashflow Assertion</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.21 <a href="#s1.3.21">Example 48 - Cashflow Assertion: Initial Principal Exchange of a Cross-Currency Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.22 <a href="#s1.3.22">Example 49 - Cashflow Assertion: Equity Option Premium</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.23 <a href="#s1.3.23">Example 50 - Cashflow Assertion with Multiple Trades: Equity Option and CDS Premiums</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.24 <a href="#s1.3.24">Example 51 - Cashflow Assertion with Multiple Trades: Equity Options Premiums</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.25 <a href="#s1.3.25">Example 52 - Cashflow Assertion with Multiple Trades: Equity Option and CDS Premiums</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.26 <a href="#s1.3.26">Example 53 - Cashflow Cancellation with Multiple Trades: Equity Option and CDS Premiums</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3.27 <a href="#s1.3.27">Example 54 - Cashflow Match Result with Multiple Trades: Equity Option and CDS Premiums</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4 <a href="#s1.4">Portfolio Reconciliation</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1 <a href="#s1.4.1">Scenario: Incremental Update</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.1 <a href="#s1.4.1.1">Example 57 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.2 <a href="#s1.4.1.2">Example 58 - Positions Acknowledged</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.3 <a href="#s1.4.1.3">Example 59 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.4 <a href="#s1.4.1.4">Example 60 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.5 <a href="#s1.4.1.5">Example 61 - Positions Acknowledged</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.6 <a href="#s1.4.1.6">Example 62 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.7 <a href="#s1.4.1.7">Example 63 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.8 <a href="#s1.4.1.8">Example 64 - Positions Acknowledged</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.9 <a href="#s1.4.1.9">Example 65 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.10 <a href="#s1.4.1.10">Example 66 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.11 <a href="#s1.4.1.11">Example 67 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.12 <a href="#s1.4.1.12">Example 68 - Positions Acknowledged</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.13 <a href="#s1.4.1.13">Example 69 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.14 <a href="#s1.4.1.14">Example 70 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.15 <a href="#s1.4.1.15">Example 71 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.16 <a href="#s1.4.1.16">Example 72 - Portfolio Request</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.17 <a href="#s1.4.1.17">Example 73 - Position Report</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.18 <a href="#s1.4.1.18">Example 74 - Position Request</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.1.19 <a href="#s1.4.1.19">Example 75 - Position Report</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2 <a href="#s1.4.2">Scenario: Snapshot</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.1 <a href="#s1.4.2.1">Example 76 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.2 <a href="#s1.4.2.2">Example 77 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.3 <a href="#s1.4.2.3">Example 78 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.4 <a href="#s1.4.2.4">Example 79 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.5 <a href="#s1.4.2.5">Example 80 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.6 <a href="#s1.4.2.6">Example 81 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.2.7 <a href="#s1.4.2.7">Example 82 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3 <a href="#s1.4.3">Scenario: Force Matched</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.1 <a href="#s1.4.3.1">Example 83 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.2 <a href="#s1.4.3.2">Example 84 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.3 <a href="#s1.4.3.3">Example 85 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.4 <a href="#s1.4.3.4">Example 86 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.5 <a href="#s1.4.3.5">Example 87 - Positions Asserted</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.6 <a href="#s1.4.3.6">Example 88 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4.3.7 <a href="#s1.4.3.7">Example 89 - Positions Match Results</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5 <a href="#s1.5">Securities Reporting Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.1 <a href="#s1.5.1">Position Reporting</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.2 <a href="#s1.5.2">Security Reporting Example 1 - Activity Report</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.3 <a href="#s1.5.3">Security Reporting Example 100 - Position Report</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5.4 <a href="#s1.5.4">Security Reporting Example 200 - Market Data Report</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6 <a href="#s1.6">Collateral Management Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.1 <a href="#s1.6.1">Margin Call Process</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.2 <a href="#s1.6.2">Example 1 - Request Margin (MC1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.3 <a href="#s1.6.3">Example 2 - Request Margin (MC1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.4 <a href="#s1.6.4">Example 3 - Request Margin (MC1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.5 <a href="#s1.6.5">Example 4 - Request Margin (MC1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.6 <a href="#s1.6.6">Example 5 - Request Margin (MC1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.7 <a href="#s1.6.7">Example 6 - Request Margin (MC1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.8 <a href="#s1.6.8">Example 7 - Rescind Issued Margin (MC2)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.9 <a href="#s1.6.9">Example 8 - Margin Call Response (MC3b)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.10 <a href="#s1.6.10">Example 9 - Margin Call Response (MC3b) - Fully Agree</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.11 <a href="#s1.6.11">Example 10 - Margin Call Response (MC3b) - Fully Agree</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.12 <a href="#s1.6.12">Example 11 - Propose Collateral (MC3c)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.13 <a href="#s1.6.13">Example 12 - Rescind Margin Call Response (MC4)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.14 <a href="#s1.6.14">Example 13 - Margin Call Response (MC5) - Fully Dispute</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.15 <a href="#s1.6.15">Example 14 - Margin Call Response (MC5) - Fully Dispute</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.16 <a href="#s1.6.16">Example 15 - Margin Call Response (MC5) - Partial Dispute</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.17 <a href="#s1.6.17">Example 16 - Collateral Proposal Response (MC7 / MC8)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.18 <a href="#s1.6.18">Example 17 - Aknowledge Dispute (MC11)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.19 <a href="#s1.6.19">Collateral Substitution Process</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.20 <a href="#s1.6.20">Example 18 - Collateral Substitution Request (CS1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.21 <a href="#s1.6.21">Example 19 - Collateral Substitution Acceptance/Rejection (CS2/CS5)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.22 <a href="#s1.6.22">Example 20 - Confirm Substitution (CS3)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.23 <a href="#s1.6.23">Example 21 - Confirm Collateral Return (CS4)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.24 <a href="#s1.6.24">Interest Process</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.25 <a href="#s1.6.25">Example 22 - Send Interest Notification  (IN1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.26 <a href="#s1.6.26">Example 23 - Send Interest Notification - matching service (IN1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.27 <a href="#s1.6.27">Example 24 - Send Interest Notification with interest calculations  (IN1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.28 <a href="#s1.6.28">Example 25 - Send Interest Notification (both directions, net treatment) (IN1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.29 <a href="#s1.6.29">Example 26 - Send Interest Notification (both directions, gross treatment) (IN1)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.30 <a href="#s1.6.30">Example 27 - Matched Acceptance (IN2) / Reject Value Date (IN3) / Dispute Interest (IN5)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.31 <a href="#s1.6.31">Example 28 - Matched Acceptance (IN2) / Reject Value Date (IN3) / Dispute Interest (IN5)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6.32 <a href="#s1.6.32">Example 29 - Interest Statement</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7 <a href="#s1.7">Exposure Reporting</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7.1 <a href="#s1.7.1">Example 101 - Commodity Large Trader Report, Table 1</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7.2 <a href="#s1.7.2">Example 104 - Commodity Large Trader Report, Table 4</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7.3 <a href="#s1.7.3">Example 110 - Commodity Large Trader Report, Guidebook Table 1</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7.4 <a href="#s1.7.4">Example 111 - Commodity Large Trader Report, Guidebook Table 2</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7.5 <a href="#s1.7.5">Example 130 - Commodity Large Trader Report, Bilateral Basis swap example</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7.6 <a href="#s1.7.6">Example 131 - Commodity Large Trader Report, Bilateral Index swap example</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2 <a href="#s2">Pricing and Risk Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1 <a href="#s2.1">Use Cases/Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.1 <a href="#s2.1.1">Terminology:</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2 <a href="#s2.1.2">Request/Response scenarios:</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.1 <a href="#s2.1.2.1">Scenario 1 – Request Trade Value</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.1.1 <a href="#s2.1.2.1.1">Use Case 1 Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.2 <a href="#s2.1.2.2">Scenario 2 – Request Portfolio Value/Sensitivity</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.2.1 <a href="#s2.1.2.2.1">Use Case 2A Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.2.2 <a href="#s2.1.2.2.2">Use Case 2B Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.3 <a href="#s2.1.2.3">Scenario 3 – Request Sensitivity Generation</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.3.1 <a href="#s2.1.2.3.1">Use Case 3A Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.3.2 <a href="#s2.1.2.3.2">Use Case 3B Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.3.3 <a href="#s2.1.2.3.3">Use Case 3C Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.4 <a href="#s2.1.2.4">Scenario 4 – Request New Trade Impact</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.5 <a href="#s2.1.2.5">Scenario 5 – Perform Analyses</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.5.1 <a href="#s2.1.2.5.1">Use Case 5A Description</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.2.6 <a href="#s2.1.2.6">Scenario 6 – Request Pricing Inputs</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.3 <a href="#s2.1.3">Notification Scenarios</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.3.1 <a href="#s2.1.3.1">Position Report</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.3.2 <a href="#s2.1.3.2">Use Case 7:</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1.3.3 <a href="#s2.1.3.3">Use Case 8:</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+      </p>
+      <div xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <div>
+            <h2>
+               <a id="s1">1 Business Process Examples</a>
+            </h2>
+         </div>
+         <div>
+            <h3>
+               <a id="s1.1">1.1 Introduction</a>
+            </h3>
+            <p>This section contains example FpML documents for several message types related to different business processes. Each demonstrates how different message exchanges are modeled in FpML.</p>
+            <p>NOTE: The following examples have validation issue due to missing fxSingleLeg model which is in process of being redesigned and be added in the next version -  57, 63, 65-67, 69, 70, 73, 75-89.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.2">1.2 Credit Event Notice</a>
+               </h3>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.2.1">1.2.1 Example 21 - Credit Event Notice</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/credit-event-notice/msg-ex21-credit-event-notice.xml">msg-ex21-credit-event-notice.xml</a>
+               </p>
+               <p>This example shows the representation of a Credit Event Notice as FpML message. This examples is the same as cdcen-ex01-credit-event-notice-message.xml available in the cd folder.</p>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.3">1.3 Cashflow Matching</a>
+               </h3>
+            </div>
+            <p>Please note that some of the samples containing FX products within them are not schema valid. These will be fixed with the introduction of the new FX refactoring work in the next release.</p>
+            <div>
+               <h4>
+                  <a id="s1.3.1">1.3.1 Example 28 - Simple Cashflow Assertion</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex28-cashflow-assertion-most-simple.xml">msg-ex28-cashflow-assertion-most-simple.xml</a>
+               </p>
+               <p>This example shows the usage of TradeCashflowsAsserted to describe a simple asserted cashflow. The minimal amount of information is specified: A single payment/currency pair and the buyer/seller party references.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.2">1.3.2 Example 29 - Asset Swap Cashflow Assertion</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex29-cashflow-assertion-assetSwap.xml">msg-ex29-cashflow-assertion-assetSwap.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to an asset swap. Features of this example include 3 underlyer references: The fixed rate, the float rate and the bond reference. </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.3">1.3.3 Example 30 - Interest Rate Cashflow Assertion</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex30-cashflow-assertion-ird.xml">msg-ex30-cashflow-assertion-ird.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.4">1.3.4 Example 31 - Interest Rate Match Result - A</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex31-cashflow-match-result-ird-01.xml">msg-ex31-cashflow-match-result-ird-01.xml</a>
+               </p>
+               <p>Example of a payment exposed cashflow match result message related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.5">1.3.5 Example 32 - Interest Rate Match Result - B</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex32-cashflow-match-result-ird-02.xml">msg-ex32-cashflow-match-result-ird-02.xml</a>
+               </p>
+               <p>Example of a mismatched cashflow match result message related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.6">1.3.6 Example 33 - Interest Rate Match Result - C</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex33-cashflow-match-result-ird-03.xml">msg-ex33-cashflow-match-result-ird-03.xml</a>
+               </p>
+               <p>Example of an unmatched cashflow match result message related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.7">1.3.7 Example 34 - Credit Default Cashflow Termination</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex34-cashflow-assertion-cds-Termination.xml">msg-ex34-cashflow-assertion-cds-Termination.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to the termination of a single name credit default swap. No calculation details are provided to explain how the termination fee has been calculated, as the market practice is to have it agreed on by the respective desks.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.8">1.3.8 Example 35 - Credit Default Coupon Payment</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex35-cashflow-assertion-cds-Coupon.xml">msg-ex35-cashflow-assertion-cds-Coupon.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to a single name credit default swap, with a fee leg reset cahflow.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.9">1.3.9 Example 36 - Credit Default Cash Flow Assertion</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex36-cashflow-assertion-cds2.xml">msg-ex36-cashflow-assertion-cds2.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to the standard quarterly payment on a single name credit default swap.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.10">1.3.10 Example 37 - Credit Default Cashflow Match Result - A</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex37-cashflow-match-result-cds2-01.xml">msg-ex37-cashflow-match-result-cds2-01.xml</a>
+               </p>
+               <p>Example of a sucessful cashflow match result message related to the standard quarterly payment on a single name credit default swap.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.11">1.3.11 Example 38 - Credit Default Cashflow Match Result - B</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex38-cashflow-match-result-cds2-02.xml">msg-ex38-cashflow-match-result-cds2-02.xml</a>
+               </p>
+               <p>Example of an erroneous cashflow match result message related to the standard quarterly payment on a single name credit default swap.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.12">1.3.12 Example 39 - Credit Default Cashflow Match Result - C</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex39-cashflow-match-result-cds2-03.xml">msg-ex39-cashflow-match-result-cds2-03.xml</a>
+               </p>
+               <p>Example of an unmatched cashflow match result message related to the standard quarterly payment on a single name credit default swap.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.13">1.3.13 Example 40 - Interest Rate Reset</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex40-cashflow-assertion-eqs-InterestReset.xml">msg-ex40-cashflow-assertion-eqs-InterestReset.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to a single stock equity swap, with a net payment that has only one gross component: an interest reset.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.14">1.3.14 Example 41 - Interest Rate Equity Reset</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex41-cashflow-assertion-eqs-InterestEquityReset.xml">msg-ex41-cashflow-assertion-eqs-InterestEquityReset.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to a single stock equity swap, with a net payment that has only two gross components: an equity rest and an interest reset.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.15">1.3.15 Example 42 - Interest Rate Equity Dividend Reset</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex42-cashflow-assertion-eqs-InterestEquityDividendReset.xml">msg-ex42-cashflow-assertion-eqs-InterestEquityDividendReset.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to a single stock equity swap, with a net payment that has three gross components: an equity reset, an interest reset and a dividend component.</p>
+               <p>In the case of the equity reset component of the combined reset, the calculation elements are limited to the number of units. The notional of the trade that has been used as a calculation basis for the accrual, i.e. the number of units (19,000) multiplied by the previous strike price (CAD 7.87). </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.16">1.3.16 Example 43 - Equity Swap Cashflow Partial Termination</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex43-cashflow-assertion-eqs-PartialTermination.xml">msg-ex43-cashflow-assertion-eqs-PartialTermination.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to the partial termination of an equity swap that leads to a cashflow that has an equity, an interest rate and a dividend component. The notional stated here is the notional <b>resulting from</b> the partial termination.</p>
+               <p>The calculation details sections represent the equity PnL and the funding cost related to thier potioned shares.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.17">1.3.17 Example 44 - Equity Swap Cashflow Partial Termination Match Results - A</a>
+               </h4>
+               <p>As part of these transactions, 6,948 shares were sold at a price of USD 42.6481, generating a cashflow that needs to be broken down across each of the purchased transactions in order to provide an appropriate explanation of the equity and funding PnL.</p>
+               <ul class="bulleted">
+                  <li>171 shares had been purchased on July 20th at a price of USD 40.9492</li>
+                  <li>5,859 shares had been purchased on August 4th at a price of USD 42.6552</li>
+                  <li>918 shares had been purchased on October 24 at a price of USD 38.1097</li>
+               </ul>
+               <p>The approach consisted in having 7 calculation details sections: one for each equity and funding component, and one for the dividend component.</p>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex44-cashflow-match-result-eqs-PartialTermination-01.xml">msg-ex44-cashflow-match-result-eqs-PartialTermination-01.xml</a>
+               </p>
+               <p>Example of a cashflow match result message related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.18">1.3.18 Example 45 - Equity Swap Cashflow Partial Termination Match Results - B</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex45-cashflow-match-result-eqs-PartialTermination-02.xml">msg-ex45-cashflow-match-result-eqs-PartialTermination-02.xml</a>
+               </p>
+               <p>Example of a cashflow match result message related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.19">1.3.19 Example 46 - Equity Swap Cashflow Partial Termination Match Results - C</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex46-cashflow-match-result-eqs-PartialTermination-03.xml">msg-ex46-cashflow-match-result-eqs-PartialTermination-03.xml</a>
+               </p>
+               <p>Example of a cashflow match result message related to an interest rate swap with vanilla fixed vs. float terms.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.20">1.3.20 Example 47 - Compounding Swap Cashflow Assertion</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex47-cashflow-assertion-CompoundingSwap.xml">msg-ex47-cashflow-assertion-CompoundingSwap.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to an interest rate swap with compounding interests on one of the legs. In this example, the fixed leg resets semi-annually.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.21">1.3.21 Example 48 - Cashflow Assertion: Initial Principal Exchange of a Cross-Currency Swap</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex48-cashflow-assertion-XCcy-PrincipalExchange.xml">msg-ex48-cashflow-assertion-XCcy-PrincipalExchange.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to the initial principal exchange of a cross-currency swap.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.22">1.3.22 Example 49 - Cashflow Assertion: Equity Option Premium</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex49-cashflow-assertion-EquityOption.xml">msg-ex49-cashflow-assertion-EquityOption.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to an equity option premium.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.23">1.3.23 Example 50 - Cashflow Assertion with Multiple Trades: Equity Option and CDS Premiums</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex50-cashflow-assertion-multiple-trades-cds.xml">msg-ex50-cashflow-assertion-multiple-trades-cds.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to premiums for an equity option and a single name credit default swap trades.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.24">1.3.24 Example 51 - Cashflow Assertion with Multiple Trades: Equity Options Premiums</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex51-cashflow-assertion-multiple-trades-equity-option.xml">msg-ex51-cashflow-assertion-multiple-trades-equity-option.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to premiums for a set of equity option trades.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.25">1.3.25 Example 52 - Cashflow Assertion with Multiple Trades: Equity Option and CDS Premiums</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex52-cashflow-assertion-multiple-trades-multi-currency-cds.xml">msg-ex52-cashflow-assertion-multiple-trades-multi-currency-cds.xml</a>
+               </p>
+               <p>Example of a cashflow assertion related to premiums for an equity option and a single name credit default swap trades.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.26">1.3.26 Example 53 - Cashflow Cancellation with Multiple Trades: Equity Option and CDS Premiums</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex53-cashflow-cancel-multiple-trades-cds.xml">msg-ex53-cashflow-cancel-multiple-trades-cds.xml</a>
+               </p>
+               <p>Example of a cashflow cancellation message.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.3.27">1.3.27 Example 54 - Cashflow Match Result with Multiple Trades: Equity Option and CDS Premiums</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/cash-flow-matching/msg-ex54-cashflow-match-result-multiple-trades-cds.xml">msg-ex54-cashflow-match-result-multiple-trades-cds.xml</a>
+               </p>
+               <p>Example of a cashflow match result message related to multiple equity option and cds trades.</p>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.4">1.4 Portfolio Reconciliation</a>
+               </h3>
+            </div>
+            <p>Examples to show the set of messages for portfolio reconciliation.</p>
+            <p>Please note that some of the samples containing FX products within them are not schema valid. These will be fixed with the introduction of the new FX refactoring work in the next release.</p>
+            <div>
+               <h4>
+                  <a id="s1.4.1">1.4.1 Scenario: Incremental Update</a>
+               </h4>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.1">1.4.1.1 Example 57 - Positions Asserted</a>
+                  </h5>
+                  <p>1. ABC sends a single FX forward position to RECSERV, for new portfolio "fundPortfolio1".</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex57-inc-update-1-positions-asserted.xml">msg-ex57-inc-update-1-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.2">1.4.1.2 Example 58 - Positions Acknowledged</a>
+                  </h5>
+                  <p>2. RECSERV acknowledges the position.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex58-inc-update-2-positions-acknowledged.xml">msg-ex58-inc-update-2-positions-acknowledged.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.3">1.4.1.3 Example 59 - Positions Match Results</a>
+                  </h5>
+                  <p>3. RECSERV reports that the position is Unmatched, as there is no corresponding position from the other side.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex59-inc-update-3-match-results.xml">msg-ex59-inc-update-3-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.4">1.4.1.4 Example 60 - Positions Asserted</a>
+                  </h5>
+                  <p>4. ABC sends a second position, a FRA, to RECSERV, for the same portfolio, and says that submissions are complete.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex60-inc-update-4-positions-asserted.xml">msg-ex60-inc-update-4-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.5">1.4.1.5 Example 61 - Positions Acknowledged</a>
+                  </h5>
+                  <p>5. RECSERV acknowledges the position</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex61-inc-update-5-positions-acknowledged.xml">msg-ex61-inc-update-5-positions-acknowledged.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.6">1.4.1.6 Example 62 - Positions Match Results</a>
+                  </h5>
+                  <p>6. RECSERV reports that the position is Unmatched, as there is no corresponding position from the other side.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex62-inc-update-6-match-results.xml">msg-ex62-inc-update-6-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.7">1.4.1.7 Example 63 - Positions Asserted</a>
+                  </h5>
+                  <p>7. HEDGECO sends a single FX forward position to RECSERV, for new portfolio (from its point of view) "fundPortfolio1", and says that submissions are complete.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex63-inc-update-7-positions-asserted.xml">msg-ex63-inc-update-7-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.8">1.4.1.8 Example 64 - Positions Acknowledged</a>
+                  </h5>
+                  <p>8. RECSERV acknowledges the position</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex68-inc-update-12-positions-acknowledged.xml">msg-ex68-inc-update-12-positions-acknowledged.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.9">1.4.1.9 Example 65 - Positions Match Results</a>
+                  </h5>
+                  <p>9. RECSERV reports that the FX position is Mismatched and the FRA position is Unmatched to ABC, and identifies a proposed match and differences for the FX position.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex65-inc-update-9-match-results.xml">msg-ex65-inc-update-9-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.10">1.4.1.10 Example 66 - Positions Match Results</a>
+                  </h5>
+                  <p>10. RECSERV reports that the FX position is Mismatched to HEDGECO, and identifies the proposed match and differences. It also reports that the FRA position is Alleged.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex66-inc-update-10-match-results.xml">msg-ex66-inc-update-10-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.11">1.4.1.11 Example 67 - Positions Asserted</a>
+                  </h5>
+                  <p>11. ABC corrects the FX forward position to match that of HEDGECO, and removes the FRA.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex67-inc-update-11-position1-updated.xml">msg-ex67-inc-update-11-position1-updated.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.12">1.4.1.12 Example 68 - Positions Acknowledged</a>
+                  </h5>
+                  <p>12. RECSERV acknowledges the updates to ABC.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex68-inc-update-12-positions-acknowledged.xml">msg-ex68-inc-update-12-positions-acknowledged.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.13">1.4.1.13 Example 69 - Positions Match Results</a>
+                  </h5>
+                  <p>13. RECSERV notifies ABC of the updated matching status.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex69-inc-update-13-match-results.xml">msg-ex69-inc-update-13-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.14">1.4.1.14 Example 70 - Positions Match Results</a>
+                  </h5>
+                  <p>14. RECSERV notifies HEDGECO of the updated matching status.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex70-inc-update-14-match-results.xml">msg-ex70-inc-update-14-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.15">1.4.1.15 Example 71 - Positions Asserted</a>
+                  </h5>
+                  <p>15. ABC reports a new valuation for the FX forward position on the next day.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex71-inc-update-15-positions-asserted.xml">msg-ex71-inc-update-15-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.16">1.4.1.16 Example 72 - Portfolio Request</a>
+                  </h5>
+                  <p>16. ABC requests a portfolio listing</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex72-inc-update-16-portfolio-requested.xml">msg-ex72-inc-update-16-portfolio-requested.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.17">1.4.1.17 Example 73 - Position Report</a>
+                  </h5>
+                  <p>17. RECSERV reports fundPortfolio1 for 2006-04-26, which has 1 FX position.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex73-inc-update-17-positions-reported.xml">msg-ex73-inc-update-17-positions-reported.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.18">1.4.1.18 Example 74 - Position Request</a>
+                  </h5>
+                  <p>18. ABC requests a position report with a listing of FX Spot/Forward involving GBP.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex74-inc-update-18-positions-requested.xml">msg-ex74-inc-update-18-positions-requested.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.1.19">1.4.1.19 Example 75 - Position Report</a>
+                  </h5>
+                  <p>19. RECSERV reports GPB FX Spot/Forwards for 2006-04-26, which has 1 FX position.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex75-inc-update-19-positions-reported.xml">msg-ex75-inc-update-19-positions-reported.xml</a>
+                  </p>
+               </div>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.2">1.4.2 Scenario: Snapshot</a>
+               </h4>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.1">1.4.2.1 Example 76 - Positions Asserted</a>
+                  </h5>
+                  <p>1. HEDGECO sends a snapshot of positions (3), including a single FX forward position, FRA, and bullet Payment to RECSERV, for new portfolio "fundPortfolio33".</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex76-snapshot-1-positions-asserted.xml">msg-ex76-snapshot-1-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.2">1.4.2.2 Example 77 - Positions Asserted</a>
+                  </h5>
+                  <p>2. ABC sends a snapshot of positions (2), including a single FX forward position and a FRA to RECSERV, for a new portfolio "Portfolio99".</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex77-snapshot-2-positions-asserted.xml">msg-ex77-snapshot-2-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.3">1.4.2.3 Example 78 - Positions Match Results</a>
+                  </h5>
+                  <p>3. RECSERV sends matching results to HEDGECO stating that the FX forward position is matched, the FRA position is mismatched (identifying a potential match and differences), and the bullet payment position is unmatched (or pending unmatched) since the other side hasn't submitted this position yet.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex78-snapshot-3-positions-match-results.xml">msg-ex78-snapshot-3-positions-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.4">1.4.2.4 Example 79 - Positions Match Results</a>
+                  </h5>
+                  <p>4. RECSERV sends matching results to ABC stating that the FX forward position is matched, the FRA position is mismatched (identifying a potential match and differences), and that there is an alleged bullet payment position from HEDGECO.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex79-snapshot-4-positions-match-results.xml">msg-ex79-snapshot-4-positions-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.5">1.4.2.5 Example 80 - Positions Asserted</a>
+                  </h5>
+                  <p>5. ABC sends an updated snapshot of positions (3), including a single FX forward position, FRA, and bullet payment to RECSERV, for an existing portfolio "Portfolio99".</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex80-snapshot-5-positions-asserted-updated.xml">msg-ex80-snapshot-5-positions-asserted-updated.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.6">1.4.2.6 Example 81 - Positions Match Results</a>
+                  </h5>
+                  <p>6. RECSERV sends matching results to HEDGECO stating that all positions are matched.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex81-snapshot-6-positions-match-results.xml">msg-ex81-snapshot-6-positions-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.2.7">1.4.2.7 Example 82 - Positions Match Results</a>
+                  </h5>
+                  <p>7. RECSERV sends matching results to ABC stating that all positions are matched.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex82-snapshot-7-positions-match-results.xml">msg-ex82-snapshot-7-positions-match-results.xml</a>
+                  </p>
+               </div>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.4.3">1.4.3 Scenario: Force Matched</a>
+               </h4>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.1">1.4.3.1 Example 83 - Positions Asserted</a>
+                  </h5>
+                  <p>1. HEDGECO sends a snapshot of positions (2), including a single FX forward position and FRA to RECSERV, for new portfolio "fundPortfolio33".</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex83-force-1-positions-asserted.xml">msg-ex83-force-1-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.2">1.4.3.2 Example 84 - Positions Asserted</a>
+                  </h5>
+                  <p>2. ABC sends a snapshot of positions (2), including a single FX forward position and a FRA to RECSERV, for a new portfolio "Portfolio99".</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex84-force-2-positions-asserted.xml">msg-ex84-force-2-positions-asserted.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.3">1.4.3.3 Example 85 - Positions Match Results</a>
+                  </h5>
+                  <p>3. RECSERV sends matching results to HEDGECO stating that the FX forward position is matched, the FRA position is mismatched (identifying a potential match and differences).</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex85-force-3-positions-match-results.xml">msg-ex85-force-3-positions-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.4">1.4.3.4 Example 86 - Positions Match Results</a>
+                  </h5>
+                  <p>4. RECSERV sends matching results to ABC stating that the FX forward position is matched, the FRA position is mismatched (identifying a potential match and differences).</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex86-force-4-positions-match-results.xml">msg-ex86-force-4-positions-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.5">1.4.3.5 Example 87 - Positions Asserted</a>
+                  </h5>
+                  <p>5. ABC sends the same snapshot of positions (2), including a single FX forward position and a FRA for an existing portfolio "Portfolio99". However, it indicates that the FRA position is a "force" match.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex87-force-6-positions-asserted-force.xml">msg-ex87-force-6-positions-asserted-force.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.6">1.4.3.6 Example 88 - Positions Match Results</a>
+                  </h5>
+                  <p>6. RECSERV sends matching results to HEDGECO stating that the FX forward is matched, the FRA is "force" matched.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex88-force-6-positions-match-results.xml">msg-ex88-force-6-positions-match-results.xml</a>
+                  </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s1.4.3.7">1.4.3.7 Example 89 - Positions Match Results</a>
+                  </h5>
+                  <p>7. RECSERV sends matching results to ABC stating that the FX forward is matched, the FRA is "force" matched.</p>
+                  <p>File: <a class="web" target="#" href="xml/portfolio-reconciliation/msg-ex89-force-7-positions-match-results.xml">msg-ex89-force-7-positions-match-results.xml</a>
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.5">1.5 Securities Reporting Examples</a>
+               </h3>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.1">1.5.1 Position Reporting</a>
+               </h4>
+               <p>This section contains examples of FpML messages reporting related to securities .</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.2">1.5.2 Security Reporting Example 1 - Activity Report</a>
+               </h4>
+               <p>This shows an example of reporting on the occurrence of securities trades.</p>
+               <p>File: <a class="web" target="#" href="xml/securities/secrpt-ex01-activity-report.xml">secrpt-ex01-activity-report.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.3">1.5.3 Security Reporting Example 100 - Position Report</a>
+               </h4>
+               <p>This shows an example of reporting on securities positions resulting from trading.</p>
+               <p>File: <a class="web" target="#" href="xml/securities/secrpt-ex100-position-report.xml">secrpt-ex100-position-report.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.5.4">1.5.4 Security Reporting Example 200 - Market Data Report</a>
+               </h4>
+               <p>This shows an example of reporting on securities-related market data.</p>
+               <p>File: <a class="web" target="#" href="xml/securities/secrpt-ex200-market-data.xml">secrpt-ex200-market-data.xml</a>
+               </p>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.6">1.6 Collateral Management Examples</a>
+               </h3>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.1">1.6.1 Margin Call Process</a>
+               </h4>
+               <p>This section contains examples of FpML messages for Collateral Margin Call Process. Each example illustrates a different part of the process.</p>
+               <p>The sample xml documents are available for download from the fpml.org website.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.2">1.6.2 Example 1 - Request Margin (MC1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex01-MC1-request-margin-deliver.xml">col-ex01-MC1-request-margin-deliver.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.3">1.6.3 Example 2 - Request Margin (MC1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex02-MC1-request-margin-IM-VM-split.xml">col-ex02-MC1-request-margin-IM-VM-split.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.4">1.6.4 Example 3 - Request Margin (MC1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex03-MC1-request-margin-net-IM-antic-demand-2m-threshold.xml">col-ex03-MC1-request-margin-net-IM-antic-demand-2m-threshold.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.5">1.6.5 Example 4 - Request Margin (MC1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex04-MC1-request-margin-netting-agreement.xml">col-ex04-MC1-request-margin-netting-agreement.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.6">1.6.6 Example 5 - Request Margin (MC1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex05-MC1-request-margin-standard.xml">col-ex05-MC1-request-margin-standard.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.7">1.6.7 Example 6 - Request Margin (MC1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex06-MC1-request-margin-template.xml">col-ex06-MC1-request-margin-template.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.8">1.6.8 Example 7 - Rescind Issued Margin (MC2)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex07-MC2-rescind-issued-call.xml">col-ex07-MC2-rescind-issued-call.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.9">1.6.9 Example 8 - Margin Call Response (MC3b)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex08-MC3b-margin-call-response.xml">col-ex08-MC3b-margin-call-response.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.10">1.6.10 Example 9 - Margin Call Response (MC3b) - Fully Agree</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex09-MC3b-margin-call-response-deliver-fully-agree.xml">col-ex09-MC3b-margin-call-response-deliver-fully-agree.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.11">1.6.11 Example 10 - Margin Call Response (MC3b) - Fully Agree</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex10-MC3b-margin-call-response-deliver-fully-agree-isda.xml">col-ex10-MC3b-margin-call-response-deliver-fully-agree-isda.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.12">1.6.12 Example 11 - Propose Collateral (MC3c)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex11-MC3c-propose-collateral.xml">col-ex11-MC3c-propose-collateral.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.13">1.6.13 Example 12 - Rescind Margin Call Response (MC4)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex12-MC4-rescind-margin-call-response.xml">col-ex12-MC4-rescind-margin-call-response.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.14">1.6.14 Example 13 - Margin Call Response (MC5) - Fully Dispute</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex13-MC5-margin-call-response-deliver-dispute.xml">col-ex13-MC5-margin-call-response-deliver-dispute.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.15">1.6.15 Example 14 - Margin Call Response (MC5) - Fully Dispute</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex14-MC5-margin-call-response-deliver-dispute-isda.xml">col-ex14-MC5-margin-call-response-deliver-dispute-isda.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.16">1.6.16 Example 15 - Margin Call Response (MC5) - Partial Dispute</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex15-MC6-margin-call-response-deliver-partially-agree.xml">col-ex15-MC6-margin-call-response-deliver-partially-agree.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.17">1.6.17 Example 16 - Collateral Proposal Response (MC7 / MC8)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex16-MC78-collateral-proposal-response.xml">col-ex16-MC78-collateral-proposal-response.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.18">1.6.18 Example 17 - Aknowledge Dispute (MC11)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex17-MC11-acknowledge-dispute.xml">col-ex17-MC11-acknowledge-dispute.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.19">1.6.19 Collateral Substitution Process</a>
+               </h4>
+               <p>This section contains examples of FpML messages for Collateral Substitution Process. Each example illustrates a different part of the process.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.20">1.6.20 Example 18 - Collateral Substitution Request (CS1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex18-CS1-request-substitution.xml">col-ex18-CS1-request-substitution.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.21">1.6.21 Example 19 - Collateral Substitution Acceptance/Rejection (CS2/CS5)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex19-CS25-substitution-response.xml">col-ex19-CS25-substitution-response.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.22">1.6.22 Example 20 - Confirm Substitution (CS3)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex20-CS3-confirm-substitution.xml">col-ex20-CS3-confirm-substitution.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.23">1.6.23 Example 21 - Confirm Collateral Return (CS4)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex21-CS4-confirm-collateral-return.xml">col-ex21-CS4-confirm-collateral-return.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.24">1.6.24 Interest Process</a>
+               </h4>
+               <p>This section contains examples of FpML messages for Interest Process. Each example illustrates a different part of the process.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.25">1.6.25 Example 22 - Send Interest Notification  (IN1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex22-IN1-send-interest-notification.xml">col-ex22-IN1-send-interest-notification.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.26">1.6.26 Example 23 - Send Interest Notification - matching service (IN1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex23-IN1-send-interest-notification-matching-service.xml">col-ex23-IN1-send-interest-notification-matching-service.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.27">1.6.27 Example 24 - Send Interest Notification with interest calculations  (IN1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex24-IN1-send-interest-notification-with-interest-calculations.xml">col-ex24-IN1-send-interest-notification-with-interest-calculations.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.28">1.6.28 Example 25 - Send Interest Notification (both directions, net treatment) (IN1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex25-IN1-send-interest-notification-both-directions-net.xml">col-ex25-IN1-send-interest-notification-both-directions-net.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.29">1.6.29 Example 26 - Send Interest Notification (both directions, gross treatment) (IN1)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex26-IN1-send-interest-notification-both-directions-gross.xml">col-ex26-IN1-send-interest-notification-both-directions-gross.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.30">1.6.30 Example 27 - Matched Acceptance (IN2) / Reject Value Date (IN3) / Dispute Interest (IN5)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex27-IN235-interest-response.xml">col-ex27-IN235-interest-response.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.31">1.6.31 Example 28 - Matched Acceptance (IN2) / Reject Value Date (IN3) / Dispute Interest (IN5)</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex28-IN235-interest-response-matching-service.xml">col-ex28-IN235-interest-response-matching-service.xml</a>
+               </p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.6.32">1.6.32 Example 29 - Interest Statement</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/collateral/col-ex29-IN-interest-calculation-statement.xml">col-ex29-IN-interest-calculation-statement.xml</a>
+               </p>
+            </div>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.7">1.7 Exposure Reporting</a>
+               </h3>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.7.1">1.7.1 Example 101 - Commodity Large Trader Report, Table 1</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/exposure/exp-ex101-phys-commod-large-trader-report-table1.xml">exp-ex101-phys-commod-large-trader-report-table1.xml</a>
+               </p>
+               <p>This example shows a CFTC Part 20 large trader report corresponding to Table 1 of the final regulation.  See the example for more details.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.7.2">1.7.2 Example 104 - Commodity Large Trader Report, Table 4</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/exposure/exp-ex104-phys-commod-large-trader-report-table4.xml">exp-ex104-phys-commod-large-trader-report-table4.xml</a>
+               </p>
+               <p>This example shows a CFTC Part 20 large trader report corresponding to Table 4 of the final regulation.  See the example for more details.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.7.3">1.7.3 Example 110 - Commodity Large Trader Report, Guidebook Table 1</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/exposure/exp-ex110-guidebook-to-Part-20-Reports-table1-SD1.xml">exp-ex110-guidebook-to-Part-20-Reports-table1-SD1.xml</a>
+               </p>
+               <p>This example shows a CFTC Part 20 large trader report corresponding to Table 1 of the Guidebook.  See the example for more details.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.7.4">1.7.4 Example 111 - Commodity Large Trader Report, Guidebook Table 2</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/exposure/exp-ex111-guidebook-to-Part-20-Reports-table2-SD1.xml">exp-ex111-guidebook-to-Part-20-Reports-table1-SD1.xml</a>
+               </p>
+               <p>This example shows a CFTC Part 20 large trader report corresponding to Table 2 of the Guidebook.  See the example for more details.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.7.5">1.7.5 Example 130 - Commodity Large Trader Report, Bilateral Basis swap example</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/exposure/exp-ex130-phys-commod-part20-bilateral-basis-swap.xml">exp-ex130-phys-commod-part20-bilateral-basis-swap.xml</a>
+               </p>
+               <p>This example shows a CFTC Part 20 large trader report for a basis swap.  See the example for more details.</p>
+            </div>
+            <div>
+               <h4>
+                  <a id="s1.7.6">1.7.6 Example 131 - Commodity Large Trader Report, Bilateral Index swap example</a>
+               </h4>
+               <p>File: <a class="web" target="#" href="xml/exposure/exp-ex131-phys-commod-part20-bilateral-index-swap.xml">exp-ex131-phys-commod-part20-bilateral-index-swap.xml</a>
+               </p>
+               <p>This example shows a CFTC Part 20 large trader report for a index swap.  See the example for more details.</p>
+            </div>
+         </div>
+      </div>
+      <div xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <div>
+            <h2>
+               <a id="s2">2 Pricing and Risk Examples</a>
+            </h2>
+         </div>
+         <div>
+            <h3>
+               <a id="s2.1">2.1 Use Cases/Examples</a>
+            </h3>
+            <p>This section identifies scenarios intended to be supported by this specification:</p>
+            <div>
+               <h4>
+                  <a id="s2.1.1">2.1.1 Terminology:</a>
+               </h4>
+               <ul class="bulleted">
+                  <li>Client: The originator of a valuation request.</li>
+                  <li>Provider: The acceptor of a valuation request that generates a valuation report.</li>
+                  <li>Valuation Request: XML document that specifies what is to be calculated.</li>
+                  <li>Valuation Report: XML document that contains the results of a valuation. This report may contain either one or more NPVs, or Risk related measures, or both.</li>
+               </ul>
+            </div>
+            <div>
+               <h4>
+                  <a id="s2.1.2">2.1.2 Request/Response scenarios:</a>
+               </h4>
+               <p>In these scenarios one party to a deal requests a report from either a counterparty, third party service, or another application or department within the same firm. </p>
+               <div>
+                  <h5>
+                     <a id="s2.1.2.1">2.1.2.1 Scenario 1 – Request Trade Value</a>
+                  </h5>
+                  <p>A client wants to request a price quote for a proposed trade from a provider (or set of providers). The provider might be anonymous to the client. Typically the provider would be some sort of dealer. The client may be another dealer or an electronic trading service.</p>
+                  <ul class="bulleted">
+                     <li>No market data is necessary in the request. </li>
+                     <li>No market data is returned in the result.</li>
+                     <li>Market data is assumed to be live or current market data.</li>
+                  </ul>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.1.1">2.1.2.1.1 Use Case 1 Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The trade details – for an interest rate swap</li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>Examples can be found at: <ul class="bulleted">
+                              <li>
+                                 <a class="web" target="#" href="xml/valuation/pr-ex01a-request-trade-val.xml">pr-ex01a-request-trade-val.xml</a>
+                              </li>
+                              <li>
+                                 <a class="web" target="#" href="xml/valuation/pr-ex10-simple-scenario-val-request.xml">pr-ex10-simple-scenario-val-request.xml</a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <p>Provider returns a basic valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Trade ID</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                 </ul>
+                              </li>
+                              <li>Trade Value</li>
+                           </ul>
+                        </li>
+                        <li>Examples can be found at: <ul class="bulleted">
+                              <li>
+                                 <a class="web" target="#" href="xml/valuation/pr-ex01a-return-trade-val.xml">pr-ex01a-return-trade-val.xml</a>
+                              </li>
+                              <li>
+                                 <a class="web" target="#" href="xml/valuation/pr-ex09-simple-scenario-val-report.xml">pr-ex09-simple-scenario-val-report.xml</a>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.2.2">2.1.2.2 Scenario 2 – Request Portfolio Value/Sensitivity</a>
+                  </h5>
+                  <p>A buy-side client wants to request a valuation from a dealer for a deal or portfolio of deals that it has done with that dealer. This request may be also be all deals of a specific type (IR Swaps, CD Swaps, Equity Swaps, FX options, etc.)</p>
+                  <ul class="bulleted">
+                     <li>No market data is necessary in the request. </li>
+                     <li>No market data is returned in the result.</li>
+                     <li>Market data is for a specified end-of-day close.</li>
+                  </ul>
+                  <p>Variations on Scenario 2:</p>
+                  <ul class="bulleted">
+                     <li>B) The client wants to obtain sensitivity measures as well as simple PV</li>
+                  </ul>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.2.1">2.1.2.2.1 Use Case 2A Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The portfolio details – characteristics that the trade must match <ul class="bulleted">
+                              <li>One party must be client</li>
+                              <li>Product must be an IR Swap</li>
+                           </ul>
+                        </li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex02a-request-port-val.xml">pr-ex02a-request-port-val.xml</a>
+                        </li>
+                     </ul>
+                     <p>Provider returns a basic valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Portfolio contents (i.e. list of matching trades)</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                 </ul>
+                              </li>
+                              <li>For each trade, <ul class="bulleted">
+                                    <li>Trade Value</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex02a-return-port-val.xml">pr-ex02a-return-port-val.xml</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.2.2">2.1.2.2.2 Use Case 2B Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The portfolio details – list of trade ids to report on</li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                    <li>Sensitivity of NPV to yield curve</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex02b-request-port-val-and-sens.xml">pr-ex02b-request-port-val-and-sens.xml</a>
+                        </li>
+                     </ul>
+                     <p>Provider returns a basic valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Portfolio contents (i.e. list of matching trades)</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                 </ul>
+                              </li>
+                              <li>For each trade, <ul class="bulleted">
+                                    <li>Trade Value</li>
+                                    <li>List of sensitivities</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex02b-return-port-val-and-sens.xml">pr-ex02b-return-port-val-and-sens.xml</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.2.3">2.1.2.3 Scenario 3 – Request Sensitivity Generation</a>
+                  </h5>
+                  <p>A relatively sophisticated client wants to calculate risk sensitivities and/or scenario valuations for a portfolio of deals that it can price, but either doesn’t have the tools or the compute power for sensitivity or scenario calculation.</p>
+                  <ul class="bulleted">
+                     <li>Market data is specified in the request.</li>
+                     <li>A level of control is required over pricing parameters</li>
+                  </ul>
+                  <p>Provider doesn’t need to provide market data back</p>
+                  <p>Variations on Scenario 3:</p>
+                  <ul class="bulleted">
+                     <li>3B – Client wants market data back and explicit link of risk to market data</li>
+                     <li>3C Client specifies scenarios to base market data (live or EOD) – e.g. +/- 10% credit spread, +/- 10BP interest rate change</li>
+                  </ul>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.3.1">2.1.2.3.1 Use Case 3A Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The portfolio details – list of trade ids to report on</li>
+                        <li>A specification of the required environment (curves to use)</li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                    <li>Sensitivity of NPV to yield curve</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex03a-request-sensitivity-generation.xml">pr-ex03a-request-sensitivity-generation.xml</a>
+                        </li>
+                     </ul>
+                     <p>Provider returns a detailed valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Portfolio contents (i.e. list of matching trades)</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                 </ul>
+                              </li>
+                              <li>For each trade, <ul class="bulleted">
+                                    <li>Trade Value</li>
+                                    <li>List of sensitivities</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>A basic example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex03a-return-sensitivities.xml">pr-ex03a-return-sensitivities.xml</a>
+                        </li>
+                        <li>An example providing slightly more detail about the sensivities can be found at: <a class="web" target="#" href="xml/valuation/pr-ex03a-return-sensitivities-and-description.xml">pr-ex03a-return-sensitivities-and-description.xml</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.3.2">2.1.2.3.2 Use Case 3B Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The portfolio details – list of trade ids to report on</li>
+                        <li>A specification of the required environment (curves to use)</li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                    <li>Sensitivity of NPV to yield curve</li>
+                                    <li>That the client wishes the market environment returned (marketEnvironmentIncluded = true).</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex03b-request-sensitivity-generation.xml">pr-ex03b-request-sensitivity-generation.xml</a>
+                        </li>
+                     </ul>
+                     <p>Provider returns a detailed valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Portfolio contents (i.e. list of matching trades)</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                 </ul>
+                              </li>
+                              <li>For each trade, <ul class="bulleted">
+                                    <li>Trade Value</li>
+                                    <li>Sensitivity definitions</li>
+                                    <li>List of sensitivities, linked to market inputs</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>An example can be found at: <a class="web" target="#" href="xml/valuation/pr-ex03b-return-sensitivities-with-definition.xml">pr-ex03b-return-sensitivities-with-definition.xml</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.3.3">2.1.2.3.3 Use Case 3C Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The portfolio details – list of trade ids to report on</li>
+                        <li>A specification of the required environment (curves to use)</li>
+                        <li>A specification of the valuation scenario to use (shifts to apply)</li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                    <li>Sensitivity of NPV to yield curve</li>
+                                    <li>That the client wishes the market environment returned (marketEnvironmentIncluded = true).</li>
+                                 </ul>
+                              </li>
+                              <li>Examples can be found at: <ul class="bulleted">
+                                    <li>
+                                       <a class="web" target="#" href="xml/valuation/pr-ex12-uc4C-sens-on-scenario-request.xml">pr-ex12-uc4C-sens-on-scenario-request.xml</a>
+                                    </li>
+                                    <li>
+                                       <a class="web" target="#" href="xml/valuation/pr-ex08-sens-on-scenario-request.xml">pr-ex08-sens-on-scenario-request.xml</a>
+                                    </li>
+                                    <li>
+                                       <a class="web" target="#" href="xml/valuation/pr-ex04-cds-sens-on-scenario-request.xml">pr-ex04-cds-sens-on-scenario-request.xml</a>
+                                    </li>
+                                    <li>
+                                       <a class="web" target="#" href="xml/valuation/pr-ex06-option-sens-on-scenario-request.xml">pr-ex06-option-sens-on-scenario-request.xml</a>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                     <p>Provider returns a detailed valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Portfolio contents (i.e. list of matching trades)</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                    <li>Valuation scenario applied</li>
+                                 </ul>
+                              </li>
+                              <li>For each trade, <ul class="bulleted">
+                                    <li>Trade Value</li>
+                                    <li>Sensitivity definitions</li>
+                                    <li>List of sensitivities, linked to market inputs</li>
+                                 </ul>
+                              </li>
+                              <li>Examples can be found at:<ul class="bulleted">
+                                    <li>
+                                       <a class="web" target="#" href="xml/valuation/pr-ex11-uc4C-sens-on-scenario-report.xml">pr-ex11-uc4C-sens-on-scenario-report.xml</a>
+                                    </li>
+                                    <li>
+                                       <a class="web" target="#" href="xml/valuation/pr-ex07-sens-on-scenario-report.xml">pr-ex07-sens-on-scenario-report.xml</a>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.2.4">2.1.2.4 Scenario 4 – Request New Trade Impact</a>
+                  </h5>
+                  <p>A buy-side client wants to understand the impact on valuation and risk exposure that a proposed deal would have on an existing portfolio. The provider may be the dealer that is proposing the trade.</p>
+                  <p> This use case is implemented by the client requesting the result twice. The first request includes the original portfolio only, and the second includes the new trade.The requesting party should combine the two results.</p>
+                  <p>For all additive valuations and risk measures, the second call can include only the new trade. For results which are not additive, e g value at risk, the second request includes also the original portfolio. </p>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.2.5">2.1.2.5 Scenario 5 – Perform Analyses</a>
+                  </h5>
+                  <p>A trader or marketer oriented spreadsheet client wants to value and calculate risk for a trade or set of trades. The valuation provider is an internal valuation service.</p>
+                  <ul class="bulleted">
+                     <li>Market data may or may not be specified in the request. </li>
+                     <li>Market data and pricing data is returned in the result.</li>
+                     <li>A high-degree of control is required over pricing parameters.</li>
+                     <li>No example is currently available for this.</li>
+                  </ul>
+                  <div>
+                     <h5>
+                        <a id="s2.1.2.5.1">2.1.2.5.1 Use Case 5A Description</a>
+                     </h5>
+                     <p>Client submits a request, including:</p>
+                     <ul class="bulleted">
+                        <li>The portfolio details – list of trade ids to report on</li>
+                        <li>A specification of the required environment (curves to use)</li>
+                        <li>A specification of the required results: <ul class="bulleted">
+                              <li>Characteristics of the response: <ul class="bulleted">
+                                    <li>Base party for valuation (client)</li>
+                                    <li>Reporting Currency</li>
+                                    <li>Valuation Date</li>
+                                 </ul>
+                              </li>
+                              <li>Requested values <ul class="bulleted">
+                                    <li>Trade Value (NPV)</li>
+                                    <li>Sensitivity of NPV to yield curve</li>
+                                    <li>Sensitivity of NPV to vol surface</li>
+                                    <li>[How does the client specify that provider should return the market environment?]</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>No example is currently available for this.</li>
+                     </ul>
+                     <p>Service returns a detailed valuation report, including:</p>
+                     <ul class="bulleted">
+                        <li>Portfolio contents (i.e. list of matching trades)</li>
+                        <li>Market environment used (curves, vol surfaces)</li>
+                        <li>Valuation report, including <ul class="bulleted">
+                              <li>Characteristics of the valuation, e.g. <ul class="bulleted">
+                                    <li>Valuation Date</li>
+                                    <li>Base Party</li>
+                                    <li>Reporting currency</li>
+                                    <li>Valuation scenario applied</li>
+                                 </ul>
+                              </li>
+                              <li>For each trade, <ul class="bulleted">
+                                    <li>Trade Value</li>
+                                    <li>Sensitivity definitions</li>
+                                    <li>List of sensitivities, linked to market inputs</li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li>No example is currently available for this.</li>
+                     </ul>
+                  </div>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.2.6">2.1.2.6 Scenario 6 – Request Pricing Inputs</a>
+                  </h5>
+                  <p>The use cases in this scenario are out of scope for this working draft, but are expected to be covered in an upcoming draft. This means that there is no schema support for these requests and responses, and there are no examples provided. The use case descriptions are provided as an indication of the functionality that is intended to be supported in the future.</p>
+                  <p>A party is requesting a curve of a specific type (IR, Credit, Asset, etc.) Most likely this would be an internal request between applications within the same firm.</p>
+                  <ul class="bulleted">
+                     <li>Market data and other pricing data may be required in the report.</li>
+                  </ul>
+                  <p>Client submits a market input request, including:</p>
+                  <ul class="bulleted">
+                     <li>Market environment characteristics to respond with <ul class="bulleted">
+                           <li>Environment Name</li>
+                           <li>Currency</li>
+                           <li>Input Type (yield curves, vol surfaces)</li>
+                           <li>Valuation date</li>
+                        </ul>
+                     </li>
+                     <li>A specification of the required results: <ul class="bulleted">
+                           <li>Requested values <ul class="bulleted">
+                                 <li>Definitions (e.g. curve definitions)</li>
+                                 <li>Input values</li>
+                                 <li>Output values (DFs, Zeros, etc.)</li>
+                              </ul>
+                           </li>
+                           <li>No example is currently available for this.</li>
+                        </ul>
+                     </li>
+                  </ul>
+                  <p>Service returns a market environment, including:</p>
+                  <ul class="bulleted">
+                     <li>Market environment(s) including <ul class="bulleted">
+                           <li>Yield curves</li>
+                           <li>Vol Surfaces</li>
+                        </ul>
+                     </li>
+                     <li>No example is currently available for this.</li>
+                  </ul>
+               </div>
+            </div>
+            <div>
+               <h4>
+                  <a id="s2.1.3">2.1.3 Notification Scenarios</a>
+               </h4>
+               <p>In these scenarios a party, service or internal system sends out reports without being first solicited to do so. Parameters that should be agreed upon between the sending and receiving parties should include: counterparty, deal types, when the report is sent, supporting information such as FX rates, risk sensitivities, etc.. Parties should also agree what, if any acknowledgement of receipt should be sent by the receiving party. </p>
+               <div>
+                  <h5>
+                     <a id="s2.1.3.1">2.1.3.1 Position Report</a>
+                  </h5>
+                  <p>Supports the DSWG Position Report representation:</p>
+                  <ul class="bulleted">
+                     <li>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex2-position-report-orig-new-fields.xml">rpt-ex2-position-report-orig-new-fields.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex2-position-report-orig-new-fields_irs_and_cds.xml">rpt-ex2-position-report-orig-new-fields_irs_and_cds.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex3-position-report-copper.xml">rpt-ex3-position-report-copper.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex4-position-report-copper-cds.xml">rpt-ex4-position-report-copper-cds.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex5-position-activity-report-copper.xml">rpt-ex5-position-activity-report-copper.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex7-position-report-multi-prod.xml">rpt-ex7-position-report-multi-prod.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex8-position-report-credit.xml">rpt-ex8-position-report-credit.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex9-position-report-ir.xml">rpt-ex9-position-report-ir.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex11-position-report-equity.xml">rpt-ex11-position-report-equity.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex12-position-report-commodity.xml">rpt-ex12-position-report-commodity.xml</a>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex15-position-report-equity.xml ">rpt-ex15-position-report-equity.xml </a>
+                     </li>
+                  </ul>
+                  <p>Supports payments at the position level:</p>
+                  <ul class="bulleted">
+                     <li>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex13-position-report-with-payment.xml">rpt-ex13-position-report-with-payment.xml</a>
+                     </li>
+                     <li>
+                        <a class="web" target="#" href="xml/position-and-activity-reporting/rpt-ex14-position-report-with-complex-payment.xml">rpt-ex14-position-report-with-complex-payment.xml</a>
+                     </li>
+                  </ul>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.3.2">2.1.3.2 Use Case 7:</a>
+                  </h5>
+                  <p>An internal middle or back office system needs a feed of valuation (and perhaps risk sensitivities) from a variety of systems, in the form of valuation reports.</p>
+                  <ul class="bulleted">
+                     <li>No explicit valuation request</li>
+                     <li>Market data and other pricing data may be required in the report.</li>
+                  </ul>
+               </div>
+               <div>
+                  <h5>
+                     <a id="s2.1.3.3">2.1.3.3 Use Case 8:</a>
+                  </h5>
+                  <p>A service or broker may provide a feed of valuation (and perhaps risk sensitivities) to their clients on a regularly scheduled basis.</p>
+                  <ul class="bulleted">
+                     <li>No explicit valuation request</li>
+                     <li>Market data and other pricing data may be required in the report.</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <p>
+         <a href="http://validator.w3.org/">
+            <img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1!" height="31" width="88"/>
+         </a>
+         <a href="http://jigsaw.w3.org/css-validator/">
+            <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!"/>
+         </a>
+      </p>
+   </body>
+</html>

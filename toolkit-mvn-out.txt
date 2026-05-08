@@ -1,0 +1,70 @@
+Apr 15, 2026 2:53:21 PM org.jline.utils.Log logr
+WARNING: Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+[main] WARNING org.jline - Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+[INFO] Processing build on daemon 43cd8c46
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.handcoded:fpml-toolkit-java:jar:1.9.0
+[WARNING] 'dependencies.dependency.systemPath' for xerces:xercesImpl:jar should not point at files within the project directory, ${project.basedir}/lib/xercesImpl.jar will be unresolvable by dependent projects @ line 43, column 25
+[WARNING] 'dependencies.dependency.systemPath' for xml-apis:xml-apis:jar should not point at files within the project directory, ${project.basedir}/lib/xml-apis.jar will be unresolvable by dependent projects @ line 52, column 25
+[WARNING] 'dependencies.dependency.systemPath' for com.miglayout:miglayout15-swing:jar should not point at files within the project directory, ${project.basedir}/lib/miglayout15-swing.jar will be unresolvable by dependent projects @ line 61, column 25
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] BuildTimeEventSpy is registered.
+[INFO] 
+[INFO] Using the SmartBuilder implementation with a thread count of 13
+[INFO] 
+[INFO] ------------------< com.handcoded:fpml-toolkit-java >-------------------
+[INFO] Building HandCoded FpML Toolkit for Java 1.9.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ fpml-toolkit-java ---
+[INFO] Deleting C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\target
+[INFO] Deleting C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\build\classes
+[INFO] 
+[INFO] --- build-helper:3.6.0:add-source (add-source) @ fpml-toolkit-java ---
+[INFO] Source directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src-coreext added.
+[INFO] Source directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src-dsig added.
+[INFO] Source directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src-fpml added.
+[INFO] Source directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src-fpmlext added.
+[INFO] Source directory: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\samples\src-acme added.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ fpml-toolkit-java ---
+[INFO] skip non existing resourceDirectory C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ fpml-toolkit-java ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 211 source files with javac [debug deprecation release 11] to build\classes
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-core/com/handcoded/meta/Specification.java:[397,60] newInstance() in java.lang.Class has been deprecated
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-core/com/handcoded/meta/Specification.java:[429,60] newInstance() in java.lang.Class has been deprecated
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-coreext/com/handcoded/identification/xml/RuleBookLoader.java:[211,67] newInstance() in java.lang.Class has been deprecated
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-coreext/com/handcoded/xpath/Function.java:[45,77] newInstance() in java.lang.Class has been deprecated
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-fpml/com/handcoded/fpml/Conversions.java:[680,16] deprecated item is not annotated with @Deprecated
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-fpml/com/handcoded/fpml/Conversions.java:[702,16] deprecated item is not annotated with @Deprecated
+[WARNING] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-fpml/com/handcoded/fpml/DefaultHelper.java:[26,61] com.handcoded.fpml.Conversions.R4_0__R4_1.Helper in com.handcoded.fpml.Conversions.R4_0__R4_1 has been deprecated
+[INFO] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-coreext/com/handcoded/view/View.java: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src-coreext\com\handcoded\view\View.java uses unchecked or unsafe operations.
+[INFO] /C:/Users/gpandey/OneDrive - ISDA/Documents/Projects-Codebase/FpML/fpml-toolkit-java/src-coreext/com/handcoded/view/View.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ fpml-toolkit-java ---
+[INFO] skip non existing resourceDirectory C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ fpml-toolkit-java ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug deprecation release 11] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ fpml-toolkit-java ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ fpml-toolkit-java ---
+[WARNING]  Parameter 'finalName' is read-only, must not be used in configuration
+[INFO] Building jar: C:\Users\gpandey\OneDrive - ISDA\Documents\Projects-Codebase\FpML\fpml-toolkit-java\handcoded.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.842 s (Wall Clock)
+[INFO] Finished at: 2026-04-15T14:53:32+01:00
+[INFO] ------------------------------------------------------------------------

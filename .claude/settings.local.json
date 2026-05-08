@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/c/Users/gpandey/.m2/wrapper/dists/apache-maven-3.9.6-bin/3311e1d4/apache-maven-3.9.6/bin/mvn\" compile:*)",
+      "Bash(\"/c/Users/gpandey/.m2/wrapper/dists/apache-maven-3.9.6-bin/3311e1d4/apache-maven-3.9.6/bin/mvn\" test:*)",
+      "Bash(\"/c/Users/gpandey/.m2/wrapper/dists/apache-maven-3.9.6-bin/3311e1d4/apache-maven-3.9.6/bin/mvn\" package:*)",
+      "Bash(\"/c/Users/gpandey/.m2/wrapper/dists/apache-maven-3.9.6-bin/3311e1d4/apache-maven-3.9.6/bin/mvn\" install:*)",
+      "Bash(cmd.exe:*)"
+    ]
+  }
+}

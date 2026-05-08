@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+   <head>
+      <title>FpML 5.14 Working Draft - Examples (Transparency View)</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link rel="stylesheet" type="text/css" href="fpml.css"/>
+   </head>
+   <body>
+      <h1 xmlns:xsd="http://www.w3.org/2001/XMLSchema">FpML®  Financial product Markup Language Working Draft 30 January 2026 (Transparency View)</h1>
+      <h2 xmlns:xsd="http://www.w3.org/2001/XMLSchema" class="abstractHeader">Version: 5.14</h2>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">This version: <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1</i>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Latest version: <a href="http://www.fpml.org/spec/fpml-5-14-1-wd-1" target="_blank" title="Link opens in new window.">
+            <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1</i>
+         </a>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Previous version: <a href="https://www.fpml.org/spec/fpml-5-13-7-rec-1/" target="_blank" title="Link opens in new window.">
+            <i>https://www.fpml.org/spec/fpml-5-13-7-rec-1/</i>
+         </a>
+      </h4>
+      <h4 xmlns:xsd="http://www.w3.org/2001/XMLSchema">Errata for this version: <a href="http://www.fpml.org/spec/fpml-5-14-1-wd-1/html/transparency/fpml-5-14-errata.html" target="_blank" title="Link opens in new window.">
+            <i>http://www.fpml.org/spec/fpml-5-14-1-wd-1/html/transparency/fpml-5-14-errata.html</i>
+         </a>
+      </h4>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		Build Number: 1; Document built: Mon 04/20/2026 16:59:22.75</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">Copyright (c) 1999 - 2026 by International Swaps and Derivatives Association, Inc.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">Financial Products Markup Language is subject to the FpML®  Public License.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">FpML®  is a registered trademark of the International Swaps and Derivatives Association, Inc.</p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema"> A copy of this license is available at <a href="http://www.fpml.org/the_standard/fpml-public-license/" target="_blank" title="Link opens in new window.">http://www.fpml.org/the_standard/fpml-public-license/</a>
+      </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <br/>
+         <br/>
+      </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">The FpML specifications provided are without warranty of any kind, either expressed or implied, including, without limitation, warranties that FpML, or the FpML specifications are free of defects, merchantable, fit for a particular purpose or non-infringing.  The entire risk as to the quality and performance of the specifications is with you.  Should any of the FpML specifications prove defective in any respect, you assume the cost of any necessary servicing or repair.  Under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall ISDA, any of its members, or any distributor of documents or software containing any of the FpML specifications, or any supplier of any of such parties, be liable to you or any other person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages.  </p>
+      <p xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <br/>
+         <br/>
+      </p>
+      <h2 class="tocHeader">Table Of Contents</h2>
+      <p class="toc">&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1 <a href="#s1">Message Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.1 <a href="#s1.1">Example 1 - Public Execution Report - New Trade</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.2 <a href="#s1.2">Example 2 - Public Execution Report - New Trade, Acknowledgement</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.3 <a href="#s1.3">Example 3 - Public Execution Report - New Trade, Correction</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.4 <a href="#s1.4">Example 4 - Public Execution Report - New Trade Correction - Exception</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.5 <a href="#s1.5">Example 10 - Public Execution Report - Novation, reported by Transferee</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.6 <a href="#s1.6">Example 11 - Public Execution Report - Novation, retracted by Transferee</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.7 <a href="#s1.7">Example 12 - Public Execution Report Acknowledgement - Novation, retracted by Transferee</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.8 <a href="#s1.8">Example 20 - Public Execution Report - Novation, reported by Transferor</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.9 <a href="#s1.9">Example 30 - Public Execution Report - Partial Termination</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.10 <a href="#s1.10">Example 70 - Public Execution Report - Package Transactions</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">1.11 <a href="#s1.11">Example 100 - Data Document New Trade</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2 <a href="#s2">Product Examples</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.1 <a href="#s2.1">Example 1 - Interest Rate Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.2 <a href="#s2.2">Example 2 - Cancelable Interest Rate Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.3 <a href="#s2.3">Example 3 - Interest Rate Swaption</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.4 <a href="#s2.4">Example 4 - Interest Rate OIS Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.5 <a href="#s2.5">Example 5 - Single Name Credit Default  Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.6 <a href="#s2.6">Example 6 - Index Credit Default Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.7 <a href="#s2.7">Example 7 - Index Tranche Credit Default Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.8 <a href="#s2.8">Example 8 - Loan Credit Default Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.9 <a href="#s2.9">Example 10 -  Standard Product</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.10 <a href="#s2.10">Example 11 -  Generic Product</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.11 <a href="#s2.11">Example 20 - OTC Bond Option</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.12 <a href="#s2.12">Example 30 - Equity Return Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.13 <a href="#s2.13">Example 40 - FX Forward</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.14 <a href="#s2.14">Example 41 - FX Swap</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.15 <a href="#s2.15">Example 42 - FX Option</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.16 <a href="#s2.16">Example 43 - CFTC Rewrite Post Priced Indicator</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">2.17 <a href="#s2.17">Example 44 - CFTC Rewrite Post Priced Indicator</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3 <a href="#s3">Regulatory Disclosure Use Cases (Reporting redesign work 2019)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.1 <a href="#s3.1">Use Case 1a - New trade pricing information is reported for public dissemination</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.2 <a href="#s3.2">Use Case 1b - New trade pricing information is reported for public dissemination (delayed reporting)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.3 <a href="#s3.3">Use Case 2 - A public price report is corrected (correcting FpML version)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.4 <a href="#s3.4">Use Case 3 - A public price report is rejected due to missing field (schema invalid submission)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.5 <a href="#s3.5">Use Case 4 - A public price report is rejected due to invalid data value</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.6 <a href="#s3.6">Use Case 5 - A public price report is initially disseminated then corrected (price was wrong)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.7 <a href="#s3.7">Use Case 6 - Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. amendment)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.8 <a href="#s3.8">Use Case 7 - Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. novation)</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.9 <a href="#s3.9">Use Case 8 - A public price report is withdrawn from reporting</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.10 <a href="#s3.10">Use Case 9 - Requesting the reporting status of a trade pricing information earlier reported for public dissemination</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b xmlns:xsd="http://www.w3.org/2001/XMLSchema">3.11 <a href="#s3.11">Use Case 13 - Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. termination) then corrected to a partial termination</a>
+         </b>
+         <br xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+      </p>
+      <div xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <div>
+            <h2>
+               <a id="s1">1 Message Examples</a>
+            </h2>
+         </div>
+         <p>This section contains examples of FpML messages for Transparency Reporting. Each example illustrates a different part of the process.</p>
+         <p>The sample xml documents are available for download from the fpml.org website.</p>
+         <div>
+            <h3>
+               <a id="s1.1">1.1 Example 1 - Public Execution Report - New Trade</a>
+            </h3>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex001_new_trade.xml">msg_ex001_new_trade.xml</a>
+            </p>
+            <p>A real-time public execution report to be sent from a reporting party or execution facility to a swaps data repository or third party messaging service for regulatory price discovery reporting.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.2">1.2 Example 2 - Public Execution Report - New Trade, Acknowledgement</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex002_new_trade_ack.xml">msg_ex002_new_trade_ack.xml</a>
+            </p>
+            <p>A real-time public execution report acknowledgement to be sent from a swaps data repository or third party messaging service to a reporting party or execution facility in acknowledgement of a public execution report.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.3">1.3 Example 3 - Public Execution Report - New Trade, Correction</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex003_new_trade_correction.xml">msg_ex003_new_trade_correction.xml</a>
+            </p>
+            <p>A message correcting a public exection report.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.4">1.4 Example 4 - Public Execution Report - New Trade Correction - Exception</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex004-correction-exception.xml">msg_ex004-correction-exception.xml</a>
+            </p>
+            <p>A message reporting a problem processing a public execution report correction. </p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.5">1.5 Example 10 - Public Execution Report - Novation, reported by Transferee</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex010_irs_novation_transferee.xml">msg_ex010_irs_novation_transferee.xml</a>
+            </p>
+            <p>A real-time report from a reporting party that is a transferee in a novation, or from an execution facility acting on its behalf.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.6">1.6 Example 11 - Public Execution Report - Novation, retracted by Transferee</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex011_novation_transferee_retracted.xml">msg_ex011_novation_transferee_retracted.xml</a>
+            </p>
+            <p>A retraction of a real-time report from a reporting party that is a transferee in a novation, or from an execution facility acting on its behalf.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.7">1.7 Example 12 - Public Execution Report Acknowledgement - Novation, retracted by Transferee</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex012_novation_transferee_retracted_ack.xml">msg_ex012_novation_transferee_retracted_ack.xml</a>
+            </p>
+            <p>An acknowledgment by an SDR or messaging service to a retraction of a real-time report from a reporting party that is a transferee in a novation, or from an execution facility acting on its behalf.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.8">1.8 Example 20 - Public Execution Report - Novation, reported by Transferor</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex020_irs_novation_transferor.xml">msg_ex020_irs_novation_transferor.xml</a>
+            </p>
+            <p>A real-time report from a reporting party that is a transferor in a novation, or from an execution facility acting on its behalf.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.9">1.9 Example 30 - Public Execution Report - Partial Termination</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex030_irs_partial_termination.xml">msg_ex030_irs_partial_termination.xml</a>
+            </p>
+            <p>A real-time report from a reporting party, or from an execution facility acting on its behalf, of a partial termination of an existing trade.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.10">1.10 Example 70 - Public Execution Report - Package Transactions</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/package/pkg-ex70-report-trade1-to-sdr.xml">pkg-ex70-report-trade1-to-sdr.xml</a>
+            </p>
+            <p>A real-time report of a trade originating from a package.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s1.11">1.11 Example 100 - Data Document New Trade</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/messages/msg_ex100_irs_datadoc.xml">msg_ex100_irs_datadoc.xml</a>
+            </p>
+            <p>A data document holding a trade representation in Transparency view.</p>
+         </div>
+      </div>
+      <div xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <div>
+            <h2>
+               <a id="s2">2 Product Examples</a>
+            </h2>
+         </div>
+         <p>This section contains examples of FpML messagesr for public execution reporting. Each example illustrates a different product in Transparency view.</p>
+         <div>
+            <h3>
+               <a id="s2.1">2.1 Example 1 - Interest Rate Swap</a>
+            </h3>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex01_irs.xml">rtrpt_ex01_irs.xml</a>
+            </p>
+            <p>A real-time public report of an Interest Rate Swap in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.2">2.2 Example 2 - Cancelable Interest Rate Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex02_irs_cancelable.xml">rtrpt_ex02_irs_cancelable.xml</a>
+            </p>
+            <p>A real-time public report of a Cancelable Interest Rate Swap in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.3">2.3 Example 3 - Interest Rate Swaption</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex03_ir_swaption.xml">rtrpt_ex03_ir_swaption.xml</a>
+            </p>
+            <p>A real-time public report of an Interest Rate Swaption (Option on IRS) in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.4">2.4 Example 4 - Interest Rate OIS Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex04_irs_ois.xml">rtrpt_ex04_irs_ois.xml</a>
+            </p>
+            <p>A real-time public report of an Overnight Index Interest Rate Swap in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.5">2.5 Example 5 - Single Name Credit Default  Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex5_cd_single.xml">rtrpt_ex5_cd_single.xml</a>
+            </p>
+            <p>A real-time public report of a single name Credit Default Swap in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.6">2.6 Example 6 - Index Credit Default Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex6_cd_index.xml">rtrpt_ex6_cd_index.xml</a>
+            </p>
+            <p>A real-time public report of an Credit Default Swap on an Index in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.7">2.7 Example 7 - Index Tranche Credit Default Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex7_cd_index_tranche.xml">rtrpt_ex7_cd_index_tranche.xml</a>
+            </p>
+            <p>A real-time public report of an Credit Default Swap on an Index Tranche in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.8">2.8 Example 8 - Loan Credit Default Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex8_cd_loan.xml">rtrpt_ex8_cd_loan.xml</a>
+            </p>
+            <p>A real-time public report of an Credit Default Swap on a Loan in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.9">2.9 Example 10 -  Standard Product</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex10_std_prod.xml">rtrpt_ex10_std_prod.xml</a>
+            </p>
+            <p>A real-time public report of a Standard Product in Transparency view. This is a product that is completely identified by its standard product ID and thus does not need to be further described.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.10">2.10 Example 11 -  Generic Product</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex11_generic_product.xml">rtrpt_ex11_generic_product.xml</a>
+            </p>
+            <p>A real-time public report of a Generic Product in Transparency view. This is a product that does not have a standard schema representation in FpML Transparency view.  The generic product representation allows a set of basic identifying details to be provided for the product.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.11">2.11 Example 20 - OTC Bond Option</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex20_otc_bond_option.xml">rtrpt_ex20_otc_bond_option.xml</a>
+            </p>
+            <p>A real-time public report of an OTC option on a bond in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.12">2.12 Example 30 - Equity Return Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex30_eq_return_swap.xml">rtrpt_ex30_eq_return_swap.xml</a>
+            </p>
+            <p>A real-time public report of a Total Return Swap on an Equity in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.13">2.13 Example 40 - FX Forward</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex40_fx_forward.xml">rtrpt_ex40_fx_forward.xml</a>
+            </p>
+            <p>A real-time public report of a Foreign Exchange Forward in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.14">2.14 Example 41 - FX Swap</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex41_fx_swap.xml">rtrpt_ex41_fx_swap.xml</a>
+            </p>
+            <p>A real-time public report of a Foreign Exchange Swap in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.15">2.15 Example 42 - FX Option</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/rtrpt_ex42_fx_option.xml">rtrpt_ex42_fx_option.xml</a>
+            </p>
+            <p>A real-time public report of a vanilla Foreign Exchange Option in Transparency view.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.16">2.16 Example 43 - CFTC Rewrite Post Priced Indicator</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/trans_ex43_cftc_rewrite_post_priced_indicator.xml">trans_ex43_cftc_rewrite_post_priced_indicator.xml</a>
+            </p>
+            <p>A real-time public report of a Credit Default Swap containing a Post Priced Indicator.</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s2.17">2.17 Example 44 - CFTC Rewrite Post Priced Indicator</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/products/trans_ex44_ird_swap_cftc_notional_step_schedule.xml">trans_ex44_ird_swap_cftc_notional_step_schedule.xml</a>
+            </p>
+            <p>A real-time public report of an interest rate swap containing a notional schedule with a step.</p>
+         </div>
+      </div>
+      <div xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <div>
+            <h2>
+               <a id="s3">3 Regulatory Disclosure Use Cases (Reporting redesign work 2019)</a>
+            </h2>
+         </div>
+         <p>This section contains use cases of the new regulatoryDisclosure set of messages</p>
+         <div>
+            <h3>
+               <a id="s3.1">3.1 Use Case 1a - New trade pricing information is reported for public dissemination</a>
+            </h3>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-1a-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-1a-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-1a-ex02-public-disclosure-ack.xml">use-case-1a-ex02-public-disclosure-ack.xml</a>
+            </p>
+            <p>New trade pricing information is reported for public dissemination</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.2">3.2 Use Case 1b - New trade pricing information is reported for public dissemination (delayed reporting)</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-1b-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-1b-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-1b-ex02-public-disclosure-ack-delayed-dissemination.xml">use-case-1b-ex02-public-disclosure-ack-delayed-dissemination.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-1b-ex03--regulatory-reporting-status.xml">use-case-1b-ex03--regulatory-reporting-status.xml</a>
+            </p>
+            <p>New trade pricing information is reported for public dissemination (delayed reporting)</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.3">3.3 Use Case 2 - A public price report is corrected (correcting FpML version)</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-2-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-2-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-2-ex02-public-disclosure-exception.xml">use-case-2-ex02-public-disclosure-exception.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-2-ex03-public-disclosure-ird-vanilla-swap-corrected.xml">use-case-2-ex03-public-disclosure-ird-vanilla-swap-corrected.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-2-ex04-public-disclosure-ack.xml">use-case-2-ex04-public-disclosure-ack.xml</a>
+            </p>
+            <p>A public price report is corrected (correcting FpML version)</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.4">3.4 Use Case 3 - A public price report is rejected due to missing field (schema invalid submission)</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-3-ex01-public-disclosure-ird-vanilla-swap-schema-invalid.xml">use-case-3-ex01-public-disclosure-ird-vanilla-swap-schema-invalid.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-3-ex01-public-disclosure-ird-vanilla-swap-schema-invalid.xml">use-case-3-ex01-public-disclosure-ird-vanilla-swap-schema-invalid.xml</a>
+            </p>
+            <p>A public price report is rejected due to missing field (schema invalid submission)</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.5">3.5 Use Case 4 - A public price report is rejected due to invalid data value</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-4-ex01-public-disclosure-ird-vanilla-swap-business-invalid.xml">use-case-4-ex01-public-disclosure-ird-vanilla-swap-business-invalid.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-4-ex02-public-reporting-exception.xml">use-case-4-ex02-public-reporting-exception.xml</a>
+            </p>
+            <p>A public price report is rejected due to invalid data value</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.6">3.6 Use Case 5 - A public price report is initially disseminated then corrected (price was wrong)</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-5-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-5-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-5-ex02-public-disclosure-ack.xml">use-case-5-ex02-public-disclosure-ack.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-5-ex03-public-disclosure-ird-vanilla-swap.xml">use-case-5-ex03-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-5-ex04-public-disclosure-ack.xml">use-case-5-ex04-public-disclosure-ack.xml</a>
+            </p>
+            <p>A public price report is initially disseminated then corrected (price was wrong)</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.7">3.7 Use Case 6 - Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. amendment)</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-6-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-6-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-6-ex02-public-disclosure-ack.xml">use-case-6-ex02-public-disclosure-ack.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-6-ex03-public-disclosure-ird-vanilla-swap-amended.xml">use-case-6-ex03-public-disclosure-ird-vanilla-swap-amended.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-6-ex04-public-disclosure-ack.xml">use-case-6-ex04-public-disclosure-ack.xml</a>
+            </p>
+            <p>Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. amendment)</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.8">3.8 Use Case 7 - Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. novation)</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-7-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-7-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-7-ex02-public-disclosure-ack.xml">use-case-7-ex02-public-disclosure-ack.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-7-ex03-public-disclosure-ird-vanilla-swap-novation-eliminated.xml">use-case-7-ex03-public-disclosure-ird-vanilla-swap-novation-eliminated.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-7-ex04-public-disclosure-ack.xml">use-case-7-ex04-public-disclosure-ack.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-7-ex05-public-disclosure-ird-vanilla-swap-novation-new-trade.xml">use-case-7-ex05-public-disclosure-ird-vanilla-swap-novation-new-trade.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-7-ex06-public-disclosure-ack.xml">use-case-7-ex06-public-disclosure-ack.xml</a>
+            </p>
+            <p>Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. novation)</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.9">3.9 Use Case 8 - A public price report is withdrawn from reporting</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-8-ex01-public-disclosure-ird-vanilla-swap.xml">use-case-8-ex01-public-disclosure-ird-vanilla-swap.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-8-ex02-public-disclosure-ack.xml">use-case-8-ex02-public-disclosure-ack.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-8-ex03-public-withdrawal.xml">use-case-8-ex03-public-withdrawal.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-8-ex04-public-disclosure-ack.xml">use-case-8-ex04-public-disclosure-ack.xml</a>
+            </p>
+            <p>A public price report is withdrawn from reporting</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.10">3.10 Use Case 9 - Requesting the reporting status of a trade pricing information earlier reported for public dissemination</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-9-ex01-request-regulatory-reporting-status.xml">use-case-9-ex01-request-regulatory-reporting-status.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-9-ex02-regulatory-reporting-status.xml">use-case-9-ex02-regulatory-reporting-status.xml</a>
+            </p>
+            <p>Requesting the reporting status of a trade pricing information earlier reported for public dissemination</p>
+         </div>
+         <div>
+            <div>
+               <h3>
+                  <a id="s3.11">3.11 Use Case 13 - Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. termination) then corrected to a partial termination</a>
+               </h3>
+            </div>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-13-ex01-public-disclosure-ird-vanilla-swap-terminated.xml">use-case-13-ex01-public-disclosure-ird-vanilla-swap-terminated.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-13-ex02-public-disclosure-ack.xml">use-case-13-ex02-public-disclosure-ack.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-13-ex03-public-disclosure-ird-vanilla-swap-correction-partial-termination.xml">use-case-13-ex03-public-disclosure-ird-vanilla-swap-correction-partial-termination.xml</a>
+            </p>
+            <p>File: <a class="web" target="#" href="xml/use-cases-public/use-case-13-ex04-public-disclosure-ack.xml">use-case-13-ex04-public-disclosure-ack.xml</a>
+            </p>
+            <p>Trade pricing information that has already been reported for public dissemination is updated due to a post-trade event (e.g. termination) then corrected to a partial termination</p>
+         </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <p>
+         <a href="http://validator.w3.org/">
+            <img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1!" height="31" width="88"/>
+         </a>
+         <a href="http://jigsaw.w3.org/css-validator/">
+            <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!"/>
+         </a>
+      </p>
+   </body>
+</html>
