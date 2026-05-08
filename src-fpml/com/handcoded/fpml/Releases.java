@@ -966,6 +966,103 @@ public final class Releases
     public static final Conversion R5_0__R5_1_REPORTING
             = new Conversions.R5_0__R5_1_REPORTING ();
 
+    // =========================================================================
+    // Reverse (downgrade) conversions — registered explicitly here to guarantee
+    // they are loaded at the same time as the forward conversions above.
+    // =========================================================================
+
+    // --- 1-0 / 2-0 / 3-0 / 4-0 reverse ---
+    public static final Conversion R2_0__R1_0   = new Conversions.PassThroughConversion (R2_0,  R1_0);
+    public static final Conversion R3_0__R2_0   = new Conversions.PassThroughConversion (R3_0,  R2_0);
+    public static final Conversion R4_0__R3_0   = new Conversions.PassThroughConversion (R4_0,  R3_0);
+
+    // --- 4.x full downgrade chain ---
+    public static final Conversion R4_1__R4_0   = new Conversions.PassThroughConversion (R4_1,  R4_0);
+    public static final Conversion R4_2__R4_1   = new Conversions.PassThroughConversion (R4_2,  R4_1);
+    public static final Conversion R4_3__R4_2_R = new Conversions.PassThroughConversion (R4_3,  R4_2);
+    public static final Conversion R4_4__R4_3_R = new Conversions.PassThroughConversion (R4_4,  R4_3);
+    public static final Conversion R4_5__R4_4_R = new Conversions.PassThroughConversion (R4_5,  R4_4);
+    public static final Conversion R4_6__R4_5_R = new Conversions.PassThroughConversion (R4_6,  R4_5);
+    public static final Conversion R4_7__R4_6_R = new Conversions.PassThroughConversion (R4_7,  R4_6);
+    public static final Conversion R4_8__R4_7_R = new Conversions.PassThroughConversion (R4_8,  R4_7);
+    public static final Conversion R4_9__R4_8_R = new Conversions.PassThroughConversion (R4_9,  R4_8);
+    public static final Conversion R4_10__R4_9_R= new Conversions.PassThroughConversion (R4_10, R4_9);
+
+    // --- 5.0 Confirmation → 4.10 (structural downgrade — namespace + fpmlVersion handling) ---
+    public static final Conversion R5_0_CONF__R4_10_R = new Conversions.R5_0_CONF__R4_10 ();
+
+    // --- 5.x Confirmation downgrade chain ---
+    public static final Conversion R5_1_CONF__R5_0_CONF   = new Conversions.PassThroughConversion (R5_1_CONFIRMATION,  R5_0_CONFIRMATION);
+    public static final Conversion R5_2_CONF__R5_1_CONF   = new Conversions.PassThroughConversion (R5_2_CONFIRMATION,  R5_1_CONFIRMATION);
+    public static final Conversion R5_3_CONF__R5_2_CONF   = new Conversions.PassThroughConversion (R5_3_CONFIRMATION,  R5_2_CONFIRMATION);
+    public static final Conversion R5_4_CONF__R5_3_CONF   = new Conversions.PassThroughConversion (R5_4_CONFIRMATION,  R5_3_CONFIRMATION);
+    public static final Conversion R5_5_CONF__R5_4_CONF   = new Conversions.PassThroughConversion (R5_5_CONFIRMATION,  R5_4_CONFIRMATION);
+    public static final Conversion R5_6_CONF__R5_5_CONF   = new Conversions.PassThroughConversion (R5_6_CONFIRMATION,  R5_5_CONFIRMATION);
+    public static final Conversion R5_7_CONF__R5_6_CONF   = new Conversions.PassThroughConversion (R5_7_CONFIRMATION,  R5_6_CONFIRMATION);
+    public static final Conversion R5_8_CONF__R5_7_CONF   = new Conversions.PassThroughConversion (R5_8_CONFIRMATION,  R5_7_CONFIRMATION);
+    public static final Conversion R5_9_CONF__R5_8_CONF   = new Conversions.PassThroughConversion (R5_9_CONFIRMATION,  R5_8_CONFIRMATION);
+    public static final Conversion R5_10_CONF__R5_9_CONF  = new Conversions.PassThroughConversion (R5_10_CONFIRMATION, R5_9_CONFIRMATION);
+    public static final Conversion R5_11_CONF__R5_10_CONF = new Conversions.PassThroughConversion (R5_11_CONFIRMATION, R5_10_CONFIRMATION);
+    public static final Conversion R5_12_CONF__R5_11_CONF = new Conversions.PassThroughConversion (R5_12_CONFIRMATION, R5_11_CONFIRMATION);
+    public static final Conversion R5_13_CONF__R5_12_CONF = new Conversions.PassThroughConversion (R5_13_CONFIRMATION, R5_12_CONFIRMATION);
+
+    // --- 5.x Reporting downgrade chain ---
+    public static final Conversion R5_1_REP__R5_0_REP    = new Conversions.PassThroughConversion (R5_1_REPORTING,  R5_0_REPORTING);
+    public static final Conversion R5_2_REP__R5_1_REP    = new Conversions.PassThroughConversion (R5_2_REPORTING,  R5_1_REPORTING);
+    public static final Conversion R5_3_REP__R5_2_REP    = new Conversions.PassThroughConversion (R5_3_REPORTING,  R5_2_REPORTING);
+    public static final Conversion R5_4_REP__R5_3_REP    = new Conversions.PassThroughConversion (R5_4_REPORTING,  R5_3_REPORTING);
+    public static final Conversion R5_5_REP__R5_4_REP    = new Conversions.PassThroughConversion (R5_5_REPORTING,  R5_4_REPORTING);
+    public static final Conversion R5_6_REP__R5_5_REP    = new Conversions.PassThroughConversion (R5_6_REPORTING,  R5_5_REPORTING);
+    public static final Conversion R5_7_REP__R5_6_REP    = new Conversions.PassThroughConversion (R5_7_REPORTING,  R5_6_REPORTING);
+    public static final Conversion R5_8_REP__R5_7_REP    = new Conversions.PassThroughConversion (R5_8_REPORTING,  R5_7_REPORTING);
+    public static final Conversion R5_9_REP__R5_8_REP    = new Conversions.PassThroughConversion (R5_9_REPORTING,  R5_8_REPORTING);
+    public static final Conversion R5_10_REP__R5_9_REP   = new Conversions.PassThroughConversion (R5_10_REPORTING, R5_9_REPORTING);
+    public static final Conversion R5_11_REP__R5_10_REP  = new Conversions.PassThroughConversion (R5_11_REPORTING, R5_10_REPORTING);
+    public static final Conversion R5_12_REP__R5_11_REP  = new Conversions.PassThroughConversion (R5_12_REPORTING, R5_11_REPORTING);
+    public static final Conversion R5_13_REP__R5_12_REP  = new Conversions.PassThroughConversion (R5_13_REPORTING, R5_12_REPORTING);
+
+    // --- 5.x Recordkeeping downgrade chain ---
+    public static final Conversion R5_4_RK__R5_3_RK   = new Conversions.PassThroughConversion (R5_4_RECORDKEEPING,  R5_3_RECORDKEEPING);
+    public static final Conversion R5_5_RK__R5_4_RK   = new Conversions.PassThroughConversion (R5_5_RECORDKEEPING,  R5_4_RECORDKEEPING);
+    public static final Conversion R5_6_RK__R5_5_RK   = new Conversions.PassThroughConversion (R5_6_RECORDKEEPING,  R5_5_RECORDKEEPING);
+    public static final Conversion R5_7_RK__R5_6_RK   = new Conversions.PassThroughConversion (R5_7_RECORDKEEPING,  R5_6_RECORDKEEPING);
+    public static final Conversion R5_8_RK__R5_7_RK   = new Conversions.PassThroughConversion (R5_8_RECORDKEEPING,  R5_7_RECORDKEEPING);
+    public static final Conversion R5_9_RK__R5_8_RK   = new Conversions.PassThroughConversion (R5_9_RECORDKEEPING,  R5_8_RECORDKEEPING);
+    public static final Conversion R5_10_RK__R5_9_RK  = new Conversions.PassThroughConversion (R5_10_RECORDKEEPING, R5_9_RECORDKEEPING);
+    public static final Conversion R5_11_RK__R5_10_RK = new Conversions.PassThroughConversion (R5_11_RECORDKEEPING, R5_10_RECORDKEEPING);
+    public static final Conversion R5_12_RK__R5_11_RK = new Conversions.PassThroughConversion (R5_12_RECORDKEEPING, R5_11_RECORDKEEPING);
+    public static final Conversion R5_13_RK__R5_12_RK = new Conversions.PassThroughConversion (R5_13_RECORDKEEPING, R5_12_RECORDKEEPING);
+
+    // --- 5.x Transparency downgrade chain ---
+    public static final Conversion R5_4_TR__R5_3_TR   = new Conversions.PassThroughConversion (R5_4_TRANSPARENCY,  R5_3_TRANSPARENCY);
+    public static final Conversion R5_5_TR__R5_4_TR   = new Conversions.PassThroughConversion (R5_5_TRANSPARENCY,  R5_4_TRANSPARENCY);
+    public static final Conversion R5_6_TR__R5_5_TR   = new Conversions.PassThroughConversion (R5_6_TRANSPARENCY,  R5_5_TRANSPARENCY);
+    public static final Conversion R5_7_TR__R5_6_TR   = new Conversions.PassThroughConversion (R5_7_TRANSPARENCY,  R5_6_TRANSPARENCY);
+    public static final Conversion R5_8_TR__R5_7_TR   = new Conversions.PassThroughConversion (R5_8_TRANSPARENCY,  R5_7_TRANSPARENCY);
+    public static final Conversion R5_9_TR__R5_8_TR   = new Conversions.PassThroughConversion (R5_9_TRANSPARENCY,  R5_8_TRANSPARENCY);
+    public static final Conversion R5_10_TR__R5_9_TR  = new Conversions.PassThroughConversion (R5_10_TRANSPARENCY, R5_9_TRANSPARENCY);
+    public static final Conversion R5_11_TR__R5_10_TR = new Conversions.PassThroughConversion (R5_11_TRANSPARENCY, R5_10_TRANSPARENCY);
+    public static final Conversion R5_12_TR__R5_11_TR = new Conversions.PassThroughConversion (R5_12_TRANSPARENCY, R5_11_TRANSPARENCY);
+    public static final Conversion R5_13_TR__R5_12_TR = new Conversions.PassThroughConversion (R5_13_TRANSPARENCY, R5_12_TRANSPARENCY);
+
+    // --- 5.x Pretrade downgrade chain ---
+    public static final Conversion R5_6_PT__R5_5_PT   = new Conversions.PassThroughConversion (R5_6_PRETRADE,  R5_5_PRETRADE);
+    public static final Conversion R5_7_PT__R5_6_PT   = new Conversions.PassThroughConversion (R5_7_PRETRADE,  R5_6_PRETRADE);
+    public static final Conversion R5_8_PT__R5_7_PT   = new Conversions.PassThroughConversion (R5_8_PRETRADE,  R5_7_PRETRADE);
+    public static final Conversion R5_9_PT__R5_8_PT   = new Conversions.PassThroughConversion (R5_9_PRETRADE,  R5_8_PRETRADE);
+    public static final Conversion R5_10_PT__R5_9_PT  = new Conversions.PassThroughConversion (R5_10_PRETRADE, R5_9_PRETRADE);
+    public static final Conversion R5_11_PT__R5_10_PT = new Conversions.PassThroughConversion (R5_11_PRETRADE, R5_10_PRETRADE);
+    public static final Conversion R5_12_PT__R5_11_PT = new Conversions.PassThroughConversion (R5_12_PRETRADE, R5_11_PRETRADE);
+    public static final Conversion R5_13_PT__R5_12_PT = new Conversions.PassThroughConversion (R5_13_PRETRADE, R5_12_PRETRADE);
+
+    // --- 5.x Legal downgrade chain ---
+    public static final Conversion R5_8_LG__R5_7_LG   = new Conversions.PassThroughConversion (R5_8_LEGAL,  R5_7_LEGAL);
+    public static final Conversion R5_9_LG__R5_8_LG   = new Conversions.PassThroughConversion (R5_9_LEGAL,  R5_8_LEGAL);
+    public static final Conversion R5_10_LG__R5_9_LG  = new Conversions.PassThroughConversion (R5_10_LEGAL, R5_9_LEGAL);
+    public static final Conversion R5_11_LG__R5_10_LG = new Conversions.PassThroughConversion (R5_11_LEGAL, R5_10_LEGAL);
+    public static final Conversion R5_12_LG__R5_11_LG = new Conversions.PassThroughConversion (R5_12_LEGAL, R5_11_LEGAL);
+    public static final Conversion R5_13_LG__R5_12_LG = new Conversions.PassThroughConversion (R5_13_LEGAL, R5_12_LEGAL);
+
 	/**
 	 * Examines the provided <CODE>Document</CODE> to determine the associated
 	 * FpML <CODE>Release</CODE> instance.

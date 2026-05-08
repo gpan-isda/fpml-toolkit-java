@@ -198,6 +198,18 @@ public final class Conversions {
                 && newRoot != null
                 && "FpML".equals(newRootName))
             newRoot.setAttributeNS(Schema.INSTANCE_URL, "xsi:type", oldType);
+
+        // Rewrite xsi:schemaLocation to point at the TARGET release's namespace + schema location.
+        // SchemaRelease.newInstance() sets it to "" by default; we replace it with the correct value
+        // so the converted document validates against the right schema without manual fixup.
+        if (newRoot != null && targetRelease instanceof com.handcoded.meta.SchemaRelease) {
+            com.handcoded.meta.SchemaRelease sr = (com.handcoded.meta.SchemaRelease) targetRelease;
+            String nsUri      = sr.getNamespaceUri();
+            String schemaLoc  = sr.getSchemaLocation();
+            if (nsUri != null && !nsUri.isEmpty() && schemaLoc != null && !schemaLoc.isEmpty())
+                newRoot.setAttributeNS(Schema.INSTANCE_URL, "xsi:schemaLocation",
+                        nsUri + " " + schemaLoc);
+        }
         return target;
     }
 
@@ -617,31 +629,63 @@ public final class Conversions {
     // extracting them here removes the need for duplicate instanceof checks.
     // ==========================================================================================
 
+    // ==========================================================================================
+    // ConversionHelper — generic helper for ALL asset classes and ALL conversion steps.
+    // Conversion logic requests values by logical key name; the pipeline routes them through
+    // the delta profile, RuntimeValueProvider, and probe() recording automatically.
+    // There is no asset-class discrimination — all structural conversions use the same interface.
+    // ==========================================================================================
+
     /**
-     * Shared FX-feature helper interface used by both {@link R4_0__R4_1} and
-     * {@link R4_1__R4_2}.  Consumers implement this once and pass the same
-     * instance to either conversion step.
+     * Generic structural conversion helper interface used by all FpML conversion steps,
+     * regardless of asset class.
+     *
+     * <p>Conversion code requests values by logical key name rather than through named
+     * per-feature methods.  This means the same probe/fill/convert mechanism works
+     * identically for IR, FX, Credit, Equity, Loan, or any future asset class without
+     * any interface changes.</p>
+     *
+     * <p>When the pipeline runs in probe mode, every call to
+     * {@link #getHelperValue(String, Element, String)} is recorded as a
+     * {@code HELPER_VALUE} required field in the {@link ProbeResult}, regardless of
+     * which asset class or XSD element triggered it.</p>
+     *
+     * <h3>Usage in a structural conversion</h3>
+     * <pre>{@code
+     * if (helper instanceof Conversions.ConversionHelper) {
+     *     String val = ((Conversions.ConversionHelper) helper)
+     *             .getHelperValue("referenceCurrency", element,
+     *                             "Reference currency for fxFeature restructuring");
+     * }
+     * }</pre>
+     *
+     * @see ConfigurableHelper
+     * @see DefaultHelper
      */
-    public interface FxConversionHelper extends com.handcoded.meta.Helper {
-        String getReferenceCurrency(Element context);
-        String getQuantoCurrency1(Element context);
-        String getQuantoCurrency2(Element context);
-        String getQuantoCurrencyBasis(Element context);
+    public interface ConversionHelper extends com.handcoded.meta.Helper {
+        /**
+         * Returns a caller-supplied or profile-configured value for the given logical key.
+         *
+         * @param key      Logical key name identifying the required value
+         *                 (e.g. {@code "referenceCurrency"}, {@code "businessDayConvention"}).
+         * @param context  The DOM element being converted (for contextual prompts).
+         * @param note     Human-readable description shown in probe responses and UI prompts.
+         * @return The resolved value; never {@code null} (falls back to {@code "???"}).
+         */
+        String getHelperValue(String key, Element context, String note);
     }
 
     // ==========================================================================================
-    // DroppingHelper — extends FxConversionHelper to carry a per-call dropped-field log.
-    // Implementations passed to R5_0_CONF__R4_10 receive a recordDropped() callback for
-    // each 5.x-only attribute that cannot be preserved in the 4.x target.
+    // DroppingHelper — extends ConversionHelper to carry a per-call dropped-field log.
     // ==========================================================================================
 
     /**
-     * Extension of {@link FxConversionHelper} that receives notifications about
+     * Extension of {@link ConversionHelper} that receives notifications about
      * fields dropped during a downgrade conversion (e.g. {@link R5_0_CONF__R4_10}).
      *
      * <p>Use {@link SimpleDroppedFieldCollector} for a plain list-backed implementation.</p>
      */
-    public interface DroppingHelper extends FxConversionHelper {
+    public interface DroppingHelper extends ConversionHelper {
         /**
          * Called once per dropped field/attribute.
          *
@@ -658,16 +702,20 @@ public final class Conversions {
      */
     public static class SimpleDroppedFieldCollector implements DroppingHelper {
         private final List<String> dropped = new ArrayList<>();
-        private final DefaultHelper fx     = new DefaultHelper();
 
         @Override public void recordDropped(String d) { dropped.add(d); }
         /** @return An unmodifiable snapshot of all recorded dropped fields. */
         public List<String> getDroppedFields() { return java.util.Collections.unmodifiableList(dropped); }
 
-        @Override public String getReferenceCurrency(Element c)  { return fx.getReferenceCurrency(c); }
-        @Override public String getQuantoCurrency1(Element c)    { return fx.getQuantoCurrency1(c); }
-        @Override public String getQuantoCurrency2(Element c)    { return fx.getQuantoCurrency2(c); }
-        @Override public String getQuantoCurrencyBasis(Element c){ return fx.getQuantoCurrencyBasis(c); }
+        /**
+         * Returns {@code "???"} for any key — this collector is used only in tests
+         * and direct conversion calls without a full pipeline.  In production the
+         * pipeline supplies a {@link ConfigurableHelper} that routes through the
+         * delta profile and {@link RuntimeValueProvider}.
+         */
+        @Override public String getHelperValue(String key, Element context, String note) {
+            return "???";
+        }
     }
 
     /* -------------------------------------------------------------------------------------------------
@@ -676,8 +724,8 @@ public final class Conversions {
     public static class R4_0__R4_1 extends DirectConversion {
         public R4_0__R4_1() { super(Releases.R4_0, Releases.R4_1); }
 
-        /** @deprecated Implement {@link FxConversionHelper} instead â€” same four methods. */
-        public interface Helper extends FxConversionHelper { }
+        /** Use {@link ConversionHelper} — forward-compatible with all asset classes. */
+        public interface Helper extends ConversionHelper { }
 
         @Override
         public Document convert(Document source, com.handcoded.meta.Helper helper) throws ConversionException {
@@ -693,13 +741,13 @@ public final class Conversions {
     }
 
     /* -------------------------------------------------------------------------------------------------
-     * R4_1 -> R4_2 (same structural rules as R4_0â†’R4_1; delegates to shared transcribeEquityFx)
+     * R4_1 -> R4_2 (same structural rules as R4_0→R4_1; delegates to shared transcribeEquityFx)
      * ------------------------------------------------------------------------------------------------- */
     public static class R4_1__R4_2 extends DirectConversion {
         public R4_1__R4_2() { super(Releases.R4_1, Releases.R4_2); }
 
-        /** @deprecated Implement {@link FxConversionHelper} instead â€” same four methods. */
-        public interface Helper extends FxConversionHelper { }
+        /** Use {@link ConversionHelper} — forward-compatible with all asset classes. */
+        public interface Helper extends ConversionHelper { }
 
         @Override
         public Document convert(Document source, com.handcoded.meta.Helper helper) throws ConversionException {
@@ -839,8 +887,10 @@ public final class Conversions {
                         Element child;
                         Element targetEl;
                         Element rccy = document.createElementNS(targetNamespace, "referenceCurrency");
-                        if (helper instanceof FxConversionHelper) {
-                            DOM.setInnerText(rccy, ((FxConversionHelper) helper).getReferenceCurrency(element));
+                        if (helper instanceof ConversionHelper) {
+                            DOM.setInnerText(rccy, ((ConversionHelper) helper).getHelperValue(
+                                    "referenceCurrency", element,
+                                    "Reference currency required for fxFeature restructuring"));
                             clone.appendChild(rccy);
                         } else throw new ConversionException("Cannot determine the fxFeature reference currency");
 
@@ -855,10 +905,13 @@ public final class Conversions {
                             Element basis = document.createElementNS(targetNamespace, "quoteBasis");
                             Element rate = document.createElementNS(targetNamespace, "fxRate");
                             Element value = document.createElementNS(targetNamespace, "rate");
-                            if (helper instanceof FxConversionHelper) {
-                                DOM.setInnerText(ccy1, ((FxConversionHelper) helper).getQuantoCurrency1(element));
-                                DOM.setInnerText(ccy2, ((FxConversionHelper) helper).getQuantoCurrency2(element));
-                                DOM.setInnerText(basis, ((FxConversionHelper) helper).getQuantoCurrencyBasis(element));
+                            if (helper instanceof ConversionHelper) {
+                                DOM.setInnerText(ccy1, ((ConversionHelper) helper).getHelperValue(
+                                        "quantoCurrency1", element, "Quanto currency 1"));
+                                DOM.setInnerText(ccy2, ((ConversionHelper) helper).getHelperValue(
+                                        "quantoCurrency2", element, "Quanto currency 2"));
+                                DOM.setInnerText(basis, ((ConversionHelper) helper).getHelperValue(
+                                        "quantoCurrencyBasis", element, "Quanto currency pair quote basis"));
                                 pair.appendChild(ccy1);
                                 pair.appendChild(ccy2);
                                 pair.appendChild(basis);
@@ -1161,7 +1214,8 @@ public final class Conversions {
     // These are registered automatically when this class loads (static field initialisation).
     // ==========================================================================================
 
-    // --- 4.x reverse (downgrade) ---
+    // --- 4.x reverse (downgrade) — full chain from 4-10 all the way back to 4-0 ---
+    static final PassThroughConversion R4_2_r_R4_1  = new PassThroughConversion(Releases.R4_2,  Releases.R4_1);
     static final PassThroughConversion R4_3_r_R4_2  = new PassThroughConversion(Releases.R4_3,  Releases.R4_2);
     static final PassThroughConversion R4_4_r_R4_3  = new PassThroughConversion(Releases.R4_4,  Releases.R4_3);
     static final PassThroughConversion R4_5_r_R4_4  = new PassThroughConversion(Releases.R4_5,  Releases.R4_4);
@@ -1170,6 +1224,11 @@ public final class Conversions {
     static final PassThroughConversion R4_8_r_R4_7  = new PassThroughConversion(Releases.R4_8,  Releases.R4_7);
     static final PassThroughConversion R4_9_r_R4_8  = new PassThroughConversion(Releases.R4_9,  Releases.R4_8);
     static final PassThroughConversion R4_10_r_R4_9 = new PassThroughConversion(Releases.R4_10, Releases.R4_9);
+    // --- complete the early 4.x and DTD-era reverse chain ---
+    static final PassThroughConversion R4_1_r_R4_0  = new PassThroughConversion(Releases.R4_1,  Releases.R4_0);
+    static final PassThroughConversion R4_0_r_R3_0  = new PassThroughConversion(Releases.R4_0,  Releases.R3_0);
+    static final PassThroughConversion R3_0_r_R2_0  = new PassThroughConversion(Releases.R3_0,  Releases.R2_0);
+    static final PassThroughConversion R2_0_r_R1_0  = new PassThroughConversion(Releases.R2_0,  Releases.R1_0);
 
     // --- 5.0 ↔ 4.10 structural boundary (forward pass-through; reverse handled by R5_0_CONF__R4_10) ---
     static final R5_0_CONF__R4_10 R5_0_CONF_r_R4_10 = new R5_0_CONF__R4_10();

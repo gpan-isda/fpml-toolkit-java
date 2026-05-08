@@ -153,6 +153,139 @@ public final class ConversionDeltaProfile {
         return enrichActions;
     }
 
+    /**
+     * @return An unmodifiable ordered list of conditional default injections.
+     *         May be empty, never {@code null}.
+     */
+    public List<ConditionalDefault> getConditionalDefaults() {
+        return conditionalDefaults;
+    }
+
+    /**
+     * @return An unmodifiable ordered list of rename actions confirmed by a human
+     *         reviewer.  May be empty, never {@code null}.
+     */
+    public List<RenameAction> getRenameActions() {
+        return renameActions;
+    }
+
+    // -------------------------------------------------------------------------
+    // RenameAction — a human-confirmed attribute/element rename between versions
+    // -------------------------------------------------------------------------
+
+    /**
+     * Records a human-confirmed rename of an attribute or child element, produced
+     * by {@link com.handcoded.meta.tools.DeltaProfileReviewer} when a
+     * {@code REPLACED} entry is approved.
+     *
+     * <p><strong>Runtime support is planned but not yet implemented.</strong>
+     * {@link PostConversionEnricher} currently logs and skips these entries.</p>
+     */
+    public static final class RenameAction {
+        private final String from;
+        private final String to;
+        private final String xpath;  // may be null — parent-element XPath hint
+        private final String note;   // may be null
+
+        RenameAction(String from, String to, String xpath, String note) {
+            this.from  = from;
+            this.to    = to;
+            this.xpath = xpath;
+            this.note  = note;
+        }
+
+        /** @return The old attribute/element local name (source version). */
+        public String getFrom()  { return from;  }
+        /** @return The new attribute/element local name (target version). */
+        public String getTo()    { return to;    }
+        /** @return XPath hint for the parent element(s), or {@code null}. */
+        public String getXpath() { return xpath; }
+        /** @return Free-text reviewer note, or {@code null}. */
+        public String getNote()  { return note;  }
+
+        @Override
+        public String toString() {
+            return "RENAME(" + from + " → " + to
+                    + (xpath != null ? ", xpath=" + xpath : "") + ")";
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // EnrichAction — describes a single post-conversion DOM mutation
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // ConditionalDefault — describes a scoped, guarded default-value injection
+    // -------------------------------------------------------------------------
+
+    /**
+     * Describes a single default-value injection to be applied to the converted
+     * document by {@link PostConversionEnricher}.
+     *
+     * <p>An injection is "conditional" because it is only applied when:</p>
+     * <ul>
+     *   <li>The target node is absent (or empty) in the converted document — when
+     *       {@code onlyIfAbsent} is {@code true} (the default).</li>
+     *   <li>The document's detected FpML view matches {@code view} (if set).</li>
+     *   <li>The document contains a product element matching {@code productType}
+     *       (if set).</li>
+     * </ul>
+     */
+    public static final class ConditionalDefault {
+        private final String  xpath;
+        private final String  value;
+        private final boolean onlyIfAbsent;
+        private final String  view;             // null = any view
+        private final String  productType;      // null = any product
+        private final String  constraintType;   // informational: schema-required, etc.
+        private final String  note;             // reviewer free-text
+        private final boolean promptAtRuntime;  // prompt operator if value is blank
+
+        ConditionalDefault(String xpath, String value, boolean onlyIfAbsent,
+                           String view, String productType,
+                           String constraintType, String note,
+                           boolean promptAtRuntime) {
+            this.xpath           = xpath;
+            this.value           = value;
+            this.onlyIfAbsent    = onlyIfAbsent;
+            this.view            = view;
+            this.productType     = productType;
+            this.constraintType  = constraintType;
+            this.note            = note;
+            this.promptAtRuntime = promptAtRuntime;
+        }
+
+        /** @return XPath 1.0 expression selecting the target attribute or element. */
+        public String  getXpath()           { return xpath; }
+        /** @return The static default value to inject (may be empty when promptAtRuntime). */
+        public String  getValue()           { return value; }
+        /** @return Whether to skip injection when the node already has a value. */
+        public boolean isOnlyIfAbsent()     { return onlyIfAbsent; }
+        /** @return Required FpML view (e.g. "confirmation"), or {@code null} for any. */
+        public String  getView()            { return view; }
+        /** @return Required product-type local name, or {@code null} for any. */
+        public String  getProductType()     { return productType; }
+        /** @return Informational constraint tag (schema-required, …). */
+        public String  getConstraintType()  { return constraintType; }
+        /** @return Reviewer note. */
+        public String  getNote()            { return note; }
+        /**
+         * @return {@code true} when the conversion runtime should prompt the
+         *         operator for a value rather than silently skipping this entry.
+         *         Requires a {@link RuntimeValueProvider} on the pipeline.
+         */
+        public boolean isPromptAtRuntime()  { return promptAtRuntime; }
+
+        @Override
+        public String toString() {
+            return "ConditionalDefault{xpath=" + xpath + ", value=" + value
+                    + (promptAtRuntime ? ", promptAtRuntime=true" : "")
+                    + (view != null ? ", view=" + view : "")
+                    + (productType != null ? ", productType=" + productType : "")
+                    + ", onlyIfAbsent=" + onlyIfAbsent + "}";
+        }
+    }
+
     // -------------------------------------------------------------------------
     // EnrichAction — describes a single post-conversion DOM mutation
     // -------------------------------------------------------------------------
@@ -205,20 +338,26 @@ public final class ConversionDeltaProfile {
     private final String               outboundRuleSetName;
     private final Map<String, String>  helperValues;
     private final List<EnrichAction>   enrichActions;
+    private final List<ConditionalDefault> conditionalDefaults;
+    private final List<RenameAction>   renameActions;
 
     private ConversionDeltaProfile(String fromVersion, String toVersion,
                                    String fromView, String toView,
                                    String inboundRuleSetName, String outboundRuleSetName,
                                    Map<String, String> helperValues,
-                                   List<EnrichAction> enrichActions) {
-        this.fromVersion        = fromVersion;
-        this.toVersion          = toVersion;
-        this.fromView           = fromView;
-        this.toView             = toView;
+                                   List<EnrichAction> enrichActions,
+                                   List<ConditionalDefault> conditionalDefaults,
+                                   List<RenameAction> renameActions) {
+        this.fromVersion         = fromVersion;
+        this.toVersion           = toVersion;
+        this.fromView            = fromView;
+        this.toView              = toView;
         this.inboundRuleSetName  = inboundRuleSetName;
         this.outboundRuleSetName = outboundRuleSetName;
-        this.helperValues       = Collections.unmodifiableMap(helperValues);
-        this.enrichActions      = Collections.unmodifiableList(enrichActions);
+        this.helperValues        = Collections.unmodifiableMap(helperValues);
+        this.enrichActions       = Collections.unmodifiableList(enrichActions);
+        this.conditionalDefaults = Collections.unmodifiableList(conditionalDefaults);
+        this.renameActions       = Collections.unmodifiableList(renameActions);
     }
 
     private static ConversionDeltaProfile parse(Document doc) {
@@ -228,8 +367,10 @@ public final class ConversionDeltaProfile {
         String fromView    = nullIfEmpty(root.getAttribute("from-view"));
         String toView      = nullIfEmpty(root.getAttribute("to-view"));
 
-        Map<String, String> helperValues  = new LinkedHashMap<String, String>();
-        List<EnrichAction>  enrichActions = new ArrayList<EnrichAction>();
+        Map<String, String> helperValues      = new LinkedHashMap<String, String>();
+        List<EnrichAction>  enrichActions     = new ArrayList<EnrichAction>();
+        List<ConditionalDefault> conditionalDefaults = new ArrayList<ConditionalDefault>();
+        List<RenameAction>  renameActions     = new ArrayList<RenameAction>();
         String inboundRuleSetName  = null;
         String outboundRuleSetName = null;
 
@@ -281,8 +422,46 @@ public final class ConversionDeltaProfile {
                 outboundRuleSetName = nullIfEmpty(((Element) outboundList.item(0)).getAttribute("name"));
         }
 
+        // Parse <conditional-defaults>
+        NodeList cdList = root.getElementsByTagNameNS(NS, "conditional-defaults");
+        if (cdList.getLength() > 0) {
+            Element cdElem = (Element) cdList.item(0);
+            NodeList insertList = cdElem.getElementsByTagNameNS(NS, "insert");
+            for (int i = 0; i < insertList.getLength(); i++) {
+                Element ins = (Element) insertList.item(i);
+                String  xpath              = ins.getAttribute("xpath");
+                String  value              = ins.getAttribute("value");
+                String  onlyIfAbsentStr    = ins.getAttribute("only-if-absent");
+                boolean onlyIfAbsent       = onlyIfAbsentStr.isEmpty()
+                        || "true".equalsIgnoreCase(onlyIfAbsentStr);
+                String  view               = nullIfEmpty(ins.getAttribute("view"));
+                String  productType        = nullIfEmpty(ins.getAttribute("product-type"));
+                String  constraintType     = nullIfEmpty(ins.getAttribute("constraint-type"));
+                String  note               = nullIfEmpty(ins.getAttribute("note"));
+                boolean promptAtRuntime    =
+                        "true".equalsIgnoreCase(ins.getAttribute("prompt-at-runtime"));
+                if (xpath != null && !xpath.isEmpty())
+                    conditionalDefaults.add(new ConditionalDefault(xpath, value,
+                            onlyIfAbsent, view, productType, constraintType, note,
+                            promptAtRuntime));
+            }
+
+            // Parse <rename> entries inside <conditional-defaults>
+            NodeList renameList = cdElem.getElementsByTagNameNS(NS, "rename");
+            for (int i = 0; i < renameList.getLength(); i++) {
+                Element ren  = (Element) renameList.item(i);
+                String  from = ren.getAttribute("from");
+                String  to   = ren.getAttribute("to");
+                String  xpath = nullIfEmpty(ren.getAttribute("xpath"));
+                String  note  = nullIfEmpty(ren.getAttribute("note"));
+                if (from != null && !from.isEmpty() && to != null && !to.isEmpty())
+                    renameActions.add(new RenameAction(from, to, xpath, note));
+            }
+        }
+
         return new ConversionDeltaProfile(fromVersion, toVersion, fromView, toView,
-                inboundRuleSetName, outboundRuleSetName, helperValues, enrichActions);
+                inboundRuleSetName, outboundRuleSetName, helperValues, enrichActions,
+                conditionalDefaults, renameActions);
     }
 
     private static DocumentBuilder newBuilder() throws ParserConfigurationException {

@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.handcoded</groupId>
-    <artifactId>fpml-toolkit-java</artifactId>
-    <version>1.9.0</version>
+    <artifactId>fpml-toolkit</artifactId>
+    <version>5-13</version>
     <packaging>jar</packaging>
 
     <name>HandCoded FpML Toolkit for Java</name>
@@ -34,31 +34,30 @@
          =================================================================== -->
     <dependencies>
 
-        <!-- Xerces 2 XML parser (xercesImpl.jar) -->
+        <!-- Xerces 2 XML parser – resolved from Maven Central so transitive
+             consumers of the installed artifact get it automatically. -->
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
             <version>2.12.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/xercesImpl.jar</systemPath>
         </dependency>
 
-        <!-- XML APIs (xml-apis.jar) -->
+        <!-- XML APIs – resolved from Maven Central. -->
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/xml-apis.jar</systemPath>
         </dependency>
 
-        <!-- MiG Layout 1.5 Swing (miglayout15-swing.jar) -->
+        <!-- MiG Layout 1.5 Swing – only needed by GUI tools (DeltaProfileReviewer).
+             Marked optional so programmatic consumers don't pull it in. -->
         <dependency>
             <groupId>com.miglayout</groupId>
             <artifactId>miglayout15-swing</artifactId>
             <version>1.5</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/miglayout15-swing.jar</systemPath>
+            <optional>true</optional>
         </dependency>
 
         <!-- JUnit 5 (Jupiter) – test scope only -->
@@ -76,6 +75,27 @@
          =================================================================== -->
     <build>
 
+        <!-- ===================================================================
+             Resource bundling – include data/meta/profile files so the JAR
+             is self-contained and consumers do not need the project root on
+             the filesystem.  XSD schemas are intentionally excluded (large;
+             schema validation is optional and caller-opted-in).
+             =================================================================== -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>files-core/**</include>
+                    <include>files-fpml/meta/**</include>
+                    <include>files-fpml/catalog-fpml*.xml</include>
+                    <include>files-fpml/catalog.xml</include>
+                    <include>files-fpml/fpml-releases.xsd</include>
+                    <include>files-fpml/conversion-profiles/*.xml</include>
+                    <include>files-fpml/conversion-profiles/profiles.index</include>
+                </includes>
+            </resource>
+        </resources>
+
         <!-- Primary source root (src-core).
              Additional roots are added by the build-helper plugin below. -->
         <sourceDirectory>${project.basedir}/src-core</sourceDirectory>
@@ -88,7 +108,61 @@
              intermediate output but the jar-plugin puts the final JAR here). -->
         <outputDirectory>${project.basedir}/build/classes</outputDirectory>
 
+        <!-- Produces handcoded.jar in the project root so existing batch
+             scripts can reference it without a version suffix.
+             NOTE: finalName must be declared at the <build> level for
+             maven-jar-plugin 3.4+ (it is read-only inside plugin config). -->
+        <finalName>handcoded</finalName>
+
         <plugins>
+
+            <!-- ============================================================
+                 0.  antrun – generate profiles.index before compile so the
+                     classpath-fallback loader in ConversionDeltaProfileRegistry
+                     knows which profile XMLs are bundled in the JAR.
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-profiles-index</id>
+                        <phase>generate-resources</phase>
+                        <goals><goal>run</goal></goals>
+                        <configuration>
+                            <target>
+                                <!-- List every *.xml filename in conversion-profiles/,
+                                     one per line, into profiles.index. -->
+                                <fileset id="profiles"
+                                         dir="${project.basedir}/files-fpml/conversion-profiles"
+                                         includes="*.xml"/>
+                                <pathconvert property="profiles.list"
+                                             refid="profiles"
+                                             pathsep="${line.separator}">
+                                    <mapper type="flatten"/>
+                                </pathconvert>
+                                <echo file="${project.basedir}/files-fpml/conversion-profiles/profiles.index"
+                             message="${profiles.list}"/>
+                             </target>
+                         </configuration>
+                     </execution>
+                     <!-- Copy handcoded.jar from target/ to the project root so
+                          legacy misc-fpml/*.bat scripts can reference it directly. -->
+                     <execution>
+                         <id>copy-jar-to-root</id>
+                         <phase>package</phase>
+                         <goals><goal>run</goal></goals>
+                         <configuration>
+                             <target>
+                                 <copy file="${project.build.directory}/handcoded.jar"
+                                       tofile="${project.basedir}/handcoded.jar"
+                                       overwrite="true"/>
+                             </target>
+                         </configuration>
+                     </execution>
+                 </executions>
+             </plugin>
 
             <!-- ============================================================
                  1.  build-helper – register all additional source directories
@@ -123,6 +197,20 @@
             </plugin>
 
             <!-- ============================================================
+                 1b. Clean plugin – retry on Windows file-lock failures
+                 ============================================================ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <!-- Retry up to 3 times with a 500 ms pause between attempts
+                         so transient Windows file-lock errors don't fail the build. -->
+                    <retryOnError>true</retryOnError>
+                </configuration>
+            </plugin>
+
+            <!-- ============================================================
                  2.  Compiler – Java 11 target with all warnings enabled
                  ============================================================ -->
             <plugin>
@@ -144,10 +232,9 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <!-- Place the JAR directly in the project root so it can
-                         be used by the existing misc-fpml batch scripts. -->
-                    <outputDirectory>${project.basedir}</outputDirectory>
-                    <finalName>handcoded</finalName>
+                    <!-- Write to standard target/ so maven-install-plugin publishes
+                         to .m2 correctly.  An antrun execution below copies the JAR
+                         to the project root for legacy batch-script compatibility. -->
                     <archive>
                         <manifest>
                             <!-- Add a Class-Path entry pointing at lib/ so
