@@ -397,13 +397,22 @@ public final class FpMLConversionPipeline {
                     Collections.<String>emptyList(),
                     Collections.<String>emptyList());
 
-        // 4b. Apply conversion — use DroppingHelper to collect dropped fields
+        // 4b. Apply conversion — use DroppingHelper to collect dropped fields.
+        // When a profile chain is present, enrichment is interleaved hop-by-hop
+        // so each hop's mutations are applied before the next hop begins.
         Conversions.SimpleDroppedFieldCollector collector =
                 new Conversions.SimpleDroppedFieldCollector();
         ConfigurableHelper helper = new ConfigurableHelper(profile, collector, runtimeValueProvider);
         Document converted;
         try {
-            converted = conversion.convert(document, helper);
+            List<ConversionDeltaProfile> chain = effectiveProfileChain();
+            if (chain.isEmpty() || source == null) {
+                // No profiles: single structural pass, no enrichment.
+                converted = conversion.convert(document, helper);
+            } else {
+                // Per-hop: apply each structural hop then enrich immediately.
+                converted = applyHopsWithEnrichment(document, source, target, chain, helper);
+            }
         } catch (ConversionException e) {
             return PipelineResult.full(false, source, target, null,
                     Collections.singletonList("Conversion failed: " + e.getMessage()),
@@ -418,13 +427,7 @@ public final class FpMLConversionPipeline {
                     inboundErrors, Collections.<String>emptyList(),
                     Collections.<String>emptyList());
         }
-
-        // 5. Post-conversion enrichment — apply each profile in chain order
-        for (ConversionDeltaProfile p : effectiveProfileChain()) {
-            PostConversionEnricher.enrich(converted, p);
-            PostConversionEnricher.applyConditionalDefaults(converted, p,
-                    runtimeValueProvider);
-        }
+        // Enrichment is now handled inside applyHopsWithEnrichment; nothing further here.
 
         // 6. Outbound XSD schema validation (version-specific, against target schema)
         List<String> outboundSchemaErrors = Collections.emptyList();
@@ -474,6 +477,84 @@ public final class FpMLConversionPipeline {
     // =========================================================================
     // Private helpers
     // =========================================================================
+
+    /**
+     * Walks a profile chain hop-by-hop, applying each structural conversion
+     * immediately followed by that hop's profile enrichment.
+     *
+     * <p>This ensures that XPath enrichment actions and conditional-default
+     * injections operate on the document <em>as it exists after that specific
+     * hop</em>, rather than after all structural hops have completed.</p>
+     *
+     * <p>Each profile covers one version-to-version step (e.g. 5-12 → 5-13).
+     * The target release for a hop is resolved from the <em>original</em>
+     * document (which carries the source view) plus the profile's
+     * {@code toVersion}.  If a hop target cannot be resolved, the method falls
+     * back to a single-pass structural conversion for the remaining hops and
+     * applies their enrichments in batch.</p>
+     *
+     * @param doc     Original (unconverted) source document.
+     * @param source  Source {@link Release} detected from {@code doc}.
+     * @param target  Final target {@link Release}.
+     * @param chain   Ordered list of profiles, one per hop.
+     * @param helper  Configured {@link ConfigurableHelper} for structural values.
+     * @return The fully converted and enriched document.
+     * @throws ConversionException if any structural hop fails.
+     */
+    private Document applyHopsWithEnrichment(Document doc, Release source, Release target,
+            List<ConversionDeltaProfile> chain, ConfigurableHelper helper)
+            throws ConversionException {
+
+        Document current      = doc;
+        Release  currentRelease = source;
+
+        for (int i = 0; i < chain.size(); i++) {
+            ConversionDeltaProfile p = chain.get(i);
+
+            // Resolve the hop target using the original document so that view
+            // detection (from namespace) is stable even across 5.x hops that
+            // share the same namespace URI.
+            Release hopTarget = Releases.compatibleRelease(doc, p.getToVersion());
+
+            if (hopTarget == null) {
+                LOG.warning("Per-hop enrichment: no release found for '" + p.getToVersion()
+                        + "'; falling back to batch conversion for remaining hops.");
+                // Batch-convert remaining structural hops
+                Conversion remaining = Conversion.conversionFor(currentRelease, target);
+                if (remaining != null)
+                    current = remaining.convert(current, helper);
+                // Batch-enrich remaining profiles
+                for (int j = i; j < chain.size(); j++) {
+                    PostConversionEnricher.enrich(current, chain.get(j));
+                    PostConversionEnricher.applyConditionalDefaults(
+                            current, chain.get(j), runtimeValueProvider);
+                }
+                return current;
+            }
+
+            // Apply structural conversion for this hop (skip if already there)
+            if (!currentRelease.equals(hopTarget)) {
+                Conversion hop = Conversion.conversionFor(currentRelease, hopTarget);
+                if (hop != null) {
+                    current = hop.convert(current, helper);
+                }
+                currentRelease = hopTarget;
+            }
+
+            // Apply enrichment for this hop immediately after its structural step
+            PostConversionEnricher.enrich(current, p);
+            PostConversionEnricher.applyConditionalDefaults(current, p, runtimeValueProvider);
+        }
+
+        // Apply any remaining structural hops not covered by the profile chain
+        if (!currentRelease.equals(target)) {
+            Conversion remaining = Conversion.conversionFor(currentRelease, target);
+            if (remaining != null)
+                current = remaining.convert(current, helper);
+        }
+
+        return current;
+    }
 
     /**
      * Resolves the source {@link Release} from the document, falling back to

@@ -130,12 +130,19 @@ public final class ProbeResult {
         private final String    label;
         private final String    defaultValue;
         private final FieldKind kind;
+        private final String    outputXPath;
 
         RequiredField(String name, String label, String defaultValue, FieldKind kind) {
+            this(name, label, defaultValue, kind, null);
+        }
+
+        RequiredField(String name, String label, String defaultValue, FieldKind kind,
+                      String outputXPath) {
             this.name         = name;
             this.label        = label;
             this.defaultValue = defaultValue;
             this.kind         = kind;
+            this.outputXPath  = outputXPath;
         }
 
         /**
@@ -157,9 +164,19 @@ public final class ProbeResult {
         /** @return Whether this is a structural helper value or a runtime prompt. */
         public FieldKind getKind()         { return kind; }
 
+        /**
+         * @return The concrete XPath location in the <em>output</em> document where
+         *         this value will be placed (e.g.
+         *         {@code "/FpML/trade/fxSingleLeg/fxFeature/referenceCurrency"}).
+         *         {@code null} for {@link FieldKind#HELPER_VALUE} fields (placement
+         *         is determined by structural conversion logic, not by XPath).
+         */
+        public String    getOutputXPath()  { return outputXPath; }
+
         @Override
         public String toString() {
             return "RequiredField{name=" + name + ", kind=" + kind
+                    + (outputXPath  != null ? ", xpath=" + outputXPath   : "")
                     + (defaultValue != null && !defaultValue.isEmpty()
                        ? ", default=" + defaultValue : "") + "}";
         }

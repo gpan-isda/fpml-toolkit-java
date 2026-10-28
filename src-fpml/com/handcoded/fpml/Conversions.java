@@ -1108,10 +1108,102 @@ public final class Conversions {
         public R4_9__R4_10() { super(Releases.R4_9, Releases.R4_10); }
     }
 
-    // ----- 5.x confirmation/reporting stubs (API compatibility) -----
-    public static class R4_10__R5_0_CONFIRMATION extends PassThroughConversion {
+    // ----- 4.x → 5.x structural boundary: equity/FX clean-up -----
+
+    /**
+     * Converts a FpML 4-10 document to FpML 5-0 confirmation.
+     *
+     * <p>Although most of the schema is structurally identical across this
+     * boundary (hence the earlier PassThrough stub), two clean-ups are needed
+     * to produce a schema-valid 5.x document:</p>
+     * <ol>
+     *   <li><b>Drop {@code <header>}</b> — the 4.x messaging header has no
+     *       counterpart in the FpML 5.x {@code dataDocument} content model.
+     *       The element is recorded as a dropped field when a
+     *       {@link DroppingHelper} is supplied.</li>
+     *   <li><b>Rename {@code paymentCurrency}</b> — in 5.x equity swaps the
+     *       {@code paymentCurrency} element was split:
+     *       <ul>
+     *         <li>{@code <paymentCurrency href="X"/>} →
+     *             {@code <currencyReference href="X"/>}</li>
+     *         <li>{@code <paymentCurrency>USD</paymentCurrency>} →
+     *             {@code <currency>USD</currency>}</li>
+     *       </ul>
+     *       Any {@code id} attribute is preserved on the replacement element
+     *       to keep intra-document ID/IDREF chains intact.</li>
+     * </ol>
+     */
+    public static class R4_10__R5_0_CONFIRMATION extends DirectConversion {
         public R4_10__R5_0_CONFIRMATION() { super(Releases.R4_10, Releases.R5_0_CONFIRMATION); }
+
+        @Override
+        public Document convert(Document source, com.handcoded.meta.Helper helper)
+                throws ConversionException {
+            Element oldRoot = source.getDocumentElement();
+            Document target = createTargetDocument(getTargetRelease(), source);
+            Element newRoot = target.getDocumentElement();
+            String sourceNs = oldRoot.getNamespaceURI();
+            String targetNs = newRoot.getNamespaceURI();
+
+            for (Node node = oldRoot.getFirstChild(); node != null;
+                    node = node.getNextSibling()) {
+                if (node.getNodeType() == Node.ELEMENT_NODE
+                        && "header".equals(((Element) node).getLocalName())) {
+                    // Drop 4.x messaging header — no counterpart in 5.x dataDocument
+                    if (helper instanceof DroppingHelper)
+                        ((DroppingHelper) helper).recordDropped("header");
+                    continue;
+                }
+                copyToTargetNs(node, target, newRoot, sourceNs, targetNs);
+            }
+
+            // Post-pass: rename paymentCurrency elements throughout the output
+            renamePaymentCurrencies(newRoot, targetNs);
+            return target;
+        }
     }
+
+    /**
+     * Recursively renames {@code paymentCurrency} elements in the given subtree
+     * to their FpML 5.x equivalents:
+     * <ul>
+     *   <li>With {@code href} attribute → {@code currencyReference}</li>
+     *   <li>With text content only → {@code currency}</li>
+     * </ul>
+     * Any {@code id} attribute is forwarded to the replacement element.
+     */
+    private static void renamePaymentCurrencies(Node node, String targetNs) {
+        if (node.getNodeType() != Node.ELEMENT_NODE) return;
+        Element parent = (Element) node;
+        Node child = parent.getFirstChild();
+        while (child != null) {
+            Node next = child.getNextSibling();   // save before any replacement
+            if (child.getNodeType() == Node.ELEMENT_NODE) {
+                Element e = (Element) child;
+                if ("paymentCurrency".equals(e.getLocalName())) {
+                    String href = e.getAttribute("href");
+                    Document doc = e.getOwnerDocument();
+                    Element rep;
+                    if (href != null && !href.isEmpty()) {
+                        rep = doc.createElementNS(targetNs, "currencyReference");
+                        rep.setAttribute("href", href);
+                    } else {
+                        rep = doc.createElementNS(targetNs, "currency");
+                        DOM.setInnerText(rep, DOM.getInnerText(e).trim());
+                    }
+                    // Preserve id so ID/IDREF chains remain valid
+                    String id = e.getAttribute("id");
+                    if (id != null && !id.isEmpty()) rep.setAttribute("id", id);
+                    parent.replaceChild(rep, e);
+                } else {
+                    renamePaymentCurrencies(e, targetNs);
+                }
+            }
+            child = next;
+        }
+    }
+
+    // ----- 5.x confirmation/reporting stubs (API compatibility) -----
     public static class R5_0__R5_1_CONFIRMATION extends PassThroughConversion {
         public R5_0__R5_1_CONFIRMATION() { super(Releases.R5_0_CONFIRMATION, Releases.R5_1_CONFIRMATION); }
     }

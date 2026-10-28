@@ -267,9 +267,14 @@ public final class FpMLConversionService {
      *   <li>Build per-hop delta info from the profile chain for
      *       {@code fromVersion → toVersion}.</li>
      *   <li>Apply the profile chain for enrichment (autoProfile path).</li>
-     *   <li>If {@code autoProfile=false}, probe for missing values; if
-     *       {@code userValues} is supplied use them; else return
-     *       {@link ConversionFlowResult.Status#NEEDS_INPUT}.</li>
+     *   <li>Probe for missing values regardless of {@code autoProfile}: runs a
+     *       dry-run conversion with a recording provider to discover every field
+     *       the pipeline will need.  Fields already present in {@code userValues}
+     *       are treated as satisfied.  Any remaining unmet fields cause an
+     *       immediate {@link ConversionFlowResult.Status#NEEDS_INPUT} response —
+     *       this applies even when {@code autoProfile=true} and registry profiles
+     *       are loaded, because a profile may not carry a default for every
+     *       required structural value.</li>
      *   <li>Outbound XSD schema validation.</li>
      *   <li>Outbound business-rule validation (AllRules).</li>
      *   <li>Return {@link ConversionFlowResult} with all diagnostic data.</li>
@@ -295,8 +300,11 @@ public final class FpMLConversionService {
      * @param toVersion     Target version (e.g. {@code "5-13"}).
      * @param view          FpML view ({@code "confirmation"}), or {@code null}
      *                      to auto-detect from the source document.
-     * @param autoProfile   {@code true} = use registry profiles for enrichment;
-     *                      {@code false} = probe and prompt for missing values.
+     * @param autoProfile   {@code true} = load delta profiles automatically from
+     *                      the {@link ConversionDeltaProfileRegistry}; {@code false}
+     *                      = no automatic profile lookup.  In both cases the probe
+     *                      step always runs and the caller is prompted for any
+     *                      values not covered by a loaded profile.
      * @param userValues    Caller-supplied field values (closes the NEEDS_INPUT
      *                      loop); may be {@code null} or empty.
      * @return A {@link ConversionFlowResult} — never {@code null}.
@@ -346,52 +354,52 @@ public final class FpMLConversionService {
         List<ConversionFlowResult.HopDeltaInfo> deltaChain =
                 buildDeltaChain(profileChain);
 
-        // --- Steps 5+6+7: Conversion + outbound validation -------------------
+        // --- Steps 5+6+7: Probe → convert + outbound validation ---------------
+        // The probe always runs, regardless of autoProfile.  This ensures that
+        // any structural helper value or conditional-default not covered by a
+        // loaded profile is surfaced to the caller as NEEDS_INPUT rather than
+        // silently inserting "???" and producing a schema-invalid document.
         RuleSet allRules = resolveDefaultRuleSet();
-        PipelineResult conversionResult;
 
-        if (autoProfile) {
-            // 5a: run with auto profile chain, collect outbound validation
-            conversionResult = new FpMLConversionPipeline.Builder(toVersion)
-                    .withAutoProfileChain(effectiveVersion, effectiveView)
-                    .validateInboundSchema(false)
-                    .validateOutboundSchema(true)
-                    .failOnOutboundErrors(false)
-                    .withOutboundRules(allRules)
-                    .build()
-                    .convert(doc);
-        } else {
-            // 5b: first pass with recording provider to discover missing values
-            RecordingRuntimeValueProvider recorder = new RecordingRuntimeValueProvider();
-            new FpMLConversionPipeline.Builder(toVersion)
-                    .withAutoProfileChain(effectiveVersion, effectiveView)
-                    .withRuntimeValueProvider(recorder)
-                    .validateInboundSchema(false)
-                    .validateOutboundSchema(false)
-                    .build()
-                    .convert(doc);
+        // 5a: probe pass — dry-run with recording provider
+        RecordingRuntimeValueProvider recorder = new RecordingRuntimeValueProvider();
+        FpMLConversionPipeline.Builder probeBuilder =
+                new FpMLConversionPipeline.Builder(toVersion)
+                        .validateInboundSchema(false)
+                        .validateOutboundSchema(false)
+                        .withRuntimeValueProvider(recorder);
+        if (autoProfile)
+            probeBuilder.withAutoProfileChain(effectiveVersion, effectiveView);
+        probeBuilder.build().convert(doc);
 
-            if (recorder.wasInvoked() && (userValues == null || userValues.isEmpty())) {
-                // Missing values — return NEEDS_INPUT
+        // 5b: determine which recorded fields are not yet supplied by the caller
+        if (recorder.wasInvoked()) {
+            List<ProbeResult.RequiredField> unmet = new ArrayList<>();
+            for (ProbeResult.RequiredField f : recorder.getRequiredFields()) {
+                if (userValues == null || !userValues.containsKey(f.getName()))
+                    unmet.add(f);
+            }
+            if (!unmet.isEmpty()) {
                 return ConversionFlowResult.needsInput(
                         effectiveVersion, toVersion,
-                        sourceSchemaErrors, deltaChain,
-                        recorder.getRequiredFields());
+                        sourceSchemaErrors, deltaChain, unmet);
             }
-
-            // Second pass: use user-supplied values (or no provider if no prompts needed)
-            RuntimeValueProvider provider = (userValues != null && !userValues.isEmpty())
-                    ? new MapRuntimeValueProvider(userValues) : null;
-            FpMLConversionPipeline.Builder builder =
-                    new FpMLConversionPipeline.Builder(toVersion)
-                            .withAutoProfileChain(effectiveVersion, effectiveView)
-                            .validateInboundSchema(false)
-                            .validateOutboundSchema(true)
-                            .failOnOutboundErrors(false)
-                            .withOutboundRules(allRules);
-            if (provider != null) builder.withRuntimeValueProvider(provider);
-            conversionResult = builder.build().convert(doc);
         }
+
+        // 5c: all values known — convert with user-supplied values
+        RuntimeValueProvider provider = (userValues != null && !userValues.isEmpty())
+                ? new MapRuntimeValueProvider(userValues) : null;
+        FpMLConversionPipeline.Builder convBuilder =
+                new FpMLConversionPipeline.Builder(toVersion)
+                        .validateInboundSchema(false)
+                        .validateOutboundSchema(true)
+                        .failOnOutboundErrors(false)
+                        .withOutboundRules(allRules);
+        if (autoProfile)
+            convBuilder.withAutoProfileChain(effectiveVersion, effectiveView);
+        if (provider != null)
+            convBuilder.withRuntimeValueProvider(provider);
+        PipelineResult conversionResult = convBuilder.build().convert(doc);
 
         // Structural failure (no converted document produced)
         if (!conversionResult.isSuccess()) {
@@ -595,9 +603,11 @@ public final class FpMLConversionService {
                     ? locationPath : xpath;
             String name  = extractShortName(effectiveXpath);
             String label = buildLabel(name, constraintType, note);
+            // outputXPath = the concrete location in the output document
             fields.add(new ProbeResult.RequiredField(
                     effectiveXpath, label, "",
-                    ProbeResult.RequiredField.FieldKind.RUNTIME_PROMPT));
+                    ProbeResult.RequiredField.FieldKind.RUNTIME_PROMPT,
+                    effectiveXpath));
             return null;   // do not inject — caller will supply on next pass
         }
 
@@ -605,13 +615,16 @@ public final class FpMLConversionService {
          * Overrides the default to record structural helper fields with kind
          * {@link ProbeResult.RequiredField.FieldKind#HELPER_VALUE} so that the
          * probe response distinguishes them from {@code RUNTIME_PROMPT} fields.
+         * outputXPath is null — placement is determined by structural conversion
+         * logic, not by a fixed XPath.
          */
         @Override
         public String provideHelperValue(String key, String note) {
             String label = (note != null && !note.isEmpty()) ? note : key;
             fields.add(new ProbeResult.RequiredField(
                     key, label, "",
-                    ProbeResult.RequiredField.FieldKind.HELPER_VALUE));
+                    ProbeResult.RequiredField.FieldKind.HELPER_VALUE,
+                    null));
             return null;   // do not inject — caller will supply on next pass
         }
 
