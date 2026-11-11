@@ -1246,6 +1246,9 @@ public final class Conversions {
     public static class R5_12__R5_13_CONFIRMATION extends PassThroughConversion {
         public R5_12__R5_13_CONFIRMATION() { super(Releases.R5_12_CONFIRMATION, Releases.R5_13_CONFIRMATION); }
     }
+    public static class R5_13__R5_14_CONFIRMATION extends PassThroughConversion {
+        public R5_13__R5_14_CONFIRMATION() { super(Releases.R5_13_CONFIRMATION, Releases.R5_14_CONFIRMATION); }
+    }
 
     // ==========================================================================================
     // R5_0_CONF__R4_10  — structural downgrade: 5.0 Confirmation → 4.10
@@ -1339,6 +1342,7 @@ public final class Conversions {
     static final PassThroughConversion R5_11_CONF_r_R5_10= new PassThroughConversion(Releases.R5_11_CONFIRMATION, Releases.R5_10_CONFIRMATION);
     static final PassThroughConversion R5_12_CONF_r_R5_11= new PassThroughConversion(Releases.R5_12_CONFIRMATION, Releases.R5_11_CONFIRMATION);
     static final PassThroughConversion R5_13_CONF_r_R5_12= new PassThroughConversion(Releases.R5_13_CONFIRMATION, Releases.R5_12_CONFIRMATION);
+    static final PassThroughConversion R5_14_CONF_r_R5_13= new PassThroughConversion(Releases.R5_14_CONFIRMATION, Releases.R5_13_CONFIRMATION);
 
     // --- 5.x REPORTING forward chain (1→2 registered by named class above; gaps below) ---
     static final PassThroughConversion R5_1_REP_f_R5_2  = new PassThroughConversion(Releases.R5_1_REPORTING, Releases.R5_2_REPORTING);
@@ -1353,6 +1357,7 @@ public final class Conversions {
     static final PassThroughConversion R5_10_REP_f_R5_11= new PassThroughConversion(Releases.R5_10_REPORTING, Releases.R5_11_REPORTING);
     static final PassThroughConversion R5_11_REP_f_R5_12= new PassThroughConversion(Releases.R5_11_REPORTING, Releases.R5_12_REPORTING);
     static final PassThroughConversion R5_12_REP_f_R5_13= new PassThroughConversion(Releases.R5_12_REPORTING, Releases.R5_13_REPORTING);
+    static final PassThroughConversion R5_13_REP_f_R5_14= new PassThroughConversion(Releases.R5_13_REPORTING, Releases.R5_14_REPORTING);
 
     // --- 5.x REPORTING reverse chain ---
     static final PassThroughConversion R5_1_REP_r_R5_0  = new PassThroughConversion(Releases.R5_1_REPORTING, Releases.R5_0_REPORTING);
@@ -1368,6 +1373,7 @@ public final class Conversions {
     static final PassThroughConversion R5_11_REP_r_R5_10= new PassThroughConversion(Releases.R5_11_REPORTING, Releases.R5_10_REPORTING);
     static final PassThroughConversion R5_12_REP_r_R5_11= new PassThroughConversion(Releases.R5_12_REPORTING, Releases.R5_11_REPORTING);
     static final PassThroughConversion R5_13_REP_r_R5_12= new PassThroughConversion(Releases.R5_13_REPORTING, Releases.R5_12_REPORTING);
+    static final PassThroughConversion R5_14_REP_r_R5_13= new PassThroughConversion(Releases.R5_14_REPORTING, Releases.R5_13_REPORTING);
 
     // --- 5.3+ RECORDKEEPING forward + reverse ---
     static final PassThroughConversion R5_3_RK_f_R5_4   = new PassThroughConversion(Releases.R5_3_RECORDKEEPING, Releases.R5_4_RECORDKEEPING);
@@ -1380,6 +1386,7 @@ public final class Conversions {
     static final PassThroughConversion R5_10_RK_f_R5_11 = new PassThroughConversion(Releases.R5_10_RECORDKEEPING, Releases.R5_11_RECORDKEEPING);
     static final PassThroughConversion R5_11_RK_f_R5_12 = new PassThroughConversion(Releases.R5_11_RECORDKEEPING, Releases.R5_12_RECORDKEEPING);
     static final PassThroughConversion R5_12_RK_f_R5_13 = new PassThroughConversion(Releases.R5_12_RECORDKEEPING, Releases.R5_13_RECORDKEEPING);
+    static final PassThroughConversion R5_13_RK_f_R5_14 = new PassThroughConversion(Releases.R5_13_RECORDKEEPING, Releases.R5_14_RECORDKEEPING);
     static final PassThroughConversion R5_4_RK_r_R5_3   = new PassThroughConversion(Releases.R5_4_RECORDKEEPING, Releases.R5_3_RECORDKEEPING);
     static final PassThroughConversion R5_5_RK_r_R5_4   = new PassThroughConversion(Releases.R5_5_RECORDKEEPING, Releases.R5_4_RECORDKEEPING);
     static final PassThroughConversion R5_6_RK_r_R5_5   = new PassThroughConversion(Releases.R5_6_RECORDKEEPING, Releases.R5_5_RECORDKEEPING);
@@ -1390,6 +1397,7 @@ public final class Conversions {
     static final PassThroughConversion R5_11_RK_r_R5_10 = new PassThroughConversion(Releases.R5_11_RECORDKEEPING, Releases.R5_10_RECORDKEEPING);
     static final PassThroughConversion R5_12_RK_r_R5_11 = new PassThroughConversion(Releases.R5_12_RECORDKEEPING, Releases.R5_11_RECORDKEEPING);
     static final PassThroughConversion R5_13_RK_r_R5_12 = new PassThroughConversion(Releases.R5_13_RECORDKEEPING, Releases.R5_12_RECORDKEEPING);
+    static final PassThroughConversion R5_14_RK_r_R5_13 = new PassThroughConversion(Releases.R5_14_RECORDKEEPING, Releases.R5_13_RECORDKEEPING);
 
     // --- 5.3+ TRANSPARENCY forward + reverse ---
     static final PassThroughConversion R5_3_TR_f_R5_4   = new PassThroughConversion(Releases.R5_3_TRANSPARENCY, Releases.R5_4_TRANSPARENCY);
@@ -1402,6 +1410,7 @@ public final class Conversions {
     static final PassThroughConversion R5_10_TR_f_R5_11 = new PassThroughConversion(Releases.R5_10_TRANSPARENCY, Releases.R5_11_TRANSPARENCY);
     static final PassThroughConversion R5_11_TR_f_R5_12 = new PassThroughConversion(Releases.R5_11_TRANSPARENCY, Releases.R5_12_TRANSPARENCY);
     static final PassThroughConversion R5_12_TR_f_R5_13 = new PassThroughConversion(Releases.R5_12_TRANSPARENCY, Releases.R5_13_TRANSPARENCY);
+    static final PassThroughConversion R5_13_TR_f_R5_14 = new PassThroughConversion(Releases.R5_13_TRANSPARENCY, Releases.R5_14_TRANSPARENCY);
     static final PassThroughConversion R5_4_TR_r_R5_3   = new PassThroughConversion(Releases.R5_4_TRANSPARENCY, Releases.R5_3_TRANSPARENCY);
     static final PassThroughConversion R5_5_TR_r_R5_4   = new PassThroughConversion(Releases.R5_5_TRANSPARENCY, Releases.R5_4_TRANSPARENCY);
     static final PassThroughConversion R5_6_TR_r_R5_5   = new PassThroughConversion(Releases.R5_6_TRANSPARENCY, Releases.R5_5_TRANSPARENCY);
@@ -1412,6 +1421,7 @@ public final class Conversions {
     static final PassThroughConversion R5_11_TR_r_R5_10 = new PassThroughConversion(Releases.R5_11_TRANSPARENCY, Releases.R5_10_TRANSPARENCY);
     static final PassThroughConversion R5_12_TR_r_R5_11 = new PassThroughConversion(Releases.R5_12_TRANSPARENCY, Releases.R5_11_TRANSPARENCY);
     static final PassThroughConversion R5_13_TR_r_R5_12 = new PassThroughConversion(Releases.R5_13_TRANSPARENCY, Releases.R5_12_TRANSPARENCY);
+    static final PassThroughConversion R5_14_TR_r_R5_13 = new PassThroughConversion(Releases.R5_14_TRANSPARENCY, Releases.R5_13_TRANSPARENCY);
 
     // --- 5.5+ PRETRADE forward + reverse ---
     static final PassThroughConversion R5_5_PT_f_R5_6   = new PassThroughConversion(Releases.R5_5_PRETRADE, Releases.R5_6_PRETRADE);
@@ -1422,6 +1432,7 @@ public final class Conversions {
     static final PassThroughConversion R5_10_PT_f_R5_11 = new PassThroughConversion(Releases.R5_10_PRETRADE, Releases.R5_11_PRETRADE);
     static final PassThroughConversion R5_11_PT_f_R5_12 = new PassThroughConversion(Releases.R5_11_PRETRADE, Releases.R5_12_PRETRADE);
     static final PassThroughConversion R5_12_PT_f_R5_13 = new PassThroughConversion(Releases.R5_12_PRETRADE, Releases.R5_13_PRETRADE);
+    static final PassThroughConversion R5_13_PT_f_R5_14 = new PassThroughConversion(Releases.R5_13_PRETRADE, Releases.R5_14_PRETRADE);
     static final PassThroughConversion R5_6_PT_r_R5_5   = new PassThroughConversion(Releases.R5_6_PRETRADE, Releases.R5_5_PRETRADE);
     static final PassThroughConversion R5_7_PT_r_R5_6   = new PassThroughConversion(Releases.R5_7_PRETRADE, Releases.R5_6_PRETRADE);
     static final PassThroughConversion R5_8_PT_r_R5_7   = new PassThroughConversion(Releases.R5_8_PRETRADE, Releases.R5_7_PRETRADE);
@@ -1430,6 +1441,7 @@ public final class Conversions {
     static final PassThroughConversion R5_11_PT_r_R5_10 = new PassThroughConversion(Releases.R5_11_PRETRADE, Releases.R5_10_PRETRADE);
     static final PassThroughConversion R5_12_PT_r_R5_11 = new PassThroughConversion(Releases.R5_12_PRETRADE, Releases.R5_11_PRETRADE);
     static final PassThroughConversion R5_13_PT_r_R5_12 = new PassThroughConversion(Releases.R5_13_PRETRADE, Releases.R5_12_PRETRADE);
+    static final PassThroughConversion R5_14_PT_r_R5_13 = new PassThroughConversion(Releases.R5_14_PRETRADE, Releases.R5_13_PRETRADE);
 
     // --- 5.7+ LEGAL forward + reverse ---
     static final PassThroughConversion R5_7_LG_f_R5_8   = new PassThroughConversion(Releases.R5_7_LEGAL, Releases.R5_8_LEGAL);
@@ -1438,10 +1450,12 @@ public final class Conversions {
     static final PassThroughConversion R5_10_LG_f_R5_11 = new PassThroughConversion(Releases.R5_10_LEGAL, Releases.R5_11_LEGAL);
     static final PassThroughConversion R5_11_LG_f_R5_12 = new PassThroughConversion(Releases.R5_11_LEGAL, Releases.R5_12_LEGAL);
     static final PassThroughConversion R5_12_LG_f_R5_13 = new PassThroughConversion(Releases.R5_12_LEGAL, Releases.R5_13_LEGAL);
+    static final PassThroughConversion R5_13_LG_f_R5_14 = new PassThroughConversion(Releases.R5_13_LEGAL, Releases.R5_14_LEGAL);
     static final PassThroughConversion R5_8_LG_r_R5_7   = new PassThroughConversion(Releases.R5_8_LEGAL, Releases.R5_7_LEGAL);
     static final PassThroughConversion R5_9_LG_r_R5_8   = new PassThroughConversion(Releases.R5_9_LEGAL, Releases.R5_8_LEGAL);
     static final PassThroughConversion R5_10_LG_r_R5_9  = new PassThroughConversion(Releases.R5_10_LEGAL, Releases.R5_9_LEGAL);
     static final PassThroughConversion R5_11_LG_r_R5_10 = new PassThroughConversion(Releases.R5_11_LEGAL, Releases.R5_10_LEGAL);
     static final PassThroughConversion R5_12_LG_r_R5_11 = new PassThroughConversion(Releases.R5_12_LEGAL, Releases.R5_11_LEGAL);
     static final PassThroughConversion R5_13_LG_r_R5_12 = new PassThroughConversion(Releases.R5_13_LEGAL, Releases.R5_12_LEGAL);
+    static final PassThroughConversion R5_14_LG_r_R5_13 = new PassThroughConversion(Releases.R5_14_LEGAL, Releases.R5_13_LEGAL);
 }

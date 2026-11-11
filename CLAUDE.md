@@ -138,6 +138,9 @@ See the detailed workflow in `README.md`. In brief:
 5. Register the new `Conversion` constant in `Releases.java`.
 6. Add the new meta file to `files-core/releases.xml` (via XInclude).
 7. Add a new `catalog-fpml-N-M.xml` and update the catalog chain.
+8. Generate the coding-scheme data from the FpML set of schemes for the release, and point the new meta files' `<fpml:schemes>` at it:
+   `python tools/fetch-codelists.py <set> tools/codelistN-M` (e.g. `2-27` for 5-14), then
+   `java -cp tools Metagenerator --convert-codelist-dir tools/codelistN-M --out-schemes files-fpml/data/schemesN-M.xml --set-of-schemes tools/codelistN-M/set-of-schemes-<set>.xml --recursive`.
 
 ## Dependencies
 

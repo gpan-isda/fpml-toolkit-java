@@ -3344,6 +3344,10 @@ public final class IrdRules extends FpMLRuleSet
 	 */
 	private static boolean isUnadjustedCalculationPeriodDate (Date paymentDate, Date startDate, Date endDate, Interval freq)
 	{
+		// A term frequency (1T) has a single period, which cannot be stepped through.
+		if (freq.getPeriod () == Period.TERM)
+			return (paymentDate.equals (startDate) || paymentDate.equals (endDate));
+
 		Interval	step = new Interval (0, Period.DAY);
 
 		for (;;) {

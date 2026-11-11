@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<conversion-delta xmlns="http://www.handcoded.com/fpml/conversion-delta" from="5-13" from-view="confirmation" to="5-14" to-view="confirmation">
+  <!--
+  Conversion delta profile: FpML 5-13 confirmation → 5-14 confirmation
+  Reviewed 2026-11-11 against candidate-5-13-to-5-14-confirmation.xml.
+  0 conditional default(s) approved: every 5-14 addition is optional where a 5-13
+  document can reach it (the "schema-required" candidates sit inside new or optional
+  structures, e.g. equitySwapTransactionSupplement/benchmarkProvisions is in an
+  optional sequence). All 1,427 schema-valid 5-13 examples (all views) validate
+  against the 5-14 XSDs after the version change alone.
+  Dropped in 5-14: interestRateStream/underlyer (no 5-13 example uses it); a document
+  that does will fail 5-14 validation after conversion.
+  -->
+</conversion-delta>

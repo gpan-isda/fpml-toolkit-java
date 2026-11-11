@@ -100,6 +100,12 @@
         <xi:include href="../files-fpml/meta/fpml-5-13-reporting.xml"/>
         <xi:include href="../files-fpml/meta/fpml-5-13-recordkeeping.xml"/>
         <xi:include href="../files-fpml/meta/fpml-5-13-transparency.xml"/>
+        <!-- FpML 5.14 -->
+        <xi:include href="../files-fpml/meta/fpml-5-14-pretrade.xml"/>
+        <xi:include href="../files-fpml/meta/fpml-5-14-confirmation.xml"/>
+        <xi:include href="../files-fpml/meta/fpml-5-14-reporting.xml"/>
+        <xi:include href="../files-fpml/meta/fpml-5-14-recordkeeping.xml"/>
+        <xi:include href="../files-fpml/meta/fpml-5-14-transparency.xml"/>
 	</specification>
 	<!-- HandCoded ACME extensions: Used by the HandCoded WebServices -->
 	<specification>

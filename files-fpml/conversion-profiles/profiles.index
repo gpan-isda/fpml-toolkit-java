@@ -32,6 +32,12 @@ candidate-5-12-to-5-13-pretrade.xml
 candidate-5-12-to-5-13-recordkeeping.xml
 candidate-5-12-to-5-13-reporting.xml
 candidate-5-12-to-5-13-transparency.xml
+candidate-5-13-to-5-14-confirmation.xml
+candidate-5-13-to-5-14-legal.xml
+candidate-5-13-to-5-14-pretrade.xml
+candidate-5-13-to-5-14-recordkeeping.xml
+candidate-5-13-to-5-14-reporting.xml
+candidate-5-13-to-5-14-transparency.xml
 candidate-5-2-to-5-3-confirmation.xml
 candidate-5-2-to-5-3-reporting.xml
 candidate-5-3-to-5-4-confirmation.xml
@@ -72,4 +78,6 @@ candidate-5-9-to-5-10-reporting.xml
 candidate-5-9-to-5-10-transparency.xml
 confirmation-4-1-to-4-2.xml
 confirmation-5-12-to-5-13.xml
+confirmation-5-13-to-5-14.xml
 pretrade-5-12-to-5-13.xml
+pretrade-5-13-to-5-14.xml

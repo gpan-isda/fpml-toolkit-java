@@ -684,6 +684,54 @@ public final class Releases
             = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-13", "http://www.fpml.org/FpML-5/legal");
 
     /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-14 confirmation view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_14_CONFIRMATION
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-14", "http://www.fpml.org/FpML-5/confirmation");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-14 reporting view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_14_REPORTING
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-14", "http://www.fpml.org/FpML-5/reporting");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-14 record keeping view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_14_RECORDKEEPING
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-14", "http://www.fpml.org/FpML-5/recordkeeping");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-14 transparency view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_14_TRANSPARENCY
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-14", "http://www.fpml.org/FpML-5/transparency");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-14 pre-trade view working draft.
+     * @since	TFP 1.10
+     */
+    public static SchemaRelease	R5_14_PRETRADE
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-14", "http://www.fpml.org/FpML-5/pretrade");
+
+    /**
+     * A <CODE>SchemaRelease</CODE> instance containing the details for
+     * FpML 5-14 legal view working draft.
+     * @since	TFP 1.11
+     */
+    public static SchemaRelease	R5_14_LEGAL
+            = (SchemaRelease) FPML.getReleaseForVersionAndNamespace ("5-14", "http://www.fpml.org/FpML-5/legal");
+
+    /**
 	 * A <CODE>Conversion</CODE> instance configured for FpML 1-0 to 2-0
 	 * transformation. The specific changes needed (other than basic DOCTYPE
 	 * changes) are:
@@ -960,6 +1008,13 @@ public final class Releases
             = new Conversions.R5_12__R5_13_CONFIRMATION ();
 
     /**
+     * A <CODE>Conversion</CODE> instance configured for FpML 5-13 to 5-14
+     * confirmation view transformation.
+     */
+    public static final Conversion R5_13__R5_14_CONFIRMATION
+            = new Conversions.R5_13__R5_14_CONFIRMATION ();
+
+    /**
      * A <CODE>Conversion</CODE> instance configured for FpML 5-0 to 5-1
      * reporting view transformation.
      */
@@ -1005,6 +1060,7 @@ public final class Releases
     public static final Conversion R5_11_CONF__R5_10_CONF = new Conversions.PassThroughConversion (R5_11_CONFIRMATION, R5_10_CONFIRMATION);
     public static final Conversion R5_12_CONF__R5_11_CONF = new Conversions.PassThroughConversion (R5_12_CONFIRMATION, R5_11_CONFIRMATION);
     public static final Conversion R5_13_CONF__R5_12_CONF = new Conversions.PassThroughConversion (R5_13_CONFIRMATION, R5_12_CONFIRMATION);
+    public static final Conversion R5_14_CONF__R5_13_CONF = new Conversions.PassThroughConversion (R5_14_CONFIRMATION, R5_13_CONFIRMATION);
 
     // --- 5.x Reporting downgrade chain ---
     public static final Conversion R5_1_REP__R5_0_REP    = new Conversions.PassThroughConversion (R5_1_REPORTING,  R5_0_REPORTING);
@@ -1020,6 +1076,7 @@ public final class Releases
     public static final Conversion R5_11_REP__R5_10_REP  = new Conversions.PassThroughConversion (R5_11_REPORTING, R5_10_REPORTING);
     public static final Conversion R5_12_REP__R5_11_REP  = new Conversions.PassThroughConversion (R5_12_REPORTING, R5_11_REPORTING);
     public static final Conversion R5_13_REP__R5_12_REP  = new Conversions.PassThroughConversion (R5_13_REPORTING, R5_12_REPORTING);
+    public static final Conversion R5_14_REP__R5_13_REP  = new Conversions.PassThroughConversion (R5_14_REPORTING, R5_13_REPORTING);
 
     // --- 5.x Recordkeeping downgrade chain ---
     public static final Conversion R5_4_RK__R5_3_RK   = new Conversions.PassThroughConversion (R5_4_RECORDKEEPING,  R5_3_RECORDKEEPING);
@@ -1032,6 +1089,7 @@ public final class Releases
     public static final Conversion R5_11_RK__R5_10_RK = new Conversions.PassThroughConversion (R5_11_RECORDKEEPING, R5_10_RECORDKEEPING);
     public static final Conversion R5_12_RK__R5_11_RK = new Conversions.PassThroughConversion (R5_12_RECORDKEEPING, R5_11_RECORDKEEPING);
     public static final Conversion R5_13_RK__R5_12_RK = new Conversions.PassThroughConversion (R5_13_RECORDKEEPING, R5_12_RECORDKEEPING);
+    public static final Conversion R5_14_RK__R5_13_RK = new Conversions.PassThroughConversion (R5_14_RECORDKEEPING, R5_13_RECORDKEEPING);
 
     // --- 5.x Transparency downgrade chain ---
     public static final Conversion R5_4_TR__R5_3_TR   = new Conversions.PassThroughConversion (R5_4_TRANSPARENCY,  R5_3_TRANSPARENCY);
@@ -1044,6 +1102,7 @@ public final class Releases
     public static final Conversion R5_11_TR__R5_10_TR = new Conversions.PassThroughConversion (R5_11_TRANSPARENCY, R5_10_TRANSPARENCY);
     public static final Conversion R5_12_TR__R5_11_TR = new Conversions.PassThroughConversion (R5_12_TRANSPARENCY, R5_11_TRANSPARENCY);
     public static final Conversion R5_13_TR__R5_12_TR = new Conversions.PassThroughConversion (R5_13_TRANSPARENCY, R5_12_TRANSPARENCY);
+    public static final Conversion R5_14_TR__R5_13_TR = new Conversions.PassThroughConversion (R5_14_TRANSPARENCY, R5_13_TRANSPARENCY);
 
     // --- 5.x Pretrade downgrade chain ---
     public static final Conversion R5_6_PT__R5_5_PT   = new Conversions.PassThroughConversion (R5_6_PRETRADE,  R5_5_PRETRADE);
@@ -1054,6 +1113,7 @@ public final class Releases
     public static final Conversion R5_11_PT__R5_10_PT = new Conversions.PassThroughConversion (R5_11_PRETRADE, R5_10_PRETRADE);
     public static final Conversion R5_12_PT__R5_11_PT = new Conversions.PassThroughConversion (R5_12_PRETRADE, R5_11_PRETRADE);
     public static final Conversion R5_13_PT__R5_12_PT = new Conversions.PassThroughConversion (R5_13_PRETRADE, R5_12_PRETRADE);
+    public static final Conversion R5_14_PT__R5_13_PT = new Conversions.PassThroughConversion (R5_14_PRETRADE, R5_13_PRETRADE);
 
     // --- 5.x Legal downgrade chain ---
     public static final Conversion R5_8_LG__R5_7_LG   = new Conversions.PassThroughConversion (R5_8_LEGAL,  R5_7_LEGAL);
@@ -1062,6 +1122,7 @@ public final class Releases
     public static final Conversion R5_11_LG__R5_10_LG = new Conversions.PassThroughConversion (R5_11_LEGAL, R5_10_LEGAL);
     public static final Conversion R5_12_LG__R5_11_LG = new Conversions.PassThroughConversion (R5_12_LEGAL, R5_11_LEGAL);
     public static final Conversion R5_13_LG__R5_12_LG = new Conversions.PassThroughConversion (R5_13_LEGAL, R5_12_LEGAL);
+    public static final Conversion R5_14_LG__R5_13_LG = new Conversions.PassThroughConversion (R5_14_LEGAL, R5_13_LEGAL);
 
 	/**
 	 * Examines the provided <CODE>Document</CODE> to determine the associated

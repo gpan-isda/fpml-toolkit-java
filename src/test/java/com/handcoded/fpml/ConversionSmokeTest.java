@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * <p>Two parameterised tests:
  * <ol>
  *   <li>{@link #convert5xIrd01} — converts the FpML 5-0 confirmation vanilla-swap
- *       example to each of the 13 downstream 5.x versions.</li>
+ *       example to each of the 14 downstream 5.x versions.</li>
  *   <li>{@link #convert4xIrd01} — converts the 4.x vanilla-swap example from each
  *       4.x version up to 5-13 confirmation, then validates the result with AllRules.</li>
  * </ol>
@@ -67,7 +67,7 @@ class ConversionSmokeTest extends ToolkitTestBase {
     @CsvSource({
         "5-1",  "5-2",  "5-3",  "5-4",  "5-5",
         "5-6",  "5-7",  "5-8",  "5-9",  "5-10",
-        "5-11", "5-12", "5-13"
+        "5-11", "5-12", "5-13", "5-14"
     })
     @DisplayName("Convert FpML 5-0 IRD example to target 5.x version")
     void convert5xIrd01(String targetVersion) throws ConversionException {
