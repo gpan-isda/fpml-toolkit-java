@@ -1159,7 +1159,52 @@ public final class Conversions {
 
             // Post-pass: rename paymentCurrency elements throughout the output
             renamePaymentCurrencies(newRoot, targetNs);
+            restructureFxSwaps(newRoot, targetNs, helper);
             return target;
+        }
+    }
+
+    /**
+     * Converts each 4.x {@code fxSwap} with exactly two {@code fxSingleLeg}
+     * children into the 5.x shape: the first leg becomes {@code nearLeg}, the
+     * second {@code farLeg}. A 4.x leg extends {@code Product}, so any leg-level
+     * {@code productType} / {@code productId} is dropped (5.x legs cannot carry
+     * them). Swaps with any other number of legs are left as they are, so the
+     * schema error surfaces rather than a guessed mapping.
+     * <p>
+     * FpML 5.0 has no FX schema, so this emits the 5.1+ structure directly.
+     */
+    private static void restructureFxSwaps(Element root, String targetNs, com.handcoded.meta.Helper helper) {
+        NodeList swaps = root.getElementsByTagNameNS(targetNs, "fxSwap");
+        for (int index = 0; index < swaps.getLength(); ++index) {
+            Element swap = (Element) swaps.item(index);
+            List<Element> legs = new ArrayList<>();
+            for (Node child = swap.getFirstChild(); child != null; child = child.getNextSibling()) {
+                if (child.getNodeType() == Node.ELEMENT_NODE && "fxSingleLeg".equals(child.getLocalName()))
+                    legs.add((Element) child);
+            }
+            if (legs.size() != 2) continue;
+
+            String[] names = { "nearLeg", "farLeg" };
+            for (int leg = 0; leg < 2; ++leg) {
+                Element old = legs.get(leg);
+                Element rep = old.getOwnerDocument().createElementNS(targetNs, names[leg]);
+                NamedNodeMap attrs = old.getAttributes();
+                for (int a = 0; a < attrs.getLength(); ++a)
+                    rep.setAttributeNode((Attr) attrs.item(a).cloneNode(true));
+                while (old.getFirstChild() != null) {
+                    Node child = old.getFirstChild();
+                    if (child.getNodeType() == Node.ELEMENT_NODE
+                            && ("productType".equals(child.getLocalName()) || "productId".equals(child.getLocalName()))) {
+                        if (helper instanceof DroppingHelper)
+                            ((DroppingHelper) helper).recordDropped("fxSwap/fxSingleLeg/" + child.getLocalName());
+                        old.removeChild(child);
+                        continue;
+                    }
+                    rep.appendChild(child);
+                }
+                swap.replaceChild(rep, old);
+            }
         }
     }
 
