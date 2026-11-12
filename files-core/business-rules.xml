@@ -229,7 +229,24 @@
 		<addRule name="eqd-28"/>
 		<addRule name="eqd-29"/>
 		<addRule name="eqd-31"/>
-		
+
+		<!-- 5.12 - -->
+		<addRule name="eqd-33"/>
+		<addRule name="eqd-34"/>
+		<addRule name="eqd-35"/>
+
+		<!-- 5.14 - -->
+		<addRule name="eqd-36"/>
+		<addRule name="eqd-37"/>
+		<addRule name="eqd-38"/>
+		<addRule name="eqd-39"/>
+		<addRule name="eqd-40"/>
+		<addRule name="eqd-41"/>
+		<addRule name="eqd-42"/>
+		<addRule name="eqd-43"/>
+		<addRule name="eqd-44"/>
+		<addRule name="eqd-45"/>
+
 		<!-- 4.0 - 4.x -->
 		<addRule name="eqd-2b"/>
 		<addRule name="eqd-4b"/>
@@ -338,6 +355,14 @@
 		<addRule name="fx-51"/>
 		<addRule name="fx-52"/>
 		<addRule name="fx-53"/>
+
+		<!-- 5.11 - -->
+		<addRule name="fx-54a"/>
+		<addRule name="fx-54b"/>
+		<addRule name="fx-54c"/>
+		<addRule name="fx-54d"/>
+		<addRule name="fx-55"/>
+		<addRule name="fx-55b"/>
 	</ruleSet>
 	
 	<ruleSet name="SharedRules">
@@ -465,7 +490,56 @@
 		<addRule name="ln-3"/>
 		<addRule name="ln-4"/>
 		<addRule name="ln-5"/>
+		<addRule name="ln-6"/>
+		<addRule name="ln-8"/>
 		<addRule name="ln-10"/>
+		<addRule name="ln-23"/>
+		<addRule name="ln-24"/>
+		<addRule name="ln-25"/>
+		<addRule name="ln-26"/>
+		<addRule name="ln-27"/>
+		<addRule name="ln-28"/>
+		<addRule name="ln-29"/>
+		<addRule name="ln-30"/>
+		<addRule name="ln-31"/>
+		<addRule name="ln-32"/>
+		<addRule name="ln-33"/>
+		<addRule name="ln-34"/>
+		<addRule name="ln-35"/>
+		<addRule name="ln-36"/>
+
+		<!-- 5.12 - -->
+		<addRule name="ln-37"/>
+		<addRule name="ln-38"/>
+		<addRule name="ln-39"/>
+		<addRule name="ln-40"/>
+		<addRule name="ln-41"/>
+		<addRule name="ln-42"/>
+		<addRule name="ln-43"/>
+		<addRule name="ln-44"/>
+		<addRule name="ln-45"/>
+		<addRule name="ln-46"/>
+
+		<!-- Implemented in LoanRules but not yet registered: they do not fire on
+		  == the FpML 5-14 invalid test cases for them (ln-21 also throws on some
+		  == 5-11 examples), so they need reworking against the spec first.
+		<addRule name="ln-7"/>
+		<addRule name="ln-9"/>
+		<addRule name="ln-11"/>
+		<addRule name="ln-11b"/>
+		<addRule name="ln-12"/>
+		<addRule name="ln-12b"/>
+		<addRule name="ln-13"/>
+		<addRule name="ln-14"/>
+		<addRule name="ln-15"/>
+		<addRule name="ln-16"/>
+		<addRule name="ln-17"/>
+		<addRule name="ln-18"/>
+		<addRule name="ln-19"/>
+		<addRule name="ln-20"/>
+		<addRule name="ln-21"/>
+		<addRule name="ln-22"/>
+		-->
 	</ruleSet>
 	
 	<ruleSet name="CollateralRules">

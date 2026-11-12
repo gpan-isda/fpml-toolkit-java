@@ -85,7 +85,40 @@ public final class EqdRules extends FpMLRuleSet
 				EQD_PRODUCTS,
 				Preconditions.R4_0__R4_X,
 				Preconditions.CONFIRMATION });
-	
+
+	/**
+	 * A <CODE>Precondition</CODE> instance that detects FpML 5-12 or later
+	 * confirmation document containing at least one equity derivative product.
+	 * @since	TFP 1.10
+	 */
+	private static final Precondition R5_12__LATER
+		= Precondition.and (new Precondition [] {
+				EQD_PRODUCTS,
+				Preconditions.R5_12__LATER,
+				Preconditions.CONFIRMATION });
+
+	/**
+	 * A <CODE>Precondition</CODE> instance that detects any FpML 5-12 or later
+	 * confirmation document. Used for rules on the <CODE>Asian</CODE> type,
+	 * which FX options share with equity options.
+	 * @since	TFP 1.10
+	 */
+	private static final Precondition R5_12__LATER_ANY_PRODUCT
+		= Precondition.and (
+				Preconditions.R5_12__LATER,
+				Preconditions.CONFIRMATION);
+
+	/**
+	 * A <CODE>Precondition</CODE> instance that detects FpML 5-14 or later
+	 * confirmation document containing at least one equity derivative product.
+	 * @since	TFP 1.10
+	 */
+	private static final Precondition R5_14__LATER
+		= Precondition.and (new Precondition [] {
+				EQD_PRODUCTS,
+				Preconditions.R5_14__LATER,
+				Preconditions.CONFIRMATION });
+
 	/**
 	 * A <CODE>Rule</CODE> instance that ensures the unadjusted expiration
 	 * date is after the trade date for American options.
@@ -1353,6 +1386,565 @@ public final class EqdRules extends FpMLRuleSet
 		}
 	};
 	
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures that each dividend period has
+	 * a start date before its end date and does not overlap any other.
+	 * <P>
+	 * Applies to FpML 5.12 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE33 = new Rule (R5_12__LATER, "eqd-33")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "DividendAdjustment"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("dividendAdjustment"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element		context	= (Element) list.item (index);
+				NodeList	periods	= XPath.paths (context, "dividendPeriod");
+
+				for (int outer = 0; outer < periods.getLength (); ++outer) {
+					Element	period	= (Element) periods.item (outer);
+					Element	start	= XPath.path (period, "unadjustedStartDate");
+					Element	end		= XPath.path (period, "unadjustedEndDate");
+
+					if ((start == null) || (end == null)) continue;
+
+					if (!less (toDate (start), toDate (end))) {
+						errorHandler.error ("305", period,
+								"The dividend period unadjusted start date must be before its " +
+								"unadjusted end date",
+								getDisplayName (), toToken (start));
+						result = false;
+					}
+
+					for (int inner = outer + 1; inner < periods.getLength (); ++inner) {
+						Element	other		= (Element) periods.item (inner);
+						Element	otherStart	= XPath.path (other, "unadjustedStartDate");
+						Element	otherEnd	= XPath.path (other, "unadjustedEndDate");
+
+						if ((otherStart == null) || (otherEnd == null)
+								|| less (toDate (end), toDate (otherStart))
+								|| less (toDate (otherEnd), toDate (start))) continue;
+
+						errorHandler.error ("305", other,
+								"Each dividend period must be disjoint from every other " +
+								"dividend period",
+								getDisplayName (), toToken (otherStart));
+						result = false;
+					}
+				}
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures an averaging in period is
+	 * present if averaging in is selected.
+	 * <P>
+	 * Applies to FpML 5.12 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE34 = new Rule (R5_12__LATER_ANY_PRODUCT, "eqd-34")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "Asian"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("asian"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+				Element	inOut	= XPath.path (context, "averagingInOut");
+
+				if (implies (
+						equal (inOut, "In") || equal (inOut, "Both"),
+						exists (XPath.path (context, "averagingPeriodIn"))))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If averagingInOut is In or Both then averagingPeriodIn must exist",
+						getDisplayName (), toToken (inOut));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures an averaging out period is
+	 * present if averaging out is selected.
+	 * <P>
+	 * Applies to FpML 5.12 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE35 = new Rule (R5_12__LATER_ANY_PRODUCT, "eqd-35")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "Asian"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("asian"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+				Element	inOut	= XPath.path (context, "averagingInOut");
+
+				if (implies (
+						equal (inOut, "Out") || equal (inOut, "Both"),
+						exists (XPath.path (context, "averagingPeriodOut"))))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If averagingInOut is Out or Both then averagingPeriodOut must exist",
+						getDisplayName (), toToken (inOut));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures a non-commencement or
+	 * discontinuation election is only made with futures or options price
+	 * valuation.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE36 = new Rule (R5_14__LATER, "eqd-36")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "EquityValuation"), errorHandler));
+
+			return (
+				  validate (nodeIndex.getElementsByName ("equityValuation"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationRules"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuation"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						exists (XPath.path (context, "nonCommencementOrDiscontinuation")),
+						equal (XPath.path (context, "futuresPriceValuation"), "true")
+						|| equal (XPath.path (context, "optionsPriceValuation"), "true")))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If nonCommencementOrDiscontinuation exists, then either " +
+						"futuresPriceValuation or optionsPriceValuation must exist and be true",
+						getDisplayName (), null);
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures a time session valuation has
+	 * a valuation session and uses the TWAP VE determination method.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE37 = new Rule (R5_14__LATER, "eqd-37")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "ReturnLegValuationPrice"), errorHandler));
+
+			return (
+				  validate (nodeIndex.getElementsByName ("initialPrice"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationPriceInterim"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationPriceFinal"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						equal (XPath.path (context, "valuationRules", "valuationTimeType"), "TimeSession"),
+						exists (XPath.path (context, "valuationRules", "valuationSession"))
+						&& equal (XPath.path (context, "determinationMethod"), "TWAPVE")))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If valuationRules/valuationTimeType is TimeSession then " +
+						"valuationRules/valuationSession must exist and determinationMethod " +
+						"must be TWAPVE",
+						getDisplayName (), toToken (XPath.path (context, "determinationMethod")));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures a valuation session is only
+	 * given for a time session valuation using the TWAP VE determination
+	 * method.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE38 = new Rule (R5_14__LATER, "eqd-38")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "ReturnLegValuationPrice"), errorHandler));
+
+			return (
+				  validate (nodeIndex.getElementsByName ("initialPrice"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationPriceInterim"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationPriceFinal"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						exists (XPath.path (context, "valuationRules", "valuationSession")),
+						equal (XPath.path (context, "valuationRules", "valuationTimeType"), "TimeSession")
+						&& equal (XPath.path (context, "determinationMethod"), "TWAPVE")))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If valuationRules/valuationSession exists then " +
+						"valuationRules/valuationTimeType must be TimeSession and " +
+						"determinationMethod must be TWAPVE",
+						getDisplayName (), toToken (XPath.path (context, "determinationMethod")));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures an 'excluding close' VWAP or
+	 * TWAP determination method has an ExcludingClose valuation time type.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE39 = new Rule (R5_14__LATER, "eqd-39")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "ReturnLegValuationPrice"), errorHandler));
+
+			return (
+				  validate (nodeIndex.getElementsByName ("initialPrice"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationPriceInterim"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationPriceFinal"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+				Element	method	= XPath.path (context, "determinationMethod");
+
+				if (implies (
+						equal (method, "VWAPVEExcludingClose") || equal (method, "TWAPVEExcludingClose"),
+						equal (XPath.path (context, "valuationRules", "valuationTimeType"), "ExcludingClose")))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If determinationMethod is VWAPVEExcludingClose or TWAPVEExcludingClose " +
+						"then valuationRules/valuationTimeType must be ExcludingClose",
+						getDisplayName (), toToken (method));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures a VWAP or TWAP final
+	 * valuation is only used with equity underlyers.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE40 = new Rule (R5_14__LATER, "eqd-40")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "ReturnLeg"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("returnLeg"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+				Element	method	= XPath.path (context, "rateOfReturn", "valuationPriceFinal", "determinationMethod");
+
+				if (implies (
+						equal (method, "VWAPVE") || equal (method, "TWAPVE")
+						|| equal (method, "VWAPVEExcludingClose") || equal (method, "TWAPVEExcludingClose"),
+						exists (XPath.path (context, "underlyer", "singleUnderlyer", "equity"))
+						|| exists (XPath.paths (context, "underlyer", "basket", "basketConstituent", "equity"))))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If the final valuation price determinationMethod is a VWAP VE or " +
+						"TWAP VE method then the underlyer must be an equity or a basket " +
+						"containing equities",
+						getDisplayName (), toToken (method));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures separate valuation
+	 * applicability is only given when combined calculation is applicable.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE41 = new Rule (R5_14__LATER, "eqd-41")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "EquityValuation"), errorHandler));
+
+			return (
+				  validate (nodeIndex.getElementsByName ("equityValuation"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuationRules"), errorHandler)
+				& validate (nodeIndex.getElementsByName ("valuation"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						exists (XPath.path (context, "separateValuation", "applicability")),
+						equal (XPath.path (context, "separateValuation", "combinedCalculation"), "Applicable")))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If separateValuation/applicability exists then " +
+						"separateValuation/combinedCalculation must be Applicable",
+						getDisplayName (), toToken (XPath.path (context, "separateValuation", "combinedCalculation")));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures combined calculation of a
+	 * separate valuation is only applicable to basket underlyers.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE42 = new Rule (R5_14__LATER, "eqd-42")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "ReturnLeg"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("returnLeg"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						equal (XPath.path (context, "rateOfReturn", "valuationPriceFinal", "valuationRules",
+								"separateValuation", "combinedCalculation"), "Applicable"),
+						exists (XPath.path (context, "underlyer", "basket"))))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If the final valuation price separateValuation/combinedCalculation " +
+						"is Applicable then the underlyer must be a basket",
+						getDisplayName (), null);
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures an alternative pre-nominated
+	 * index is only given when benchmark provisions are applicable.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE43 = new Rule (R5_14__LATER, "eqd-43")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "EquitySwapTransactionSupplement"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("equitySwapTransactionSupplement"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						exists (XPath.path (context, "alternativePreNominatedIndex")),
+						equal (XPath.path (context, "benchmarkProvisions"), "Applicable")))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If alternativePreNominatedIndex exists then benchmarkProvisions " +
+						"must be Applicable",
+						getDisplayName (), toToken (XPath.path (context, "benchmarkProvisions")));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures benchmark provisions are only
+	 * applicable to index underlyers.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE44 = new Rule (R5_14__LATER, "eqd-44")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "EquitySwapTransactionSupplement"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("equitySwapTransactionSupplement"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						equal (XPath.path (context, "benchmarkProvisions"), "Applicable"),
+						exists (XPath.paths (context, "returnLeg", "underlyer", "singleUnderlyer", "index"))
+						|| exists (XPath.paths (context, "returnLeg", "underlyer", "basket", "basketConstituent", "index"))))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If benchmarkProvisions is Applicable then the return leg underlyer " +
+						"must be an index or a basket containing indices",
+						getDisplayName (), null);
+				result = false;
+			}
+			return (result);
+		}
+	};
+
+	/**
+	 * A <CODE>Rule</CODE> instance that ensures a depository receipt look
+	 * through election is only made for equity underlyers.
+	 * <P>
+	 * Applies to FpML 5.14 and later.
+	 * @since	TFP 1.10
+	 */
+	public static final Rule	RULE45 = new Rule (R5_14__LATER, "eqd-45")
+	{
+		public boolean validate (NodeIndex nodeIndex, ValidationErrorHandler errorHandler)
+		{
+			if (nodeIndex.hasTypeInformation ())
+				return (validate (nodeIndex.getElementsByType (determineNamespace (nodeIndex), "EquitySwapTransactionSupplement"), errorHandler));
+
+			return (validate (nodeIndex.getElementsByName ("equitySwapTransactionSupplement"), errorHandler));
+		}
+
+		private boolean validate (NodeList list, ValidationErrorHandler errorHandler)
+		{
+			boolean		result	= true;
+
+			for (int index = 0, length = list.getLength (); index < length; ++index) {
+				Element	context	= (Element) list.item (index);
+
+				if (implies (
+						exists (XPath.path (context, "lookThrough")),
+						exists (XPath.paths (context, "returnLeg", "underlyer", "singleUnderlyer", "equity"))
+						|| exists (XPath.paths (context, "returnLeg", "underlyer", "basket", "basketConstituent", "equity"))))
+					continue;
+
+				errorHandler.error ("305", context,
+						"If lookThrough exists then the return leg underlyer must be an " +
+						"equity or a basket containing equities",
+						getDisplayName (), toToken (XPath.path (context, "lookThrough")));
+				result = false;
+			}
+			return (result);
+		}
+	};
+
 	/**
 	 * Provides access to the EQD validation rule set.
 	 *

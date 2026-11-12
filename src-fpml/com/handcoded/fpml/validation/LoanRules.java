@@ -16,6 +16,7 @@ package com.handcoded.fpml.validation;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.handcoded.finance.Date;
 import com.handcoded.validation.Precondition;
 import com.handcoded.validation.Rule;
 import com.handcoded.validation.RuleSet;
@@ -67,6 +68,16 @@ public final class LoanRules extends FpMLRuleSet
 	public static final Precondition	R5_11__LATER_CONFIRMATION
 			= Precondition.and (
 			Preconditions.R5_11__LATER,
+			Preconditions.CONFIRMATION);
+
+	/**
+	 * A <CODE>Precondition</CODE> instance that detects any FpML 5-12 or later
+	 * confirmation view document.
+	 * @since	TFP 1.10
+	 */
+	public static final Precondition	R5_12__LATER_CONFIRMATION
+			= Precondition.and (
+			Preconditions.R5_12__LATER,
 			Preconditions.CONFIRMATION);
 			
 	private static final Precondition LOAN_SERVICING_NOTIFICATION = new ContentPrecondition(
@@ -2748,7 +2759,10 @@ public final class LoanRules extends FpMLRuleSet
 
                         }
 
-                        if (allocationsSum.compareTo(toDouble(tradeAmount)) != 0) {
+                        // The rule only applies when there is at least one allocation or allocation summary.
+                        boolean hasAllocations = exists(allocationSummaryList) || exists(allocationList);
+
+                        if (hasAllocations && allocationsSum.compareTo(toDouble(tradeAmount)) != 0) {
                             errorHandler.error("305", context,
                                     "Assuming the same currency, the sum of all loan allocation amounts must equal the loan trade amount.",
                                     getDisplayName(), String.format("The sum of loan allocation amounts of %s not equal to loan trade amount of %s", allocationsSum, toDouble(tradeAmount)));
@@ -2886,6 +2900,407 @@ public final class LoanRules extends FpMLRuleSet
         }
 
     };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the finalApprovalDate is not later than today's date. It records
+     * when the approval was completed, not when it is projected to complete.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE37 = new Rule(R5_12__LATER_CONFIRMATION, "ln-37") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "AbstractApproval"), errorHandler);
+            return (validate(nodeIndex.getElementsByName("legalActionApprovalStatus"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+            Date    today  = Date.parse(java.time.LocalDate.now().toString());
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element context  = (Element) nodes.item(index);
+                Element approval = XPath.path(context, "finalApprovalDate");
+
+                if (approval == null || lessOrEqual(toDate(approval), today)) continue;
+
+                errorHandler.error("305", context,
+                        "The finalApprovalDate element cannot be populated with a value that is later than today's date.",
+                        getDisplayName(), toToken(approval));
+                result = false;
+            }
+            return result;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the finalApprovalDate is not later than the effectiveDate.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE38 = new Rule(R5_12__LATER_CONFIRMATION, "ln-38") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "AbstractApproval"), errorHandler);
+            return (validate(nodeIndex.getElementsByName("legalActionApprovalStatus"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element context   = (Element) nodes.item(index);
+                Element approval  = XPath.path(context, "finalApprovalDate");
+                Element effective = XPath.path(context, "effectiveDate");
+
+                if (approval == null || effective == null || lessOrEqual(toDate(approval), toDate(effective))) continue;
+
+                errorHandler.error("305", context,
+                        "The finalApprovalDate element cannot be populated with a value that is later than the effective date.",
+                        getDisplayName(), String.format("final approval date %s is after effective date %s", toToken(approval), toToken(effective)));
+                result = false;
+            }
+            return result;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the expectedDate and clearedDate of a task are not earlier than its
+     * raisedDate.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE39 = new Rule(R5_12__LATER_CONFIRMATION, "ln-39") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "AbstractTask"), errorHandler);
+            return (validate(nodeIndex.getElementsByName("settlementTask"), errorHandler)
+                    & validate(nodeIndex.getElementsByName("covenantTask"), errorHandler)
+                    & validate(nodeIndex.getElementsByName("legalActionTask"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element context  = (Element) nodes.item(index);
+                Element raised   = XPath.path(context, "dates", "raisedDate");
+                Element expected = XPath.path(context, "dates", "expectedDate");
+                Element cleared  = XPath.path(context, "dates", "clearedDate");
+
+                if (raised == null) continue;
+
+                for (Element date : new Element[] { expected, cleared }) {
+                    if (date == null || greaterOrEqual(toDate(date), toDate(raised))) continue;
+
+                    errorHandler.error("305", context,
+                            "The dates/expectedDate and the dates/clearedDate for a task cannot be earlier than the dates/raisedDate of that task.",
+                            getDisplayName(), String.format("%s %s is before raised date %s", date.getLocalName(), toToken(date), toToken(raised)));
+                    result = false;
+                }
+            }
+            return result;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that a covenant effectiveDate is not earlier than the deal's
+     * creditAgreementDate.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE40 = new Rule(R5_12__LATER_CONFIRMATION, "ln-40") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "Deal"), errorHandler);
+            return (validate(nodeIndex.getElementsByName("deal"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element  context    = (Element) nodes.item(index);
+                Element  agreement  = XPath.path(context, "creditAgreementDate");
+                NodeList effectives = XPath.paths(context, "covenant", "effectiveDate");
+
+                if (agreement == null) continue;
+
+                for (int covenant = 0; covenant < effectives.getLength(); ++covenant) {
+                    Element effective = (Element) effectives.item(covenant);
+
+                    if (greaterOrEqual(toDate(effective), toDate(agreement))) continue;
+
+                    errorHandler.error("305", effective,
+                            "The covenant/effectiveDate cannot be earlier than the creditAgreementDate.",
+                            getDisplayName(), String.format("covenant effective date %s is before credit agreement date %s", toToken(effective), toToken(agreement)));
+                    result = false;
+                }
+            }
+            return result;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the isCompoundingBalance flag, if included, is false when the
+     * calculation method is Averaging.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE41 = new Rule(R5_12__LATER_CONFIRMATION, "ln-41") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "LoanFloatingRate"), errorHandler);
+            return (validate(XPath.paths(nodeIndex.getElementsByName("floatingRateAccrual"), "rate"), errorHandler)
+                    & validate(XPath.paths(nodeIndex.getElementsByName("floatingRateOption"), "rate"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element context     = (Element) nodes.item(index);
+                Element compounding = XPath.path(context, "isCompoundingBalance");
+
+                if (implies(
+                        equal(XPath.path(context, "calculationParameters", "calculationMethod"), "Averaging"),
+                        compounding == null || !toBool(compounding)))
+                    continue;
+
+                errorHandler.error("305", context,
+                        "If the calculationParameters/calculationMethod selected is \"Averaging\", then the isCompoundingBalance flag, if included, must be false.",
+                        getDisplayName(), toToken(compounding));
+                result = false;
+            }
+            return result;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the margin plus the index rate cap (floor) equals the all-in rate cap
+     * (floor). Only checked when the spread, the index cap (floor) schedule and the all-in limit are all given as
+     * single, unstepped values, since a stepped schedule has no single value to compare.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE42 = new Rule(R5_12__LATER_CONFIRMATION, "ln-42") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "LoanFloatingRate"), errorHandler);
+            return (validate(XPath.paths(nodeIndex.getElementsByName("floatingRateAccrual"), "rate"), errorHandler)
+                    & validate(XPath.paths(nodeIndex.getElementsByName("floatingRateOption"), "rate"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element context = (Element) nodes.item(index);
+
+                result &= validate(context, "capRateSchedule", "capRate", errorHandler);
+                result &= validate(context, "floorRateSchedule", "floorRate", errorHandler);
+            }
+            return result;
+        }
+
+        private boolean validate(Element context, String scheduleName, String limitName, ValidationErrorHandler errorHandler) {
+            NodeList spreads   = XPath.paths(context, "spreadSchedule");
+            NodeList schedules = XPath.paths(context, scheduleName);
+            Element  limit     = XPath.path(context, "allInRateLimits", limitName, "rate");
+
+            if (spreads.getLength() != 1 || schedules.getLength() != 1 || limit == null) return true;
+
+            Element spread   = (Element) spreads.item(0);
+            Element schedule = (Element) schedules.item(0);
+
+            if (exists(XPath.paths(spread, "step")) || exists(XPath.paths(schedule, "step"))) return true;
+
+            BigDecimal sum = toDecimal(XPath.path(spread, "initialValue")).add(toDecimal(XPath.path(schedule, "initialValue")));
+
+            if (equal(sum, toDecimal(limit))) return true;
+
+            errorHandler.error("305", context,
+                    "The margin plus the index rate " + limitName.replace("Rate", "") + " must equal the all-in rate " + limitName.replace("Rate", "") + ".",
+                    getDisplayName(), String.format("spread plus %s is %s but allInRateLimits/%s/rate is %s", scheduleName, sum.toPlainString(), limitName, toToken(limit)));
+            return false;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that for a floating rate accrual period the endDate is not earlier than the
+     * startDate, and the startDate is not earlier than the rateEffectiveDate.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE43 = new Rule(R5_12__LATER_CONFIRMATION, "ln-43") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "LoanFloatingRateAccrual"), errorHandler);
+            return (validate(nodeIndex.getElementsByName("floatingRateAccrual"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element context   = (Element) nodes.item(index);
+                Element start     = XPath.path(context, "startDate");
+                Element end       = XPath.path(context, "endDate");
+                Element effective = XPath.path(context, "rateEffectiveDate");
+
+                if (start == null) continue;
+
+                if (end != null && less(toDate(end), toDate(start))) {
+                    errorHandler.error("305", context,
+                            "For a floating rate loan accrual period, the endDate cannot be earlier than the startDate.",
+                            getDisplayName(), String.format("end date %s is before start date %s", toToken(end), toToken(start)));
+                    result = false;
+                }
+                if (effective != null && less(toDate(start), toDate(effective))) {
+                    errorHandler.error("305", context,
+                            "For a floating rate loan accrual period, the startDate cannot be earlier than the rateEffectiveDate.",
+                            getDisplayName(), String.format("start date %s is before rate effective date %s", toToken(start), toToken(effective)));
+                    result = false;
+                }
+            }
+            return result;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the allInRate of a floating rate accrual equals the baseRate plus the
+     * spread in force at the accrual startDate plus, where present, the mandatoryCostRate and defaultSpread.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE44 = new Rule(R5_12__LATER_CONFIRMATION, "ln-44") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validate(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "LoanFloatingRateAccrual"), errorHandler);
+            return (validate(nodeIndex.getElementsByName("floatingRateAccrual"), errorHandler));
+        }
+
+        private boolean validate(NodeList nodes, ValidationErrorHandler errorHandler) {
+            boolean result = true;
+
+            for (int index = 0; index < nodes.getLength(); ++index) {
+                Element  context = (Element) nodes.item(index);
+                Element  allIn   = XPath.path(context, "allInRate");
+                Element  base    = XPath.path(context, "baseRate");
+                NodeList spreads = XPath.paths(context, "rate", "spreadSchedule");
+
+                if (allIn == null || base == null || spreads.getLength() > 1) continue;
+
+                BigDecimal sum = toDecimal(base);
+
+                if (spreads.getLength() == 1)
+                    sum = sum.add(spreadAt((Element) spreads.item(0), XPath.path(context, "startDate")));
+                for (String name : new String[] { "mandatoryCostRate", "defaultSpread" }) {
+                    Element extra = XPath.path(context, name);
+                    if (extra != null) sum = sum.add(toDecimal(extra));
+                }
+
+                if (equal(sum, toDecimal(allIn))) continue;
+
+                errorHandler.error("305", context,
+                        "For a floating rate loan accrual, the allInRate must equal the sum of the baseRate, the spread and, where applicable, the mandatoryCostRate and defaultSpread.",
+                        getDisplayName(), String.format("allInRate is %s but the components sum to %s", toToken(allIn), sum.toPlainString()));
+                result = false;
+            }
+            return result;
+        }
+
+        /**
+         * Returns the schedule's initial value, or the value of the latest step on or before the given date.
+         */
+        private BigDecimal spreadAt(Element schedule, Element date) {
+            BigDecimal value = toDecimal(XPath.path(schedule, "initialValue"));
+            Date       last  = null;
+
+            if (date == null) return value;
+
+            NodeList steps = XPath.paths(schedule, "step");
+            for (int index = 0; index < steps.getLength(); ++index) {
+                Element step     = (Element) steps.item(index);
+                Date    stepDate = toDate(XPath.path(step, "stepDate"));
+
+                if (lessOrEqual(stepDate, toDate(date)) && (last == null || greater(stepDate, last))) {
+                    value = toDecimal(XPath.path(step, "stepValue"));
+                    last  = stepDate;
+                }
+            }
+            return value;
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the startDate of a loan floating rate option period does not exceed the
+     * endDate.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE45 = new Rule(R5_12__LATER_CONFIRMATION, "ln-45") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validatePeriod(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "LoanFloatingRateOption"), getDisplayName(), errorHandler);
+            return (validatePeriod(nodeIndex.getElementsByName("floatingRateOption"), getDisplayName(), errorHandler));
+        }
+    };
+
+    /**
+     * A <CODE>Rule</CODE> that ensures that the startDate of a legacy floating rate option period does not exceed
+     * the endDate.
+     * <p>
+     * Applies to FpML 5.12 and later.
+     *
+     * @since TFP 1.10
+     */
+    public static final Rule RULE46 = new Rule(R5_12__LATER_CONFIRMATION, "ln-46") {
+        protected boolean validate(NodeIndex nodeIndex, ValidationErrorHandler errorHandler) {
+            if (nodeIndex.hasTypeInformation())
+                return validatePeriod(nodeIndex.getElementsByType(determineNamespace(nodeIndex), "LegacyFloatingRateOption"), getDisplayName(), errorHandler);
+            return (validatePeriod(nodeIndex.getElementsByName("legacyFloatingRateOption"), getDisplayName(), errorHandler));
+        }
+    };
+
+    /**
+     * Shared check for ln-45 and ln-46: the startDate of each period cannot exceed its endDate.
+     */
+    private static boolean validatePeriod(NodeList nodes, String ruleName, ValidationErrorHandler errorHandler) {
+        boolean result = true;
+
+        for (int index = 0; index < nodes.getLength(); ++index) {
+            Element context = (Element) nodes.item(index);
+            Element start   = XPath.path(context, "startDate");
+            Element end     = XPath.path(context, "endDate");
+
+            if (start == null || end == null || greaterOrEqual(toDate(end), toDate(start))) continue;
+
+            errorHandler.error("305", context,
+                    "The startDate for a period cannot exceed the endDate.",
+                    ruleName, String.format("start date %s is after end date %s", toToken(start), toToken(end)));
+            result = false;
+        }
+        return result;
+    }
 
     /**
      * A <CODE>Rule</CODE> that ensures that the effective date of a loan contract
